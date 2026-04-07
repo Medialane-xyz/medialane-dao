@@ -23,7 +23,7 @@ export function DesktopNav({ pathname }: DesktopNavProps) {
       className="fixed right-4 top-1/2 z-50 hidden -translate-y-1/2 flex-col items-center gap-1 lg:flex"
       aria-label="Main navigation"
     >
-      <div className="flex flex-col items-center gap-1 rounded-2xl border border-ml-glass-border bg-ml-glass p-2 backdrop-blur-lg">
+      <div className="flex flex-col items-center gap-1 rounded-2xl border border-border bg-card/95 p-2 backdrop-blur-lg shadow-sm">
         {navSections.map((section) => {
           const Icon = navIcons[section.label]
           const isActive = pathname === section.href
@@ -49,7 +49,7 @@ export function DesktopNav({ pathname }: DesktopNavProps) {
                 />
               )}
               {/* Tooltip */}
-              <span className="pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-lg border border-ml-glass-border bg-ml-glass px-2.5 py-1 text-xs text-foreground opacity-0 backdrop-blur-md transition-opacity group-hover:opacity-100">
+              <span className="pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-lg border border-border bg-card/95 px-2.5 py-1 text-xs text-foreground opacity-0 backdrop-blur-md shadow-sm transition-opacity group-hover:opacity-100">
                 {section.label}
                 <span className="block text-[10px] text-muted-foreground">
                   {section.description}

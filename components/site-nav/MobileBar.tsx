@@ -23,7 +23,7 @@ export function MobileBar({ pathname }: MobileBarProps) {
       className="fixed inset-x-0 bottom-0 z-50 lg:hidden"
       aria-label="Mobile navigation"
     >
-      <div className="flex items-center justify-around border-t border-ml-glass-border bg-ml-glass px-2 py-2 backdrop-blur-xl">
+      <div className="flex items-center justify-around border-t border-border bg-card/95 px-2 py-2 backdrop-blur-xl shadow-sm">
         {navSections.map((section) => {
           const Icon = navIcons[section.label]
           const isActive = pathname === section.href

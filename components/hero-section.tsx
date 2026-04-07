@@ -3,124 +3,127 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight, ShoppingBag, Zap, Coins } from 'lucide-react'
+import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { GlassCard } from '@/components/glass-card'
 import { createContainerVariants, createItemVariants } from '@/lib/motion'
 
-const pillars = [
-  {
-    icon: ShoppingBag,
-    title: 'IP Marketplace',
-    description: 'Mint, license, and trade intellectual property as NFTs. Gasless. On Starknet mainnet.',
-    status: 'Live',
-    statusColor: 'text-emerald-400 bg-emerald-400/10',
-    href: 'https://medialane.io',
-  },
-  {
-    icon: Zap,
-    title: 'Creator Launchpad',
-    description: '12 IP types, programmable licensing, Collection Drops, POP credentials — all onchain.',
-    status: 'Live',
-    statusColor: 'text-emerald-400 bg-emerald-400/10',
-    href: 'https://medialane.io',
-  },
-  {
-    icon: Coins,
-    title: 'DAO & Token',
-    description: '21M MDLN — 100% community treasury. No VCs. No insiders. Governed by creators.',
-    status: 'Live',
-    statusColor: 'text-emerald-400 bg-emerald-400/10',
-    href: '/dao',
-  },
+const stats = [
+  { label: 'Token Supply',  value: '21M',     unit: 'MDLN' },
+  { label: 'DAO Treasury',  value: '100%',    unit: 'Community' },
+  { label: 'Network',       value: 'Mainnet', unit: 'Starknet' },
+  { label: 'IP Types',      value: '12',      unit: 'Supported' },
 ]
 
-const containerVariants = createContainerVariants(0.15, 0.3)
-const itemVariants = createItemVariants({ y: 30, blur: 8, duration: 0.7 })
+const links = [
+  { label: 'Marketplace',  href: 'https://medialane.io/marketplace', external: true },
+  { label: 'Launchpad',    href: 'https://medialane.io/launchpad',   external: true },
+  { label: 'Governance',   href: '/dao',                              external: false },
+]
+
+const containerVariants = createContainerVariants(0.12, 0.15)
+const itemVariants = createItemVariants({ y: 24, blur: 6, duration: 0.65 })
 
 export function HeroSection() {
   return (
-    <section className="flex min-h-screen flex-col items-center justify-center px-4 py-20 lg:px-8">
+    <section className="relative flex min-h-screen flex-col items-center justify-center px-4 py-20 lg:px-8">
+      {/* Ambient glow – visible in both themes */}
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+        <div className="h-[600px] w-[800px] rounded-full bg-primary/8 blur-[120px]" />
+      </div>
+
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="flex max-w-3xl flex-col items-center gap-8 text-center"
+        className="relative z-10 flex max-w-2xl flex-col items-center gap-8 text-center"
       >
-        {/* Overline */}
+        {/* Status badge */}
         <motion.div
           variants={itemVariants}
-          className="inline-flex items-center gap-2 rounded-full border border-ml-glass-border bg-ml-glass px-4 py-1.5 text-xs font-medium tracking-widest uppercase text-muted-foreground backdrop-blur-md"
+          className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-xs font-medium tracking-widest uppercase text-muted-foreground shadow-sm"
         >
           <span className="relative flex size-1.5">
-            <span className="animate-ping absolute inline-flex size-full rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex rounded-full size-1.5 bg-emerald-400" />
+            <span className="animate-ping absolute inline-flex size-full rounded-full bg-emerald-500 opacity-75" />
+            <span className="relative inline-flex rounded-full size-1.5 bg-emerald-500" />
           </span>
           Mainnet · Utah DAO LLC
         </motion.div>
 
         {/* Logo */}
-        <motion.h1 variants={itemVariants}>
-          <Image src="/medialane.png" alt="Medialane" width={300} height={62} className="inline-block" />
-        </motion.h1>
+        <motion.div variants={itemVariants}>
+          <Image
+            src="/medialane.png"
+            alt="Medialane"
+            width={280}
+            height={58}
+            className="inline-block dark:brightness-200 brightness-0"
+          />
+        </motion.div>
 
-        {/* Subtitle */}
+        {/* Tagline */}
         <motion.p
           variants={itemVariants}
-          className="max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl"
+          className="max-w-lg text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl"
         >
           The creator economy for the Integrity Web — where intellectual property becomes sovereign, programmable, and permanently owned.
         </motion.p>
 
-        {/* CTAs */}
-        <motion.div variants={itemVariants} className="flex gap-3">
-          <Button asChild size="lg" className="gap-2 shadow-lg shadow-ml-glow rounded-full">
+        {/* Primary CTAs */}
+        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-3 items-center">
+          <Button asChild size="lg" className="gap-2 rounded-full shadow-lg px-7">
             <a href="https://medialane.io" target="_blank" rel="noopener noreferrer">
               Launch App
               <ArrowRight className="size-4" />
             </a>
           </Button>
-          <Button asChild variant="outline" size="lg" className="border-ml-glass-border bg-ml-glass backdrop-blur-md rounded-full">
+          <Button asChild variant="outline" size="lg" className="rounded-full px-7">
             <Link href="/dao">Governance</Link>
           </Button>
         </motion.div>
 
-        {/* Pillar cards */}
-        <motion.div
-          variants={itemVariants}
-          className="mt-4 grid w-full gap-4 sm:grid-cols-3"
-        >
-          {pillars.map((pillar) => {
-            const inner = (
-              <GlassCard
-                intensity="light"
-                className="flex flex-col items-center gap-3 p-6 text-center transition-all hover:scale-[1.02] hover:shadow-xl hover:shadow-ml-glow/20 h-full"
+        {/* Quick nav links */}
+        <motion.div variants={itemVariants} className="flex items-center gap-6">
+          {links.map((link) =>
+            link.external ? (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors font-medium"
               >
-                <div className="flex size-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                  <pillar.icon className="size-5" />
-                </div>
-                <h3 className="text-sm font-semibold text-foreground">
-                  {pillar.title}
-                </h3>
-                <p className="text-xs leading-relaxed text-muted-foreground">
-                  {pillar.description}
-                </p>
-                <span className={`text-[10px] font-semibold px-2.5 py-1 rounded-full ${pillar.statusColor}`}>
-                  {pillar.status}
-                </span>
-              </GlassCard>
-            )
-
-            return pillar.href.startsWith('http') ? (
-              <a key={pillar.title} href={pillar.href} target="_blank" rel="noopener noreferrer" className="block">
-                {inner}
+                {link.label}
+                <ArrowUpRight className="size-3" />
               </a>
             ) : (
-              <Link key={pillar.title} href={pillar.href} className="block">
-                {inner}
+              <Link
+                key={link.label}
+                href={link.href}
+                className="text-xs text-muted-foreground hover:text-foreground transition-colors font-medium"
+              >
+                {link.label}
               </Link>
             )
-          })}
+          )}
+        </motion.div>
+
+        {/* Stats strip */}
+        <motion.div
+          variants={itemVariants}
+          className="mt-2 w-full rounded-2xl border border-border bg-card/80 backdrop-blur-md px-6 py-5"
+        >
+          <div className="grid grid-cols-2 gap-y-5 sm:grid-cols-4">
+            {stats.map((stat, i) => (
+              <div
+                key={stat.label}
+                className={`flex flex-col items-center gap-0.5 ${i < stats.length - 1 ? 'sm:border-r border-border' : ''}`}
+              >
+                <span className="font-mono text-xl font-bold text-foreground">{stat.value}</span>
+                <span className="text-[10px] font-semibold text-ml-orange uppercase tracking-wider">{stat.unit}</span>
+                <span className="text-[10px] text-muted-foreground">{stat.label}</span>
+              </div>
+            ))}
+          </div>
         </motion.div>
       </motion.div>
     </section>
