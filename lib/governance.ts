@@ -49,7 +49,7 @@ export async function getSnapshotProposals(limit = 5): Promise<SnapshotProposal[
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ query }),
-      next: { revalidate: 300 }, // cache 5 minutes
+      next: { revalidate: 3600 }, // cache 1 hour
     })
 
     if (!res.ok) return []
@@ -79,7 +79,7 @@ export async function getMdlnStats(): Promise<MdlnStats> {
     // Token holder count
     const holderRes = await fetch(
       `${ETHERSCAN_API}?module=token&action=tokeninfo&contractaddress=${mdln.token}&apikey=${apiKey}`,
-      { next: { revalidate: 600 } }
+      { next: { revalidate: 3600 } }
     )
     const holderData = await holderRes.json()
     const holders = holderData?.result?.[0]?.holdersCount
@@ -89,7 +89,7 @@ export async function getMdlnStats(): Promise<MdlnStats> {
     // Treasury MDLN balance
     const balRes = await fetch(
       `${ETHERSCAN_API}?module=account&action=tokenbalance&contractaddress=${mdln.token}&address=${mdln.treasury}&tag=latest&apikey=${apiKey}`,
-      { next: { revalidate: 300 } }
+      { next: { revalidate: 3600 } }
     )
     const balData = await balRes.json()
     const rawBalance = balData?.result ? BigInt(balData.result) : null

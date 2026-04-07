@@ -1,12 +1,13 @@
 import type { Metadata, Viewport } from 'next'
-import { Space_Grotesk, Geist_Mono } from 'next/font/google'
+import { Inter, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
 import './globals.css'
 
-const _spaceGrotesk = Space_Grotesk({
+const _inter = Inter({
   subsets: ['latin'],
   variable: '--font-sans',
+  display: 'swap',
 })
 const _geistMono = Geist_Mono({
   subsets: ['latin'],
@@ -56,7 +57,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${_spaceGrotesk.variable} ${_geistMono.variable} font-sans antialiased`}
+        className={`${_inter.variable} ${_geistMono.variable} font-sans antialiased`}
       >
         <ThemeProvider
           attribute="class"

@@ -155,7 +155,43 @@
 
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
+
+  h1, h2, h3, h4 {
+    @apply tracking-tight;
+  }
+}
+
+/* ── Aurora background blobs ── */
+.aurora-blob {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  will-change: transform;
+}
+.aurora-blue   { background: #0000FF; filter: blur(120px); opacity: 0.07; }
+.aurora-orange { background: #EC796B; filter: blur(110px); opacity: 0.06; }
+.aurora-mauve  { background: #E175B1; filter: blur(100px); opacity: 0.05; }
+.dark .aurora-blue   { opacity: 0.12; }
+.dark .aurora-orange { opacity: 0.09; }
+.dark .aurora-mauve  { opacity: 0.07; }
+
+/* ── Gradient text ── */
+.gradient-text {
+  background: linear-gradient(135deg, #E175B1 0%, #0000FF 50%, #EC796B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Section label ── */
+.section-label {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: hsl(var(--muted-foreground));
 }
 
 @layer utilities {

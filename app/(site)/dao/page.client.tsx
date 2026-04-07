@@ -4,10 +4,9 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { siteConfig, mdln } from '@/lib/site-config'
 import type { SnapshotProposal, MdlnStats } from '@/lib/governance'
-import { ArrowUpRight, ChevronDown, ExternalLink } from 'lucide-react'
+import { ArrowUpRight, ChevronDown, ExternalLink, TrendingUp, Users, Lock, Vote } from 'lucide-react'
 import { ScrollArea } from '@/components/ui/scroll-area'
-
-// ─── Helpers ─────────────────────────────────────────────────────────────────
+import { createContainerVariants, createItemVariants } from '@/lib/motion'
 
 function timeLeft(end: number): string | null {
   const diff = end * 1000 - Date.now()
@@ -22,33 +21,9 @@ function stripFirstH1(html: string): string {
 }
 
 const stateConfig = {
-  active:  { label: 'Live',    dot: 'bg-emerald-400', pulse: true,  text: 'text-emerald-400' },
-  pending: { label: 'Pending', dot: 'bg-amber-400',   pulse: false, text: 'text-amber-400'   },
-  closed:  { label: 'Closed',  dot: 'bg-white/20',    pulse: false, text: 'text-white/30'    },
-}
-
-// ─── Sub-components ───────────────────────────────────────────────────────────
-
-function StatBlock({ label, value, sub, accentHex, delay }: {
-  label: string; value: string; sub: string; accentHex: string; delay: number
-}) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 8 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay, duration: 0.45, ease: 'easeOut' }}
-      className="flex flex-col gap-1"
-    >
-      <span className="font-mono text-[9px] tracking-[0.22em] uppercase text-white/30">{label}</span>
-      <span
-        className="font-mono text-4xl font-bold leading-none"
-        style={{ color: accentHex }}
-      >
-        {value}
-      </span>
-      <span className="text-[11px] text-white/35 leading-tight mt-0.5">{sub}</span>
-    </motion.div>
-  )
+  active:  { label: 'Active',  dotClass: 'bg-emerald-500', pulse: true,  textClass: 'text-emerald-600 dark:text-emerald-400' },
+  pending: { label: 'Pending', dotClass: 'bg-amber-500',   pulse: false, textClass: 'text-amber-600 dark:text-amber-400'   },
+  closed:  { label: 'Closed',  dotClass: 'bg-muted-foreground/40', pulse: false, textClass: 'text-muted-foreground' },
 }
 
 function ProposalRow({ p, index }: { p: SnapshotProposal; index: number }) {
@@ -60,64 +35,46 @@ function ProposalRow({ p, index }: { p: SnapshotProposal; index: number }) {
       href={p.link}
       target="_blank"
       rel="noopener noreferrer"
-      initial={{ opacity: 0, x: -8 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ delay: 0.06 + index * 0.05, duration: 0.35 }}
-      className="group flex items-start gap-4 border-b border-white/6 py-5 first:pt-0 last:border-0 outline-none hover:-mx-5 hover:px-5 hover:bg-white/3 transition-all rounded-xl"
+      initial={{ opacity: 0, y: 6 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.05 + index * 0.05, duration: 0.3 }}
+      className="group flex items-start gap-3 border-b border-border py-4 first:pt-0 last:border-0 hover:bg-accent/30 -mx-4 px-4 rounded-lg transition-colors"
     >
-      <span className="mt-0.5 font-mono text-[11px] text-white/18 w-5 shrink-0 select-none tabular-nums">
-        {String(index + 1).padStart(2, '0')}
-      </span>
       <div className="flex-1 min-w-0">
-        <div className="flex items-center gap-2 mb-1.5">
+        <div className="flex items-center gap-2 mb-1">
           <span className="relative flex size-2 shrink-0">
-            {cfg.pulse && <span className={`animate-ping absolute inline-flex size-full rounded-full opacity-75 ${cfg.dot}`} />}
-            <span className={`relative inline-flex rounded-full size-2 ${cfg.dot}`} />
+            {cfg.pulse && <span className={`animate-ping absolute inline-flex size-full rounded-full opacity-75 ${cfg.dotClass}`} />}
+            <span className={`relative inline-flex rounded-full size-2 ${cfg.dotClass}`} />
           </span>
-          <span className={`text-[10px] font-bold tracking-widest uppercase ${cfg.text}`}>{cfg.label}</span>
-          {remaining && <span className="text-[10px] text-white/25">· {remaining}</span>}
+          <span className={`text-[10px] font-bold tracking-widest uppercase ${cfg.textClass}`}>{cfg.label}</span>
+          {remaining && <span className="text-[10px] text-muted-foreground">· {remaining}</span>}
         </div>
-        <p className="text-sm font-semibold text-white/75 leading-snug line-clamp-2 group-hover:text-white transition-colors">
+        <p className="text-sm font-medium text-foreground leading-snug line-clamp-2 group-hover:text-primary transition-colors">
           {p.title}
         </p>
-        {(p.votes > 0 || p.scores_total > 0) && (
-          <p className="mt-1.5 text-[11px] text-white/25">
+        {p.votes > 0 && (
+          <p className="mt-1 text-xs text-muted-foreground">
             {p.votes} vote{p.votes !== 1 ? 's' : ''}
             {p.scores_total > 0 && ` · ${(p.scores_total / 1_000_000).toFixed(2)}M MDLN`}
           </p>
         )}
       </div>
-      <ArrowUpRight className="size-4 shrink-0 text-white/15 group-hover:text-white/50 mt-0.5 transition-colors" />
+      <ArrowUpRight className="size-4 shrink-0 text-muted-foreground/40 group-hover:text-primary mt-0.5 transition-colors" />
     </motion.a>
   )
 }
 
 function DocAccordion({ title, contentHtml, index }: { title: string; contentHtml: string; index: number }) {
   const [open, setOpen] = useState(index === 0)
-  const stripped = stripFirstH1(contentHtml)
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 4 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.1 + index * 0.06, duration: 0.35 }}
-      className="border-b border-white/6 last:border-0"
-    >
+    <div className="border-b border-border last:border-0">
       <button
         onClick={() => setOpen((v) => !v)}
-        className="flex w-full items-center justify-between gap-4 py-4 text-left outline-none group cursor-pointer"
+        className="flex w-full items-center justify-between gap-4 py-3.5 text-left cursor-pointer group"
       >
-        <span className="flex items-center gap-3">
-          <span className="font-mono text-[11px] text-white/20 select-none w-5 tabular-nums">
-            {String(index + 1).padStart(2, '0')}
-          </span>
-          <span className="text-sm font-semibold text-white/60 group-hover:text-white transition-colors">
-            {title}
-          </span>
-        </span>
-        <ChevronDown
-          className={`size-4 shrink-0 text-white/25 transition-transform duration-300 ${open ? 'rotate-180' : ''}`}
-        />
+        <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{title}</span>
+        <ChevronDown className={`size-4 shrink-0 text-muted-foreground transition-transform duration-200 ${open ? 'rotate-180' : ''}`} />
       </button>
       <AnimatePresence initial={false}>
         {open && (
@@ -126,27 +83,21 @@ function DocAccordion({ title, contentHtml, index }: { title: string; contentHtm
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.32, ease: 'easeInOut' }}
+            transition={{ duration: 0.28, ease: 'easeInOut' }}
             className="overflow-hidden"
           >
-            <ScrollArea className="max-h-[60vh] pb-6 pr-2">
+            <ScrollArea className="max-h-[60vh] pb-5 pr-1">
               <article
-                className="prose prose-sm prose-invert max-w-none
-                  prose-headings:text-white prose-p:text-white/60 prose-strong:text-white/85
-                  prose-a:text-ml-orange prose-ul:text-white/55 prose-li:text-white/55
-                  prose-code:text-ml-mauve prose-code:bg-white/5 prose-code:rounded prose-code:px-1
-                  prose-hr:border-white/10 prose-th:text-white/40 prose-td:text-white/55"
-                dangerouslySetInnerHTML={{ __html: stripped }}
+                className="prose prose-sm max-w-none pb-4"
+                dangerouslySetInnerHTML={{ __html: stripFirstH1(contentHtml) }}
               />
             </ScrollArea>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.div>
+    </div>
   )
 }
-
-// ─── Main component ───────────────────────────────────────────────────────────
 
 interface DAOPageClientProps {
   documents: Record<string, { title: string; contentHtml: string }>
@@ -154,132 +105,163 @@ interface DAOPageClientProps {
   stats: MdlnStats
 }
 
-export default function DAOPageClient({ documents, proposals, stats }: DAOPageClientProps) {
-  const operationalRunway = stats.treasuryBalance ?? 2_100_000
-  const vestingPct        = Math.round((stats.vestingLocked / mdln.totalSupply) * 100)
-  const runwayPct         = Math.round((operationalRunway / mdln.totalSupply) * 100)
+const containerVariants = createContainerVariants(0.08, 0.05)
+const itemVariants = createItemVariants({ y: 14, duration: 0.5 })
 
-  const statBlocks = [
-    { label: 'Total Supply',    value: '21M',               sub: 'MDLN · Fixed, immutable',        accentHex: '#EC796B', delay: 0.08 },
-    { label: 'Vested Treasury', value: `${vestingPct}%`,    sub: `18.9M · 2.1M unlocks / year`,    accentHex: '#E175B1', delay: 0.14 },
-    { label: 'Operational',     value: `${runwayPct}%`,     sub: '2.1M · DAO runway',               accentHex: '#6060ff', delay: 0.20 },
-    { label: 'Holders',         value: stats.holders ? stats.holders.toLocaleString() : '—', sub: 'MDLN on Ethereum', accentHex: 'rgba(255,255,255,0.45)', delay: 0.26 },
+export default function DAOPageClient({ documents, proposals, stats }: DAOPageClientProps) {
+  const vestingPct = Math.round((stats.vestingLocked / mdln.totalSupply) * 100)
+  const runway = stats.treasuryBalance ?? 2_100_000
+  const runwayPct = Math.round((runway / mdln.totalSupply) * 100)
+
+  const tokenStats = [
+    { icon: TrendingUp, label: 'Total Supply', value: '21,000,000', sub: 'MDLN · Fixed forever' },
+    { icon: Lock,       label: 'Vested',       value: `${vestingPct}%`,    sub: `18.9M · 2.1M / year` },
+    { icon: TrendingUp, label: 'Operational',  value: `${runwayPct}%`,     sub: `2.1M · DAO runway`   },
+    { icon: Users,      label: 'Holders',      value: stats.holders ? stats.holders.toLocaleString() : '—', sub: 'On Ethereum mainnet' },
   ]
 
   return (
-    <div className="min-h-screen px-4 py-14 lg:px-8">
-      <div className="mx-auto w-full max-w-5xl">
+    <div className="relative min-h-screen bg-background px-4 py-10 lg:px-6 overflow-hidden">
+      {/* Aurora */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+        <div className="aurora-blob aurora-blue   absolute -top-20 right-1/4 h-80 w-80" />
+        <div className="aurora-blob aurora-mauve  absolute bottom-1/4 left-1/4 h-64 w-64" />
+      </div>
 
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="relative z-10 mx-auto max-w-5xl"
+      >
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-10"
-        >
-          <p className="font-mono text-[10px] tracking-[0.22em] uppercase text-white/30 mb-3">
-            Medialane · Utah DAO LLC
-          </p>
-          <h1 className="text-5xl sm:text-6xl font-bold tracking-tight text-white leading-[0.95]">
-            Governance
-          </h1>
-          <p className="mt-3 text-white/40 text-base max-w-sm leading-relaxed">
-            Community-owned, creator-first. All decisions made by MDLN holders.
+        <motion.div variants={itemVariants} className="mb-8">
+          <p className="section-label mb-2">Medialane · Utah DAO LLC</p>
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground">Governance</h1>
+          <p className="mt-2 text-muted-foreground max-w-lg">
+            Community-owned, creator-first. All decisions made by MDLN holders — no VCs, no insiders.
           </p>
         </motion.div>
 
-        {/* MDLN stats strip */}
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.05, duration: 0.45 }}
-          className="mb-10 rounded-2xl border border-white/8 bg-black/30 backdrop-blur-2xl p-6"
-        >
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
-            {statBlocks.map((s) => (
-              <StatBlock key={s.label} {...s} />
-            ))}
-          </div>
-          <div className="mt-6 pt-5 border-t border-white/6 flex flex-wrap items-center gap-x-6 gap-y-2">
-            <p className="font-mono text-[9px] tracking-[0.2em] uppercase text-white/20">On-chain</p>
-            {[
-              { label: 'MDLN Token',    href: mdln.etherscanToken   },
-              { label: 'Vesting',       href: mdln.etherscanVesting },
-              { label: 'Treasury',      href: mdln.etherscanTreasury },
-              { label: 'medialane.eth', href: siteConfig.snapshot   },
-            ].map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-[11px] text-white/30 hover:text-white/70 transition-colors"
-              >
-                {link.label}
-                <ExternalLink className="size-3" />
-              </a>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Two-column: proposals + documents */}
-        <div className="flex flex-col gap-8 lg:flex-row lg:gap-8">
-
-          {/* Proposals */}
-          <div className="lg:flex-[3]">
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-2.5">
-                <span className="block w-1 h-4 rounded-full bg-ml-orange" />
-                <h2 className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/40">Proposals</h2>
+        {/* Token stats */}
+        <motion.div variants={itemVariants} className="mb-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {tokenStats.map((s) => (
+            <div key={s.label} className="rounded-xl border border-border bg-card p-4 shadow-sm">
+              <div className="flex items-center gap-2 mb-2">
+                <s.icon className="size-3.5 text-muted-foreground" />
+                <p className="text-xs text-muted-foreground">{s.label}</p>
               </div>
+              <p className="text-2xl font-bold font-mono text-foreground tracking-tight">{s.value}</p>
+              <p className="text-xs text-muted-foreground mt-0.5">{s.sub}</p>
+            </div>
+          ))}
+        </motion.div>
+
+        <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
+          {/* Left: proposals */}
+          <motion.div variants={itemVariants} className="space-y-6">
+            <div className="rounded-xl border border-border bg-card shadow-sm">
+              <div className="flex items-center justify-between p-4 border-b border-border">
+                <div className="flex items-center gap-2">
+                  <Vote className="size-4 text-muted-foreground" />
+                  <h2 className="font-semibold text-sm text-foreground">Proposals</h2>
+                </div>
+                <a
+                  href={siteConfig.snapshot}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:text-primary/80 transition-colors"
+                >
+                  Vote on Snapshot <ArrowUpRight className="size-3" />
+                </a>
+              </div>
+              <div className="px-4 py-2">
+                {proposals.length === 0 ? (
+                  <div className="py-10 text-center">
+                    <p className="text-sm text-muted-foreground mb-2">No proposals yet.</p>
+                    <a
+                      href={siteConfig.snapshot}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-primary font-semibold hover:underline inline-flex items-center gap-1"
+                    >
+                      Be the first to propose <ArrowUpRight className="size-3" />
+                    </a>
+                  </div>
+                ) : (
+                  proposals.map((p, i) => <ProposalRow key={p.id} p={p} index={i} />)
+                )}
+              </div>
+            </div>
+
+            {/* Documents */}
+            {Object.keys(documents).length > 0 && (
+              <div className="rounded-xl border border-border bg-card shadow-sm">
+                <div className="p-4 border-b border-border">
+                  <h2 className="font-semibold text-sm text-foreground">Founding Documents</h2>
+                </div>
+                <div className="px-4 py-2">
+                  {Object.entries(documents).map(([key, doc], i) => (
+                    <DocAccordion key={key} title={doc.title} contentHtml={doc.contentHtml} index={i} />
+                  ))}
+                </div>
+              </div>
+            )}
+          </motion.div>
+
+          {/* Right: onchain links */}
+          <motion.div variants={itemVariants} className="space-y-4">
+            <div className="rounded-xl border border-border bg-card shadow-sm p-4">
+              <p className="section-label mb-3">On-chain</p>
+              <div className="space-y-2">
+                {[
+                  { label: 'MDLN Contract',            href: mdln.etherscanToken   },
+                  { label: 'Vesting Contract',         href: mdln.etherscanVesting },
+                  { label: 'DAO Treasury (Gnosis)',     href: mdln.etherscanTreasury},
+                  { label: 'Snapshot · medialane.eth', href: siteConfig.snapshot   },
+                ].map((l) => (
+                  <a
+                    key={l.label}
+                    href={l.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between py-2 text-sm text-muted-foreground hover:text-foreground transition-colors group border-b border-border last:border-0"
+                  >
+                    {l.label}
+                    <ExternalLink className="size-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-xl border border-border bg-card shadow-sm p-4">
+              <p className="section-label mb-3">Tokenomics</p>
+              <div className="space-y-2 text-sm text-muted-foreground">
+                <p>📌 21M MDLN — fixed, immutable</p>
+                <p>🔒 18.9M locked in vesting (9 years)</p>
+                <p>💼 2.1M operational runway</p>
+                <p>🗳️ 1 MDLN = 1 vote on Snapshot</p>
+                <p>🌉 Starknet bridge — coming soon</p>
+              </div>
+            </div>
+
+            <div className="rounded-xl border border-primary/20 bg-primary/5 p-4">
+              <p className="section-label mb-2">Get Involved</p>
+              <p className="text-sm text-muted-foreground mb-3">
+                MDLN holders govern the protocol. Acquire MDLN to participate.
+              </p>
               <a
                 href={siteConfig.snapshot}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-[11px] text-ml-orange hover:text-ml-orange/70 transition-colors font-semibold"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
               >
-                Vote on Snapshot
-                <ArrowUpRight className="size-3" />
+                Join Governance <ArrowUpRight className="size-3.5" />
               </a>
             </div>
-
-            <div className="rounded-2xl border border-white/8 bg-black/25 backdrop-blur-xl px-5">
-              {proposals.length === 0 ? (
-                <div className="py-14 text-center">
-                  <p className="text-sm text-white/25 mb-3">No proposals yet.</p>
-                  <a
-                    href={siteConfig.snapshot}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs text-ml-orange hover:underline font-semibold"
-                  >
-                    Be the first to propose <ArrowUpRight className="size-3" />
-                  </a>
-                </div>
-              ) : (
-                proposals.map((p, i) => <ProposalRow key={p.id} p={p} index={i} />)
-              )}
-            </div>
-          </div>
-
-          {/* Documents */}
-          {Object.keys(documents).length > 0 && (
-            <div className="lg:flex-[2]">
-              <div className="flex items-center gap-2.5 mb-4">
-                <span className="block w-1 h-4 rounded-full bg-ml-mauve" />
-                <h2 className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/40">
-                  Founding Documents
-                </h2>
-              </div>
-              <div className="rounded-2xl border border-white/8 bg-black/25 backdrop-blur-xl px-5">
-                {Object.entries(documents).map(([key, doc], i) => (
-                  <DocAccordion key={key} title={doc.title} contentHtml={doc.contentHtml} index={i} />
-                ))}
-              </div>
-            </div>
-          )}
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </div>
   )
 }
