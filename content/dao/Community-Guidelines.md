@@ -1,7 +1,7 @@
 ---
 title: "Community Guidelines"
 description: "Guidelines designed to foster Medialane community."
-date: "2025-01-01"
+date: "2026-04-07"
 author: "Medialane DAO"
 ---
 

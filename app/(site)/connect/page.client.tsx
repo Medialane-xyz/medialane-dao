@@ -43,7 +43,7 @@ const socials = [
   },
   {
     name: 'Snapshot',
-    href: '#',
+    href: 'https://snapshot.org/#/s:medialane.eth',
     icon: <Vote className="size-5" />,
     description: 'Participate in governance proposals and DAO voting.',
     accentColor: 'text-[#F3B04E] bg-[#F3B04E]/10',
@@ -56,7 +56,7 @@ export default function ConnectPageClient() {
   const [hasCopied, setHasCopied] = useState(false)
 
   const handleCopyEmail = () => {
-    navigator.clipboard.writeText('dao@mediolano.org')
+    navigator.clipboard.writeText('dao@medialane.org')
     setHasCopied(true)
     setTimeout(() => setHasCopied(false), 2000)
   }
@@ -105,7 +105,7 @@ export default function ConnectPageClient() {
                 onClick={handleCopyEmail}
                 className="w-full sm:w-auto inline-flex justify-center sm:justify-start items-center gap-3 rounded-full bg-primary/10 px-5 py-2.5 text-sm font-medium text-primary ring-1 ring-primary/20 transition-colors hover:bg-primary/20 hover:ring-primary/40 active:bg-primary/30"
               >
-                dao@mediolano.org
+                dao@medialane.org
 
                 <div className="relative flex size-4 items-center justify-center overflow-hidden shrink-0">
                   <AnimatePresence mode="popLayout" initial={false}>

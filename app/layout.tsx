@@ -19,7 +19,6 @@ export const metadata: Metadata = {
   title: 'Medialane | Creators Capital Markets on the Integrity Web',
   description:
     'Medialane is the monetization hub of the new creative economy—bridging creators, businesses, and AI agents through a unified infrastructure.',
-  generator: 'v0.app',
   icons: {
     icon: [
       {

@@ -3,26 +3,29 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight, Layers, Shield, Globe } from 'lucide-react'
+import { ArrowRight, ShoppingBag, Layers, Coins } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { GlassCard } from '@/components/glass-card'
 import { createContainerVariants, createItemVariants } from '@/lib/motion'
 
 const pillars = [
   {
+    icon: ShoppingBag,
+    title: 'IP Marketplace',
+    description: 'Buy, sell, and trade tokenized intellectual property on Starknet mainnet.',
+    status: 'Live',
+  },
+  {
     icon: Layers,
-    title: 'Creator Launchpad',
-    description: 'Engine for capital structuring and revenue generation.',
+    title: 'Collection Drop',
+    description: 'Launch limited edition mints and timed exclusive drops for your audience.',
+    status: 'Live',
   },
   {
-    icon: Shield,
-    title: 'NFT Marketplace',
-    description: 'High-Integrity Exchange for trading tokenized creator assets.',
-  },
-  {
-    icon: Globe,
-    title: 'Programmable IP',
-    description: 'Decentralized ownership and programmable smart contract licensing.',
+    icon: Coins,
+    title: 'Creator Coins',
+    description: 'Community tokens for creators — launch, govern, and reward your community.',
+    status: 'Coming Soon',
   },
 ]
 
@@ -43,14 +46,11 @@ export function HeroSection() {
           variants={itemVariants}
           className="inline-flex items-center gap-2 rounded-full border border-ml-glass-border bg-ml-glass px-4 py-1.5 text-xs font-medium tracking-widest uppercase text-muted-foreground backdrop-blur-md"
         >
-          ORG | DAO
+          DAO · Utah DAO LLC
         </motion.div>
 
-        {/* Title */}
-        <motion.h1
-          variants={itemVariants}
-          className="text-balance text-5xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl"
-        >
+        {/* Logo */}
+        <motion.h1 variants={itemVariants}>
           <Image src="/medialane.png" alt="Medialane" width={300} height={62} className="inline-block" />
         </motion.h1>
 
@@ -62,23 +62,23 @@ export function HeroSection() {
           Creators Capital Markets on the Integrity Web
         </motion.p>
 
-        {/* CTA 
+        {/* CTAs */}
         <motion.div variants={itemVariants} className="flex gap-3">
-          <Button asChild size="lg" className="gap-2 shadow-lg shadow-ml-glow">
+          <Button asChild size="lg" className="gap-2 shadow-lg shadow-ml-glow rounded-full">
             <Link href="/explore">
               Explore
               <ArrowRight className="size-4" />
             </Link>
           </Button>
-          <Button asChild variant="outline" size="lg" className="border-ml-glass-border bg-ml-glass backdrop-blur-md">
-            <Link href="/connect">Connect</Link>
+          <Button asChild variant="outline" size="lg" className="border-ml-glass-border bg-ml-glass backdrop-blur-md rounded-full">
+            <Link href="/dao">Governance</Link>
           </Button>
-        </motion.div>*/}
+        </motion.div>
 
         {/* Pillar cards */}
         <motion.div
           variants={itemVariants}
-          className="mt-8 grid w-full gap-4 sm:grid-cols-3"
+          className="mt-4 grid w-full gap-4 sm:grid-cols-3"
         >
           {pillars.map((pillar) => (
             <GlassCard
@@ -95,6 +95,13 @@ export function HeroSection() {
               <p className="text-xs leading-relaxed text-muted-foreground">
                 {pillar.description}
               </p>
+              <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full ${
+                pillar.status === 'Live'
+                  ? 'bg-primary/10 text-primary'
+                  : 'bg-muted text-muted-foreground'
+              }`}>
+                {pillar.status}
+              </span>
             </GlassCard>
           ))}
         </motion.div>

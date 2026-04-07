@@ -1,12 +1,13 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Lock, Wallet, Users, Crown, Star } from 'lucide-react'
+import { Lock, Wallet, Users, Crown, Star, ExternalLink } from 'lucide-react'
 import { GlassCard } from '@/components/glass-card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { PageHeader } from '@/components/page-header'
 import { createContainerVariants, createItemVariants } from '@/lib/motion'
+import { mdln, siteConfig } from '@/lib/site-config'
 
 const containerVariants = createContainerVariants()
 const itemVariants = createItemVariants()
@@ -14,23 +15,23 @@ const itemVariants = createItemVariants()
 const tiers = [
   {
     title: 'Observer',
-    requirement: '1+ LANE',
+    requirement: '1+ MDLN',
     icon: Users,
-    perks: ['Access community forums', 'View governance proposals', 'Basic analytics'],
+    perks: ['Access community forums', 'View governance proposals', 'Participate in discussions'],
     accentColor: 'text-[#1DA1F2] bg-[#1DA1F2]/10',
   },
   {
     title: 'Contributor',
-    requirement: '100+ LANE',
+    requirement: '100+ MDLN',
     icon: Star,
-    perks: ['Submit proposals', 'Vote on governance', 'Access contributor channels', 'Early feature access'],
+    perks: ['Submit governance proposals', 'Vote on Snapshot', 'Access contributor channels', 'Early feature access'],
     accentColor: 'text-primary bg-primary/10',
   },
   {
     title: 'Guardian',
-    requirement: '1,000+ LANE',
+    requirement: '1,000+ MDLN',
     icon: Crown,
-    perks: ['Run verification nodes', 'Council nomination rights', 'Priority API access', 'Revenue sharing', 'Exclusive events'],
+    perks: ['Council nomination rights', 'Working group leadership', 'Priority API access', 'Ecosystem grants eligibility', 'Exclusive community events'],
     accentColor: 'text-[#F3B04E] bg-[#F3B04E]/10',
   },
 ]
@@ -53,11 +54,9 @@ export default function MembersPageClient() {
         />
 
         {/* Gate notice */}
-        <motion.div variants={itemVariants} className="mb-10">
+        <motion.div variants={itemVariants} className="mb-6">
           <GlassCard intensity="heavy" className="flex flex-col items-start gap-5 p-5 sm:p-6 sm:flex-row sm:items-center">
-            {/* Ambient inner glow */}
             <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-primary/5 to-transparent pointer-events-none" />
-
             <div className="relative z-10 flex size-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20">
               <Lock className="size-5" />
             </div>
@@ -66,14 +65,46 @@ export default function MembersPageClient() {
                 Connect your wallet to access member content
               </h2>
               <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                Membership is verified on-chain through LANE token holdings on
-                Starknet. Connect your wallet to unlock your tier.
+                Membership is verified on-chain through{' '}
+                <span className="font-semibold text-foreground">MDLN</span> token holdings on Ethereum.
+                Connect your wallet to unlock your tier.
               </p>
             </div>
             <Button size="default" className="w-full sm:w-auto mt-2 sm:mt-0 relative z-10 rounded-full" disabled>
               <Wallet className="size-4 mr-2" />
               Connect Wallet
             </Button>
+          </GlassCard>
+        </motion.div>
+
+        {/* MDLN token info strip */}
+        <motion.div variants={itemVariants} className="mb-10">
+          <GlassCard intensity="light" className="flex flex-wrap items-center gap-4 p-4 bg-white/5 border-white/5">
+            <div className="flex items-center gap-2 text-xs text-muted-foreground">
+              <span className="font-semibold text-foreground">MDLN</span>
+              <span>·</span>
+              <span>{mdln.totalSupply.toLocaleString()} total supply</span>
+              <span>·</span>
+              <span>{mdln.network}</span>
+            </div>
+            <div className="ml-auto flex gap-3">
+              <a
+                href={mdln.etherscanToken}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-xs text-primary hover:underline"
+              >
+                Etherscan <ExternalLink className="size-3" />
+              </a>
+              <a
+                href={siteConfig.snapshot}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-xs text-primary hover:underline"
+              >
+                Snapshot <ExternalLink className="size-3" />
+              </a>
+            </div>
           </GlassCard>
         </motion.div>
 
