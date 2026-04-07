@@ -64,7 +64,7 @@ export function Scene() {
         style={{
           background: isDark
             ? 'radial-gradient(ellipse at center, #0C0C4F 0%, #050515 100%)'
-            : 'radial-gradient(ellipse at center, #e8e8ff 0%, #f0f0ff 100%)',
+            : 'radial-gradient(ellipse at center, #0d0d3f 0%, #040414 100%)',
         }}
       >
         <Suspense fallback={null}>
