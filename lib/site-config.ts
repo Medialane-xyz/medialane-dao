@@ -31,6 +31,10 @@ export const starknet = {
   marketplace: '0x0234f4e8838801ebf01d7f4166d42aed9a55bc67c1301162decf9e2040e05f16',
   popFactory: '0x00b32c34b427d8f346b5843ada6a37bd3368d879fc752cd52b68a87287f60111',
   dropFactory: '0x03587f42e29daee1b193f6cf83bf8627908ed6632d0d83fcb26225c50547d800',
+  /** Bridged MDLN on Starknet — deployed via StarkGate enrollment tx 0xdc8dde1d... */
+  mdlnL2: '0x6730d6a357690cebffad800219e9630e15b6f44d35526e0fc9ee52bdf7418e8',
+  starkgateL2Bridge: '0x0616757a151c21f9be8775098d591c2807316d992bbc3bb1a5c1821630589256',
+  voyagerMdln: 'https://voyager.online/contract/0x6730d6a357690cebffad800219e9630e15b6f44d35526e0fc9ee52bdf7418e8',
 } as const
 
 // brand colors used throughout the app; pulling from a single source makes

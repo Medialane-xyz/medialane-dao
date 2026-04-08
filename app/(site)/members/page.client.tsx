@@ -1,7 +1,7 @@
 'use client'
 
 import { ArrowUpRight, CheckCircle, Zap, Shield, Coins, Globe } from 'lucide-react'
-import { mdln, siteConfig } from '@/lib/site-config'
+import { mdln, starknet, siteConfig } from '@/lib/site-config'
 import { AddressRow } from '@/components/address-row'
 
 const tiers = [
@@ -102,6 +102,7 @@ export default function MembersPageClient() {
           <AddressRow label="Vesting Contract"  value={`${mdln.vesting.slice(0, 10)}…${mdln.vesting.slice(-6)}`}  href={mdln.etherscanVesting}  />
           <AddressRow label="DAO Treasury"      value={`${mdln.treasury.slice(0, 10)}…${mdln.treasury.slice(-6)}`} href={mdln.etherscanTreasury} />
           <AddressRow label="Governance"        value="medialane.eth"    href={siteConfig.snapshot}            />
+          <AddressRow label="MDLN on Starknet"  value={`${starknet.mdlnL2.slice(0, 10)}…${starknet.mdlnL2.slice(-6)}`} href={starknet.voyagerMdln} />
         </div>
       </div>
 
@@ -112,15 +113,15 @@ export default function MembersPageClient() {
           <p className="text-[10px] font-mono uppercase tracking-[0.18em] font-bold text-violet-500">Bridge & Trade on Starknet</p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          <a href="https://starkgate.starknet.io" target="_blank" rel="noopener noreferrer"
+          <a href={`https://starkgate.starknet.io/token/${starknet.mdlnL2}`} target="_blank" rel="noopener noreferrer"
             className="group flex flex-col gap-3 p-5 rounded-xl border border-border bg-card hover:border-primary/30 hover:shadow-sm transition-all duration-150">
             <div className="flex items-start justify-between gap-2">
               <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">Starkgate Bridge</p>
               <ArrowUpRight className="size-3.5 text-muted-foreground/20 group-hover:text-primary transition-colors shrink-0" />
             </div>
-            <p className="text-xs text-muted-foreground/70 leading-relaxed flex-1">Bridge MDLN from Ethereum mainnet to Starknet via the official Starkgate bridge. Same token, two networks — use MDLN across the entire Starknet ecosystem.</p>
+            <p className="text-xs text-muted-foreground/70 leading-relaxed flex-1">Bridge MDLN from Ethereum mainnet to Starknet via the official Starkgate bridge. MDLN is live on Starknet — same token, two networks.</p>
             <div className="flex flex-wrap gap-1.5">
-              {['Ethereum → Starknet', 'Official Bridge', 'ERC-20'].map((t) => (
+              {['Ethereum → Starknet', 'Live on Starknet', 'ERC-20'].map((t) => (
                 <span key={t} className="text-[10px] px-2 py-0.5 rounded-full bg-muted text-muted-foreground/60 border border-border">{t}</span>
               ))}
             </div>
@@ -226,7 +227,7 @@ export default function MembersPageClient() {
             className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
             Vote on Snapshot <ArrowUpRight className="size-3.5" />
           </a>
-          <a href="https://starkgate.starknet.io" target="_blank" rel="noopener noreferrer"
+          <a href={`https://starkgate.starknet.io/token/${starknet.mdlnL2}`} target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-xl border border-border bg-background px-5 py-2.5 text-sm font-semibold text-foreground hover:bg-muted/50 transition-colors">
             Bridge via Starkgate <ArrowUpRight className="size-3.5" />
           </a>
