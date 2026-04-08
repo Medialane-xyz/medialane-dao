@@ -1,7 +1,8 @@
 'use client'
 
-import { ExternalLink, ArrowUpRight, CheckCircle } from 'lucide-react'
+import { ArrowUpRight, CheckCircle, Zap, Shield, Coins, Globe } from 'lucide-react'
 import { mdln, siteConfig } from '@/lib/site-config'
+import { AddressRow } from '@/components/address-row'
 
 const tiers = [
   {
@@ -31,21 +32,12 @@ const tiers = [
   },
 ]
 
-function AddressRow({ label, value, href }: { label: string; value: string; href?: string }) {
-  return (
-    <div className="flex items-center justify-between py-2.5 border-b border-border/60 last:border-0 gap-4">
-      <span className="text-xs text-muted-foreground/60 shrink-0">{label}</span>
-      {href ? (
-        <a href={href} target="_blank" rel="noopener noreferrer"
-          className="flex items-center gap-1 text-xs font-mono text-foreground/70 hover:text-primary transition-colors truncate">
-          {value} <ExternalLink className="size-3 shrink-0 opacity-40" />
-        </a>
-      ) : (
-        <span className="text-xs font-mono text-foreground/70 truncate text-right">{value}</span>
-      )}
-    </div>
-  )
-}
+const starknetBenefits = [
+  { icon: Zap,    color: 'bg-violet-500/10 text-violet-500', title: 'Fraction-of-cent fees',      body: 'Starknet transactions cost a fraction of Ethereum mainnet. Mint, list, and trade IP assets with near-zero gas.' },
+  { icon: Shield, color: 'bg-blue-500/10 text-blue-500',     title: 'ZK-STARK security',          body: 'Every transaction batch is verified by STARK proofs on Ethereum. Cryptographic security without trusting a sequencer.' },
+  { icon: Coins,  color: 'bg-indigo-500/10 text-indigo-500', title: 'Sponsored transactions',     body: 'Medialane sponsors gas for creator actions via native account abstraction. No ETH required to start creating.' },
+  { icon: Globe,  color: 'bg-primary/10 text-primary',        title: 'Native account abstraction', body: 'Wallets are smart contracts. Session keys (SNIP-9) enable PIN-authenticated gasless sessions across multiple actions.' },
+]
 
 export default function MembersPageClient() {
   return (
@@ -104,12 +96,80 @@ export default function MembersPageClient() {
         </div>
 
         <div className="rounded-xl border border-border bg-card p-5">
-          <p className="text-[10px] font-mono uppercase tracking-[0.15em] text-muted-foreground/40 mb-4">On-chain Addresses</p>
+          <p className="text-[10px] font-mono uppercase tracking-[0.15em] text-muted-foreground/40 mb-4">On-chain Addresses · Ethereum</p>
           <AddressRow label="Network"           value="Ethereum Mainnet" />
           <AddressRow label="Token Contract"    value={`${mdln.token.slice(0, 10)}…${mdln.token.slice(-6)}`}    href={mdln.etherscanToken}    />
           <AddressRow label="Vesting Contract"  value={`${mdln.vesting.slice(0, 10)}…${mdln.vesting.slice(-6)}`}  href={mdln.etherscanVesting}  />
           <AddressRow label="DAO Treasury"      value={`${mdln.treasury.slice(0, 10)}…${mdln.treasury.slice(-6)}`} href={mdln.etherscanTreasury} />
           <AddressRow label="Governance"        value="medialane.eth"    href={siteConfig.snapshot}            />
+        </div>
+      </div>
+
+      {/* Bridge & Trade on Starknet */}
+      <div>
+        <div className="flex items-center gap-3 mb-4">
+          <span className="block w-6 h-0.5 rounded-full bg-violet-500" />
+          <p className="text-[10px] font-mono uppercase tracking-[0.18em] font-bold text-violet-500">Bridge & Trade on Starknet</p>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <a href="https://starkgate.starknet.io" target="_blank" rel="noopener noreferrer"
+            className="group flex flex-col gap-3 p-5 rounded-xl border border-border bg-card hover:border-primary/30 hover:shadow-sm transition-all duration-150">
+            <div className="flex items-start justify-between gap-2">
+              <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">Starkgate Bridge</p>
+              <ArrowUpRight className="size-3.5 text-muted-foreground/20 group-hover:text-primary transition-colors shrink-0" />
+            </div>
+            <p className="text-xs text-muted-foreground/70 leading-relaxed flex-1">Bridge MDLN from Ethereum mainnet to Starknet via the official Starkgate bridge. Same token, two networks — use MDLN across the entire Starknet ecosystem.</p>
+            <div className="flex flex-wrap gap-1.5">
+              {['Ethereum → Starknet', 'Official Bridge', 'ERC-20'].map((t) => (
+                <span key={t} className="text-[10px] px-2 py-0.5 rounded-full bg-muted text-muted-foreground/60 border border-border">{t}</span>
+              ))}
+            </div>
+          </a>
+
+          <a href="https://app.ekubo.org" target="_blank" rel="noopener noreferrer"
+            className="group flex flex-col gap-3 p-5 rounded-xl border border-border bg-card hover:border-primary/30 hover:shadow-sm transition-all duration-150">
+            <div className="flex items-start justify-between gap-2">
+              <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">Ekubo Protocol</p>
+              <ArrowUpRight className="size-3.5 text-muted-foreground/20 group-hover:text-primary transition-colors shrink-0" />
+            </div>
+            <p className="text-xs text-muted-foreground/70 leading-relaxed flex-1">Trade MDLN on Starknet via Ekubo — Starknet's native concentrated liquidity AMM. MDLN/ETH and MDLN/USDC pools. Gasless swaps powered by account abstraction.</p>
+            <div className="flex flex-wrap gap-1.5">
+              {['AMM DEX', 'Starknet Native', 'Concentrated Liquidity'].map((t) => (
+                <span key={t} className="text-[10px] px-2 py-0.5 rounded-full bg-muted text-muted-foreground/60 border border-border">{t}</span>
+              ))}
+            </div>
+          </a>
+
+          <div className="flex flex-col gap-3 p-5 rounded-xl border border-border bg-card">
+            <p className="text-sm font-semibold text-foreground">Zero-fee Tokenization</p>
+            <p className="text-xs text-muted-foreground/70 leading-relaxed flex-1">Minting IP assets on Medialane costs zero platform fees. Starknet transactions cost a fraction of a cent. Creator economy without extractive fees — 1% only on marketplace monetization.</p>
+            <div className="flex flex-wrap gap-1.5">
+              {['Free to Mint', '1% Marketplace Fee', 'Starknet L2'].map((t) => (
+                <span key={t} className="text-[10px] px-2 py-0.5 rounded-full bg-muted text-muted-foreground/60 border border-border">{t}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Starknet benefits */}
+      <div>
+        <div className="flex items-center gap-3 mb-4">
+          <span className="block w-6 h-0.5 rounded-full bg-blue-500" />
+          <p className="text-[10px] font-mono uppercase tracking-[0.18em] font-bold text-blue-500">Why Starknet</p>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {starknetBenefits.map(({ icon: Icon, color, title, body }) => (
+            <div key={title} className="flex flex-col gap-3 p-5 rounded-xl border border-border bg-card">
+              <div className={`flex size-9 items-center justify-center rounded-lg shrink-0 ${color}`}>
+                <Icon className="size-4" />
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-foreground mb-1.5">{title}</p>
+                <p className="text-xs text-muted-foreground/70 leading-relaxed">{body}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -148,7 +208,7 @@ export default function MembersPageClient() {
         <p className="text-[10px] font-mono uppercase tracking-[0.15em] text-muted-foreground/40 mb-6">How to Participate</p>
         <div className="grid sm:grid-cols-3 gap-6 mb-6">
           {[
-            { step: '01', title: 'Acquire MDLN',  desc: 'Get MDLN via Uniswap on Ethereum mainnet. Any amount qualifies as Observer.' },
+            { step: '01', title: 'Acquire MDLN',  desc: 'Get MDLN via Uniswap on Ethereum mainnet, or bridge to Starknet and trade on Ekubo.' },
             { step: '02', title: 'Join Snapshot', desc: 'Connect to snapshot.org with your wallet holding MDLN to view and vote on proposals.' },
             { step: '03', title: 'Propose & Vote', desc: "Submit governance proposals, vote on platform decisions, and shape Medialane's future." },
           ].map((s) => (
@@ -166,9 +226,13 @@ export default function MembersPageClient() {
             className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
             Vote on Snapshot <ArrowUpRight className="size-3.5" />
           </a>
-          <a href={mdln.etherscanToken} target="_blank" rel="noopener noreferrer"
+          <a href="https://starkgate.starknet.io" target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-xl border border-border bg-background px-5 py-2.5 text-sm font-semibold text-foreground hover:bg-muted/50 transition-colors">
-            MDLN on Etherscan <ExternalLink className="size-3.5" />
+            Bridge via Starkgate <ArrowUpRight className="size-3.5" />
+          </a>
+          <a href="https://app.ekubo.org" target="_blank" rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-xl border border-border bg-background px-5 py-2.5 text-sm font-semibold text-foreground hover:bg-muted/50 transition-colors">
+            Trade on Ekubo <ArrowUpRight className="size-3.5" />
           </a>
         </div>
       </div>

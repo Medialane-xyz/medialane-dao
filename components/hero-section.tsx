@@ -1,6 +1,7 @@
 import Link from 'next/link'
-import { ArrowUpRight, Vote, Layers, Coins, BookOpen, ExternalLink } from 'lucide-react'
+import { ArrowUpRight, Vote, Layers, Coins, BookOpen } from 'lucide-react'
 import { mdln, starknet, siteConfig } from '@/lib/site-config'
+import { AddressRow } from '@/components/address-row'
 
 function StatCard({ label, value, sub, accent }: {
   label: string; value: string; sub?: string; accent?: string
@@ -36,21 +37,6 @@ function QuickLink({ href, icon: Icon, title, description, external, color }: {
   return <Link href={href}>{inner}</Link>
 }
 
-function AddressRow({ label, value, href }: { label: string; value: string; href?: string }) {
-  return (
-    <div className="flex items-center justify-between py-2.5 border-b border-border/60 last:border-0 gap-4">
-      <span className="text-xs text-muted-foreground/60 shrink-0">{label}</span>
-      {href ? (
-        <a href={href} target="_blank" rel="noopener noreferrer"
-          className="flex items-center gap-1 text-xs font-mono text-foreground/70 hover:text-primary transition-colors truncate">
-          {value} <ExternalLink className="size-3 shrink-0 opacity-40" />
-        </a>
-      ) : (
-        <span className="text-xs font-mono text-foreground/70 truncate text-right">{value}</span>
-      )}
-    </div>
-  )
-}
 
 export function HeroSection() {
   return (
@@ -131,10 +117,10 @@ export function HeroSection() {
         <p className="text-[10px] font-mono uppercase tracking-[0.18em] text-muted-foreground/40 mb-4">Principles</p>
         <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-4">
           {[
-            { title: 'Creator sovereignty', body: 'Every IP asset is a non-custodial onchain token. No permission required to transfer, license, or trade.', color: 'text-violet-500' },
-            { title: 'Immutable by design',  body: 'Contracts are non-upgradeable. Metadata anchored on IPFS. What is registered cannot be altered.',          color: 'text-blue-500'   },
-            { title: 'Community governed',   body: '21M MDLN. 100% DAO treasury. Every protocol decision requires a community vote. No insiders.',             color: 'text-indigo-500' },
-            { title: 'Open infrastructure',  body: 'Permissionless. Any creator, developer, or app can interact directly with the contracts.',                 color: 'text-primary'    },
+            { title: 'Berne Convention',  body: 'Immutable onchain timestamp creates copyright proof valid in 181 countries — no registration fee, no WIPO filing required.', color: 'text-violet-500' },
+            { title: 'ZK-powered',        body: 'STARK proofs on Starknet. Every transaction batch verified cryptographically on Ethereum. Trustless and censorship-resistant.', color: 'text-blue-500'   },
+            { title: 'Cairo contracts',   body: 'Programmable licensing enforced by immutable Cairo smart contracts. Terms travel with the asset and cannot be altered.',         color: 'text-indigo-500' },
+            { title: 'Community owned',   body: '21M MDLN. 100% DAO treasury. No VCs, no insiders. Creators, developers, and collectors govern every decision.',                color: 'text-primary'    },
           ].map(({ title, body, color }) => (
             <div key={title} className="rounded-xl border border-border bg-card p-5">
               <p className={`text-sm font-bold mb-2 ${color}`}>{title}</p>
