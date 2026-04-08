@@ -16,22 +16,20 @@ export function MedialaneIcon() {
 
     if (!mounted) {
         return (
-            <div className="flex items-center space-x-2">
-                <Link href="/">
-                    <div className="w-[256px] h-[256px]" />
-                </Link>
+            <div className="flex items-center">
+                <div className="w-7 h-7" />
             </div>
         )
     }
 
     return (
-        <div className="flex items-center space-x-2">
-            <Link href="/" className="transition-opacity hover:opacity-80 drop-shadow-md">
+        <div className="flex items-center">
+            <Link href="/" className="transition-opacity hover:opacity-80">
                 <Image
-                    src="/icon.png"
+                    src="/medialane-icon.png"
                     alt="Medialane"
-                    width={256}
-                    height={256}
+                    width={28}
+                    height={28}
                     priority
                 />
             </Link>
