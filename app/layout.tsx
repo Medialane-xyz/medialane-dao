@@ -2,8 +2,6 @@ import type { Metadata, Viewport } from 'next'
 import { Inter, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
-import { LenisProvider } from '@/components/lenis-provider'
-import { CustomCursor } from '@/components/cursor'
 import './globals.css'
 
 const _inter = Inter({
@@ -24,18 +22,9 @@ export const metadata: Metadata = {
     'Medialane is the monetization hub of the new creative economy—bridging creators, businesses, and AI agents through a unified infrastructure.',
   icons: {
     icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
+      { url: '/icon-light-32x32.png', media: '(prefers-color-scheme: light)' },
+      { url: '/icon-dark-32x32.png', media: '(prefers-color-scheme: dark)' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
     ],
     apple: '/apple-icon.png',
   },
@@ -51,26 +40,12 @@ export const viewport: Viewport = {
   maximumScale: 5,
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${_inter.variable} ${_geistMono.variable} font-sans antialiased`}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <LenisProvider>
-            <CustomCursor />
-            {children}
-          </LenisProvider>
+      <body className={`${_inter.variable} ${_geistMono.variable} font-sans antialiased`}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+          {children}
         </ThemeProvider>
         <Analytics />
       </body>

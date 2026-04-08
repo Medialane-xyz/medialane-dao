@@ -1,64 +1,70 @@
-import { notFound } from 'next/navigation';
-import { getAllPosts, getPostBySlug } from '@/lib/markdown';
-import { PageHeader } from '@/components/page-header';
-import { GlassCard } from '@/components/glass-card';
+import { notFound } from 'next/navigation'
+import Link from 'next/link'
+import { ChevronLeft } from 'lucide-react'
+import { getAllPosts, getPostBySlug } from '@/lib/markdown'
 
 interface PostPageProps {
-    params: Promise<{
-        slug: string;
-    }>;
+  params: Promise<{ slug: string }>
 }
 
 export async function generateStaticParams() {
-    const posts = getAllPosts();
-    return posts.map((post) => ({
-        slug: post.slug,
-    }));
+  const root = getAllPosts('')
+  const dao  = getAllPosts('dao')
+  return [...root, ...dao].map((post) => ({ slug: post.slug }))
 }
 
 export default async function PostPage({ params }: PostPageProps) {
-    const { slug } = await params;
-    const post = await getPostBySlug(slug);
+  const { slug } = await params
 
-    if (!post) {
-        notFound();
-    }
+  // Try dao subdirectory first, then root
+  const post = (await getPostBySlug(slug, 'dao')) ?? (await getPostBySlug(slug, ''))
 
-    const { metadata, contentHtml } = post;
+  if (!post) notFound()
 
-    return (
-        <div className="container py-8 md:py-12">
-            <PageHeader
-                title={metadata.title}
-                description={metadata.description}
-            />
+  const { metadata, contentHtml } = post
 
-            <div className="mx-auto max-w-4xl">
-                <GlassCard className="p-8 md:p-12 overflow-hidden">
-                    <div className="mb-8 flex flex-wrap items-center gap-4 text-sm text-muted-foreground border-b border-ml-glass-border pb-6">
-                        {metadata.date && (
-                            <time dateTime={metadata.date}>
-                                {new Date(metadata.date).toLocaleDateString('en-US', {
-                                    year: 'numeric',
-                                    month: 'long',
-                                    day: 'numeric',
-                                })}
-                            </time>
-                        )}
-                        {metadata.author && (
-                            <>
-                                <span className="w-1 h-1 rounded-full bg-border" />
-                                <span>{metadata.author}</span>
-                            </>
-                        )}
-                    </div>
+  return (
+    <div className="p-6 max-w-3xl">
 
-                    <article
-                        className="prose max-w-none"
-                        dangerouslySetInnerHTML={{ __html: contentHtml }}
-                    />
-                </GlassCard>
-            </div>
-        </div>
-    );
+      {/* Back */}
+      <Link
+        href="/docs"
+        className="inline-flex items-center gap-1.5 text-xs text-muted-foreground/60 hover:text-foreground transition-colors mb-6"
+      >
+        <ChevronLeft className="size-3.5" />
+        All Docs
+      </Link>
+
+      {/* Header */}
+      <div className="mb-6 pb-5 border-b border-border">
+        <p className="text-[10px] font-mono uppercase tracking-[0.18em] text-muted-foreground/40 mb-2">
+          Medialane · Documentation
+        </p>
+        <h1 className="text-2xl font-bold text-foreground mb-2">{metadata.title}</h1>
+        {(metadata.date || metadata.author) && (
+          <div className="flex items-center gap-3 text-xs text-muted-foreground/50 font-mono">
+            {metadata.date && (
+              <time dateTime={metadata.date}>
+                {new Date(metadata.date).toLocaleDateString('en-US', {
+                  year: 'numeric', month: 'long', day: 'numeric',
+                })}
+              </time>
+            )}
+            {metadata.author && (
+              <>
+                <span>·</span>
+                <span>{metadata.author}</span>
+              </>
+            )}
+          </div>
+        )}
+      </div>
+
+      {/* Content */}
+      <article
+        className="prose prose-sm dark:prose-invert max-w-none prose-headings:font-bold prose-a:text-primary"
+        dangerouslySetInnerHTML={{ __html: contentHtml }}
+      />
+    </div>
+  )
 }

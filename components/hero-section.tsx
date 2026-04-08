@@ -1,492 +1,208 @@
-'use client'
-
-import { useEffect, useRef, useState, useCallback } from 'react'
 import Link from 'next/link'
-import { motion, useReducedMotion } from 'framer-motion'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, Vote, Layers, Coins, BookOpen, ExternalLink } from 'lucide-react'
 import { mdln, starknet, siteConfig } from '@/lib/site-config'
 
-// ── Constants ─────────────────────────────────────────────────────────────────
-
-const SCRAMBLE_CHARS = '0123456789ABCDEF·—/\\'
-const EASE = [0.22, 1, 0.36, 1] as const
-
-const SECTIONS = [
-  { id: 'protocol', label: 'Protocol' },
-  { id: 'token', label: 'Token' },
-  { id: 'contracts', label: 'Contracts' },
-  { id: 'principles', label: 'Principles' },
-] as const
-
-// ── Scramble hook ─────────────────────────────────────────────────────────────
-
-function useScramble(target: string, active: boolean, delay = 0) {
-  const [display, setDisplay] = useState(() => target.replace(/./g, ' '))
-  const frame = useRef<ReturnType<typeof setTimeout> | null>(null)
-  const resolved = useRef<boolean[]>([])
-
-  useEffect(() => {
-    if (!active) return
-    resolved.current = Array(target.length).fill(false)
-
-    const tick = (iter = 0) => {
-      setDisplay(
-        target
-          .split('')
-          .map((char, i) => {
-            if (char === ' ') return ' '
-            if (resolved.current[i]) return char
-            if (iter > i * 1.4) {
-              resolved.current[i] = true
-              return char
-            }
-            return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)]
-          })
-          .join('')
-      )
-
-      if (resolved.current.every(Boolean)) return
-      frame.current = setTimeout(() => tick(iter + 1), 40)
-    }
-
-    const t = setTimeout(() => tick(), delay)
-    return () => {
-      clearTimeout(t)
-      if (frame.current) clearTimeout(frame.current)
-    }
-  }, [target, active, delay])
-
-  return display
-}
-
-// ── Section dots ──────────────────────────────────────────────────────────────
-
-function SectionDots({ active }: { active: string }) {
+function PageHeader() {
   return (
-    <nav className="flex flex-col gap-5" aria-label="Page sections">
-      {SECTIONS.map((s) => {
-        const isActive = active === s.id
-        return (
-          <button
-            key={s.id}
-            onClick={() => {
-              document.getElementById(s.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-            }}
-            className="group flex items-center gap-3 text-left"
-            aria-label={`Go to ${s.label}`}
-          >
-            <span
-              className={`block rounded-full transition-all duration-400 ${
-                isActive ? 'w-5 h-[2px] bg-foreground' : 'w-2 h-[2px] bg-muted-foreground/25 group-hover:bg-muted-foreground/50 group-hover:w-3'
-              }`}
-            />
-            <span
-              className={`text-[10px] font-mono uppercase tracking-[0.14em] transition-colors duration-300 ${
-                isActive ? 'text-foreground' : 'text-muted-foreground/30 group-hover:text-muted-foreground/60'
-              }`}
-            >
-              {s.label}
-            </span>
-          </button>
-        )
-      })}
-    </nav>
+    <div className="px-6 py-6 border-b border-border">
+      <p className="text-[10px] font-mono uppercase tracking-[0.18em] text-muted-foreground/50 mb-1">
+        Medialane · Utah DAO LLC
+      </p>
+      <h1 className="text-2xl font-bold text-foreground">Overview</h1>
+    </div>
   )
 }
 
-// ── Data primitives ───────────────────────────────────────────────────────────
-
-const rowItem = {
-  hidden: { opacity: 0, x: -8 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } },
+function StatCard({ label, value, sub }: { label: string; value: string; sub?: string }) {
+  return (
+    <div className="rounded-xl border border-border bg-card p-4">
+      <p className="text-xs text-muted-foreground/60 mb-1">{label}</p>
+      <p className="text-xl font-bold font-mono text-foreground">{value}</p>
+      {sub && <p className="text-[11px] text-muted-foreground/40 mt-0.5">{sub}</p>}
+    </div>
+  )
 }
 
-function DataRow({ label, value, href }: { label: string; value: string; href?: string }) {
+function QuickLink({ href, icon: Icon, title, description, external }: {
+  href: string; icon: React.ElementType; title: string; description: string; external?: boolean
+}) {
+  const inner = (
+    <div className="group flex items-start gap-4 p-4 rounded-xl border border-border bg-card hover:border-primary/30 hover:bg-primary/5 transition-all duration-150 cursor-pointer h-full">
+      <div className="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary shrink-0 mt-0.5">
+        <Icon className="size-4" />
+      </div>
+      <div className="flex-1 min-w-0">
+        <div className="flex items-center justify-between gap-2">
+          <p className="text-sm font-semibold text-foreground">{title}</p>
+          <ArrowUpRight className="size-3.5 text-muted-foreground/30 group-hover:text-primary transition-colors shrink-0" />
+        </div>
+        <p className="text-xs text-muted-foreground/60 mt-0.5 leading-relaxed">{description}</p>
+      </div>
+    </div>
+  )
+  if (external) return <a href={href} target="_blank" rel="noopener noreferrer">{inner}</a>
+  return <Link href={href}>{inner}</Link>
+}
+
+function AddressRow({ label, value, href }: { label: string; value: string; href?: string }) {
   return (
-    <motion.div
-      variants={rowItem}
-      className="group flex items-baseline justify-between gap-4 py-2.5 border-b border-border/15 last:border-0 -mx-3 px-3 rounded-sm hover:bg-muted/5 transition-colors duration-150"
-    >
-      <span className="text-xs text-muted-foreground/50 shrink-0 w-36 sm:w-44 font-medium tabular-nums">
-        {label}
-      </span>
+    <div className="flex items-center justify-between py-2.5 border-b border-border/60 last:border-0 gap-4">
+      <span className="text-xs text-muted-foreground/60 shrink-0">{label}</span>
       {href ? (
         <a
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-1 text-sm font-mono text-foreground/60 hover:text-foreground transition-colors duration-150 truncate text-right"
+          className="flex items-center gap-1 text-xs font-mono text-foreground/70 hover:text-primary transition-colors truncate"
         >
           {value}
-          <ArrowUpRight className="size-3 opacity-0 group-hover:opacity-50 transition-opacity shrink-0" />
+          <ExternalLink className="size-3 shrink-0 opacity-50" />
         </a>
       ) : (
-        <span className="text-sm font-mono text-foreground/60 text-right">{value}</span>
+        <span className="text-xs font-mono text-foreground/70 truncate text-right">{value}</span>
       )}
-    </motion.div>
-  )
-}
-
-function DataSection({ children }: { children: React.ReactNode }) {
-  return (
-    <motion.div
-      variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.06, delayChildren: 0.1 } } }}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: '-20px' }}
-    >
-      {children}
-    </motion.div>
-  )
-}
-
-function SectionHead({ index, label }: { index: string; label: string }) {
-  return (
-    <div className="flex items-baseline gap-4 mb-6">
-      <span className="text-[10px] font-mono text-muted-foreground/20 tabular-nums">{index}</span>
-      <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground/40">{label}</span>
     </div>
   )
 }
 
-function ProtocolLink({
-  href, label, description, external = false,
-}: { href: string; label: string; description: string; external?: boolean }) {
-  const inner = (
-    <div className="group flex items-start justify-between gap-6 py-4 border-b border-border/15 last:border-0 cursor-pointer">
-      <div className="space-y-0.5 min-w-0">
-        <p className="text-sm font-semibold text-foreground/70 group-hover:text-foreground transition-colors duration-150">
-          {label}
-        </p>
-        <p className="text-xs text-muted-foreground/40 leading-relaxed">{description}</p>
-      </div>
-      <ArrowUpRight className="size-3.5 text-muted-foreground/20 group-hover:text-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-150 shrink-0 mt-0.5" />
-    </div>
-  )
-  return external
-    ? <a href={href} target="_blank" rel="noopener noreferrer">{inner}</a>
-    : <Link href={href}>{inner}</Link>
-}
-
-// ── Left panel identity ───────────────────────────────────────────────────────
-
-function LeftPanel({ activeSection, scrambled }: { activeSection: string; scrambled: string }) {
+export function HeroSection() {
   return (
-    <div className="lg:sticky lg:top-0 lg:h-screen flex flex-col justify-between py-16 px-8 lg:px-12 border-r border-border/10">
+    <div className="p-6 max-w-5xl space-y-8">
 
-      {/* Wordmark + tagline */}
+      {/* ── Hero ──────────────────────────────────────────────────────────── */}
       <div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-        >
-          <p className="text-[10px] font-mono uppercase tracking-[0.18em] text-muted-foreground/30 mb-8">
-            medialane.org
-          </p>
-        </motion.div>
-
-        {/* Scrambled heading */}
-        <div className="space-y-0 mb-8 overflow-hidden">
-          {['Intellectual', 'property', 'infrastructure', 'for the', 'open web.'].map((line, i) => (
-            <div key={line} className="overflow-hidden">
-              <motion.h1
-                className="text-2xl font-bold tracking-tight leading-[1.15] text-foreground font-mono"
-                initial={{ y: '110%' }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.6, ease: EASE, delay: 0.2 + i * 0.07 }}
-              >
-                {line}
-              </motion.h1>
-            </div>
-          ))}
-        </div>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.75 }}
-          className="text-xs text-muted-foreground/40 leading-relaxed max-w-[200px]"
-        >
-          Open protocol. DAO governed.
-          Deployed on Starknet.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.9 }}
-          className="mt-6"
-        >
+        <p className="text-[10px] font-mono uppercase tracking-[0.18em] text-muted-foreground/40 mb-4">
+          Medialane · Utah DAO LLC · Starknet Mainnet
+        </p>
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground leading-tight mb-3">
+          Intellectual property infrastructure<br className="hidden sm:block" /> for the open web.
+        </h1>
+        <p className="text-sm text-muted-foreground max-w-xl leading-relaxed mb-5">
+          An open protocol for IP registration, licensing, and trade. Deployed on Starknet. Governed by MDLN token holders. No central authority. No intermediaries.
+        </p>
+        <div className="flex items-center gap-4">
           <a
             href="https://medialane.io"
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-foreground/50 hover:text-foreground transition-colors duration-200"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-colors"
           >
-            Open App
-            <ArrowUpRight className="size-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-150" />
+            Open App <ArrowUpRight className="size-3.5" />
           </a>
-        </motion.div>
+          <Link
+            href="/dao"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            View Governance →
+          </Link>
+        </div>
       </div>
 
-      {/* Section nav dots */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 1.1 }}
-      >
-        <SectionDots active={activeSection} />
-      </motion.div>
-
-      {/* Footer micro-text */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 1.2 }}
-        className="text-[9px] font-mono text-muted-foreground/20 space-y-1"
-      >
-        <p>Medialane DAO · Utah LLC</p>
-        <p>© {new Date().getFullYear()}</p>
-      </motion.div>
-    </div>
-  )
-}
-
-// ── Page ──────────────────────────────────────────────────────────────────────
-
-export function HeroSection() {
-  const reduce = useReducedMotion()
-  const [mounted, setMounted] = useState(false)
-  const [activeSection, setActiveSection] = useState('protocol')
-  const scrambled = useScramble('MEDIALANE', mounted && !reduce, 800)
-
-  useEffect(() => { setMounted(true) }, [])
-
-  // IntersectionObserver for section dots
-  useEffect(() => {
-    const ids = SECTIONS.map((s) => s.id)
-    const observers: IntersectionObserver[] = []
-
-    ids.forEach((id) => {
-      const el = document.getElementById(id)
-      if (!el) return
-      const obs = new IntersectionObserver(
-        ([entry]) => { if (entry.isIntersecting) setActiveSection(id) },
-        { rootMargin: '-30% 0px -60% 0px', threshold: 0 }
-      )
-      obs.observe(el)
-      observers.push(obs)
-    })
-
-    return () => observers.forEach((o) => o.disconnect())
-  }, [])
-
-  return (
-    <div className="min-h-screen lg:grid lg:grid-cols-[42%_58%]">
-
-      {/* ── Left panel ──────────────────────────────────────────────────────── */}
-      <div className="hidden lg:block">
-        <LeftPanel activeSection={activeSection} scrambled={scrambled} />
+      {/* ── Stats ─────────────────────────────────────────────────────────── */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+        <StatCard label="MDLN Supply" value="21,000,000" sub="Fixed forever" />
+        <StatCard label="DAO Treasury" value="100%" sub="No VC allocation" />
+        <StatCard label="Vesting" value="9 years" sub="Linear unlock" />
+        <StatCard label="Network" value="Starknet" sub="+ Ethereum (MDLN)" />
       </div>
 
-      {/* ── Right scrollable panel ──────────────────────────────────────────── */}
-      <div className="px-6 sm:px-10 lg:px-14 pt-28 lg:pt-0 divide-y divide-border/15">
+      {/* ── Quick links ───────────────────────────────────────────────────── */}
+      <div>
+        <p className="text-[10px] font-mono uppercase tracking-[0.15em] text-muted-foreground/40 mb-3">Explore</p>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <QuickLink
+            href="/dao"
+            icon={Vote}
+            title="Governance"
+            description="Proposals, voting, and founding documents."
+          />
+          <QuickLink
+            href="/explore"
+            icon={Layers}
+            title="Protocol"
+            description="Apps, features, and onchain contracts."
+          />
+          <QuickLink
+            href="/members"
+            icon={Coins}
+            title="MDLN Token"
+            description="Tokenomics, distribution, and how to participate."
+          />
+          <QuickLink
+            href="/docs"
+            icon={BookOpen}
+            title="Docs"
+            description="DAO constitution, charter, and guidelines."
+          />
+        </div>
+      </div>
 
-        {/* Mobile identity — visible only below lg */}
-        <div className="lg:hidden pb-10">
-          <p className="text-[10px] font-mono uppercase tracking-[0.18em] text-muted-foreground/30 mb-6">
-            medialane.org
-          </p>
-          <div className="space-y-0 mb-5">
-            {['Intellectual property', 'infrastructure for the open web.'].map((line, i) => (
-              <div key={line} className="overflow-hidden">
-                <motion.h1
-                  className="text-3xl font-bold tracking-tight leading-[1.15] text-foreground"
-                  initial={reduce ? false : { y: '110%', opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.55, ease: EASE, delay: 0.1 + i * 0.08 }}
-                >
-                  {line}
-                </motion.h1>
-              </div>
-            ))}
-          </div>
-          <p className="text-sm text-muted-foreground/50 leading-relaxed mb-5">
-            Open protocol for IP registration, licensing, and trade. Deployed on Starknet.
-            Governed by MDLN token holders.
-          </p>
-          <div className="flex items-center gap-6">
-            <a
-              href="https://medialane.io"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-1.5 text-sm font-medium text-foreground hover:text-primary transition-colors duration-150"
-            >
-              Open App
-              <ArrowUpRight className="size-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-150" />
-            </a>
-            <Link
-              href="/dao"
-              className="text-sm text-muted-foreground/50 hover:text-foreground transition-colors duration-150"
-            >
-              View Governance →
-            </Link>
-          </div>
+      {/* ── MDLN token ────────────────────────────────────────────────────── */}
+      <div className="grid md:grid-cols-2 gap-4">
+        <div className="rounded-xl border border-border bg-card p-5">
+          <p className="text-[10px] font-mono uppercase tracking-[0.15em] text-muted-foreground/40 mb-4">MDLN Token · Ethereum Mainnet</p>
+          <AddressRow label="Symbol" value="MDLN" />
+          <AddressRow label="Total Supply" value="21,000,000" />
+          <AddressRow label="Treasury" value="100% — no VCs" />
+          <AddressRow
+            label="Token Contract"
+            value={`${mdln.token.slice(0, 10)}…${mdln.token.slice(-6)}`}
+            href={mdln.etherscanToken}
+          />
+          <AddressRow
+            label="Gnosis Safe"
+            value={`${mdln.treasury.slice(0, 10)}…${mdln.treasury.slice(-6)}`}
+            href={mdln.etherscanTreasury}
+          />
+          <AddressRow label="Governance" value="medialane.eth" href={siteConfig.snapshot} />
         </div>
 
-        {/* ── Protocol ──────────────────────────────────────────────────────── */}
-        <section id="protocol" className="py-14">
-          <SectionHead index="01" label="Protocol" />
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.5, ease: EASE }}
-          >
-            <ProtocolLink
-              href="https://medialane.io/marketplace"
-              label="IP Marketplace"
-              description="Mint, list, and trade intellectual property. 12 IP types. Gasless orders via account abstraction on Starknet mainnet."
-              external
-            />
-            <ProtocolLink
-              href="https://medialane.io/launchpad"
-              label="Creator Launchpad"
-              description="Deploy onchain collections, Collection Drops, and POP attendance credentials. Programmable licensing embedded in every token."
-              external
-            />
-            <ProtocolLink
-              href="/dao"
-              label="DAO Governance"
-              description="Protocol parameters, treasury allocation, and platform direction — decided by MDLN token holders through Snapshot."
-            />
-          </motion.div>
-        </section>
-
-        {/* ── MDLN Token ────────────────────────────────────────────────────── */}
-        <section id="token" className="py-14">
-          <SectionHead index="02" label="MDLN Token" />
-          <DataSection>
-            <DataRow label="Symbol" value="MDLN" />
-            <DataRow label="Total Supply" value="21,000,000" />
-            <DataRow label="DAO Treasury" value="100% — no VC allocation" />
-            <DataRow label="Vesting" value="9 years" />
-            <DataRow label="Network" value="Ethereum Mainnet" />
-            <DataRow
-              label="Token Contract"
-              value={`${mdln.token.slice(0, 10)}…${mdln.token.slice(-6)}`}
-              href={mdln.etherscanToken}
-            />
-            <DataRow
-              label="Treasury (Gnosis)"
-              value={`${mdln.treasury.slice(0, 10)}…${mdln.treasury.slice(-6)}`}
-              href={mdln.etherscanTreasury}
-            />
-            <DataRow
-              label="Governance"
-              value="snapshot.org/#/s:medialane.eth"
-              href={siteConfig.snapshot}
-            />
-          </DataSection>
-        </section>
-
-        {/* ── Onchain Contracts ─────────────────────────────────────────────── */}
-        <section id="contracts" className="py-14">
-          <SectionHead index="03" label="Onchain Contracts · Starknet" />
-          <DataSection>
-            <DataRow label="Network" value="Starknet Mainnet" />
-            <DataRow
-              label="Marketplace"
-              value={`${starknet.marketplace.slice(0, 10)}…${starknet.marketplace.slice(-6)}`}
-            />
-            <DataRow
-              label="Collection Drop Factory"
-              value={`${starknet.dropFactory.slice(0, 10)}…${starknet.dropFactory.slice(-6)}`}
-            />
-            <DataRow
-              label="POP Factory"
-              value={`${starknet.popFactory.slice(0, 10)}…${starknet.popFactory.slice(-6)}`}
-            />
-          </DataSection>
-        </section>
-
-        {/* ── Principles ────────────────────────────────────────────────────── */}
-        <section id="principles" className="py-14">
-          <SectionHead index="04" label="Principles" />
-          <motion.div
-            variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-20px' }}
-            className="space-y-7"
-          >
-            {[
-              {
-                title: 'Creator sovereignty',
-                body: 'Every IP asset is a non-custodial onchain token. Ownership is direct, permanent, and requires no permission to transfer, license, or trade.',
-              },
-              {
-                title: 'Immutable by design',
-                body: 'Protocol contracts are non-upgradeable. Metadata is permanently anchored on IPFS. What is registered cannot be altered or removed.',
-              },
-              {
-                title: 'Community governed',
-                body: '21 million MDLN tokens. 100% held in the DAO treasury. Every parameter change, treasury action, and protocol decision requires a community vote. No insiders, no VCs, no preferential allocations.',
-              },
-              {
-                title: 'Open infrastructure',
-                body: 'The protocol is permissionless. Any creator, developer, or application can interact directly with the contracts. No gatekeeping.',
-              },
-            ].map(({ title, body }) => (
-              <motion.p
-                key={title}
-                variants={rowItem}
-                className="text-sm text-muted-foreground/50 leading-relaxed"
-              >
-                <strong className="text-foreground/80 font-semibold">{title}.</strong>{' '}
-                {body}
-              </motion.p>
-            ))}
-          </motion.div>
-        </section>
-
-        {/* ── Footer ────────────────────────────────────────────────────────── */}
-        <motion.footer
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="py-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-[10px] font-mono text-muted-foreground/25"
-        >
-          <p>© {new Date().getFullYear()} Medialane DAO · Utah DAO LLC</p>
-          <nav className="flex items-center gap-4 flex-wrap">
-            {[
-              { href: '/explore', label: 'Explore' },
-              { href: '/dao', label: 'Governance' },
-              { href: '/members', label: 'Members' },
-              { href: '/connect', label: 'Connect' },
-            ].map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                className="hover:text-foreground transition-colors duration-150"
-              >
-                {l.label}
-              </Link>
-            ))}
-            <a
-              href="https://medialane.io"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-foreground transition-colors duration-150"
-            >
-              App ↗
-            </a>
-          </nav>
-        </motion.footer>
-
+        <div className="rounded-xl border border-border bg-card p-5">
+          <p className="text-[10px] font-mono uppercase tracking-[0.15em] text-muted-foreground/40 mb-4">Onchain Contracts · Starknet Mainnet</p>
+          <AddressRow label="Network" value="Starknet Mainnet" />
+          <AddressRow
+            label="Marketplace"
+            value={`${starknet.marketplace.slice(0, 10)}…${starknet.marketplace.slice(-6)}`}
+          />
+          <AddressRow
+            label="Drop Factory"
+            value={`${starknet.dropFactory.slice(0, 10)}…${starknet.dropFactory.slice(-6)}`}
+          />
+          <AddressRow
+            label="POP Factory"
+            value={`${starknet.popFactory.slice(0, 10)}…${starknet.popFactory.slice(-6)}`}
+          />
+        </div>
       </div>
+
+      {/* ── Principles ────────────────────────────────────────────────────── */}
+      <div>
+        <p className="text-[10px] font-mono uppercase tracking-[0.15em] text-muted-foreground/40 mb-4">Principles</p>
+        <div className="grid sm:grid-cols-2 gap-3">
+          {[
+            { title: 'Creator sovereignty', body: 'Every IP asset is a non-custodial onchain token. No permission required to transfer, license, or trade.' },
+            { title: 'Immutable by design', body: 'Contracts are non-upgradeable. Metadata anchored on IPFS. What is registered cannot be altered.' },
+            { title: 'Community governed', body: '21M MDLN. 100% DAO treasury. Every protocol decision requires a community vote. No insiders.' },
+            { title: 'Open infrastructure', body: 'Permissionless. Any creator, developer, or app can interact directly with the contracts.' },
+          ].map(({ title, body }) => (
+            <div key={title} className="rounded-xl border border-border bg-card p-4">
+              <p className="text-sm font-semibold text-foreground mb-1">{title}</p>
+              <p className="text-xs text-muted-foreground/70 leading-relaxed">{body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ── Footer ────────────────────────────────────────────────────────── */}
+      <footer className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-4 border-t border-border text-[11px] font-mono text-muted-foreground/30">
+        <p>© {new Date().getFullYear()} Medialane DAO · Utah DAO LLC</p>
+        <div className="flex items-center gap-4">
+          <Link href="/docs" className="hover:text-foreground transition-colors">Docs</Link>
+          <a href={siteConfig.snapshot} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Snapshot ↗</a>
+          <a href="https://medialane.io" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">App ↗</a>
+        </div>
+      </footer>
+
     </div>
   )
 }

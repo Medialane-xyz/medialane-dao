@@ -1,166 +1,206 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { CheckCircle, ExternalLink, Users, Star, Crown, ArrowUpRight } from 'lucide-react'
-import { createContainerVariants, createItemVariants } from '@/lib/motion'
+import { ExternalLink, ArrowUpRight, CheckCircle } from 'lucide-react'
 import { mdln, siteConfig } from '@/lib/site-config'
-
-const containerVariants = createContainerVariants(0.08, 0.05)
-const itemVariants = createItemVariants({ y: 14, duration: 0.5 })
 
 const tiers = [
   {
     title: 'Observer',
     requirement: '1+ MDLN',
-    icon: Users,
     description: 'Follow governance and join the community.',
-    perks: ['Community forums', 'View all proposals', 'Discussions & feedback'],
-    color: 'text-blue-500',
-    bg: 'bg-blue-500/10',
+    perks: ['View all proposals', 'Community forums', 'Discussions & feedback'],
   },
   {
     title: 'Contributor',
     requirement: '100+ MDLN',
-    icon: Star,
     description: 'Vote on proposals and shape the platform.',
-    perks: ['Submit governance proposals', 'Vote on Snapshot', 'Contributor channels', 'Early feature access'],
-    color: 'text-primary',
-    bg: 'bg-primary/10',
+    perks: ['Submit governance proposals', 'Vote on Snapshot', 'Early feature access', 'Contributor channels'],
     featured: true,
   },
   {
     title: 'Guardian',
     requirement: '1,000+ MDLN',
-    icon: Crown,
     description: 'Lead working groups and represent creators.',
-    perks: ['Council nomination rights', 'Working group leadership', 'Priority API access', 'Ecosystem grants', 'Exclusive events'],
-    color: 'text-amber-500',
-    bg: 'bg-amber-500/10',
+    perks: ['Council nomination rights', 'Working group leadership', 'Ecosystem grants', 'Priority API access'],
   },
 ]
 
+function AddressRow({ label, value, href }: { label: string; value: string; href?: string }) {
+  return (
+    <div className="flex items-center justify-between py-2.5 border-b border-border/60 last:border-0 gap-4">
+      <span className="text-xs text-muted-foreground/60 shrink-0">{label}</span>
+      {href ? (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-1 text-xs font-mono text-foreground/70 hover:text-primary transition-colors"
+        >
+          {value} <ExternalLink className="size-3 shrink-0 opacity-50" />
+        </a>
+      ) : (
+        <span className="text-xs font-mono text-foreground/70">{value}</span>
+      )}
+    </div>
+  )
+}
+
 export default function MembersPageClient() {
   return (
-    <div className="relative min-h-screen bg-background px-4 py-10 lg:px-6 overflow-hidden">
-      {/* Aurora */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-        <div className="aurora-blob aurora-orange absolute top-1/4 right-1/4 h-64 w-64" />
-        <div className="aurora-blob aurora-blue   absolute bottom-1/3 left-1/3 h-64 w-64" />
+    <div className="p-6 max-w-5xl space-y-8">
+
+      {/* Header */}
+      <div>
+        <p className="text-[10px] font-mono uppercase tracking-[0.18em] text-muted-foreground/40 mb-1">
+          Medialane · Membership
+        </p>
+        <h1 className="text-2xl font-bold text-foreground mb-1">MDLN Token</h1>
+        <p className="text-sm text-muted-foreground max-w-xl">
+          MDLN is the governance token of Medialane DAO. 21 million fixed supply, 100% in the DAO treasury. No VCs, no insiders, no preferential allocation.
+        </p>
       </div>
 
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="relative z-10 mx-auto max-w-4xl"
-      >
-        {/* Header */}
-        <motion.div variants={itemVariants} className="mb-10">
-          <p className="section-label mb-2">Medialane · Membership</p>
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground">Members</h1>
-          <p className="mt-2 text-muted-foreground max-w-md">
-            Token-gated access to the Medialane community and governance. Hold MDLN to unlock your tier.
+      {/* Tokenomics stats */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+        {[
+          { label: 'Total Supply',   value: '21,000,000', sub: 'MDLN · Fixed forever'   },
+          { label: 'DAO Treasury',   value: '100%',        sub: 'No external investors'  },
+          { label: 'Vesting',        value: '9 years',     sub: 'Linear unlock schedule' },
+          { label: 'Voting',         value: '1:1',         sub: '1 MDLN = 1 vote'        },
+        ].map((s) => (
+          <div key={s.label} className="rounded-xl border border-border bg-card p-4">
+            <p className="text-xs text-muted-foreground/60 mb-1">{s.label}</p>
+            <p className="text-xl font-bold font-mono text-foreground">{s.value}</p>
+            <p className="text-[11px] text-muted-foreground/40 mt-0.5">{s.sub}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Distribution */}
+      <div className="grid md:grid-cols-2 gap-4">
+        <div className="rounded-xl border border-border bg-card p-5">
+          <p className="text-[10px] font-mono uppercase tracking-[0.15em] text-muted-foreground/40 mb-4">
+            Token Distribution
           </p>
-        </motion.div>
-
-        {/* MDLN info */}
-        <motion.div variants={itemVariants} className="mb-8 rounded-xl border border-border bg-card shadow-sm p-4 flex flex-wrap items-center gap-x-6 gap-y-2">
-          <div className="flex items-center gap-3">
-            <div className="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
-              <span className="text-xs font-bold">ML</span>
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-foreground">MDLN Governance Token</p>
-              <p className="text-xs text-muted-foreground">{mdln.totalSupply.toLocaleString()} supply · {mdln.network}</p>
-            </div>
-          </div>
-          <div className="ml-auto flex gap-3">
-            <a href={mdln.etherscanToken} target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-xs font-medium text-primary hover:underline">
-              Etherscan <ExternalLink className="size-3" />
-            </a>
-            <a href={siteConfig.snapshot} target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-xs font-medium text-primary hover:underline">
-              Snapshot <ExternalLink className="size-3" />
-            </a>
-          </div>
-        </motion.div>
-
-        {/* Tiers */}
-        <motion.div variants={itemVariants} className="mb-10">
-          <h2 className="text-sm font-semibold text-foreground mb-4">Membership Tiers</h2>
-          <div className="grid gap-4 sm:grid-cols-3">
-            {tiers.map((tier) => (
-              <div
-                key={tier.title}
-                className={`flex flex-col gap-4 p-5 rounded-xl border shadow-sm transition-shadow hover:shadow-md ${
-                  tier.featured
-                    ? 'border-primary/30 bg-primary/5'
-                    : 'border-border bg-card'
-                }`}
-              >
-                <div className="flex items-center gap-3">
-                  <div className={`flex size-9 items-center justify-center rounded-lg ${tier.bg} ${tier.color}`}>
-                    <tier.icon className="size-4" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-sm text-foreground">{tier.title}</h3>
-                    <span className="font-mono text-xs text-muted-foreground">{tier.requirement}</span>
-                  </div>
-                </div>
-                <p className="text-xs text-muted-foreground">{tier.description}</p>
-                <div className="h-px bg-border" />
-                <ul className="space-y-1.5">
-                  {tier.perks.map((perk) => (
-                    <li key={perk} className="flex items-center gap-2 text-xs text-muted-foreground">
-                      <CheckCircle className={`size-3.5 shrink-0 ${tier.color}`} />
-                      {perk}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* How to participate */}
-        <motion.div variants={itemVariants} className="rounded-xl border border-border bg-card shadow-sm p-6">
-          <h2 className="font-semibold text-sm text-foreground mb-4">How to Participate</h2>
-          <div className="grid gap-4 sm:grid-cols-3 text-sm">
+          <div className="space-y-0">
             {[
-              { step: '01', title: 'Acquire MDLN', desc: 'Get MDLN via Uniswap on Ethereum mainnet. Any amount qualifies as Observer.' },
-              { step: '02', title: 'Join Snapshot', desc: 'Connect to snapshot.org with your wallet holding MDLN to vote on proposals.' },
-              { step: '03', title: 'Propose & Vote', desc: 'Submit governance proposals, vote on platform decisions, and shape Medialane\'s future.' },
-            ].map((s) => (
-              <div key={s.step} className="flex gap-3">
-                <span className="font-mono text-xs font-bold text-muted-foreground/50 pt-0.5 shrink-0">{s.step}</span>
-                <div>
-                  <p className="font-semibold text-foreground mb-1">{s.title}</p>
-                  <p className="text-muted-foreground text-xs leading-relaxed">{s.desc}</p>
+              { label: 'Vesting (9 years)', value: '18,900,000', pct: '90%' },
+              { label: 'Operational runway', value: '2,100,000',  pct: '10%' },
+              { label: 'VC allocation',      value: '0',           pct: '0%'  },
+              { label: 'Team allocation',    value: '0',           pct: '0%'  },
+            ].map((row) => (
+              <div key={row.label} className="flex items-center justify-between py-2.5 border-b border-border/60 last:border-0">
+                <span className="text-xs text-muted-foreground/70">{row.label}</span>
+                <div className="text-right">
+                  <span className="text-xs font-mono text-foreground/70">{row.value}</span>
+                  <span className="text-[10px] font-mono text-muted-foreground/40 ml-2">{row.pct}</span>
                 </div>
               </div>
             ))}
           </div>
-          <div className="mt-5 pt-4 border-t border-border flex flex-wrap gap-3">
-            <a
-              href={siteConfig.snapshot}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
+        </div>
+
+        <div className="rounded-xl border border-border bg-card p-5">
+          <p className="text-[10px] font-mono uppercase tracking-[0.15em] text-muted-foreground/40 mb-4">
+            On-chain Addresses
+          </p>
+          <AddressRow
+            label="Token Contract"
+            value={`${mdln.token.slice(0, 10)}…${mdln.token.slice(-6)}`}
+            href={mdln.etherscanToken}
+          />
+          <AddressRow
+            label="Vesting Contract"
+            value={`${mdln.vesting.slice(0, 10)}…${mdln.vesting.slice(-6)}`}
+            href={mdln.etherscanVesting}
+          />
+          <AddressRow
+            label="DAO Treasury (Gnosis)"
+            value={`${mdln.treasury.slice(0, 10)}…${mdln.treasury.slice(-6)}`}
+            href={mdln.etherscanTreasury}
+          />
+          <AddressRow
+            label="Snapshot"
+            value="medialane.eth"
+            href={siteConfig.snapshot}
+          />
+          <AddressRow label="Network" value="Ethereum Mainnet" />
+        </div>
+      </div>
+
+      {/* Membership tiers */}
+      <div>
+        <p className="text-[10px] font-mono uppercase tracking-[0.15em] text-muted-foreground/40 mb-3">
+          Membership Tiers
+        </p>
+        <div className="grid sm:grid-cols-3 gap-3">
+          {tiers.map((tier) => (
+            <div
+              key={tier.title}
+              className={`flex flex-col gap-4 p-5 rounded-xl border bg-card ${
+                tier.featured ? 'border-primary/30 bg-primary/5' : 'border-border'
+              }`}
             >
-              Vote on Snapshot <ArrowUpRight className="size-3.5" />
-            </a>
-            <a
-              href={mdln.etherscanToken}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg border border-border bg-background px-4 py-2 text-sm font-semibold text-foreground hover:bg-accent/50 transition-colors"
-            >
-              MDLN on Etherscan <ExternalLink className="size-3.5" />
-            </a>
-          </div>
-        </motion.div>
-      </motion.div>
+              <div>
+                <div className="flex items-center justify-between mb-0.5">
+                  <p className="text-sm font-semibold text-foreground">{tier.title}</p>
+                  <span className="text-[10px] font-mono text-muted-foreground/50">{tier.requirement}</span>
+                </div>
+                <p className="text-xs text-muted-foreground/60">{tier.description}</p>
+              </div>
+              <div className="h-px bg-border" />
+              <ul className="space-y-2">
+                {tier.perks.map((perk) => (
+                  <li key={perk} className="flex items-start gap-2 text-xs text-muted-foreground/70">
+                    <CheckCircle className="size-3.5 shrink-0 text-primary mt-0.5" />
+                    {perk}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* How to participate */}
+      <div className="rounded-xl border border-border bg-card p-5">
+        <p className="text-[10px] font-mono uppercase tracking-[0.15em] text-muted-foreground/40 mb-4">
+          How to Participate
+        </p>
+        <div className="grid sm:grid-cols-3 gap-6 mb-5">
+          {[
+            { step: '01', title: 'Acquire MDLN', desc: 'Get MDLN via Uniswap on Ethereum mainnet. Any amount qualifies as Observer.' },
+            { step: '02', title: 'Join Snapshot', desc: 'Connect to snapshot.org with your wallet holding MDLN to view and vote on proposals.' },
+            { step: '03', title: 'Propose & Vote', desc: 'Submit governance proposals, vote on platform decisions, and shape Medialane\'s future.' },
+          ].map((s) => (
+            <div key={s.step} className="flex gap-3">
+              <span className="font-mono text-xs font-bold text-muted-foreground/25 pt-0.5 shrink-0">{s.step}</span>
+              <div>
+                <p className="text-sm font-semibold text-foreground mb-1">{s.title}</p>
+                <p className="text-xs text-muted-foreground/60 leading-relaxed">{s.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="flex flex-wrap gap-3 pt-4 border-t border-border">
+          <a
+            href={siteConfig.snapshot}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
+          >
+            Vote on Snapshot <ArrowUpRight className="size-3.5" />
+          </a>
+          <a
+            href={mdln.etherscanToken}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-lg border border-border bg-background px-4 py-2 text-sm font-semibold text-foreground hover:bg-muted/50 transition-colors"
+          >
+            MDLN on Etherscan <ExternalLink className="size-3.5" />
+          </a>
+        </div>
+      </div>
     </div>
   )
 }

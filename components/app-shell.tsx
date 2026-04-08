@@ -1,14 +1,12 @@
-'use client'
-
-import { SiteMenu } from '@/components/site-menu'
+import { Sidebar } from '@/components/sidebar'
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   return (
-    <>
-      <SiteMenu />
-      <main className="relative min-h-screen">
+    <div className="flex min-h-screen">
+      <Sidebar />
+      <main className="flex-1 min-w-0 pb-14 md:pb-0 overflow-x-hidden">
         {children}
       </main>
-    </>
+    </div>
   )
 }
