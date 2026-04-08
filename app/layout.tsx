@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from 'next'
 import { Inter, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
+import { LenisProvider } from '@/components/lenis-provider'
+import { CustomCursor } from '@/components/cursor'
 import './globals.css'
 
 const _inter = Inter({
@@ -65,7 +67,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <LenisProvider>
+            <CustomCursor />
+            {children}
+          </LenisProvider>
         </ThemeProvider>
         <Analytics />
       </body>
