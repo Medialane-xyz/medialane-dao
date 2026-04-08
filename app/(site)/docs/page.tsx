@@ -9,27 +9,21 @@ export const metadata: Metadata = {
 }
 
 const sections = [
-  {
-    label: 'Governance',
-    docs: getAllPosts('dao'),
-  },
-  {
-    label: 'Legal',
-    docs: getAllPosts(''),
-  },
+  { label: 'Governance', color: 'text-violet-500', bg: 'bg-violet-500', docs: getAllPosts('dao') },
+  { label: 'Legal',      color: 'text-blue-500',   bg: 'bg-blue-500',   docs: getAllPosts('')    },
 ]
 
 export default function DocsPage() {
   return (
-    <div className="p-6 max-w-3xl space-y-8">
+    <div className="px-6 lg:px-10 xl:px-14 py-8 space-y-10">
 
       {/* Header */}
       <div>
-        <p className="text-[10px] font-mono uppercase tracking-[0.18em] text-muted-foreground/40 mb-1">
-          Medialane · Documentation
-        </p>
-        <h1 className="text-2xl font-bold text-foreground mb-1">Docs</h1>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground/40 mb-4">Medialane · Documentation</p>
+        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-3">
+          <span className="gradient-text">Docs</span>
+        </h1>
+        <p className="text-base text-muted-foreground max-w-xl">
           DAO founding documents, governance charter, community guidelines, and legal policies.
         </p>
       </div>
@@ -38,21 +32,19 @@ export default function DocsPage() {
         if (section.docs.length === 0) return null
         return (
           <div key={section.label}>
-            <p className="text-[10px] font-mono uppercase tracking-[0.15em] text-muted-foreground/40 mb-3">
-              {section.label}
-            </p>
+            <div className="flex items-center gap-3 mb-4">
+              <span className={`block w-6 h-0.5 rounded-full ${section.bg}`} />
+              <p className={`text-[10px] font-mono uppercase tracking-[0.18em] font-bold ${section.color}`}>
+                {section.label}
+              </p>
+            </div>
             <div className="rounded-xl border border-border bg-card divide-y divide-border/60">
               {section.docs.map((doc) => (
-                <Link
-                  key={doc.slug}
-                  href={`/docs/${doc.slug}`}
-                  className="group flex items-center gap-4 px-4 py-3.5 hover:bg-muted/30 transition-colors"
-                >
+                <Link key={doc.slug} href={`/docs/${doc.slug}`}
+                  className="group flex items-center gap-4 px-5 py-4 hover:bg-muted/30 transition-colors">
                   <FileText className="size-4 text-muted-foreground/40 group-hover:text-primary transition-colors shrink-0" />
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
-                      {doc.title}
-                    </p>
+                    <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">{doc.title}</p>
                     {doc.description && (
                       <p className="text-xs text-muted-foreground/50 mt-0.5 truncate">{doc.description}</p>
                     )}

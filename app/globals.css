@@ -163,6 +163,14 @@
   }
 }
 
+/* ── Brand gradient text (matches medialane-io) ── */
+.gradient-text {
+  background: linear-gradient(135deg, #a855f7 0%, #6366f1 40%, #2563eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 /* ── Aurora background blobs ── */
 .aurora-blob {
   position: absolute;
