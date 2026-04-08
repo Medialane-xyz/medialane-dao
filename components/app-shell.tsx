@@ -3,7 +3,6 @@
 import Link from "next/link"
 import { AppSidebar } from "@/components/app-sidebar"
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
-import { useIsMobile } from "@/hooks/use-mobile"
 import Image from "next/image"
 
 function MobileIconTrigger() {
@@ -19,10 +18,10 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     <SidebarProvider defaultOpen={false}>
       <AppSidebar />
       <SidebarInset>
-        <div className="absolute top-3 left-3 z-50 flex items-center gap-1.5">
+        <header className="sticky top-0 z-40 flex items-center h-12 px-3 gap-2 bg-background/95 backdrop-blur-sm border-b border-border/40">
           <SidebarTrigger />
           <MobileIconTrigger />
-        </div>
+        </header>
         <main className="flex-1 bg-background overflow-x-hidden">
           {children}
         </main>
