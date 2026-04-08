@@ -1,11 +1,11 @@
 'use client'
 
-import { SiteNav } from '@/components/site-nav'
+import { SiteMenu } from '@/components/site-menu'
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <SiteNav />
+      <SiteMenu />
       <main className="relative min-h-screen">
         {children}
       </main>
