@@ -69,19 +69,19 @@ const features = [
     ],
   },
   {
-    section: 'IP Protection',
+    section: 'Creator Rights',
     color: 'text-violet-500',
     bg: 'bg-violet-500',
     items: [
-      { title: 'Berne Convention',    status: 'Core',   href: null,
-        description: 'Immutable onchain timestamp creates copyright proof valid in 181 countries. No registration fee, no WIPO filing, no lawyer. Automatic protection from the moment of minting.',
-        tags: ['181 Countries', 'WIPO', 'Copyright'] },
-      { title: 'Programmable Licensing', status: 'Live', href: 'https://medialane.io/create/asset',
-        description: '9 Creative Commons variants + custom terms. Commercial use, derivative rights, AI training policy, geographic scope, and royalty % — all embedded in IPFS metadata as machine-readable attributes.',
-        tags: ['CC0', 'CC BY', 'Custom Terms', 'AI Policy'] },
+      { title: 'Born Protected',       status: 'Core',   href: null,
+        description: 'Minting timestamps your work under the Berne Convention — instant copyright proof in 181 countries. No registration fees, no WIPO filings, no lawyers. Protected the moment it exists.',
+        tags: ['181 Countries', 'Automatic', 'No Lawyers'] },
+      { title: 'Programmable Revenue', status: 'Live', href: 'https://medialane.io/create/asset',
+        description: 'Royalties, licensing terms, and revenue splits encoded in Cairo smart contracts. 9 Creative Commons variants + custom terms — commercial use, AI policy, derivative rights, geographic scope. Rules enforced by code, not contracts.',
+        tags: ['Royalties', 'CC0', 'CC BY', 'AI Policy'] },
       { title: 'Immutable Attribution', status: 'Core', href: null,
-        description: 'Every IP record lives on Starknet and IPFS — not on Medialane servers. Remix graph traces creative lineage back to the original source. Cannot be altered, delisted, or censored.',
-        tags: ['IPFS', 'Remix Graph', 'On-chain'] },
+        description: 'Every record lives on Starknet and IPFS — not on Medialane servers. Remix graph traces creative lineage back to the original source. Cannot be altered, delisted, or censored by anyone.',
+        tags: ['IPFS', 'Remix Graph', 'Censorship-proof'] },
     ],
   },
   {
@@ -128,7 +128,7 @@ export default function ExplorePageClient() {
           <span className="gradient-text">Protocol</span>
         </h1>
         <p className="text-base text-muted-foreground max-w-xl">
-          Everything live on Medialane — from creator tools and onchain IP protection to Starknet infrastructure and DAO governance.
+          New revenue tools for creators, collectors, and organizations. Mint, license, trade, and build capital markets around your work — on Starknet, governed by the community.
         </p>
       </div>
 

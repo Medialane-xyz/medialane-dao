@@ -64,7 +64,7 @@ export default function DAOPageClient({ documents, proposals, stats }: DAOPageCl
           <span className="gradient-text">Governance</span>
         </h1>
         <p className="text-base text-muted-foreground max-w-xl">
-          Community-owned, creator-first. All decisions made by MDLN holders — no VCs, no insiders.
+          Medialane is governed by its community — creators, collectors, builders, and autonomous AI that hold MDLN. Every protocol upgrade, revenue distribution, and strategic decision is voted on-chain by token holders. No VCs. No insiders. No company.
         </p>
       </div>
 
@@ -127,7 +127,7 @@ export default function DAOPageClient({ documents, proposals, stats }: DAOPageCl
           <div className="rounded-xl border border-border bg-card p-5">
             <p className="text-[10px] font-mono uppercase tracking-[0.15em] text-muted-foreground/40 mb-4">How to vote</p>
             <div className="space-y-3 text-xs text-muted-foreground/70 leading-relaxed">
-              {['Acquire MDLN via Uniswap on Ethereum mainnet.', 'Connect your wallet to Snapshot at medialane.eth.', 'Vote on proposals. 1 MDLN = 1 vote. Gasless.'].map((s, i) => (
+              {['Get MDLN on Ethereum via Uniswap, or on Starknet via Ekubo.', 'Connect your wallet to Snapshot at medialane.eth.', 'Vote on proposals. 1 MDLN = 1 vote. Gasless.'].map((s, i) => (
                 <div key={i} className="flex gap-2.5">
                   <span className="font-mono font-bold text-muted-foreground/30 shrink-0">0{i+1}</span>
                   <p>{s}</p>

@@ -53,7 +53,7 @@ export default function ConnectPageClient() {
           <span className="gradient-text">Connect</span>
         </h1>
         <p className="text-base text-muted-foreground max-w-xl">
-          Reach out for inquiries, partnerships, or anything else. Join the community and help shape the future of open IP infrastructure.
+          Reach out for inquiries, partnerships, or anything else. Join the community and help build the creator capital markets of the open web.
         </p>
       </div>
 
