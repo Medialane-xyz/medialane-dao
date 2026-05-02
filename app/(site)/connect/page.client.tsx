@@ -118,7 +118,9 @@ export default function ConnectPageClient() {
         {[
           { label: 'Open App',          href: 'https://medialane.io'                                            },
           { label: 'Snapshot',          href: 'https://snapshot.org/#/s:medialane.eth'                         },
+          { label: 'GitHub',             href: 'https://github.com/medialane-io'                               },
           { label: 'GitHub (SDK)',       href: 'https://github.com/medialane-io/medialane-sdk'                  },
+          { label: 'Docs',              href: 'https://docs.medialane.io'                                       },
           { label: 'MDLN on Etherscan', href: 'https://etherscan.io/token/0x0DC90d57F3Aa3E836Ffd6E777E543a43A487dB15' },
         ].map((l) => (
           <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer"

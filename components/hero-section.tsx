@@ -105,10 +105,11 @@ export function HeroSection() {
         <div className="rounded-xl border border-border bg-card p-6">
           <p className="text-[10px] font-mono uppercase tracking-[0.18em] text-muted-foreground/40 mb-1">Onchain Contracts</p>
           <p className="text-xs text-muted-foreground/50 mb-5">Starknet Mainnet</p>
-          <AddressRow label="Network"          value="Starknet Mainnet" />
-          <AddressRow label="Marketplace"      value={`${starknet.marketplace.slice(0,10)}…${starknet.marketplace.slice(-6)}`} />
-          <AddressRow label="Drop Factory"     value={`${starknet.dropFactory.slice(0,10)}…${starknet.dropFactory.slice(-6)}`} />
-          <AddressRow label="POP Factory"      value={`${starknet.popFactory.slice(0,10)}…${starknet.popFactory.slice(-6)}`} />
+          <AddressRow label="Network"               value="Starknet Mainnet" />
+          <AddressRow label="Marketplace 721 v2"   value={`${starknet.marketplace721.slice(0,10)}…${starknet.marketplace721.slice(-6)}`} href={starknet.starkscanMarketplace721} />
+          <AddressRow label="Marketplace 1155 v2"  value={`${starknet.marketplace1155.slice(0,10)}…${starknet.marketplace1155.slice(-6)}`} href={starknet.starkscanMarketplace1155} />
+          <AddressRow label="Drop Factory"         value={`${starknet.dropFactory.slice(0,10)}…${starknet.dropFactory.slice(-6)}`} />
+          <AddressRow label="POP Factory"          value={`${starknet.popFactory.slice(0,10)}…${starknet.popFactory.slice(-6)}`} />
         </div>
       </div>
 

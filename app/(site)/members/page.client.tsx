@@ -209,7 +209,7 @@ export default function MembersPageClient() {
         <p className="text-[10px] font-mono uppercase tracking-[0.15em] text-muted-foreground/40 mb-6">How to Participate</p>
         <div className="grid sm:grid-cols-3 gap-6 mb-6">
           {[
-            { step: '01', title: 'Acquire MDLN',  desc: 'Get MDLN via Uniswap on Ethereum mainnet, or bridge to Starknet and trade on Ekubo.' },
+            { step: '01', title: 'Acquire MDLN',  desc: 'Get MDLN on Ethereum via Uniswap, or bridge to Starknet via StarkGate and trade on Ekubo.' },
             { step: '02', title: 'Join Snapshot', desc: 'Connect to snapshot.org with your wallet holding MDLN to view and vote on proposals.' },
             { step: '03', title: 'Propose & Vote', desc: "Submit governance proposals, vote on platform decisions, and shape Medialane's future." },
           ].map((s) => (
@@ -234,6 +234,10 @@ export default function MembersPageClient() {
           <a href="https://app.ekubo.org" target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-xl border border-border bg-background px-5 py-2.5 text-sm font-semibold text-foreground hover:bg-muted/50 transition-colors">
             Trade on Ekubo <ArrowUpRight className="size-3.5" />
+          </a>
+          <a href={`https://app.uniswap.org/swap?outputCurrency=${mdln.token}`} target="_blank" rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-xl border border-border bg-background px-5 py-2.5 text-sm font-semibold text-foreground hover:bg-muted/50 transition-colors">
+            Buy on Uniswap <ArrowUpRight className="size-3.5" />
           </a>
         </div>
       </div>

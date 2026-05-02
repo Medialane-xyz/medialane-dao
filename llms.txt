@@ -1,0 +1,188 @@
+# Medialane
+
+> Open protocol for intellectual property registration, licensing, and trade. Deployed on Starknet Mainnet. Governed by MDLN token holders.
+
+Medialane is a decentralized, permissionless infrastructure for programmable IP. Creators register any creative work as a smart-contract-backed NFT with automatic Berne Convention copyright protection valid in 181 countries. Assets can be licensed, sold, traded, or remixed with attribution chains recorded immutably on-chain.
+
+---
+
+## Sites
+
+- **Governance hub (this site):** https://medialane.org
+- **Application:** https://medialane.io
+- **Documentation:** https://docs.medialane.io
+- **Snapshot governance:** https://snapshot.org/#/s:medialane.eth
+- **SDK repository:** https://github.com/medialane-io/medialane-sdk
+
+---
+
+## Core Protocol
+
+### Networks
+- **Starknet Mainnet** — all IP assets, marketplace, collections, launchpad
+- **Ethereum Mainnet** — MDLN governance token, Gnosis Safe treasury
+
+### Smart Contracts (Starknet Mainnet)
+
+| Contract | Address |
+|----------|---------|
+| Marketplace v2 (ERC-721) | `0x00f8ccaae0bc811c79605974cc1dab769b9cea8877f033f8e3c17f30457caba6` |
+| Marketplace v2 (ERC-1155) | `0x02bfa521c25461a09d735889b469418608d7d92f8b26e3d37ef174a4c2e22f99` |
+| Collection Registry (ERC-721) | `0x05c49ee5d3208a2c2e150fdd0c247d1195ed9ab54fa2d5dea7a633f39e4b205b` |
+| Collection Factory (ERC-1155) | `0x006b2dc7ca7c4f466bb4575ba043d934310f052074f849caf853a86bcb819fd6` |
+| Drop Factory | `0x03587f42e29daee1b193f6cf83bf8627908ed6632d0d83fcb26225c50547d800` |
+| POP Factory | `0x00b32c34b427d8f346b5843ada6a37bd3368d879fc752cd52b68a87287f60111` |
+| MDLN on Starknet (bridged) | `0x06730d6a357690cebffad800219e9630e15b6f44d35526e0fc9ee52bdf7418e8` |
+
+### Smart Contracts (Ethereum Mainnet)
+
+| Contract | Address |
+|----------|---------|
+| MDLN Token | `0x0DC90d57F3Aa3E836Ffd6E777E543a43A487dB15` |
+| Vesting Contract | `0x912f61d5e6db656ec1a7be8db8957c5f1e345d58` |
+| DAO Treasury (Gnosis Safe) | `0xA7603783edD8ee6FF4B085f90Af53341282d244C` |
+
+---
+
+## MDLN Token
+
+- **Supply:** 21,000,000 fixed (no inflation)
+- **Standard:** ERC-20 with ERC20Votes + ERC20Permit
+- **Chain:** Ethereum Mainnet (bridgeable to Starknet via StarkGate)
+- **Treasury:** 100% DAO-controlled — no VC allocation, no team allocation
+- **Distribution:** 2.1M operational runway + 18.9M vesting (9-year linear, 2.1M/year to DAO treasury)
+- **Governance:** 1 MDLN = 1 vote on Snapshot (https://snapshot.org/#/s:medialane.eth)
+- **Vesting start:** Gnosis Safe multisig controls; proposals required to spend
+- **Trade:** Uniswap (Ethereum), Ekubo (Starknet)
+- **Bridge:** StarkGate (https://starkgate.starknet.io)
+
+---
+
+## Governance
+
+- **Legal structure:** Utah DAO LLC (United States)
+- **Voting platform:** Snapshot (off-chain, gasless)
+- **Proposal threshold:** 100 MDLN to submit
+- **Voting period:** Minimum 5 days
+- **Quorum:** Defined per proposal category
+- **Execution:** Multisig signers execute passed proposals
+- **Amendment threshold:** >66% supermajority for Constitution/Charter changes
+
+### Membership Tiers
+
+| Tier | Requirement | Rights |
+|------|------------|--------|
+| Observer | 1+ MDLN | View proposals, community access |
+| Contributor | 100+ MDLN | Vote + submit proposals |
+| Guardian | 1,000+ MDLN | Council nomination, working group leadership |
+
+---
+
+## Platform Features
+
+### Create
+- **Mint IP Asset** — Register creative work as programmable NFT, 12 IP types, gasless, IPFS metadata
+- **Create Collection** — Deploy branded ERC-721 or ERC-1155 collections via factory contracts
+- **Remix & License** — Create licensed derivatives with on-chain attribution graph
+
+### Marketplace
+- **Fixed-price listings** — ERC-721 and ERC-1155 supported
+- **Offers (bids)** — Any wallet can offer on any indexed NFT
+- **Counter-offers** — Sellers can negotiate with a counter-bid
+- **Cart checkout** — Batch buy multiple items in one atomic multicall
+- **Currencies:** USDC, USDT, ETH, STRK, WBTC
+- **Fee:** 1% on completed sales → DAO treasury
+
+### Launchpad
+- **Collection Drop** — Timed mint with supply cap, allowlist, per-wallet limits
+- **POP Protocol** — Soulbound (non-transferable) proof-of-participation credentials
+- **ERC-1155 Edition** — Multi-copy editions for music, publications, prints
+
+### IP Protection
+- **Berne Convention** — On-chain timestamp = copyright proof in 181 countries
+- **Programmable licensing** — 9 CC variants + custom terms (AI policy, commercial use, derivatives, royalties)
+- **Immutable attribution** — Remix graph stored on Starknet + IPFS, cannot be altered
+
+---
+
+## Tech Stack
+
+- **Blockchain:** Starknet (ZK-rollup on Ethereum, Cairo VM)
+- **Proofs:** STARK proofs, STWO prover, recursive proofs
+- **Account model:** Native account abstraction (wallets are smart contracts)
+- **Session keys:** SNIP-9 for gasless PIN-authenticated sessions
+- **Gas sponsorship:** AVNU paymaster — creators pay zero gas
+- **Storage:** IPFS via Pinata (permanent, censorship-resistant)
+- **Signing:** SNIP-12 typed data (domain version 1 for ERC-721, 2 for ERC-1155)
+- **SDK:** TypeScript, dual ESM+CJS, `@medialane/sdk` on npm
+
+---
+
+## IP Metadata Schema (OpenSea-compatible)
+
+```json
+{
+  "name": "string",
+  "description": "string",
+  "image": "ipfs://...",
+  "external_url": "https://medialane.io/asset/{contract}/{tokenId}",
+  "attributes": [
+    { "trait_type": "IP Type", "value": "Music|Art|Photography|Writing|Film|Software|Brand|Design|Research|Education|Game|Other" },
+    { "trait_type": "License", "value": "CC0|CC BY|CC BY-SA|CC BY-NC|CC BY-ND|CC BY-NC-SA|CC BY-NC-ND|All Rights Reserved" },
+    { "trait_type": "Commercial Use", "value": "Allowed|Prohibited" },
+    { "trait_type": "Derivative Works", "value": "Allowed|Allowed with attribution|Prohibited" },
+    { "trait_type": "AI Training", "value": "Allowed|Prohibited|Allowed for non-commercial" },
+    { "trait_type": "Royalty", "value": "0-25%" }
+  ]
+}
+```
+
+---
+
+## Order Model (Marketplace)
+
+Orders are SNIP-12 typed-data signed off-chain and registered on-chain.
+
+```
+OrderParameters {
+  offerer: ContractAddress
+  offer: OfferItem { item_type, token, identifier_or_criteria, start_amount, end_amount }
+  consideration: ConsiderationItem { item_type, token, identifier_or_criteria, start_amount, end_amount, recipient }
+  start_time: u64
+  end_time: u64
+  salt: felt252
+  nonce: felt252
+}
+
+OrderStatus: ACTIVE | FILLED | CANCELLED | COUNTER_OFFERED
+```
+
+---
+
+## API Endpoints (Medialane Backend)
+
+Base URL: configured via `NEXT_PUBLIC_MEDIALANE_BACKEND_URL`
+
+| Endpoint | Description |
+|----------|-------------|
+| `GET /v1/orders` | All orders (filterable by status, type) |
+| `GET /v1/orders/:hash` | Single order |
+| `GET /v1/tokens/:contract/:tokenId/orders` | Active orders for a token |
+| `GET /v1/orders/user/:address` | Orders by wallet |
+| `GET /v1/tokens/:contract/:tokenId` | Token metadata |
+| `GET /v1/tokens/owner/:address` | Tokens owned by wallet |
+| `GET /v1/tokens/:contract/:tokenId/history` | Provenance timeline |
+| `GET /v1/collections` | All collections |
+| `GET /v1/collections/:contract` | Single collection |
+| `GET /v1/collections/:contract/tokens` | Tokens in collection |
+| `GET /v1/activities` | Global activity feed |
+| `GET /v1/activities/:address` | Activity for wallet |
+
+---
+
+## Contact
+
+- **DAO email:** dao@medialane.org
+- **X / Twitter:** https://x.com/medialane_io
+- **YouTube:** https://www.youtube.com/@medialanexyz
+- **GitHub:** https://github.com/medialane-io

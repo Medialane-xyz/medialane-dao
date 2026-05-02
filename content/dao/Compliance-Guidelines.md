@@ -117,8 +117,14 @@ To protect your intellectual property and contributions:
 |----------|---------|---------|
 | MDLN Token | Ethereum | `0x0DC90d57F3Aa3E836Ffd6E777E543a43A487dB15` |
 | MDLN Vesting | Ethereum | `0x912f61d5e6db656ec1a7be8db8957c5f1e345d58` |
-| DAO Treasury | Ethereum | `0xA7603783edD8ee6FF4B085f90Af53341282d244C` |
-| Medialane Protocol | Starknet | `0x0234f4e8838801ebf01d7f4166d42aed9a55bc67c1301162decf9e2040e05f16` |
+| DAO Treasury (Gnosis Safe) | Ethereum | `0xA7603783edD8ee6FF4B085f90Af53341282d244C` |
+| Marketplace v2 (ERC-721) | Starknet | `0x00f8ccaae0bc811c79605974cc1dab769b9cea8877f033f8e3c17f30457caba6` |
+| Marketplace v2 (ERC-1155) | Starknet | `0x02bfa521c25461a09d735889b469418608d7d92f8b26e3d37ef174a4c2e22f99` |
+| Collection Registry (ERC-721) | Starknet | `0x05c49ee5d3208a2c2e150fdd0c247d1195ed9ab54fa2d5dea7a633f39e4b205b` |
+| Collection Factory (ERC-1155) | Starknet | `0x006b2dc7ca7c4f466bb4575ba043d934310f052074f849caf853a86bcb819fd6` |
+| Drop Factory | Starknet | `0x03587f42e29daee1b193f6cf83bf8627908ed6632d0d83fcb26225c50547d800` |
+| POP Factory | Starknet | `0x00b32c34b427d8f346b5843ada6a37bd3368d879fc752cd52b68a87287f60111` |
+| MDLN on Starknet (bridged) | Starknet | `0x06730d6a357690cebffad800219e9630e15b6f44d35526e0fc9ee52bdf7418e8` |
 
 ## 10. Legal Resources & References
 

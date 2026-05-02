@@ -28,13 +28,24 @@ export const mdln = {
 /** Core Starknet contracts */
 export const starknet = {
   network: 'Starknet Mainnet',
-  marketplace: '0x0234f4e8838801ebf01d7f4166d42aed9a55bc67c1301162decf9e2040e05f16',
-  popFactory: '0x00b32c34b427d8f346b5843ada6a37bd3368d879fc752cd52b68a87287f60111',
+  /** ERC-721 marketplace v2 — audited, non-upgradeable */
+  marketplace721: '0x00f8ccaae0bc811c79605974cc1dab769b9cea8877f033f8e3c17f30457caba6',
+  /** ERC-1155 marketplace v2 */
+  marketplace1155: '0x02bfa521c25461a09d735889b469418608d7d92f8b26e3d37ef174a4c2e22f99',
+  /** ERC-721 collection registry */
+  collection721: '0x05c49ee5d3208a2c2e150fdd0c247d1195ed9ab54fa2d5dea7a633f39e4b205b',
+  /** ERC-1155 collection factory */
+  collection1155: '0x006b2dc7ca7c4f466bb4575ba043d934310f052074f849caf853a86bcb819fd6',
+  /** Drop collection factory (timed mint with supply cap) */
   dropFactory: '0x03587f42e29daee1b193f6cf83bf8627908ed6632d0d83fcb26225c50547d800',
-  /** Bridged MDLN on Starknet — deployed via StarkGate enrollment tx 0xdc8dde1d... */
+  /** POP factory (proof-of-participation soulbound credentials) */
+  popFactory: '0x00b32c34b427d8f346b5843ada6a37bd3368d879fc752cd52b68a87287f60111',
+  /** Bridged MDLN on Starknet */
   mdlnL2: '0x6730d6a357690cebffad800219e9630e15b6f44d35526e0fc9ee52bdf7418e8',
   starkgateL2Bridge: '0x0616757a151c21f9be8775098d591c2807316d992bbc3bb1a5c1821630589256',
   voyagerMdln: 'https://voyager.online/contract/0x6730d6a357690cebffad800219e9630e15b6f44d35526e0fc9ee52bdf7418e8',
+  starkscanMarketplace721: 'https://starkscan.co/contract/0x00f8ccaae0bc811c79605974cc1dab769b9cea8877f033f8e3c17f30457caba6',
+  starkscanMarketplace1155: 'https://starkscan.co/contract/0x02bfa521c25461a09d735889b469418608d7d92f8b26e3d37ef174a4c2e22f99',
 } as const
 
 // brand colors used throughout the app; pulling from a single source makes

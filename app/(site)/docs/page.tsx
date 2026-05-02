@@ -9,8 +9,9 @@ export const metadata: Metadata = {
 }
 
 const sections = [
-  { label: 'Governance', color: 'text-violet-500', bg: 'bg-violet-500', docs: getAllPosts('dao') },
-  { label: 'Legal',      color: 'text-blue-500',   bg: 'bg-blue-500',   docs: getAllPosts('')    },
+  { label: 'Protocol',   color: 'text-primary',    bg: 'bg-primary',    docs: getAllPosts('protocol') },
+  { label: 'Governance', color: 'text-violet-500', bg: 'bg-violet-500', docs: getAllPosts('dao')      },
+  { label: 'Legal',      color: 'text-blue-500',   bg: 'bg-blue-500',   docs: getAllPosts('')         },
 ]
 
 export default function DocsPage() {
@@ -24,7 +25,7 @@ export default function DocsPage() {
           <span className="gradient-text">Docs</span>
         </h1>
         <p className="text-base text-muted-foreground max-w-xl">
-          DAO founding documents, governance charter, community guidelines, and legal policies.
+          Protocol guides, DAO founding documents, governance charter, and legal policies.
         </p>
       </div>
 

@@ -103,7 +103,7 @@ As a decentralized protocol, updates to this Privacy Policy may be proposed and 
 
 If you have questions about this Privacy Policy or our data practices, please contact us at:
 
-**Email:** [mediolanoapp@gmail.com](mailto:mediolanoapp@gmail.com)
+**Email:** [dao@medialane.org](mailto:dao@medialane.org)
 
 We aim to respond to all inquiries within 48 hours.
 
