@@ -48,13 +48,13 @@ export function HeroSection() {
           Medialane · Utah DAO LLC · Starknet Mainnet
         </p>
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] mb-5">
-          <span className="gradient-text">Intellectual property infrastructure</span>
-          <br /><span className="text-foreground">for the open web.</span>
+          <span className="gradient-text">Creator capital markets.</span>
+          <br /><span className="text-foreground">Open. Immutable. Yours.</span>
         </h1>
         <p className="text-base text-muted-foreground max-w-2xl leading-relaxed mb-6">
-          An open protocol for IP registration, licensing, and trade.
-          Deployed on Starknet. Governed by MDLN token holders.
-          No central authority. No intermediaries.
+          New monetization revenues for creators, collectors, organizations, and autonomous AI.
+          Earn royalties, license your work, and trade on-chain — secured by zero-knowledge proofs,
+          governed by the community. No gatekeepers. No intermediaries.
         </p>
         <div className="flex items-center gap-4 flex-wrap">
           <a href="https://medialane.io" target="_blank" rel="noopener noreferrer"
@@ -118,10 +118,10 @@ export function HeroSection() {
         <p className="text-[10px] font-mono uppercase tracking-[0.18em] text-muted-foreground/40 mb-4">Principles</p>
         <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-4">
           {[
-            { title: 'Berne Convention',  body: 'Immutable onchain timestamp creates copyright proof valid in 181 countries — no registration fee, no WIPO filing required.', color: 'text-violet-500' },
-            { title: 'ZK-powered',        body: 'STARK proofs on Starknet. Every transaction batch verified cryptographically on Ethereum. Trustless and censorship-resistant.', color: 'text-blue-500'   },
-            { title: 'Cairo contracts',   body: 'Programmable licensing enforced by immutable Cairo smart contracts. Terms travel with the asset and cannot be altered.',         color: 'text-indigo-500' },
-            { title: 'Community owned',   body: '21M MDLN. 100% DAO treasury. No VCs, no insiders. Creators, developers, and collectors govern every decision.',                color: 'text-primary'    },
+            { title: 'Earn forever',      body: 'Royalties, licensing terms, and revenue splits live inside immutable Cairo smart contracts. Every resale, every license — revenue flows back automatically. Your rules. Your revenue.', color: 'text-violet-500' },
+            { title: 'Born protected',    body: 'Minting timestamps your work under the Berne Convention — instant copyright proof in 181 countries, no lawyers, no registration fees, no WIPO filings required.', color: 'text-blue-500' },
+            { title: 'Censorship-proof',  body: 'STARK proofs on Starknet, verified on Ethereum. No central authority can alter, delist, or censor your work. Open source, permissionless, and built to last.', color: 'text-indigo-500' },
+            { title: 'Built for all intelligences', body: '21M MDLN. 100% DAO treasury. A permissionless layer for creators, organizations, and autonomous AI — governed by the community, not a company.', color: 'text-primary' },
           ].map(({ title, body, color }) => (
             <div key={title} className="rounded-xl border border-border bg-card p-5">
               <p className={`text-sm font-bold mb-2 ${color}`}>{title}</p>
