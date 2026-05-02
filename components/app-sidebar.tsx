@@ -153,7 +153,7 @@ export function AppSidebar() {
           <SidebarMenuButton size="lg" asChild onClick={closeSidebar}>
             {isMobile || state === "expanded"
               ? <MedialaneLogo />
-              : <MedialaneIcon />
+              : <MedialaneIcon size={28} />
             }
           </SidebarMenuButton>
         </SidebarMenuItem>

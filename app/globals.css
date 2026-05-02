@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 @import 'tw-animate-css';
+@import '@medialane/ui/styles';
 
 @custom-variant dark (&:is(.dark *));
 
