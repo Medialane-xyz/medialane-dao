@@ -1,6 +1,6 @@
 # Medialane DAO
 
-**medialane.org** — Governance hub for Medialane, the IP infrastructure protocol for the open web.
+**medialane.org** — Governance hub for Medialane, the creator capital markets platform.
 
 Built on Starknet. Governed by MDLN token holders. No VCs, no insiders.
 
@@ -8,9 +8,9 @@ Built on Starknet. Governed by MDLN token holders. No VCs, no insiders.
 
 ## What is Medialane?
 
-Medialane is an open protocol for IP registration, licensing, and trade — deployed on Starknet, governed by the MDLN DAO. Creators register works as programmable NFTs with Berne Convention-compliant copyright proof valid in 181 countries. License terms are enforced by immutable Cairo smart contracts, not platform policy.
+Medialane is a monetization layer for creators, collectors, organizations, and autonomous AI — deployed on Starknet, governed by the MDLN DAO. Creators mint work as programmable NFTs, earning perpetual royalties enforced by immutable Cairo smart contracts. Every mint timestamps the work under the Berne Convention — instant copyright proof in 181 countries, no lawyers, no registration fees. Platform revenue flows back to the community through the Creator's Airdrop.
 
-- **Protocol**: Starknet mainnet (Cairo smart contracts)
+- **Protocol**: Starknet mainnet (Cairo smart contracts, audited v2)
 - **Governance token**: MDLN on Ethereum mainnet, bridged to Starknet via StarkGate
 - **DAO structure**: Utah DAO LLC
 - **Snapshot**: [medialane.eth](https://snapshot.org/#/s:medialane.eth)
@@ -27,21 +27,26 @@ Medialane is an open protocol for IP registration, licensing, and trade — depl
 | **Vesting** | 9-year linear unlock (2.1M/year) |
 | **Voting** | 1 MDLN = 1 vote (gasless via Snapshot) |
 | **L1 (Ethereum)** | `0x0DC90d57F3Aa3E836Ffd6E777E543a43A487dB15` |
-| **L2 (Starknet)** | `0x6730d6a357690cebffad800219e9630e15b6f44d35526e0fc9ee52bdf7418e8` |
+| **L2 (Starknet)** | `0x06730d6a357690cebffad800219e9630e15b6f44d35526e0fc9ee52bdf7418e8` |
 | **DAO Treasury** | `0xA7603783edD8ee6FF4B085f90Af53341282d244C` (Gnosis Safe) |
-| **Bridge** | [StarkGate](https://starkgate.starknet.io) |
+| **Vesting Contract** | `0x912f61d5e6db656ec1a7be8db8957c5f1e345d58` |
+| **Trade on Ethereum** | [Uniswap](https://app.uniswap.org/swap?outputCurrency=0x0DC90d57F3Aa3E836Ffd6E777E543a43A487dB15) |
 | **Trade on Starknet** | [Ekubo](https://app.ekubo.org) |
+| **Bridge** | [StarkGate](https://starkgate.starknet.io) |
 
 ---
 
-## Starknet Contracts
+## Starknet Contracts (v2)
 
 | Contract | Address |
 |---|---|
-| Marketplace v1.1 | `0x0234f4e8838801ebf01d7f4166d42aed9a55bc67c1301162decf9e2040e05f16` |
-| POP Factory | `0x00b32c34b427d8f346b5843ada6a37bd3368d879fc752cd52b68a87287f60111` |
+| Marketplace v2 (ERC-721) | `0x00f8ccaae0bc811c79605974cc1dab769b9cea8877f033f8e3c17f30457caba6` |
+| Marketplace v2 (ERC-1155) | `0x02bfa521c25461a09d735889b469418608d7d92f8b26e3d37ef174a4c2e22f99` |
+| Collection Registry (ERC-721) | `0x05c49ee5d3208a2c2e150fdd0c247d1195ed9ab54fa2d5dea7a633f39e4b205b` |
+| Collection Factory (ERC-1155) | `0x006b2dc7ca7c4f466bb4575ba043d934310f052074f849caf853a86bcb819fd6` |
 | Drop Factory | `0x03587f42e29daee1b193f6cf83bf8627908ed6632d0d83fcb26225c50547d800` |
-| MDLN (bridged) | `0x6730d6a357690cebffad800219e9630e15b6f44d35526e0fc9ee52bdf7418e8` |
+| POP Factory | `0x00b32c34b427d8f346b5843ada6a37bd3368d879fc752cd52b68a87287f60111` |
+| MDLN (bridged) | `0x06730d6a357690cebffad800219e9630e15b6f44d35526e0fc9ee52bdf7418e8` |
 
 ---
 
@@ -61,12 +66,14 @@ Medialane is an open protocol for IP registration, licensing, and trade — depl
 | | |
 |---|---|
 | Framework | Next.js 16 (App Router) |
-| Styling | Tailwind CSS v4 + shadcn/ui |
+| Styling | Tailwind CSS v4 |
+| UI Components | `@medialane/ui` (shared component library) + shadcn/ui primitives |
 | Theme | next-themes (dark default) |
 | Fonts | Space Grotesk + Geist Mono |
 | Content | Markdown via gray-matter + remark |
 | Governance data | Snapshot API (Revalidate 1h) |
 | Analytics | Vercel Analytics |
+| Package manager | bun |
 | Deploy | medialane.org |
 
 ---
@@ -74,15 +81,15 @@ Medialane is an open protocol for IP registration, licensing, and trade — depl
 ## Development
 
 ```bash
-pnpm install
-pnpm dev        # localhost:3000
-pnpm build      # production build
-pnpm lint
+bun install
+bun dev         # localhost:3000
+bun run build   # production build
+bun lint
 ```
 
-### Adding governance documents
+### Adding content
 
-Drop a `.md` file in `content/dao/` with frontmatter:
+**Governance / founding documents** — drop a `.md` file in `content/dao/`:
 
 ```yaml
 ---
@@ -93,7 +100,7 @@ description: One-line summary
 ---
 ```
 
-It will appear automatically in `/dao` and `/docs`.
+**Protocol documentation** — drop a `.md` file in `content/protocol/`. Both directories auto-appear in `/docs` and are indexed by AI agents via `llms.txt`.
 
 ---
 
@@ -101,13 +108,20 @@ It will appear automatically in `/dao` and `/docs`.
 
 | Route | Description |
 |---|---|
-| `/` | Overview — protocol, stats, token, contracts, principles |
-| `/dao` | Governance — Snapshot proposals, voting, founding documents |
-| `/explore` | Protocol — create, marketplace, launchpad, developer, IP protection, Starknet infra |
-| `/members` | MDLN token — tokenomics, distribution, bridge, Starknet benefits, membership tiers |
+| `/` | Overview — creator capital markets mission, stats, token, contracts, principles |
+| `/dao` | Governance — live Snapshot proposals, voting guide, founding documents |
+| `/explore` | Protocol — create, marketplace, launchpad, developer tools, creator rights, Starknet infra |
+| `/members` | MDLN token — tokenomics, distribution, Creator's Airdrop, bridge, membership tiers |
 | `/connect` | Contact — email, socials, quick links |
-| `/docs` | All founding documents index |
+| `/docs` | All documents index (protocol + governance + legal) |
 | `/docs/[slug]` | Individual document viewer |
+
+---
+
+## AI Agent Files
+
+- **`AGENTS.md`** — authoritative guidance for agentic workers (file map, conventions, common tasks)
+- **`llms.txt`** — machine-readable protocol summary for LLM consumption
 
 ---
 
@@ -115,9 +129,11 @@ It will appear automatically in `/dao` and `/docs`.
 
 - Site: [medialane.org](https://medialane.org)
 - App: [medialane.io](https://medialane.io)
+- Docs: [docs.medialane.io](https://docs.medialane.io)
 - Snapshot: [snapshot.org/#/s:medialane.eth](https://snapshot.org/#/s:medialane.eth)
-- Voyager (MDLN L2): [voyager.online/contract/0x6730d6a3...](https://voyager.online/contract/0x6730d6a357690cebffad800219e9630e15b6f44d35526e0fc9ee52bdf7418e8)
+- GitHub: [github.com/medialane-io](https://github.com/medialane-io)
 - X: [@medialane_xyz](https://x.com/medialane_xyz)
+- YouTube: [@medialanexyz](https://www.youtube.com/@medialanexyz)
 
 ---
 
