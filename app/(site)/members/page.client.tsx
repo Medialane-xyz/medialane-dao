@@ -208,9 +208,9 @@ export default function MembersPageClient() {
             { step: '03', title: 'Propose & Vote', desc: "Submit governance proposals, vote on platform decisions, and shape Medialane's future." },
           ].map((s) => (
             <div key={s.step} className="flex gap-3">
-              <span className="font-mono text-xs font-bold text-muted-foreground/25 pt-0.5 shrink-0">{s.step}</span>
+              <span className="font-mono text-xl font-black text-brand-purple/20 leading-none shrink-0">{s.step}</span>
               <div>
-                <p className="text-sm font-semibold text-foreground mb-1">{s.title}</p>
+                <p className="text-sm font-bold text-foreground mb-1.5">{s.title}</p>
                 <p className="text-xs text-muted-foreground/60 leading-relaxed">{s.desc}</p>
               </div>
             </div>

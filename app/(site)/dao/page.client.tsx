@@ -141,15 +141,15 @@ export default function DAOPageClient({ documents, proposals, stats }: DAOPageCl
 
           <div className="bento-cell p-5">
             <SectionHeader label="How to vote" />
-            <div className="space-y-3 text-xs text-muted-foreground/70 leading-relaxed">
+            <div className="space-y-4 text-xs text-muted-foreground/70 leading-relaxed">
               {[
                 'Get MDLN on Ethereum via Uniswap, or on Starknet via Ekubo.',
                 'Connect your wallet to Snapshot at medialane.eth.',
                 'Vote on proposals. 1 MDLN = 1 vote. Gasless.',
               ].map((s, i) => (
-                <div key={i} className="flex gap-2.5">
-                  <span className="font-mono font-bold text-muted-foreground/30 shrink-0">0{i + 1}</span>
-                  <p>{s}</p>
+                <div key={i} className="flex gap-3">
+                  <span className="font-mono text-base font-black text-brand-purple/20 leading-none shrink-0">0{i + 1}</span>
+                  <p className="leading-relaxed">{s}</p>
                 </div>
               ))}
             </div>

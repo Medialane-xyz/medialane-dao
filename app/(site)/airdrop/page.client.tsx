@@ -151,31 +151,39 @@ export default function AirdropPageClient() {
 
       {/* Distribution phases + fair design */}
       <div className="grid lg:grid-cols-2 gap-6">
-        <div className="bento-cell p-5">
-          <SectionHeader label="Distribution Phases" />
-          <div className="space-y-0 divide-y divide-border/60">
-            {phases.map((p) => (
-              <div key={p.phase} className="py-3 flex items-center justify-between">
-                <div>
+        <div className="bento-cell p-5 sm:p-6">
+          <SectionHeader label="Distribution Phases" className="mb-4" />
+          <div className="space-y-4">
+            {phases.map((p, i) => (
+              <div key={p.phase} className="flex gap-4">
+                <div className="flex flex-col items-center">
+                  <div className={`flex size-7 items-center justify-center rounded-full text-[10px] font-bold font-mono shrink-0 ${
+                    i < phases.length - 1 ? 'bg-brand-purple/10 text-brand-purple' : 'bg-brand-blue/10 text-brand-blue'
+                  }`}>
+                    {String(i + 1).padStart(2, '0')}
+                  </div>
+                  {i < phases.length - 1 && <div className="w-px flex-1 bg-border/60 mt-2" />}
+                </div>
+                <div className="pb-4">
                   <p className="text-sm font-semibold text-foreground">{p.phase}</p>
                   <p className="text-xs text-muted-foreground/60 mt-0.5">{p.trigger}</p>
+                  <span className="inline-block mt-1.5 text-[10px] font-mono text-muted-foreground/50 bg-muted px-2 py-0.5 rounded-full">{p.type}</span>
                 </div>
-                <span className="text-[10px] font-mono text-muted-foreground/50 bg-muted px-2 py-0.5 rounded-full">{p.type}</span>
               </div>
             ))}
           </div>
-          <p className="text-xs text-muted-foreground/40 mt-4 leading-relaxed">
-            Phases are not time-gated — they unlock when the community reaches the participation milestone. Annual cycles continue as long as the protocol generates revenue and MDLN holders vote to continue.
+          <p className="text-xs text-muted-foreground/40 mt-2 leading-relaxed border-t border-border/60 pt-4">
+            Phases unlock when the community reaches the milestone — not time-gated. Annual cycles continue as long as the protocol generates revenue and MDLN holders vote to continue.
           </p>
         </div>
 
-        <div className="bento-cell p-5">
-          <SectionHeader label="Fair by Design" />
-          <ul className="space-y-3">
-            {fairDesign.map((item) => (
-              <li key={item} className="flex items-start gap-2.5 text-xs text-muted-foreground/70 leading-relaxed">
-                <CheckCircle className="size-3.5 shrink-0 text-brand-purple mt-0.5" />
-                {item}
+        <div className="bento-cell p-5 sm:p-6">
+          <SectionHeader label="Fair by Design" className="mb-4" />
+          <ul className="space-y-4">
+            {fairDesign.map((item, i) => (
+              <li key={i} className="flex gap-3">
+                <span className="font-mono text-[10px] font-bold text-brand-purple/50 shrink-0 pt-0.5">{String(i + 1).padStart(2, '0')}</span>
+                <p className="text-xs text-muted-foreground/70 leading-relaxed">{item}</p>
               </li>
             ))}
           </ul>
@@ -187,16 +195,24 @@ export default function AirdropPageClient() {
         <SectionHeader label="Active Campaigns" color="text-brand-blue" bg="bg-brand-blue" className="mb-6" />
         <Stagger className="grid sm:grid-cols-2 gap-4">
           <StaggerItem>
-            <div className="p-5 bento-cell h-full">
-              <p className="text-sm font-bold text-foreground mb-1.5">Global Campaign</p>
+            <div className="bento-cell p-5 sm:p-6 h-full bg-gradient-to-br from-brand-purple/5 to-transparent">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="size-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="text-[10px] font-bold tracking-widest uppercase text-emerald-600 dark:text-emerald-400">Live</span>
+              </div>
+              <p className="text-base font-bold text-foreground mb-2">Global Campaign</p>
               <p className="text-xs text-muted-foreground/70 leading-relaxed">
                 Open to all participants worldwide. Participate at medialane.io. Activity tracked on Starknet — auditable by anyone.
               </p>
             </div>
           </StaggerItem>
           <StaggerItem>
-            <div className="p-5 bento-cell h-full">
-              <p className="text-sm font-bold text-foreground mb-1.5">Brasil Campaign</p>
+            <div className="bento-cell p-5 sm:p-6 h-full bg-gradient-to-br from-brand-blue/5 to-transparent">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="size-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="text-[10px] font-bold tracking-widest uppercase text-emerald-600 dark:text-emerald-400">Live</span>
+              </div>
+              <p className="text-base font-bold text-foreground mb-2">Brasil Campaign</p>
               <p className="text-xs text-muted-foreground/70 leading-relaxed">
                 Dedicated campaign for Portuguese-speaking creators in Brazil and the broader Portuguese-speaking community. Same structure, same rules — tracked as a separate cohort.
               </p>
@@ -207,13 +223,13 @@ export default function AirdropPageClient() {
 
       {/* How to participate */}
       <div className="bento-cell p-6 sm:p-8">
-        <SectionHeader label="How to Participate" className="mb-5" />
+        <SectionHeader label="How to Participate" className="mb-6" />
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
           {howToParticipate.map((s) => (
             <div key={s.step} className="flex gap-3">
-              <span className="font-mono text-xs font-bold text-muted-foreground/25 pt-0.5 shrink-0">{s.step}</span>
+              <span className="font-mono text-xl font-black text-brand-purple/20 leading-none shrink-0">{s.step}</span>
               <div>
-                <p className="text-sm font-semibold text-foreground mb-1">{s.title}</p>
+                <p className="text-sm font-bold text-foreground mb-1.5">{s.title}</p>
                 <p className="text-xs text-muted-foreground/60 leading-relaxed">{s.desc}</p>
               </div>
             </div>
