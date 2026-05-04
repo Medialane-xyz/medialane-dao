@@ -9,10 +9,10 @@ Medialane DAO is the governance site for the Medialane protocol — a monetizati
 ## Commands
 
 ```bash
-pnpm dev          # Start dev server at localhost:3000
-pnpm build        # Production build (TypeScript errors are ignored — see next.config.mjs)
-pnpm lint         # ESLint
-pnpm start        # Serve production build
+bun dev           # Start dev server at localhost:3000
+bun run build     # Production build (TypeScript errors are ignored — see next.config.mjs)
+bun run lint      # ESLint
+bun run start     # Serve production build
 ```
 
 There are no tests in this project.
