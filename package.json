@@ -1,5 +1,5 @@
 {
-  "name": "my-project",
+  "name": "medialane-dao",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -38,8 +38,6 @@
     "@radix-ui/react-toggle": "1.1.10",
     "@radix-ui/react-toggle-group": "1.1.11",
     "@radix-ui/react-tooltip": "1.2.8",
-    "@react-three/drei": "^10.0.0",
-    "@react-three/fiber": "^9.1.2",
     "@tailwindcss/typography": "^0.5.19",
     "@vercel/analytics": "1.6.1",
     "autoprefixer": "^10.4.20",
@@ -51,9 +49,7 @@
     "framer-motion": "^12.0.0",
     "gray-matter": "^4.0.3",
     "input-otp": "1.4.2",
-    "lenis": "^1.3.21",
     "lucide-react": "^0.564.0",
-    "maath": "^0.10.8",
     "next": "16.1.6",
     "next-themes": "^0.4.6",
     "react": "19.2.4",
@@ -66,7 +62,6 @@
     "remark-html": "^16.0.1",
     "sonner": "^1.7.1",
     "tailwind-merge": "^3.3.1",
-    "three": "^0.175.0",
     "vaul": "^1.1.2",
     "zod": "^3.24.1"
   },
@@ -75,7 +70,6 @@
     "@types/node": "^22",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
-    "@types/three": "^0.175.0",
     "postcss": "^8.5",
     "tailwindcss": "^4.2.0",
     "tw-animate-css": "1.3.3",

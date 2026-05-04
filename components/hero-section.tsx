@@ -131,15 +131,6 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* ── Footer ────────────────────────────────────────────────────────── */}
-      <footer className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-4 border-t border-border text-[11px] font-mono text-muted-foreground/30">
-        <p>© {new Date().getFullYear()} Medialane DAO · Utah DAO LLC</p>
-        <div className="flex items-center gap-4">
-          <Link href="/docs" className="hover:text-foreground transition-colors">Docs</Link>
-          <a href={siteConfig.snapshot} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Snapshot ↗</a>
-          <a href="https://medialane.io" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">App ↗</a>
-        </div>
-      </footer>
 
     </div>
   )

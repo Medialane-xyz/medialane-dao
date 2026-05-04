@@ -90,11 +90,3 @@ export const navSections: NavSection[] = [
   },
 ]
 
-/** Camera positions per route for the 3D scene */
-export const cameraTargets: Record<string, [number, number, number]> = {
-  '/': [0, 0, 8],
-  '/explore': [5, 2, 6],
-  '/dao': [-4, 3, 7],
-  '/members': [0, -2, 5],
-  '/connect': [3, -1, 9],
-}
