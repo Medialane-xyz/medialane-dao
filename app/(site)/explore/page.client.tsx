@@ -1,5 +1,6 @@
 'use client'
 
+import { Stagger, StaggerItem } from '@medialane/ui'
 import { starknet } from '@/lib/site-config'
 import { PageHero } from '@/components/page-hero'
 import { SectionHeader } from '@/components/section-header'
@@ -8,8 +9,10 @@ import { FeatureCard } from '@/components/feature-card'
 const features = [
   {
     section: 'Monetize',
-    color: 'text-violet-500',
-    bg: 'bg-violet-500',
+    color: 'text-brand-purple',
+    bg: 'bg-brand-purple',
+    gradient: 'from-brand-purple/10 to-transparent',
+    buttonColor: 'bg-brand-purple',
     items: [
       {
         title: 'Mint IP Asset',
@@ -39,8 +42,10 @@ const features = [
   },
   {
     section: 'Marketplace',
-    color: 'text-blue-500',
-    bg: 'bg-blue-500',
+    color: 'text-brand-blue',
+    bg: 'bg-brand-blue',
+    gradient: 'from-brand-blue/10 to-transparent',
+    buttonColor: 'bg-brand-blue',
     items: [
       {
         title: 'Browse & Discover',
@@ -70,8 +75,10 @@ const features = [
   },
   {
     section: 'Launchpad',
-    color: 'text-indigo-500',
-    bg: 'bg-indigo-500',
+    color: 'text-brand-purple',
+    bg: 'bg-brand-purple',
+    gradient: 'from-brand-purple/10 to-transparent',
+    buttonColor: 'bg-brand-purple',
     items: [
       {
         title: 'Collection Drop',
@@ -101,8 +108,10 @@ const features = [
   },
   {
     section: 'Developer',
-    color: 'text-primary',
-    bg: 'bg-primary',
+    color: 'text-brand-blue',
+    bg: 'bg-brand-blue',
+    gradient: 'from-brand-blue/10 to-transparent',
+    buttonColor: 'bg-brand-blue',
     items: [
       {
         title: 'Medialane SDK',
@@ -132,8 +141,10 @@ const features = [
   },
   {
     section: 'Creator Rights',
-    color: 'text-violet-500',
-    bg: 'bg-violet-500',
+    color: 'text-brand-purple',
+    bg: 'bg-brand-purple',
+    gradient: 'from-brand-purple/10 to-transparent',
+    buttonColor: 'bg-brand-purple',
     items: [
       {
         title: 'Born Protected',
@@ -163,8 +174,10 @@ const features = [
   },
   {
     section: 'Starknet Infrastructure',
-    color: 'text-blue-500',
-    bg: 'bg-blue-500',
+    color: 'text-brand-blue',
+    bg: 'bg-brand-blue',
+    gradient: 'from-brand-blue/10 to-transparent',
+    buttonColor: 'bg-brand-blue',
     items: [
       {
         title: 'Native Account Abstraction',
@@ -196,7 +209,7 @@ const features = [
 
 export default function ExplorePageClient() {
   return (
-    <div className="px-6 lg:px-10 xl:px-14 py-8 space-y-10">
+    <div className="px-4 sm:px-6 lg:px-10 xl:px-14 py-10 sm:py-12 lg:py-16 space-y-12">
       <PageHero
         eyebrow="Medialane · Protocol"
         title="Protocol"
@@ -205,12 +218,18 @@ export default function ExplorePageClient() {
 
       {features.map((section) => (
         <div key={section.section}>
-          <SectionHeader label={section.section} color={section.color} bg={section.bg} />
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <SectionHeader label={section.section} color={section.color} bg={section.bg} className="mb-6" />
+          <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {section.items.map((item) => (
-              <FeatureCard key={item.title} {...item} />
+              <StaggerItem key={item.title}>
+                <FeatureCard
+                  {...item}
+                  gradient={section.gradient}
+                  buttonColor={section.buttonColor}
+                />
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </div>
       ))}
     </div>
