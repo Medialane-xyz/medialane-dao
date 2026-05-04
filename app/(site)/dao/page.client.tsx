@@ -4,6 +4,9 @@ import Link from 'next/link'
 import { siteConfig, mdln } from '@/lib/site-config'
 import type { SnapshotProposal, MdlnStats } from '@/lib/governance'
 import { ArrowUpRight, ExternalLink, FileText } from 'lucide-react'
+import { PageHero } from '@/components/page-hero'
+import { StatCard } from '@/components/stat-card'
+import { SectionHeader } from '@/components/section-header'
 
 function timeLeft(end: number): string | null {
   const diff = end * 1000 - Date.now()
@@ -57,31 +60,38 @@ export default function DAOPageClient({ documents, proposals, stats }: DAOPageCl
   return (
     <div className="px-6 lg:px-10 xl:px-14 py-8 space-y-10">
 
-      {/* Header */}
-      <div>
-        <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground/40 mb-4">Medialane · Utah DAO LLC</p>
-        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-3">
-          <span className="gradient-text">Governance</span>
-        </h1>
-        <p className="text-base text-muted-foreground max-w-xl">
-          Medialane is governed by its community — creators, collectors, builders, and autonomous AI that hold MDLN. Every protocol upgrade, revenue distribution, and strategic decision is voted on-chain by token holders. No VCs. No insiders. No company.
-        </p>
+      <PageHero
+        eyebrow="Medialane · Utah DAO LLC"
+        title="Governance"
+        description="Medialane is governed by its community — creators, collectors, builders, and autonomous AI that hold MDLN. Every protocol upgrade and revenue decision is voted on-chain. No VCs. No insiders. No company."
+      />
+
+      {/* Token Stats */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <StatCard label="Total Supply" value="21,000,000" sub="MDLN · Fixed forever" accent="border-t-violet-500" />
+        <StatCard
+          label="Vested"
+          value={`${Math.round((stats.vestingLocked / mdln.totalSupply) * 100)}%`}
+          sub="9-year linear vesting"
+          accent="border-t-blue-500"
+        />
+        <StatCard label="Operational" value="10%" sub="2.1M · protocol runway" accent="border-t-indigo-500" />
+        <StatCard
+          label="Holders"
+          value={stats.holders ? stats.holders.toLocaleString() : '—'}
+          sub="Ethereum mainnet"
+          accent="border-t-primary"
+        />
       </div>
 
-      {/* Stats */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        {[
-          { label: 'Total Supply', value: '21,000,000', sub: 'MDLN · Fixed',       accent: 'border-t-violet-500' },
-          { label: 'Vested',       value: `${Math.round((stats.vestingLocked / mdln.totalSupply) * 100)}%`, sub: '9-year linear', accent: 'border-t-blue-500' },
-          { label: 'Operational',  value: '10%',        sub: '2.1M runway',         accent: 'border-t-indigo-500' },
-          { label: 'Holders',      value: stats.holders ? stats.holders.toLocaleString() : '—', sub: 'Ethereum mainnet', accent: 'border-t-primary' },
-        ].map((s) => (
-          <div key={s.label} className={`rounded-xl border border-border bg-card p-5 border-t-2 ${s.accent}`}>
-            <p className="text-xs text-muted-foreground/60 mb-1">{s.label}</p>
-            <p className="text-2xl font-bold font-mono text-foreground">{s.value}</p>
-            <p className="text-xs text-muted-foreground/50 mt-0.5">{s.sub}</p>
-          </div>
-        ))}
+      {/* How Revenue Works */}
+      <div className="rounded-xl border border-border bg-card p-6 max-w-3xl">
+        <SectionHeader label="Treasury & Revenue" />
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          A 1% marketplace fee flows into the Medialane DAO treasury — a Gnosis Safe multisig on Ethereum, fully auditable on-chain.
+          Each year, MDLN holders vote on Snapshot to decide how that revenue is used: Creator&#39;s Airdrop, token buyback, token burn,
+          protocol development, or operations. No predetermined formula. Community-governed every cycle.
+        </p>
       </div>
 
       {/* Proposals + sidebar */}
@@ -109,12 +119,12 @@ export default function DAOPageClient({ documents, proposals, stats }: DAOPageCl
 
         <div className="space-y-4">
           <div className="rounded-xl border border-border bg-card p-5">
-            <p className="text-[10px] font-mono uppercase tracking-[0.15em] text-muted-foreground/40 mb-4">On-chain</p>
+            <SectionHeader label="On-chain" />
             {[
-              { label: 'MDLN Contract',           href: mdln.etherscanToken    },
-              { label: 'Vesting Contract',        href: mdln.etherscanVesting  },
-              { label: 'Treasury (Gnosis)',       href: mdln.etherscanTreasury },
-              { label: 'Snapshot · medialane.eth', href: siteConfig.snapshot   },
+              { label: 'MDLN Contract',            href: mdln.etherscanToken    },
+              { label: 'Vesting Contract',         href: mdln.etherscanVesting  },
+              { label: 'Treasury (Gnosis Safe)',   href: mdln.etherscanTreasury },
+              { label: 'Snapshot · medialane.eth', href: siteConfig.snapshot    },
             ].map((l) => (
               <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer"
                 className="flex items-center justify-between py-2.5 text-sm text-muted-foreground/70 hover:text-primary transition-colors group border-b border-border/60 last:border-0">
@@ -125,11 +135,15 @@ export default function DAOPageClient({ documents, proposals, stats }: DAOPageCl
           </div>
 
           <div className="rounded-xl border border-border bg-card p-5">
-            <p className="text-[10px] font-mono uppercase tracking-[0.15em] text-muted-foreground/40 mb-4">How to vote</p>
+            <SectionHeader label="How to vote" />
             <div className="space-y-3 text-xs text-muted-foreground/70 leading-relaxed">
-              {['Get MDLN on Ethereum via Uniswap, or on Starknet via Ekubo.', 'Connect your wallet to Snapshot at medialane.eth.', 'Vote on proposals. 1 MDLN = 1 vote. Gasless.'].map((s, i) => (
+              {[
+                'Get MDLN on Ethereum via Uniswap, or on Starknet via Ekubo.',
+                'Connect your wallet to Snapshot at medialane.eth.',
+                'Vote on proposals. 1 MDLN = 1 vote. Gasless.',
+              ].map((s, i) => (
                 <div key={i} className="flex gap-2.5">
-                  <span className="font-mono font-bold text-muted-foreground/30 shrink-0">0{i+1}</span>
+                  <span className="font-mono font-bold text-muted-foreground/30 shrink-0">0{i + 1}</span>
                   <p>{s}</p>
                 </div>
               ))}
@@ -145,7 +159,7 @@ export default function DAOPageClient({ documents, proposals, stats }: DAOPageCl
       {/* Founding Documents */}
       {Object.keys(documents).length > 0 && (
         <div>
-          <p className="text-[10px] font-mono uppercase tracking-[0.18em] text-muted-foreground/40 mb-4">Founding Documents</p>
+          <SectionHeader label="Founding Documents" />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {Object.entries(documents).map(([slug, doc]) => (
               <Link key={slug} href={`/docs/${slug}`}
