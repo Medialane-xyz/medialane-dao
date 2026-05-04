@@ -11,9 +11,13 @@ author: "Medialane DAO"
 
 Platform revenue distributed to creators, collectors, and active participants — not extracted by investors or insiders. Every cycle is governed by MDLN holders and verified on-chain.
 
+## Governance First
+
+A 1% marketplace fee flows to the Medialane DAO treasury. Each year, MDLN holders vote on Snapshot to decide how that revenue is used — Creator's Airdrop, token buyback, token burn, protocol development, or operations. No predetermined formula. The Creator's Airdrop is one option, not a guarantee.
+
 ## The Model
 
-Medialane charges a 1% marketplace fee. That revenue funds the Creator's Airdrop pool — no investors, no middlemen. Every cycle, the full pool is distributed to the community that created the value.
+When MDLN holders vote to fund the Creator's Airdrop, the allocated pool is distributed to creators, collectors, and active participants — no investors, no middlemen.
 
 | Attribute | Detail |
 |-----------|--------|
