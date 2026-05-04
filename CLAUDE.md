@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Medialane DAO is a Next.js 16 / React 19 governance site for a Starknet-based decentralized autonomous organization. It is a static/SSR informational site — there is no backend, database, or authentication layer.
+Medialane DAO is the governance site for the Medialane protocol — a monetization hub for onchain assets (IP, RWAs, NFTs, tokens) built on Starknet. It is a Next.js 16 / React 19 static/SSR informational site. There is no backend, database, or authentication layer.
 
 ## Commands
 
@@ -23,68 +23,59 @@ There are no tests in this project.
 
 All public-facing pages live under `app/(site)/` (a route group wrapping every page in `AppShell`):
 
-- `/` — Homepage
-- `/explore` — Apps, features & services
-- `/dao` — DAO governance documents rendered from Markdown
-- `/members` — Members page
+- `/` — Homepage (hero, pillars, treasury, quick links)
+- `/explore` — Protocol features by section (Monetize, Marketplace, Launchpad, Developer, Creator Rights, Starknet)
+- `/dao` — Governance: live Snapshot proposals, token stats, founding documents
+- `/members` — MDLN token, tokenomics, distribution, bridge/trade links
+- `/build` — Developer hub: SDK, AI agent access, Starknet contracts, protocol docs
+- `/airdrop` — Creator's Airdrop: governance framing, participation tiers, campaigns
 - `/connect` — Get-involved page
-- `/docs/[slug]` — Individual Markdown document viewer (reads from `content/` root)
-
-The `app/docs` directory (without the route group) also exists but only contains the `[slug]` dynamic route served under `(site)`.
+- `/docs` — Document index (lists all Markdown docs)
+- `/docs/[slug]` — Individual Markdown document viewer
 
 ### The AppShell Pattern
 
-Every (site) page is wrapped by `AppShell` (`components/app-shell.tsx`), which renders three layers:
+Every `(site)` page is wrapped by `AppShell` (`components/app-shell.tsx`), which renders:
 
-1. **`SceneCanvas`** — a full-viewport `position: fixed; z-index: -10` Three.js canvas
-2. **`SiteNav`** — navigation (desktop sidebar + mobile bottom bar/drawer)
-3. **`<main>`** — page content with `bg-background/80` producing a glassmorphism effect over the 3D scene
+1. **`AppSidebar`** — collapsible icon sidebar (shadcn/ui Sidebar primitives). Collapses to icon-only on desktop, opens as sheet on mobile.
+2. **`<main>`** — page content
+3. **`<footer>`** — site-wide footer with nav links
 
-### 3D Scene (`components/three/`)
+The sidebar is provided via `SidebarProvider` with `defaultOpen={false}`.
 
-- `scene-canvas.tsx` — dynamically imports `Scene` with `ssr: false` to avoid hydration issues
-- `scene.tsx` — `react-three-fiber` `<Canvas>`, mounts only after hydration (`useState(mounted)`)
-- `scene-controller.tsx` — reads `usePathname()` and smoothly animates the camera to route-specific positions defined in `lib/site-config.ts → cameraTargets`
-- `media-lanes.tsx` / `integrity-web.tsx` — the actual Three.js geometry objects
+### Shared Page Components
 
-Camera targets per route are configured in `lib/site-config.ts` alongside nav links and brand colors.
+These components are used across all pages for visual consistency:
+
+- `components/page-hero.tsx` — `PageHero` — eyebrow + gradient title + description + optional children (CTA buttons)
+- `components/section-header.tsx` — `SectionHeader` — colored accent line + mono uppercase label
+- `components/stat-card.tsx` — `StatCard` — metric card with colored top border accent
+- `components/feature-card.tsx` — `FeatureCard` — card with optional icon, `StatusBadge`, tags, and link handling (internal/external/none)
+
+When adding new pages, use these components first. Do not duplicate their markup inline.
+
+### Server → Client Split
+
+All data-fetching pages follow the `page.tsx` (server) → `page.client.tsx` (client) pattern:
+
+- `page.tsx` — `async` server component; fetches data, exports `metadata`, renders `<PageClient />`
+- `page.client.tsx` — `'use client'` component; receives props, renders UI
+
+Static pages (no data fetching) can be a single `page.tsx` that renders the client component via `dynamic()` import, or simply inline a client component directly.
 
 ### Content / Markdown
 
-DAO governance documents live in `content/dao/*.md` with gray-matter frontmatter (`title`, `date`, `author`, `description`). The `/dao` page server component fetches all of them via `lib/markdown.ts → getAllPosts('dao')` and passes rendered HTML to a client component (`page.client.tsx`).
+Markdown content lives in subdirectories of `content/`:
 
-The `/docs/[slug]` route reads from `content/` (root level, no subdirectory). Add new top-level docs there.
+| Directory | Purpose |
+|-----------|---------|
+| `content/dao/` | DAO founding documents (Constitution, Charter, Guidelines, etc.) |
+| `content/protocol/` | Protocol documentation (Getting-Started, IP-Assets, SDK, Marketplace, etc.) |
+| `content/` (root) | Legal docs (Terms-of-Use, Privacy-Policy) |
 
-### Styling
+The `/docs/[slug]` route resolves slugs by trying `dao` → `protocol` → root (in that order). `generateStaticParams` covers all three directories.
 
-- **Tailwind v4** with `@tailwindcss/typography` for prose content
-- Custom brand tokens defined in `globals.css` as CSS variables and mapped via `@theme inline`:
-  - `ml-blue` (#0000FF), `ml-deep` (#0C0C4F), `ml-orange` (#EC796B), `ml-mauve` (#E175B1)
-  - `ml-glass` / `ml-glass-border` — used by `GlassCard` for the frosted-glass UI pattern
-- Brand colors are also centralized in `lib/site-config.ts → colors` for use in TypeScript (Three.js lighting etc.)
-- Fonts: Space Grotesk (sans) and Geist Mono (mono), loaded via `next/font`
-- Dark mode default; `next-themes` with `class` strategy
-
-### UI Components
-
-`components/ui/` — shadcn/ui components (Radix UI primitives + Tailwind). Do not hand-edit these; regenerate via shadcn CLI if updates are needed.
-
-Custom project components:
-- `GlassCard` — primary card primitive using `ml-glass`/`ml-glass-border` tokens, accepts `intensity` prop (`light` | `medium` | `heavy`)
-- `PageHeader` — standardized page title/description header
-- `HeroSection` — homepage hero
-- `SiteNav` — splits into `DesktopNav` (vertical sidebar, right edge) and `MobileBar`/`MobileDrawer` (bottom bar + sheet)
-
-### Animation
-
-`lib/motion.ts` exports `createContainerVariants` and `createItemVariants` — shared Framer Motion variant factories used across pages for staggered entrance animations.
-
-### Key Config Files
-
-- `lib/site-config.ts` — single source of truth for site name/URL, nav sections, brand colors, and 3D camera positions per route
-- `next.config.mjs` — TypeScript build errors are suppressed (`ignoreBuildErrors: true`); images are unoptimized
-
-## Content Conventions
+`lib/markdown.ts` exports `getAllPosts(subdirectory)` and `getPostBySlug(slug, subdirectory)`.
 
 Markdown files must include frontmatter:
 ```yaml
@@ -95,3 +86,46 @@ author: Optional Author
 description: Optional description
 ---
 ```
+
+### Live Governance Data
+
+`lib/governance.ts` fetches:
+- **Snapshot proposals** via the Snapshot GraphQL API (`getSnapshotProposals`)
+- **MDLN holder count** via Etherscan API (`getMdlnStats`)
+
+These are called server-side in `app/(site)/dao/page.tsx`. Both functions return empty/zero defaults on error — no loading states needed.
+
+### Key Config (`lib/site-config.ts`)
+
+Single source of truth for:
+- `siteConfig` — name, URL, Snapshot URL, ENS
+- `mdln` — MDLN token/vesting/treasury addresses + Etherscan links
+- `starknet` — all Starknet contract addresses (marketplace 721/1155, collections, drop factory, POP factory, bridged MDLN) + Starkscan/Voyager links
+- `colors` — brand color hex values (used in TypeScript where Tailwind classes can't reach)
+- `navSections` — sidebar nav items (source of truth for what pages exist)
+
+### Styling
+
+- **Tailwind v4** with `@tailwindcss/typography` for prose content
+- Custom brand tokens in `globals.css` as CSS variables, mapped via `@theme inline`:
+  - `ml-blue` (#0000FF), `ml-deep` (#0C0C4F), `ml-orange` (#EC796B), `ml-mauve` (#E175B1)
+- `gradient-text` utility class — applies the brand blue gradient to headings
+- Fonts: Space Grotesk (sans) and Geist Mono (mono), loaded via `next/font`
+- Dark mode default; `next-themes` with `class` strategy
+
+### UI Components
+
+`components/ui/` — shadcn/ui components (Radix UI primitives + Tailwind). Do not hand-edit these; regenerate via shadcn CLI if updates are needed.
+
+`@medialane/ui` — shared component library. Imported where available.
+
+### Key Config Files
+
+- `lib/site-config.ts` — single source of truth for addresses, nav, brand colors
+- `next.config.mjs` — TypeScript build errors suppressed (`ignoreBuildErrors: true`); images unoptimized
+
+## Content Principles
+
+No fake data, no mockups, no placeholder stats. Every number on the site must be derivable from on-chain addresses, the SDK, or the Markdown docs. If a stat is uncertain, omit it or show `—`.
+
+Revenue framing: 1% marketplace fee → DAO treasury → MDLN holders vote annually on allocation (Creator's Airdrop, buyback, burn, development, operations). The Creator's Airdrop is one option, not a guaranteed formula. All copy must reflect this.
