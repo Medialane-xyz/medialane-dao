@@ -84,6 +84,16 @@ export const navSections: NavSection[] = [
     description: 'Membership & Token',
   },
   {
+    label: 'Build',
+    href: '/build',
+    description: 'SDK, contracts & AI agents',
+  },
+  {
+    label: 'Airdrop',
+    href: '/airdrop',
+    description: "Creator's Airdrop",
+  },
+  {
     label: 'Connect',
     href: '/connect',
     description: 'Get involved',
