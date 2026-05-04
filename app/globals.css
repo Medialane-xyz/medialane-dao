@@ -2,6 +2,7 @@
 @plugin '@tailwindcss/typography';
 @import 'tw-animate-css';
 @import '@medialane/ui/styles';
+@source "../node_modules/@medialane/ui/dist";
 
 @custom-variant dark (&:is(.dark *));
 
