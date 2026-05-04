@@ -10,29 +10,28 @@ import { SectionHeader } from '@/components/section-header'
 
 const tiers = [
   {
+    num: '01',
     title: 'Observer',
     requirement: '1+ MDLN',
     description: 'Follow governance and join the community.',
     perks: ['View all proposals', 'Community forums', 'Discussions & feedback'],
     color: 'text-brand-purple',
-    borderColor: 'border-t-brand-purple',
   },
   {
+    num: '02',
     title: 'Contributor',
     requirement: '100+ MDLN',
     description: 'Vote on proposals and shape the platform.',
     perks: ['Submit governance proposals', 'Vote on Snapshot', 'Early feature access', 'Contributor channels'],
-    featured: true,
     color: 'text-brand-blue',
-    borderColor: 'border-t-brand-blue',
   },
   {
+    num: '03',
     title: 'Guardian',
     requirement: '1,000+ MDLN',
     description: 'Lead working groups and represent creators.',
     perks: ['Council nomination rights', 'Working group leadership', 'Ecosystem grants', 'Priority API access'],
     color: 'text-brand-purple',
-    borderColor: 'border-t-brand-purple',
   },
 ]
 
@@ -173,20 +172,21 @@ export default function MembersPageClient() {
         <Stagger className="grid sm:grid-cols-3 gap-4">
           {tiers.map((tier) => (
             <StaggerItem key={tier.title}>
-              <div className={`flex flex-col gap-4 p-5 bento-cell border-t-2 ${tier.borderColor} h-full ${
-                tier.featured ? 'border-brand-blue/20' : ''
-              }`}>
-                <div>
-                  <div className="flex items-center justify-between mb-1">
-                    <p className={`text-sm font-bold ${tier.color}`}>{tier.title}</p>
-                    <span className="text-[10px] font-mono text-muted-foreground/50 bg-muted px-2 py-0.5 rounded-full">{tier.requirement}</span>
-                  </div>
-                  <p className="text-xs text-muted-foreground/60 leading-relaxed">{tier.description}</p>
+              <div className="flex flex-col gap-4 p-5 bento-cell h-full">
+                <div className="flex items-start justify-between">
+                  <span className={`font-mono text-3xl font-black leading-none ${tier.color} opacity-80`}>
+                    {tier.num}
+                  </span>
+                  <span className="text-[10px] font-mono text-muted-foreground/50 bg-muted px-2 py-1 rounded-full">{tier.requirement}</span>
                 </div>
-                <div className="h-px bg-border" />
-                <ul className="space-y-2">
+                <div>
+                  <p className={`text-base font-bold ${tier.color}`}>{tier.title}</p>
+                  <p className="text-xs text-muted-foreground/60 mt-1 leading-relaxed">{tier.description}</p>
+                </div>
+                <div className="h-px bg-border/60" />
+                <ul className="space-y-2.5 flex-1">
                   {tier.perks.map((perk) => (
-                    <li key={perk} className="flex items-start gap-2 text-xs text-muted-foreground/70">
+                    <li key={perk} className="flex items-start gap-2 text-xs text-muted-foreground/70 leading-relaxed">
                       <CheckCircle className="size-3.5 shrink-0 text-brand-purple mt-0.5" />
                       {perk}
                     </li>

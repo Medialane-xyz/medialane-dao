@@ -12,7 +12,6 @@ const tiers = [
     title: 'Register',
     share: 'Base share',
     color: 'text-brand-purple',
-    borderColor: 'border-t-brand-purple',
     steps: [
       'Create your Medialane account at medialane.io',
       'Secure with PIN or passkey',
@@ -24,8 +23,6 @@ const tiers = [
     title: 'Create',
     share: 'Higher share',
     color: 'text-brand-blue',
-    borderColor: 'border-t-brand-blue',
-    featured: true,
     steps: [
       'Mint original IP assets or collections',
       'Set up your creator profile',
@@ -37,7 +34,6 @@ const tiers = [
     title: 'Engage',
     share: 'Largest share',
     color: 'text-brand-purple',
-    borderColor: 'border-t-brand-purple',
     steps: [
       'Trade, collect, and make offers on the marketplace',
       'Collaborate and remix other creators\' work',
@@ -128,22 +124,20 @@ export default function AirdropPageClient() {
         <Stagger className="grid sm:grid-cols-3 gap-4">
           {tiers.map((tier) => (
             <StaggerItem key={tier.tier}>
-              <div
-                className={`flex flex-col gap-4 p-5 bento-cell border-t-2 ${tier.borderColor} h-full ${
-                  tier.featured ? 'border-brand-blue/20' : ''
-                }`}
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-1">
-                    <p className={`text-sm font-bold ${tier.color}`}>{tier.title}</p>
-                    <span className="text-[10px] font-mono text-muted-foreground/50 bg-muted px-2 py-0.5 rounded-full">{tier.share}</span>
-                  </div>
-                  <p className="text-[10px] font-mono text-muted-foreground/30">Tier {tier.tier}</p>
+              <div className="flex flex-col gap-4 p-5 bento-cell h-full">
+                <div className="flex items-start justify-between">
+                  <span className={`font-mono text-3xl font-black leading-none ${tier.color} opacity-80`}>
+                    {tier.tier}
+                  </span>
+                  <span className="text-[10px] font-mono text-muted-foreground/50 bg-muted px-2 py-1 rounded-full">{tier.share}</span>
                 </div>
-                <div className="h-px bg-border" />
-                <ul className="space-y-2">
+                <div>
+                  <p className={`text-base font-bold ${tier.color}`}>{tier.title}</p>
+                </div>
+                <div className="h-px bg-border/60" />
+                <ul className="space-y-2.5 flex-1">
                   {tier.steps.map((step) => (
-                    <li key={step} className="flex items-start gap-2 text-xs text-muted-foreground/70">
+                    <li key={step} className="flex items-start gap-2 text-xs text-muted-foreground/70 leading-relaxed">
                       <CheckCircle className="size-3.5 shrink-0 text-brand-purple mt-0.5" />
                       {step}
                     </li>
