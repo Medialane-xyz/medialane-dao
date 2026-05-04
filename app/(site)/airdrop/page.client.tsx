@@ -118,7 +118,7 @@ export default function AirdropPageClient() {
       {/* Participation tiers */}
       <div>
         <SectionHeader label="Participation Tiers" color="text-brand-purple" bg="bg-brand-purple" className="mb-3" />
-        <p className="text-xs text-muted-foreground/60 mb-6 max-w-xl">
+        <p className="text-sm text-foreground mb-6 max-w-xl">
           If the Creator&#39;s Airdrop is voted in by MDLN holders, your share is determined by your tier. Higher engagement earns a larger portion of the pool.
         </p>
         <Stagger className="grid sm:grid-cols-3 gap-4">
@@ -137,7 +137,7 @@ export default function AirdropPageClient() {
                 <div className="h-px bg-border/60" />
                 <ul className="space-y-2.5 flex-1">
                   {tier.steps.map((step) => (
-                    <li key={step} className="flex items-start gap-2 text-xs text-muted-foreground/70 leading-relaxed">
+                    <li key={step} className="flex items-start gap-2 text-sm text-foreground leading-relaxed">
                       <CheckCircle className="size-3.5 shrink-0 text-brand-purple mt-0.5" />
                       {step}
                     </li>
@@ -166,13 +166,13 @@ export default function AirdropPageClient() {
                 </div>
                 <div className="pb-4">
                   <p className="text-sm font-semibold text-foreground">{p.phase}</p>
-                  <p className="text-xs text-muted-foreground/60 mt-0.5">{p.trigger}</p>
+                  <p className="text-sm text-foreground mt-0.5">{p.trigger}</p>
                   <span className="inline-block mt-1.5 text-[10px] font-mono text-muted-foreground/50 bg-muted px-2 py-0.5 rounded-full">{p.type}</span>
                 </div>
               </div>
             ))}
           </div>
-          <p className="text-xs text-muted-foreground/40 mt-2 leading-relaxed border-t border-border/60 pt-4">
+          <p className="text-sm text-foreground mt-2 leading-relaxed border-t border-border/60 pt-4">
             Phases unlock when the community reaches the milestone — not time-gated. Annual cycles continue as long as the protocol generates revenue and MDLN holders vote to continue.
           </p>
         </div>
@@ -183,7 +183,7 @@ export default function AirdropPageClient() {
             {fairDesign.map((item, i) => (
               <li key={i} className="flex gap-3">
                 <span className="font-mono text-[10px] font-bold text-brand-purple/50 shrink-0 pt-0.5">{String(i + 1).padStart(2, '0')}</span>
-                <p className="text-xs text-muted-foreground/70 leading-relaxed">{item}</p>
+                <p className="text-sm text-foreground leading-relaxed">{item}</p>
               </li>
             ))}
           </ul>
@@ -201,7 +201,7 @@ export default function AirdropPageClient() {
                 <span className="text-[10px] font-bold tracking-widest uppercase text-emerald-600 dark:text-emerald-400">Live</span>
               </div>
               <p className="text-base font-bold text-foreground mb-2">Global Campaign</p>
-              <p className="text-xs text-muted-foreground/70 leading-relaxed">
+              <p className="text-sm text-foreground leading-relaxed">
                 Open to all participants worldwide. Participate at medialane.io. Activity tracked on Starknet — auditable by anyone.
               </p>
             </div>
@@ -213,7 +213,7 @@ export default function AirdropPageClient() {
                 <span className="text-[10px] font-bold tracking-widest uppercase text-emerald-600 dark:text-emerald-400">Live</span>
               </div>
               <p className="text-base font-bold text-foreground mb-2">Brasil Campaign</p>
-              <p className="text-xs text-muted-foreground/70 leading-relaxed">
+              <p className="text-sm text-foreground leading-relaxed">
                 Dedicated campaign for Portuguese-speaking creators in Brazil and the broader Portuguese-speaking community. Same structure, same rules — tracked as a separate cohort.
               </p>
             </div>
@@ -230,7 +230,7 @@ export default function AirdropPageClient() {
               <span className="font-mono text-xl font-black text-brand-purple/20 leading-none shrink-0">{s.step}</span>
               <div>
                 <p className="text-sm font-bold text-foreground mb-1.5">{s.title}</p>
-                <p className="text-xs text-muted-foreground/60 leading-relaxed">{s.desc}</p>
+                <p className="text-sm text-foreground leading-relaxed">{s.desc}</p>
               </div>
             </div>
           ))}

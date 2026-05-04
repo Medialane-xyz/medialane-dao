@@ -108,7 +108,7 @@ export function HeroSection() {
           <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground/60 mb-3">
             The Integrity Web
           </p>
-          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+          <p className="text-sm text-foreground leading-relaxed">
             The Integrity Web is an information economy built on verifiable truth. Every asset, every license,
             every transfer is recorded in immutable smart contracts and IPFS — not on servers any company controls.
             Medialane is the monetization layer of that economy: where ownership is cryptographic, revenue is
@@ -125,7 +125,7 @@ export function HeroSection() {
             <StaggerItem key={title}>
               <div className="bento-cell p-5 h-full">
                 <p className={`text-sm font-bold mb-2 ${color}`}>{title}</p>
-                <p className="text-sm text-muted-foreground leading-relaxed">{body}</p>
+                <p className="text-sm text-foreground leading-relaxed">{body}</p>
               </div>
             </StaggerItem>
           ))}
@@ -135,7 +135,7 @@ export function HeroSection() {
       {/* DAO Treasury */}
       <div className="bento-cell p-6 sm:p-8">
         <SectionHeader label="DAO Treasury & Governance" className="mb-3" />
-        <p className="text-base text-muted-foreground leading-relaxed mb-5 max-w-2xl">
+        <p className="text-sm text-foreground leading-relaxed mb-5 max-w-2xl">
           A 1% marketplace fee funds the Medialane DAO treasury — held in a Gnosis Safe multisig on Ethereum,
           fully auditable on-chain. MDLN holders vote on Snapshot each year to decide how revenue is used:
           Creator&#39;s Airdrop, token buyback, token burn, protocol development, or operations.

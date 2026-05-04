@@ -72,7 +72,7 @@ export default function MembersPageClient() {
           ].map((row) => (
             <div key={row.label} className="py-2.5 border-b border-border/60 last:border-0">
               <div className="flex items-center justify-between mb-1.5">
-                <span className="text-xs text-muted-foreground/70">{row.label}</span>
+                <span className="text-sm text-foreground">{row.label}</span>
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-mono text-foreground/70">{row.value}</span>
                   <span className="text-[10px] font-mono text-muted-foreground/40 w-8 text-right">{row.pct}</span>
@@ -107,7 +107,7 @@ export default function MembersPageClient() {
                 <p className="text-sm font-semibold text-foreground group-hover:text-brand-purple transition-colors">Starkgate Bridge</p>
                 <ArrowUpRight className="size-3.5 text-muted-foreground/20 group-hover:text-brand-purple transition-colors shrink-0" />
               </div>
-              <p className="text-xs text-muted-foreground/70 leading-relaxed flex-1">Bridge MDLN from Ethereum mainnet to Starknet via the official Starkgate bridge. MDLN is live on Starknet — same token, two networks.</p>
+              <p className="text-sm text-foreground leading-relaxed flex-1">Bridge MDLN from Ethereum mainnet to Starknet via the official Starkgate bridge. MDLN is live on Starknet — same token, two networks.</p>
               <div className="flex flex-wrap gap-1.5">
                 {['Ethereum → Starknet', 'Live on Starknet', 'ERC-20'].map((t) => (
                   <span key={t} className="text-[10px] px-2 py-0.5 rounded-full bg-muted text-muted-foreground/60 border border-border">{t}</span>
@@ -123,7 +123,7 @@ export default function MembersPageClient() {
                 <p className="text-sm font-semibold text-foreground group-hover:text-brand-blue transition-colors">Ekubo Protocol</p>
                 <ArrowUpRight className="size-3.5 text-muted-foreground/20 group-hover:text-brand-blue transition-colors shrink-0" />
               </div>
-              <p className="text-xs text-muted-foreground/70 leading-relaxed flex-1">Trade MDLN on Starknet via Ekubo — Starknet&#39;s native concentrated liquidity AMM. MDLN/ETH and MDLN/USDC pools. Gasless swaps powered by account abstraction.</p>
+              <p className="text-sm text-foreground leading-relaxed flex-1">Trade MDLN on Starknet via Ekubo — Starknet&#39;s native concentrated liquidity AMM. MDLN/ETH and MDLN/USDC pools. Gasless swaps powered by account abstraction.</p>
               <div className="flex flex-wrap gap-1.5">
                 {['AMM DEX', 'Starknet Native', 'Concentrated Liquidity'].map((t) => (
                   <span key={t} className="text-[10px] px-2 py-0.5 rounded-full bg-muted text-muted-foreground/60 border border-border">{t}</span>
@@ -135,7 +135,7 @@ export default function MembersPageClient() {
           <StaggerItem>
             <div className="flex flex-col gap-3 p-5 bento-cell h-full">
               <p className="text-sm font-semibold text-foreground">Zero-fee Tokenization</p>
-              <p className="text-xs text-muted-foreground/70 leading-relaxed flex-1">Minting IP assets on Medialane costs zero platform fees. Starknet transactions cost a fraction of a cent. Creator economy without extractive fees — 1% only on marketplace monetization.</p>
+              <p className="text-sm text-foreground leading-relaxed flex-1">Minting IP assets on Medialane costs zero platform fees. Starknet transactions cost a fraction of a cent. Creator economy without extractive fees — 1% only on marketplace monetization.</p>
               <div className="flex flex-wrap gap-1.5">
                 {['Free to Mint', '1% Marketplace Fee', 'Starknet L2'].map((t) => (
                   <span key={t} className="text-[10px] px-2 py-0.5 rounded-full bg-muted text-muted-foreground/60 border border-border">{t}</span>
@@ -158,7 +158,7 @@ export default function MembersPageClient() {
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-foreground mb-1.5">{title}</p>
-                  <p className="text-xs text-muted-foreground/70 leading-relaxed">{body}</p>
+                  <p className="text-sm text-foreground leading-relaxed">{body}</p>
                 </div>
               </div>
             </StaggerItem>
@@ -181,12 +181,12 @@ export default function MembersPageClient() {
                 </div>
                 <div>
                   <p className={`text-base font-bold ${tier.color}`}>{tier.title}</p>
-                  <p className="text-xs text-muted-foreground/60 mt-1 leading-relaxed">{tier.description}</p>
+                  <p className="text-sm text-foreground mt-1 leading-relaxed">{tier.description}</p>
                 </div>
                 <div className="h-px bg-border/60" />
                 <ul className="space-y-2.5 flex-1">
                   {tier.perks.map((perk) => (
-                    <li key={perk} className="flex items-start gap-2 text-xs text-muted-foreground/70 leading-relaxed">
+                    <li key={perk} className="flex items-start gap-2 text-sm text-foreground leading-relaxed">
                       <CheckCircle className="size-3.5 shrink-0 text-brand-purple mt-0.5" />
                       {perk}
                     </li>
@@ -211,7 +211,7 @@ export default function MembersPageClient() {
               <span className="font-mono text-xl font-black text-brand-purple/20 leading-none shrink-0">{s.step}</span>
               <div>
                 <p className="text-sm font-bold text-foreground mb-1.5">{s.title}</p>
-                <p className="text-xs text-muted-foreground/60 leading-relaxed">{s.desc}</p>
+                <p className="text-sm text-foreground leading-relaxed">{s.desc}</p>
               </div>
             </div>
           ))}

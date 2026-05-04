@@ -91,7 +91,7 @@ export default function DAOPageClient({ documents, proposals, stats }: DAOPageCl
       <div className="p-[1px] rounded-2xl btn-border-animated max-w-3xl">
         <div className="rounded-[calc(1rem-1px)] bg-card p-6 sm:p-8">
           <SectionHeader label="Treasury & Revenue" className="mb-3" />
-          <p className="text-sm text-muted-foreground leading-relaxed">
+          <p className="text-sm text-foreground leading-relaxed">
             A 1% marketplace fee flows into the Medialane DAO treasury — a Gnosis Safe multisig on Ethereum, fully auditable on-chain.
             Each year, MDLN holders vote on Snapshot to decide how that revenue is used: Creator&#39;s Airdrop, token buyback, token burn,
             protocol development, or operations. No predetermined formula. Community-governed every cycle.
@@ -141,7 +141,7 @@ export default function DAOPageClient({ documents, proposals, stats }: DAOPageCl
 
           <div className="bento-cell p-5">
             <SectionHeader label="How to vote" />
-            <div className="space-y-4 text-xs text-muted-foreground/70 leading-relaxed">
+            <div className="space-y-4 text-sm text-muted-foreground/70 leading-relaxed">
               {[
                 'Get MDLN on Ethereum via Uniswap, or on Starknet via Ekubo.',
                 'Connect your wallet to Snapshot at medialane.eth.',

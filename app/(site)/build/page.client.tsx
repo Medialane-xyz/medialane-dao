@@ -173,7 +173,7 @@ const { data: orders } = await client.api.getOrders({
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-foreground mb-1.5">{title}</p>
-                  <p className="text-xs text-muted-foreground/70 leading-relaxed">{body}</p>
+                  <p className="text-sm text-foreground leading-relaxed">{body}</p>
                 </div>
               </div>
             </StaggerItem>
@@ -215,7 +215,7 @@ const { data: orders } = await client.api.getOrders({
                 className="group flex flex-col gap-2 p-5 bento-cell hover:border-brand-blue/40 hover:shadow-sm transition-all duration-150 h-full"
               >
                 <p className="text-sm font-semibold text-foreground group-hover:text-brand-blue transition-colors">{doc.title}</p>
-                <p className="text-xs text-muted-foreground/60 leading-relaxed flex-1">{doc.description}</p>
+                <p className="text-sm text-foreground leading-relaxed flex-1">{doc.description}</p>
                 <p className="text-[11px] text-brand-blue/60 font-medium">Read →</p>
               </Link>
             </StaggerItem>

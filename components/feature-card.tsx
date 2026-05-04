@@ -90,7 +90,7 @@ function CardContent({
       </p>
 
       {/* Description */}
-      <p className="text-xs text-muted-foreground leading-relaxed flex-1">
+      <p className="text-sm text-foreground leading-relaxed flex-1">
         {description}
       </p>
 
@@ -100,7 +100,7 @@ function CardContent({
           {tags.map((tag) => (
             <span
               key={tag}
-              className="text-[10px] px-2 py-0.5 rounded-full bg-muted/60 border border-border/40 text-muted-foreground/70 font-medium"
+              className="text-xs px-2 py-0.5 rounded-full bg-muted/60 border border-border/40 text-muted-foreground/70 font-medium"
             >
               {tag}
             </span>
