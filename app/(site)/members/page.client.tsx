@@ -2,6 +2,7 @@
 
 import { ArrowUpRight, CheckCircle, Zap, Shield, Coins, Globe } from 'lucide-react'
 import { mdln, starknet, siteConfig } from '@/lib/site-config'
+import { Stagger, StaggerItem } from '@medialane/ui'
 import { AddressRow } from '@/components/address-row'
 import { PageHero } from '@/components/page-hero'
 import { StatCard } from '@/components/stat-card'
@@ -13,8 +14,8 @@ const tiers = [
     requirement: '1+ MDLN',
     description: 'Follow governance and join the community.',
     perks: ['View all proposals', 'Community forums', 'Discussions & feedback'],
-    accent: 'border-t-violet-500',
-    color: 'text-violet-500',
+    color: 'text-brand-purple',
+    borderColor: 'border-t-brand-purple',
   },
   {
     title: 'Contributor',
@@ -22,29 +23,29 @@ const tiers = [
     description: 'Vote on proposals and shape the platform.',
     perks: ['Submit governance proposals', 'Vote on Snapshot', 'Early feature access', 'Contributor channels'],
     featured: true,
-    accent: 'border-t-blue-500',
-    color: 'text-blue-500',
+    color: 'text-brand-blue',
+    borderColor: 'border-t-brand-blue',
   },
   {
     title: 'Guardian',
     requirement: '1,000+ MDLN',
     description: 'Lead working groups and represent creators.',
     perks: ['Council nomination rights', 'Working group leadership', 'Ecosystem grants', 'Priority API access'],
-    accent: 'border-t-indigo-500',
-    color: 'text-indigo-500',
+    color: 'text-brand-purple',
+    borderColor: 'border-t-brand-purple',
   },
 ]
 
 const starknetBenefits = [
-  { icon: Zap,    color: 'bg-violet-500/10 text-violet-500', title: 'Fraction-of-cent fees',      body: 'Starknet transactions cost a fraction of Ethereum mainnet. Mint, list, and trade IP assets with near-zero gas.' },
-  { icon: Shield, color: 'bg-blue-500/10 text-blue-500',     title: 'ZK-STARK security',          body: 'Every transaction batch is verified by STARK proofs on Ethereum. Cryptographic security without trusting a sequencer.' },
-  { icon: Coins,  color: 'bg-indigo-500/10 text-indigo-500', title: 'Sponsored transactions',     body: 'Medialane sponsors gas for creator actions via native account abstraction. No ETH required to start creating.' },
-  { icon: Globe,  color: 'bg-primary/10 text-primary',        title: 'Native account abstraction', body: 'Wallets are smart contracts. Session keys (SNIP-9) enable PIN-authenticated gasless sessions across multiple actions.' },
+  { icon: Zap,    color: 'bg-brand-purple/10 text-brand-purple', title: 'Fraction-of-cent fees',      body: 'Starknet transactions cost a fraction of Ethereum mainnet. Mint, list, and trade IP assets with near-zero gas.' },
+  { icon: Shield, color: 'bg-brand-blue/10 text-brand-blue',     title: 'ZK-STARK security',          body: 'Every transaction batch is verified by STARK proofs on Ethereum. Cryptographic security without trusting a sequencer.' },
+  { icon: Coins,  color: 'bg-brand-purple/10 text-brand-purple', title: 'Sponsored transactions',     body: 'Medialane sponsors gas for creator actions via native account abstraction. No ETH required to start creating.' },
+  { icon: Globe,  color: 'bg-brand-blue/10 text-brand-blue',     title: 'Native account abstraction', body: 'Wallets are smart contracts. Session keys (SNIP-9) enable PIN-authenticated gasless sessions across multiple actions.' },
 ]
 
 export default function MembersPageClient() {
   return (
-    <div className="px-6 lg:px-10 xl:px-14 py-8 space-y-10">
+    <div className="px-4 sm:px-6 lg:px-10 xl:px-14 py-10 sm:py-12 lg:py-16 space-y-12">
 
       <PageHero
         eyebrow="Medialane · Membership"
@@ -54,21 +55,21 @@ export default function MembersPageClient() {
 
       {/* Tokenomics stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <StatCard label="Total Supply" value="21,000,000" sub="MDLN · Fixed forever"   accent="border-t-violet-500" />
-        <StatCard label="DAO Treasury" value="100%"        sub="No external investors"  accent="border-t-blue-500"   />
-        <StatCard label="Vesting"      value="9 years"     sub="Linear unlock schedule" accent="border-t-indigo-500" />
-        <StatCard label="Voting Power" value="1:1"          sub="1 MDLN = 1 vote"        accent="border-t-primary"    />
+        <StatCard label="Total Supply" value="21,000,000" sub="MDLN · Fixed forever"   aurora="aurora-purple" />
+        <StatCard label="DAO Treasury" value="100%"        sub="No external investors"  aurora="aurora-blue" auroraPos="-bottom-6 -right-6" />
+        <StatCard label="Vesting"      value="9 years"     sub="Linear unlock schedule" aurora="aurora-purple" auroraPos="-top-6 -right-6" />
+        <StatCard label="Voting Power" value="1:1"          sub="1 MDLN = 1 vote"        aurora="aurora-blue" auroraPos="-top-6 -left-6" />
       </div>
 
       {/* Distribution + Addresses */}
       <div className="grid lg:grid-cols-2 gap-6">
-        <div className="rounded-xl border border-border bg-card p-5">
+        <div className="bento-cell p-5">
           <SectionHeader label="Token Distribution" />
           {[
-            { label: 'Vesting (9 years)',  value: '18,900,000', pct: '90%', bar: 'w-[90%] bg-violet-500' },
-            { label: 'Operational runway', value: '2,100,000',  pct: '10%', bar: 'w-[10%] bg-blue-500'   },
-            { label: 'VC allocation',      value: '0',           pct: '0%',  bar: 'w-0'                    },
-            { label: 'Team allocation',    value: '0',           pct: '0%',  bar: 'w-0'                    },
+            { label: 'Vesting (9 years)',  value: '18,900,000', pct: '90%', bar: 'w-[90%] bg-brand-purple' },
+            { label: 'Operational runway', value: '2,100,000',  pct: '10%', bar: 'w-[10%] bg-brand-blue'   },
+            { label: 'VC allocation',      value: '0',           pct: '0%',  bar: 'w-0'                      },
+            { label: 'Team allocation',    value: '0',           pct: '0%',  bar: 'w-0'                      },
           ].map((row) => (
             <div key={row.label} className="py-2.5 border-b border-border/60 last:border-0">
               <div className="flex items-center justify-between mb-1.5">
@@ -85,7 +86,7 @@ export default function MembersPageClient() {
           ))}
         </div>
 
-        <div className="rounded-xl border border-border bg-card p-5">
+        <div className="bento-cell p-5">
           <SectionHeader label="On-chain Addresses · Ethereum" />
           <AddressRow label="Network"           value="Ethereum Mainnet" />
           <AddressRow label="Token Contract"    value={`${mdln.token.slice(0, 10)}…${mdln.token.slice(-6)}`}     href={mdln.etherscanToken}    />
@@ -98,99 +99,108 @@ export default function MembersPageClient() {
 
       {/* Bridge & Trade on Starknet */}
       <div>
-        <SectionHeader label="Bridge & Trade on Starknet" color="text-violet-500" bg="bg-violet-500" />
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          <a href={`https://starkgate.starknet.io/token/${starknet.mdlnL2}`} target="_blank" rel="noopener noreferrer"
-            className="group flex flex-col gap-3 p-5 rounded-xl border border-border bg-card hover:border-primary/30 hover:shadow-sm transition-all duration-150">
-            <div className="flex items-start justify-between gap-2">
-              <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">Starkgate Bridge</p>
-              <ArrowUpRight className="size-3.5 text-muted-foreground/20 group-hover:text-primary transition-colors shrink-0" />
-            </div>
-            <p className="text-xs text-muted-foreground/70 leading-relaxed flex-1">Bridge MDLN from Ethereum mainnet to Starknet via the official Starkgate bridge. MDLN is live on Starknet — same token, two networks.</p>
-            <div className="flex flex-wrap gap-1.5">
-              {['Ethereum → Starknet', 'Live on Starknet', 'ERC-20'].map((t) => (
-                <span key={t} className="text-[10px] px-2 py-0.5 rounded-full bg-muted text-muted-foreground/60 border border-border">{t}</span>
-              ))}
-            </div>
-          </a>
+        <SectionHeader label="Bridge & Trade on Starknet" color="text-brand-purple" bg="bg-brand-purple" className="mb-6" />
+        <Stagger className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <StaggerItem>
+            <a href={`https://starkgate.starknet.io/token/${starknet.mdlnL2}`} target="_blank" rel="noopener noreferrer"
+              className="group flex flex-col gap-3 p-5 bento-cell hover:border-brand-purple/40 hover:shadow-sm transition-all duration-150 h-full">
+              <div className="flex items-start justify-between gap-2">
+                <p className="text-sm font-semibold text-foreground group-hover:text-brand-purple transition-colors">Starkgate Bridge</p>
+                <ArrowUpRight className="size-3.5 text-muted-foreground/20 group-hover:text-brand-purple transition-colors shrink-0" />
+              </div>
+              <p className="text-xs text-muted-foreground/70 leading-relaxed flex-1">Bridge MDLN from Ethereum mainnet to Starknet via the official Starkgate bridge. MDLN is live on Starknet — same token, two networks.</p>
+              <div className="flex flex-wrap gap-1.5">
+                {['Ethereum → Starknet', 'Live on Starknet', 'ERC-20'].map((t) => (
+                  <span key={t} className="text-[10px] px-2 py-0.5 rounded-full bg-muted text-muted-foreground/60 border border-border">{t}</span>
+                ))}
+              </div>
+            </a>
+          </StaggerItem>
 
-          <a href="https://app.ekubo.org" target="_blank" rel="noopener noreferrer"
-            className="group flex flex-col gap-3 p-5 rounded-xl border border-border bg-card hover:border-primary/30 hover:shadow-sm transition-all duration-150">
-            <div className="flex items-start justify-between gap-2">
-              <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">Ekubo Protocol</p>
-              <ArrowUpRight className="size-3.5 text-muted-foreground/20 group-hover:text-primary transition-colors shrink-0" />
-            </div>
-            <p className="text-xs text-muted-foreground/70 leading-relaxed flex-1">Trade MDLN on Starknet via Ekubo — Starknet&#39;s native concentrated liquidity AMM. MDLN/ETH and MDLN/USDC pools. Gasless swaps powered by account abstraction.</p>
-            <div className="flex flex-wrap gap-1.5">
-              {['AMM DEX', 'Starknet Native', 'Concentrated Liquidity'].map((t) => (
-                <span key={t} className="text-[10px] px-2 py-0.5 rounded-full bg-muted text-muted-foreground/60 border border-border">{t}</span>
-              ))}
-            </div>
-          </a>
+          <StaggerItem>
+            <a href="https://app.ekubo.org" target="_blank" rel="noopener noreferrer"
+              className="group flex flex-col gap-3 p-5 bento-cell hover:border-brand-blue/40 hover:shadow-sm transition-all duration-150 h-full">
+              <div className="flex items-start justify-between gap-2">
+                <p className="text-sm font-semibold text-foreground group-hover:text-brand-blue transition-colors">Ekubo Protocol</p>
+                <ArrowUpRight className="size-3.5 text-muted-foreground/20 group-hover:text-brand-blue transition-colors shrink-0" />
+              </div>
+              <p className="text-xs text-muted-foreground/70 leading-relaxed flex-1">Trade MDLN on Starknet via Ekubo — Starknet&#39;s native concentrated liquidity AMM. MDLN/ETH and MDLN/USDC pools. Gasless swaps powered by account abstraction.</p>
+              <div className="flex flex-wrap gap-1.5">
+                {['AMM DEX', 'Starknet Native', 'Concentrated Liquidity'].map((t) => (
+                  <span key={t} className="text-[10px] px-2 py-0.5 rounded-full bg-muted text-muted-foreground/60 border border-border">{t}</span>
+                ))}
+              </div>
+            </a>
+          </StaggerItem>
 
-          <div className="flex flex-col gap-3 p-5 rounded-xl border border-border bg-card">
-            <p className="text-sm font-semibold text-foreground">Zero-fee Tokenization</p>
-            <p className="text-xs text-muted-foreground/70 leading-relaxed flex-1">Minting IP assets on Medialane costs zero platform fees. Starknet transactions cost a fraction of a cent. Creator economy without extractive fees — 1% only on marketplace monetization.</p>
-            <div className="flex flex-wrap gap-1.5">
-              {['Free to Mint', '1% Marketplace Fee', 'Starknet L2'].map((t) => (
-                <span key={t} className="text-[10px] px-2 py-0.5 rounded-full bg-muted text-muted-foreground/60 border border-border">{t}</span>
-              ))}
+          <StaggerItem>
+            <div className="flex flex-col gap-3 p-5 bento-cell h-full">
+              <p className="text-sm font-semibold text-foreground">Zero-fee Tokenization</p>
+              <p className="text-xs text-muted-foreground/70 leading-relaxed flex-1">Minting IP assets on Medialane costs zero platform fees. Starknet transactions cost a fraction of a cent. Creator economy without extractive fees — 1% only on marketplace monetization.</p>
+              <div className="flex flex-wrap gap-1.5">
+                {['Free to Mint', '1% Marketplace Fee', 'Starknet L2'].map((t) => (
+                  <span key={t} className="text-[10px] px-2 py-0.5 rounded-full bg-muted text-muted-foreground/60 border border-border">{t}</span>
+                ))}
+              </div>
             </div>
-          </div>
-        </div>
+          </StaggerItem>
+        </Stagger>
       </div>
 
       {/* Starknet benefits */}
       <div>
-        <SectionHeader label="Why Starknet" color="text-blue-500" bg="bg-blue-500" />
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <SectionHeader label="Why Starknet" color="text-brand-blue" bg="bg-brand-blue" className="mb-6" />
+        <Stagger className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {starknetBenefits.map(({ icon: Icon, color, title, body }) => (
-            <div key={title} className="flex flex-col gap-3 p-5 rounded-xl border border-border bg-card">
-              <div className={`flex size-9 items-center justify-center rounded-lg shrink-0 ${color}`}>
-                <Icon className="size-4" />
+            <StaggerItem key={title}>
+              <div className="flex flex-col gap-3 p-5 bento-cell h-full">
+                <div className={`flex size-9 items-center justify-center rounded-lg shrink-0 ${color}`}>
+                  <Icon className="size-4" />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-foreground mb-1.5">{title}</p>
+                  <p className="text-xs text-muted-foreground/70 leading-relaxed">{body}</p>
+                </div>
               </div>
-              <div>
-                <p className="text-sm font-semibold text-foreground mb-1.5">{title}</p>
-                <p className="text-xs text-muted-foreground/70 leading-relaxed">{body}</p>
-              </div>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </div>
 
       {/* Membership tiers */}
       <div>
-        <SectionHeader label="Membership Tiers" />
-        <div className="grid sm:grid-cols-3 gap-4">
+        <SectionHeader label="Membership Tiers" className="mb-6" />
+        <Stagger className="grid sm:grid-cols-3 gap-4">
           {tiers.map((tier) => (
-            <div key={tier.title}
-              className={`flex flex-col gap-4 p-5 rounded-xl border bg-card border-t-2 ${tier.accent} ${
-                tier.featured ? 'border-primary/20' : 'border-border'
+            <StaggerItem key={tier.title}>
+              <div className={`flex flex-col gap-4 p-5 bento-cell border-t-2 ${tier.borderColor} h-full ${
+                tier.featured ? 'border-brand-blue/20' : ''
               }`}>
-              <div>
-                <div className="flex items-center justify-between mb-1">
-                  <p className={`text-sm font-bold ${tier.color}`}>{tier.title}</p>
-                  <span className="text-[10px] font-mono text-muted-foreground/50 bg-muted px-2 py-0.5 rounded-full">{tier.requirement}</span>
+                <div>
+                  <div className="flex items-center justify-between mb-1">
+                    <p className={`text-sm font-bold ${tier.color}`}>{tier.title}</p>
+                    <span className="text-[10px] font-mono text-muted-foreground/50 bg-muted px-2 py-0.5 rounded-full">{tier.requirement}</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground/60 leading-relaxed">{tier.description}</p>
                 </div>
-                <p className="text-xs text-muted-foreground/60 leading-relaxed">{tier.description}</p>
+                <div className="h-px bg-border" />
+                <ul className="space-y-2">
+                  {tier.perks.map((perk) => (
+                    <li key={perk} className="flex items-start gap-2 text-xs text-muted-foreground/70">
+                      <CheckCircle className="size-3.5 shrink-0 text-brand-purple mt-0.5" />
+                      {perk}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <div className="h-px bg-border" />
-              <ul className="space-y-2">
-                {tier.perks.map((perk) => (
-                  <li key={perk} className="flex items-start gap-2 text-xs text-muted-foreground/70">
-                    <CheckCircle className="size-3.5 shrink-0 text-primary mt-0.5" />
-                    {perk}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </div>
 
       {/* How to participate */}
-      <div className="rounded-xl border border-border bg-card p-6">
-        <SectionHeader label="How to Participate" />
+      <div className="bento-cell p-6 sm:p-8">
+        <SectionHeader label="How to Participate" className="mb-5" />
         <div className="grid sm:grid-cols-3 gap-6 mb-6">
           {[
             { step: '01', title: 'Acquire MDLN',  desc: 'Get MDLN on Ethereum via Uniswap, or trade directly on Starknet via Ekubo. Bridge between networks using StarkGate.' },
@@ -208,7 +218,7 @@ export default function MembersPageClient() {
         </div>
         <div className="flex flex-wrap gap-3 pt-5 border-t border-border">
           <a href={siteConfig.snapshot} target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
+            className="inline-flex items-center gap-2 rounded-xl bg-brand-purple px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-purple/90 transition-colors">
             Vote on Snapshot <ArrowUpRight className="size-3.5" />
           </a>
           <a href={`https://starkgate.starknet.io/token/${starknet.mdlnL2}`} target="_blank" rel="noopener noreferrer"

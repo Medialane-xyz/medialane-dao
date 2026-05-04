@@ -2,6 +2,7 @@
 
 import { ArrowUpRight, CheckCircle } from 'lucide-react'
 import { siteConfig } from '@/lib/site-config'
+import { Stagger, StaggerItem } from '@medialane/ui'
 import { PageHero } from '@/components/page-hero'
 import { SectionHeader } from '@/components/section-header'
 
@@ -10,8 +11,8 @@ const tiers = [
     tier: '01',
     title: 'Register',
     share: 'Base share',
-    color: 'text-violet-500',
-    accent: 'border-t-violet-500',
+    color: 'text-brand-purple',
+    borderColor: 'border-t-brand-purple',
     steps: [
       'Create your Medialane account at medialane.io',
       'Secure with PIN or passkey',
@@ -22,8 +23,8 @@ const tiers = [
     tier: '02',
     title: 'Create',
     share: 'Higher share',
-    color: 'text-blue-500',
-    accent: 'border-t-blue-500',
+    color: 'text-brand-blue',
+    borderColor: 'border-t-brand-blue',
     featured: true,
     steps: [
       'Mint original IP assets or collections',
@@ -35,8 +36,8 @@ const tiers = [
     tier: '03',
     title: 'Engage',
     share: 'Largest share',
-    color: 'text-indigo-500',
-    accent: 'border-t-indigo-500',
+    color: 'text-brand-purple',
+    borderColor: 'border-t-brand-purple',
     steps: [
       'Trade, collect, and make offers on the marketplace',
       'Collaborate and remix other creators\' work',
@@ -83,7 +84,7 @@ const howToParticipate = [
 
 export default function AirdropPageClient() {
   return (
-    <div className="px-6 lg:px-10 xl:px-14 py-8 space-y-10">
+    <div className="px-4 sm:px-6 lg:px-10 xl:px-14 py-10 sm:py-12 lg:py-16 space-y-12">
 
       <PageHero
         eyebrow="Medialane · Creator's Airdrop"
@@ -92,68 +93,71 @@ export default function AirdropPageClient() {
       />
 
       {/* Governance framing */}
-      <div className="rounded-xl border border-border bg-card p-6 max-w-3xl">
-        <SectionHeader label="How Revenue Works" />
-        <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-          A 1% marketplace fee flows into the Medialane DAO treasury — held in a Gnosis Safe multisig on Ethereum, fully auditable on-chain.
-          Each year, MDLN holders vote on Snapshot to decide allocation. The Creator&#39;s Airdrop is one option; others include token buyback,
-          token burn, protocol development, and operations. No predetermined formula. Community-governed every cycle.
-        </p>
-        <div className="grid sm:grid-cols-3 gap-3">
-          {['Creator\'s Airdrop', 'Token Buyback', 'Token Burn', 'Development', 'Operations', 'MDLN holders decide'].map((opt, i) => (
-            <div
-              key={opt}
-              className={`rounded-lg px-3 py-2.5 text-xs font-medium border ${
-                i === 5
-                  ? 'border-primary/30 bg-primary/5 text-primary'
-                  : 'border-border bg-muted/50 text-muted-foreground/70'
-              }`}
-            >
-              {i < 5 && <span className="text-muted-foreground/30 font-mono mr-1.5">→</span>}
-              {opt}
-            </div>
-          ))}
+      <div className="p-[1px] rounded-2xl btn-border-animated max-w-3xl">
+        <div className="rounded-[calc(1rem-1px)] bg-card p-6 sm:p-8">
+          <SectionHeader label="How Revenue Works" className="mb-3" />
+          <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+            A 1% marketplace fee flows into the Medialane DAO treasury — held in a Gnosis Safe multisig on Ethereum, fully auditable on-chain.
+            Each year, MDLN holders vote on Snapshot to decide allocation. The Creator&#39;s Airdrop is one option; others include token buyback,
+            token burn, protocol development, and operations. No predetermined formula. Community-governed every cycle.
+          </p>
+          <div className="grid sm:grid-cols-3 gap-3">
+            {['Creator\'s Airdrop', 'Token Buyback', 'Token Burn', 'Development', 'Operations', 'MDLN holders decide'].map((opt, i) => (
+              <div
+                key={opt}
+                className={`rounded-lg px-3 py-2.5 text-xs font-medium border ${
+                  i === 5
+                    ? 'border-brand-purple/30 bg-brand-purple/5 text-brand-purple'
+                    : 'border-border bg-muted/50 text-muted-foreground/70'
+                }`}
+              >
+                {i < 5 && <span className="text-muted-foreground/30 font-mono mr-1.5">→</span>}
+                {opt}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Participation tiers */}
       <div>
-        <SectionHeader label="Participation Tiers" color="text-violet-500" bg="bg-violet-500" />
-        <p className="text-xs text-muted-foreground/60 mb-4 max-w-xl">
+        <SectionHeader label="Participation Tiers" color="text-brand-purple" bg="bg-brand-purple" className="mb-3" />
+        <p className="text-xs text-muted-foreground/60 mb-6 max-w-xl">
           If the Creator&#39;s Airdrop is voted in by MDLN holders, your share is determined by your tier. Higher engagement earns a larger portion of the pool.
         </p>
-        <div className="grid sm:grid-cols-3 gap-4">
+        <Stagger className="grid sm:grid-cols-3 gap-4">
           {tiers.map((tier) => (
-            <div
-              key={tier.tier}
-              className={`flex flex-col gap-4 p-5 rounded-xl border bg-card border-t-2 ${tier.accent} ${
-                tier.featured ? 'border-primary/20' : 'border-border'
-              }`}
-            >
-              <div>
-                <div className="flex items-center justify-between mb-1">
-                  <p className={`text-sm font-bold ${tier.color}`}>{tier.title}</p>
-                  <span className="text-[10px] font-mono text-muted-foreground/50 bg-muted px-2 py-0.5 rounded-full">{tier.share}</span>
+            <StaggerItem key={tier.tier}>
+              <div
+                className={`flex flex-col gap-4 p-5 bento-cell border-t-2 ${tier.borderColor} h-full ${
+                  tier.featured ? 'border-brand-blue/20' : ''
+                }`}
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-1">
+                    <p className={`text-sm font-bold ${tier.color}`}>{tier.title}</p>
+                    <span className="text-[10px] font-mono text-muted-foreground/50 bg-muted px-2 py-0.5 rounded-full">{tier.share}</span>
+                  </div>
+                  <p className="text-[10px] font-mono text-muted-foreground/30">Tier {tier.tier}</p>
                 </div>
-                <p className="text-[10px] font-mono text-muted-foreground/30">Tier {tier.tier}</p>
+                <div className="h-px bg-border" />
+                <ul className="space-y-2">
+                  {tier.steps.map((step) => (
+                    <li key={step} className="flex items-start gap-2 text-xs text-muted-foreground/70">
+                      <CheckCircle className="size-3.5 shrink-0 text-brand-purple mt-0.5" />
+                      {step}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <div className="h-px bg-border" />
-              <ul className="space-y-2">
-                {tier.steps.map((step) => (
-                  <li key={step} className="flex items-start gap-2 text-xs text-muted-foreground/70">
-                    <CheckCircle className="size-3.5 shrink-0 text-primary mt-0.5" />
-                    {step}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </div>
 
       {/* Distribution phases + fair design */}
       <div className="grid lg:grid-cols-2 gap-6">
-        <div className="rounded-xl border border-border bg-card p-5">
+        <div className="bento-cell p-5">
           <SectionHeader label="Distribution Phases" />
           <div className="space-y-0 divide-y divide-border/60">
             {phases.map((p) => (
@@ -171,12 +175,12 @@ export default function AirdropPageClient() {
           </p>
         </div>
 
-        <div className="rounded-xl border border-border bg-card p-5">
+        <div className="bento-cell p-5">
           <SectionHeader label="Fair by Design" />
           <ul className="space-y-3">
             {fairDesign.map((item) => (
               <li key={item} className="flex items-start gap-2.5 text-xs text-muted-foreground/70 leading-relaxed">
-                <CheckCircle className="size-3.5 shrink-0 text-primary mt-0.5" />
+                <CheckCircle className="size-3.5 shrink-0 text-brand-purple mt-0.5" />
                 {item}
               </li>
             ))}
@@ -186,26 +190,30 @@ export default function AirdropPageClient() {
 
       {/* Campaigns */}
       <div>
-        <SectionHeader label="Active Campaigns" color="text-blue-500" bg="bg-blue-500" />
-        <div className="grid sm:grid-cols-2 gap-4">
-          <div className="p-5 rounded-xl border border-border bg-card">
-            <p className="text-sm font-bold text-foreground mb-1.5">Global Campaign</p>
-            <p className="text-xs text-muted-foreground/70 leading-relaxed">
-              Open to all participants worldwide. Participate at medialane.io. Activity tracked on Starknet — auditable by anyone.
-            </p>
-          </div>
-          <div className="p-5 rounded-xl border border-border bg-card">
-            <p className="text-sm font-bold text-foreground mb-1.5">Brasil Campaign</p>
-            <p className="text-xs text-muted-foreground/70 leading-relaxed">
-              Dedicated campaign for Portuguese-speaking creators in Brazil and the broader Portuguese-speaking community. Same structure, same rules — tracked as a separate cohort.
-            </p>
-          </div>
-        </div>
+        <SectionHeader label="Active Campaigns" color="text-brand-blue" bg="bg-brand-blue" className="mb-6" />
+        <Stagger className="grid sm:grid-cols-2 gap-4">
+          <StaggerItem>
+            <div className="p-5 bento-cell h-full">
+              <p className="text-sm font-bold text-foreground mb-1.5">Global Campaign</p>
+              <p className="text-xs text-muted-foreground/70 leading-relaxed">
+                Open to all participants worldwide. Participate at medialane.io. Activity tracked on Starknet — auditable by anyone.
+              </p>
+            </div>
+          </StaggerItem>
+          <StaggerItem>
+            <div className="p-5 bento-cell h-full">
+              <p className="text-sm font-bold text-foreground mb-1.5">Brasil Campaign</p>
+              <p className="text-xs text-muted-foreground/70 leading-relaxed">
+                Dedicated campaign for Portuguese-speaking creators in Brazil and the broader Portuguese-speaking community. Same structure, same rules — tracked as a separate cohort.
+              </p>
+            </div>
+          </StaggerItem>
+        </Stagger>
       </div>
 
       {/* How to participate */}
-      <div className="rounded-xl border border-border bg-card p-6">
-        <SectionHeader label="How to Participate" />
+      <div className="bento-cell p-6 sm:p-8">
+        <SectionHeader label="How to Participate" className="mb-5" />
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
           {howToParticipate.map((s) => (
             <div key={s.step} className="flex gap-3">
@@ -222,7 +230,7 @@ export default function AirdropPageClient() {
             href="https://medialane.io"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
+            className="inline-flex items-center gap-2 rounded-xl bg-brand-purple px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-purple/90 transition-colors"
           >
             Open Medialane <ArrowUpRight className="size-3.5" />
           </a>

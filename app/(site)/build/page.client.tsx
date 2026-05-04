@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { ArrowUpRight, Code2, FileCode2, Boxes, Zap, Bot, Shield } from 'lucide-react'
 import { starknet } from '@/lib/site-config'
+import { Stagger, StaggerItem } from '@medialane/ui'
 import { PageHero } from '@/components/page-hero'
 import { SectionHeader } from '@/components/section-header'
 import { FeatureCard } from '@/components/feature-card'
@@ -12,7 +13,9 @@ const sdkCapabilities = [
     title: 'API Client',
     status: 'v0.6.4',
     icon: Code2,
-    iconColor: 'bg-violet-500/10 text-violet-500',
+    iconColor: 'bg-brand-purple/10 text-brand-purple',
+    gradient: 'from-brand-purple/10 to-transparent',
+    buttonColor: 'bg-brand-purple',
     description: 'Full REST API coverage — orders, tokens, collections, activity feeds, and user portfolios. TypeScript-first with inferred return types.',
     tags: ['TypeScript', 'ESM + CJS', 'No runtime deps'],
     href: '/docs/SDK',
@@ -22,7 +25,9 @@ const sdkCapabilities = [
     title: 'SNIP-12 Typed Data',
     status: 'Live',
     icon: FileCode2,
-    iconColor: 'bg-blue-500/10 text-blue-500',
+    iconColor: 'bg-brand-blue/10 text-brand-blue',
+    gradient: 'from-brand-blue/10 to-transparent',
+    buttonColor: 'bg-brand-blue',
     description: 'Order signing helpers for ERC-721 and ERC-1155 marketplaces. Build, sign, and submit listings and offers without manual ABI encoding.',
     tags: ['SNIP-12', 'ERC-721', 'ERC-1155'],
     href: '/docs/SDK',
@@ -32,7 +37,9 @@ const sdkCapabilities = [
     title: 'Contract ABIs & Addresses',
     status: 'Audited',
     icon: Boxes,
-    iconColor: 'bg-indigo-500/10 text-indigo-500',
+    iconColor: 'bg-brand-purple/10 text-brand-purple',
+    gradient: 'from-brand-purple/10 to-transparent',
+    buttonColor: 'bg-brand-purple',
     description: 'All mainnet contract addresses and Cairo ABIs exported directly from the SDK. No copy-pasting hex strings from block explorers.',
     tags: ['Cairo', 'Starknet Mainnet', 'Non-upgradeable'],
     href: '/docs/Contracts',
@@ -42,7 +49,9 @@ const sdkCapabilities = [
     title: 'IP Metadata Schema',
     status: 'Live',
     icon: Shield,
-    iconColor: 'bg-primary/10 text-primary',
+    iconColor: 'bg-brand-blue/10 text-brand-blue',
+    gradient: 'from-brand-blue/10 to-transparent',
+    buttonColor: 'bg-brand-blue',
     description: 'Berne Convention-aligned TypeScript types for IP assets. 12 IP categories, 9 Creative Commons variants, AI training policy fields.',
     tags: ['Berne Convention', 'CC0/CC BY', 'AI Policy'],
     href: '/docs/IP-Assets',
@@ -54,19 +63,19 @@ const aiAgentCapabilities = [
   {
     title: 'Permissionless Access',
     icon: Bot,
-    color: 'bg-violet-500/10 text-violet-500',
+    color: 'bg-brand-purple/10 text-brand-purple',
     body: 'Any intelligence with a Starknet address can interact with the protocol — no KYC, no API keys, no gatekeeping. AI agents are first-class participants.',
   },
   {
     title: 'Account Abstraction',
     icon: Zap,
-    color: 'bg-blue-500/10 text-blue-500',
+    color: 'bg-brand-blue/10 text-brand-blue',
     body: 'Starknet wallets are smart contracts. AI agents can deploy their own accounts, sign transactions programmatically, and use session keys for batch operations.',
   },
   {
     title: 'Sponsored Gas',
     icon: Shield,
-    color: 'bg-indigo-500/10 text-indigo-500',
+    color: 'bg-brand-purple/10 text-brand-purple',
     body: 'Medialane sponsors gas fees for creator actions via native paymaster. AI agents minting IP assets pay zero gas — no ETH required to start.',
   },
 ]
@@ -91,7 +100,7 @@ const protocolDocs = [
 
 export default function BuildPageClient() {
   return (
-    <div className="px-6 lg:px-10 xl:px-14 py-8 space-y-10">
+    <div className="px-4 sm:px-6 lg:px-10 xl:px-14 py-10 sm:py-12 lg:py-16 space-y-12">
 
       <PageHero
         eyebrow="Medialane · Developer"
@@ -103,7 +112,7 @@ export default function BuildPageClient() {
             href="https://github.com/medialane-io/medialane-sdk"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-colors shadow-sm"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-purple text-white text-sm font-semibold hover:bg-brand-purple/90 transition-colors shadow-sm"
           >
             View on GitHub <ArrowUpRight className="size-4" />
           </a>
@@ -117,12 +126,12 @@ export default function BuildPageClient() {
       </PageHero>
 
       {/* Quick install */}
-      <div className="rounded-xl border border-border bg-card p-6 max-w-2xl">
+      <div className="bento-cell p-6 max-w-2xl">
         <SectionHeader label="Install" />
         <pre className="text-xs font-mono text-foreground/80 leading-relaxed bg-muted/50 rounded-lg p-4 overflow-x-auto">
           <code>{`npm install @medialane/sdk
 # or
-pnpm add @medialane/sdk`}</code>
+bun add @medialane/sdk`}</code>
         </pre>
         <pre className="text-xs font-mono text-foreground/80 leading-relaxed bg-muted/50 rounded-lg p-4 mt-3 overflow-x-auto">
           <code>{`import { MedialaneClient } from '@medialane/sdk'
@@ -142,36 +151,40 @@ const { data: orders } = await client.api.getOrders({
 
       {/* SDK capabilities */}
       <div>
-        <SectionHeader label="SDK" color="text-violet-500" bg="bg-violet-500" />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <SectionHeader label="SDK" color="text-brand-purple" bg="bg-brand-purple" className="mb-6" />
+        <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {sdkCapabilities.map((item) => (
-            <FeatureCard key={item.title} {...item} />
+            <StaggerItem key={item.title}>
+              <FeatureCard {...item} />
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </div>
 
       {/* AI Agent access */}
       <div>
-        <SectionHeader label="AI Agents" color="text-blue-500" bg="bg-blue-500" />
-        <div className="grid sm:grid-cols-3 gap-4">
+        <SectionHeader label="AI Agents" color="text-brand-blue" bg="bg-brand-blue" className="mb-6" />
+        <Stagger className="grid sm:grid-cols-3 gap-4">
           {aiAgentCapabilities.map(({ icon: Icon, color, title, body }) => (
-            <div key={title} className="flex flex-col gap-3 p-5 rounded-xl border border-border bg-card">
-              <div className={`flex size-9 items-center justify-center rounded-lg shrink-0 ${color}`}>
-                <Icon className="size-4" />
+            <StaggerItem key={title}>
+              <div className="flex flex-col gap-3 p-5 bento-cell h-full">
+                <div className={`flex size-9 items-center justify-center rounded-lg shrink-0 ${color}`}>
+                  <Icon className="size-4" />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-foreground mb-1.5">{title}</p>
+                  <p className="text-xs text-muted-foreground/70 leading-relaxed">{body}</p>
+                </div>
               </div>
-              <div>
-                <p className="text-sm font-semibold text-foreground mb-1.5">{title}</p>
-                <p className="text-xs text-muted-foreground/70 leading-relaxed">{body}</p>
-              </div>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </div>
 
       {/* Protocol contracts */}
       <div>
-        <SectionHeader label="Starknet Contracts · Mainnet" color="text-indigo-500" bg="bg-indigo-500" />
-        <div className="rounded-xl border border-border bg-card divide-y divide-border/60">
+        <SectionHeader label="Starknet Contracts · Mainnet" color="text-brand-purple" bg="bg-brand-purple" className="mb-6" />
+        <div className="bento-cell divide-y divide-border/60">
           {contracts.map((c) => (
             <a
               key={c.label}
@@ -181,10 +194,10 @@ const { data: orders } = await client.api.getOrders({
               className="group flex items-center justify-between px-5 py-3.5 hover:bg-muted/30 transition-colors"
             >
               <div className="min-w-0">
-                <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{c.label}</p>
+                <p className="text-sm font-medium text-foreground group-hover:text-brand-purple transition-colors">{c.label}</p>
                 <p className="text-[11px] font-mono text-muted-foreground/40 mt-0.5 truncate">{c.address.slice(0, 20)}…{c.address.slice(-6)}</p>
               </div>
-              <ArrowUpRight className="size-3.5 text-muted-foreground/20 group-hover:text-primary transition-colors shrink-0 ml-4" />
+              <ArrowUpRight className="size-3.5 text-muted-foreground/20 group-hover:text-brand-purple transition-colors shrink-0 ml-4" />
             </a>
           ))}
         </div>
@@ -193,20 +206,21 @@ const { data: orders } = await client.api.getOrders({
 
       {/* Protocol docs */}
       <div>
-        <SectionHeader label="Protocol Docs" color="text-primary" bg="bg-primary" />
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <SectionHeader label="Protocol Docs" color="text-brand-blue" bg="bg-brand-blue" className="mb-6" />
+        <Stagger className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {protocolDocs.map((doc) => (
-            <Link
-              key={doc.slug}
-              href={`/docs/${doc.slug}`}
-              className="group flex flex-col gap-2 p-5 rounded-xl border border-border bg-card hover:border-primary/30 hover:shadow-sm transition-all duration-150"
-            >
-              <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">{doc.title}</p>
-              <p className="text-xs text-muted-foreground/60 leading-relaxed flex-1">{doc.description}</p>
-              <p className="text-[11px] text-primary/60 font-medium">Read →</p>
-            </Link>
+            <StaggerItem key={doc.slug}>
+              <Link
+                href={`/docs/${doc.slug}`}
+                className="group flex flex-col gap-2 p-5 bento-cell hover:border-brand-blue/40 hover:shadow-sm transition-all duration-150 h-full"
+              >
+                <p className="text-sm font-semibold text-foreground group-hover:text-brand-blue transition-colors">{doc.title}</p>
+                <p className="text-xs text-muted-foreground/60 leading-relaxed flex-1">{doc.description}</p>
+                <p className="text-[11px] text-brand-blue/60 font-medium">Read →</p>
+              </Link>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </div>
 
     </div>

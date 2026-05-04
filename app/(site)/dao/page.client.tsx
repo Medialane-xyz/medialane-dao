@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { siteConfig, mdln } from '@/lib/site-config'
 import type { SnapshotProposal, MdlnStats } from '@/lib/governance'
 import { ArrowUpRight, ExternalLink, FileText } from 'lucide-react'
+import { Stagger, StaggerItem } from '@medialane/ui'
 import { PageHero } from '@/components/page-hero'
 import { StatCard } from '@/components/stat-card'
 import { SectionHeader } from '@/components/section-header'
@@ -58,7 +59,7 @@ interface DAOPageClientProps {
 
 export default function DAOPageClient({ documents, proposals, stats }: DAOPageClientProps) {
   return (
-    <div className="px-6 lg:px-10 xl:px-14 py-8 space-y-10">
+    <div className="px-4 sm:px-6 lg:px-10 xl:px-14 py-10 sm:py-12 lg:py-16 space-y-12">
 
       <PageHero
         eyebrow="Medialane · Utah DAO LLC"
@@ -68,39 +69,43 @@ export default function DAOPageClient({ documents, proposals, stats }: DAOPageCl
 
       {/* Token Stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <StatCard label="Total Supply" value="21,000,000" sub="MDLN · Fixed forever" accent="border-t-violet-500" />
+        <StatCard label="Total Supply" value="21,000,000" sub="MDLN · Fixed forever" aurora="aurora-purple" />
         <StatCard
           label="Vested"
           value={`${Math.round((stats.vestingLocked / mdln.totalSupply) * 100)}%`}
           sub="9-year linear vesting"
-          accent="border-t-blue-500"
+          aurora="aurora-blue"
+          auroraPos="-bottom-6 -right-6"
         />
-        <StatCard label="Operational" value="10%" sub="2.1M · protocol runway" accent="border-t-indigo-500" />
+        <StatCard label="Operational" value="10%" sub="2.1M · protocol runway" aurora="aurora-purple" auroraPos="-top-6 -right-6" />
         <StatCard
           label="Holders"
           value={stats.holders ? stats.holders.toLocaleString() : '—'}
           sub="Ethereum mainnet"
-          accent="border-t-primary"
+          aurora="aurora-blue"
+          auroraPos="-top-6 -left-6"
         />
       </div>
 
       {/* How Revenue Works */}
-      <div className="rounded-xl border border-border bg-card p-6 max-w-3xl">
-        <SectionHeader label="Treasury & Revenue" />
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          A 1% marketplace fee flows into the Medialane DAO treasury — a Gnosis Safe multisig on Ethereum, fully auditable on-chain.
-          Each year, MDLN holders vote on Snapshot to decide how that revenue is used: Creator&#39;s Airdrop, token buyback, token burn,
-          protocol development, or operations. No predetermined formula. Community-governed every cycle.
-        </p>
+      <div className="p-[1px] rounded-2xl btn-border-animated max-w-3xl">
+        <div className="rounded-[calc(1rem-1px)] bg-card p-6 sm:p-8">
+          <SectionHeader label="Treasury & Revenue" className="mb-3" />
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            A 1% marketplace fee flows into the Medialane DAO treasury — a Gnosis Safe multisig on Ethereum, fully auditable on-chain.
+            Each year, MDLN holders vote on Snapshot to decide how that revenue is used: Creator&#39;s Airdrop, token buyback, token burn,
+            protocol development, or operations. No predetermined formula. Community-governed every cycle.
+          </p>
+        </div>
       </div>
 
       {/* Proposals + sidebar */}
       <div className="grid lg:grid-cols-[1fr_300px] gap-6">
-        <div className="rounded-xl border border-border bg-card">
+        <div className="bento-cell">
           <div className="flex items-center justify-between px-5 py-4 border-b border-border">
             <h2 className="text-sm font-bold text-foreground">Proposals</h2>
             <a href={siteConfig.snapshot} target="_blank" rel="noopener noreferrer"
-              className="flex items-center gap-1 text-xs font-semibold text-primary hover:text-primary/80 transition-colors">
+              className="flex items-center gap-1 text-xs font-semibold text-brand-purple hover:text-brand-purple/80 transition-colors">
               Vote on Snapshot <ArrowUpRight className="size-3" />
             </a>
           </div>
@@ -109,7 +114,7 @@ export default function DAOPageClient({ documents, proposals, stats }: DAOPageCl
               <div className="py-12 text-center">
                 <p className="text-sm text-muted-foreground mb-3">No proposals yet.</p>
                 <a href={siteConfig.snapshot} target="_blank" rel="noopener noreferrer"
-                  className="text-xs text-primary hover:underline inline-flex items-center gap-1">
+                  className="text-xs text-brand-purple hover:underline inline-flex items-center gap-1">
                   Be the first to propose <ArrowUpRight className="size-3" />
                 </a>
               </div>
@@ -118,7 +123,7 @@ export default function DAOPageClient({ documents, proposals, stats }: DAOPageCl
         </div>
 
         <div className="space-y-4">
-          <div className="rounded-xl border border-border bg-card p-5">
+          <div className="bento-cell p-5">
             <SectionHeader label="On-chain" />
             {[
               { label: 'MDLN Contract',            href: mdln.etherscanToken    },
@@ -127,14 +132,14 @@ export default function DAOPageClient({ documents, proposals, stats }: DAOPageCl
               { label: 'Snapshot · medialane.eth', href: siteConfig.snapshot    },
             ].map((l) => (
               <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer"
-                className="flex items-center justify-between py-2.5 text-sm text-muted-foreground/70 hover:text-primary transition-colors group border-b border-border/60 last:border-0">
+                className="flex items-center justify-between py-2.5 text-sm text-muted-foreground/70 hover:text-brand-purple transition-colors group border-b border-border/60 last:border-0">
                 {l.label}
                 <ExternalLink className="size-3.5 opacity-0 group-hover:opacity-60 transition-opacity" />
               </a>
             ))}
           </div>
 
-          <div className="rounded-xl border border-border bg-card p-5">
+          <div className="bento-cell p-5">
             <SectionHeader label="How to vote" />
             <div className="space-y-3 text-xs text-muted-foreground/70 leading-relaxed">
               {[
@@ -149,7 +154,7 @@ export default function DAOPageClient({ documents, proposals, stats }: DAOPageCl
               ))}
             </div>
             <a href={siteConfig.snapshot} target="_blank" rel="noopener noreferrer"
-              className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
+              className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-brand-purple px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-purple/90 transition-colors">
               Open Snapshot <ArrowUpRight className="size-3.5" />
             </a>
           </div>
@@ -159,19 +164,21 @@ export default function DAOPageClient({ documents, proposals, stats }: DAOPageCl
       {/* Founding Documents */}
       {Object.keys(documents).length > 0 && (
         <div>
-          <SectionHeader label="Founding Documents" />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <SectionHeader label="Founding Documents" className="mb-6" />
+          <Stagger className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {Object.entries(documents).map(([slug, doc]) => (
-              <Link key={slug} href={`/docs/${slug}`}
-                className="group flex items-start gap-3 p-5 rounded-xl border border-border bg-card hover:border-primary/40 hover:shadow-sm transition-all duration-150">
-                <FileText className="size-4 text-muted-foreground/40 group-hover:text-primary transition-colors shrink-0 mt-0.5" />
-                <div className="min-w-0">
-                  <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors leading-snug">{doc.title}</p>
-                  <p className="text-[11px] text-muted-foreground/40 mt-1">Read document →</p>
-                </div>
-              </Link>
+              <StaggerItem key={slug}>
+                <Link href={`/docs/${slug}`}
+                  className="group flex items-start gap-3 p-5 bento-cell hover:border-brand-purple/40 hover:shadow-sm transition-all duration-150">
+                  <FileText className="size-4 text-muted-foreground/40 group-hover:text-brand-purple transition-colors shrink-0 mt-0.5" />
+                  <div className="min-w-0">
+                    <p className="text-sm font-semibold text-foreground group-hover:text-brand-purple transition-colors leading-snug">{doc.title}</p>
+                    <p className="text-[11px] text-muted-foreground/40 mt-1">Read document →</p>
+                  </div>
+                </Link>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </div>
       )}
     </div>
