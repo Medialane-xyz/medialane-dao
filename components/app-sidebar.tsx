@@ -8,7 +8,7 @@ import { useEffect } from "react"
 import {
   LayoutDashboard, Vote, Layers, Coins, BookOpen,
   MessageSquare, Sun, Moon, ArrowUpRight, FileText,
-  ChevronRight,
+  ChevronRight, Wrench, Gift,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import {
@@ -49,6 +49,8 @@ const TOP_NAV = [
   { href: "/dao",     label: "Governance", icon: Vote            },
   { href: "/explore", label: "Protocol",   icon: Layers          },
   { href: "/members", label: "Token",      icon: Coins           },
+  { href: "/build",   label: "Build",      icon: Wrench          },
+  { href: "/airdrop", label: "Airdrop",    icon: Gift            },
   { href: "/connect", label: "Connect",    icon: MessageSquare   },
 ]
 

@@ -32,6 +32,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               <Link href="/dao"     className="hover:text-foreground transition-colors">Governance</Link>
               <Link href="/explore" className="hover:text-foreground transition-colors">Protocol</Link>
               <Link href="/members" className="hover:text-foreground transition-colors">Token</Link>
+              <Link href="/build"   className="hover:text-foreground transition-colors">Build</Link>
+              <Link href="/airdrop" className="hover:text-foreground transition-colors">Airdrop</Link>
               <Link href="/docs"    className="hover:text-foreground transition-colors">Docs</Link>
               <Link href="/connect" className="hover:text-foreground transition-colors">Connect</Link>
               <a href="https://medialane.io" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">App ↗</a>
