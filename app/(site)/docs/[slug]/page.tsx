@@ -8,16 +8,20 @@ interface PostPageProps {
 }
 
 export async function generateStaticParams() {
-  const root = getAllPosts('')
-  const dao  = getAllPosts('dao')
-  return [...root, ...dao].map((post) => ({ slug: post.slug }))
+  const root     = getAllPosts('')
+  const dao      = getAllPosts('dao')
+  const protocol = getAllPosts('protocol')
+  return [...root, ...dao, ...protocol].map((post) => ({ slug: post.slug }))
 }
 
 export default async function PostPage({ params }: PostPageProps) {
   const { slug } = await params
 
-  // Try dao subdirectory first, then root
-  const post = (await getPostBySlug(slug, 'dao')) ?? (await getPostBySlug(slug, ''))
+  // Try dao, protocol, then root
+  const post =
+    (await getPostBySlug(slug, 'dao')) ??
+    (await getPostBySlug(slug, 'protocol')) ??
+    (await getPostBySlug(slug, ''))
 
   if (!post) notFound()
 
