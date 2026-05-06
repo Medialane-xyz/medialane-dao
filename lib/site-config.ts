@@ -2,7 +2,7 @@ export const siteConfig = {
   name: 'Medialane',
   title: 'Medialane DAO',
   description: 'Monetization hub for the integrity web.',
-  tagline: 'Creators Capital Markets on the Integrity Web',
+  tagline: 'Creator Capital Markets on the Integrity Web',
   url: 'https://medialane.org',
   email: 'dao@medialane.org',
   snapshot: 'https://snapshot.org/#/s:medialane.eth',
@@ -99,4 +99,3 @@ export const navSections: NavSection[] = [
     description: 'Get involved',
   },
 ]
-

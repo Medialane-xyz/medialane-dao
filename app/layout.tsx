@@ -17,7 +17,7 @@ const _geistMono = Geist_Mono({
 import { colors } from '@/lib/site-config'
 
 export const metadata: Metadata = {
-  title: 'Medialane | Creators Capital Markets on the Integrity Web',
+  title: 'Medialane | Creator Capital Markets on the Integrity Web',
   description:
     'Medialane is the monetization hub of the new creative economy—bridging creators, businesses, and AI agents through a unified infrastructure.',
   icons: {
