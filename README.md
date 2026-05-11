@@ -20,7 +20,7 @@ Medialane is a monetization layer for creators, collectors, organizations, and a
 |---|---|
 | **Symbol** | MDLN |
 | **Supply** | 21,000,000 (fixed forever) |
-| **Treasury** | 100% DAO — no VCs, no insiders |
+| **Treasury** | 100% DAO — ,  |
 | **Vesting** | 9-year linear unlock (2.1M/year) |
 | **Voting** | 1 MDLN = 1 vote (gasless via Snapshot) |
 | **L1 (Ethereum)** | `0x0DC90d57F3Aa3E836Ffd6E777E543a43A487dB15` |

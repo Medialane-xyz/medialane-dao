@@ -64,7 +64,7 @@ export default function DAOPageClient({ documents, proposals, stats }: DAOPageCl
       <PageHero
         eyebrow="Medialane · "
         title="Governance"
-        description="Medialane is governed by its community — creators, collectors, builders, and autonomous AI that hold MDLN. Every protocol upgrade and revenue decision is voted on-chain. No VCs. No insiders. No company."
+        description="Medialane is governed by its community — creators, collectors, builders, and autonomous AI with MDLN token."
       />
 
       {/* Token Stats */}
