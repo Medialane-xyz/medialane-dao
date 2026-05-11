@@ -46,7 +46,7 @@ We implement appropriate technical and organizational measures to protect your p
 
 Starknet leverages STARK proofs and the Cairo VM to process transactions off-chain, then submits them to Ethereum for final settlement:
 
-* Tokenized IP assets, licensing contracts, and ownership proofs are public.
+* Tokenized digital assets, licensing contracts, and ownership proofs are public.
 * Zero-knowledge proofs may be used to preserve confidentiality while ensuring verifiability.
 * Medialane cannot modify or delete blockchain records.
 
@@ -91,7 +91,7 @@ We prioritize cryptographic security and user control:
 
 Medialane aligns with the Berne Convention (1886):
 
-* Tokenized IP assets are recognized in 181 countries as proof of authorship.
+* Tokenized digital assets are recognized in 181 countries as proof of authorship.
 * Ownership validity spans 50 to 70 years, depending on jurisdiction.
 * Medialane does not offer legal advice or representation.
 

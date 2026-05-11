@@ -1,6 +1,6 @@
 ---
 title: "Marketplace"
-description: "Complete guide to listing, buying, bidding, counter-offers, and trading IP assets on the Medialane marketplace."
+description: "Complete guide to listing, buying, bidding, counter-offers, and trading digital assets on the Medialane marketplace."
 date: "2026-05-01"
 author: "Medialane DAO"
 ---

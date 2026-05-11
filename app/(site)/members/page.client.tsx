@@ -36,7 +36,7 @@ const tiers = [
 ]
 
 const starknetBenefits = [
-  { icon: Zap,    color: 'bg-brand-purple/10 text-brand-purple', title: 'Fraction-of-cent fees',      body: 'Starknet transactions cost a fraction of Ethereum mainnet. Mint, list, and trade IP assets with near-zero gas.' },
+  { icon: Zap,    color: 'bg-brand-purple/10 text-brand-purple', title: 'Fraction-of-cent fees',      body: 'Starknet transactions cost a fraction of Ethereum mainnet. Mint, list, and trade digital assets with near-zero gas.' },
   { icon: Shield, color: 'bg-brand-blue/10 text-brand-blue',     title: 'ZK-STARK security',          body: 'Every transaction batch is verified by STARK proofs on Ethereum. Cryptographic security without trusting a sequencer.' },
   { icon: Coins,  color: 'bg-brand-purple/10 text-brand-purple', title: 'Sponsored transactions',     body: 'Medialane sponsors gas for creator actions via native account abstraction. No ETH required to start creating.' },
   { icon: Globe,  color: 'bg-brand-blue/10 text-brand-blue',     title: 'Native account abstraction', body: 'Wallets are smart contracts. Session keys (SNIP-9) enable PIN-authenticated gasless sessions across multiple actions.' },
@@ -135,7 +135,7 @@ export default function MembersPageClient() {
           <StaggerItem>
             <div className="flex flex-col gap-3 p-5 bento-cell h-full">
               <p className="text-sm font-semibold text-foreground">Zero-fee Tokenization</p>
-              <p className="text-sm text-foreground leading-relaxed flex-1">Minting IP assets on Medialane costs zero platform fees. Starknet transactions cost a fraction of a cent. Creator economy without extractive fees — 1% only on marketplace monetization.</p>
+              <p className="text-sm text-foreground leading-relaxed flex-1">Minting digital assets on Medialane costs zero platform fees. Starknet transactions cost a fraction of a cent. Creator economy without extractive fees — 1% only on marketplace monetization.</p>
               <div className="flex flex-wrap gap-1.5">
                 {['Free to Mint', '1% Marketplace Fee', 'Starknet L2'].map((t) => (
                   <span key={t} className="text-[10px] px-2 py-0.5 rounded-full bg-muted text-muted-foreground/60 border border-border">{t}</span>

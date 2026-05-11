@@ -1,19 +1,19 @@
 ---
-title: "IP Assets"
+title: "digital assets"
 description: "How Medialane registers, protects, and licenses intellectual property using Starknet and IPFS."
 date: "2026-05-01"
 author: "Medialane DAO"
 ---
 
-# IP Assets
+# digital assets
 
-An IP Asset on Medialane is a programmable NFT that encodes both **ownership proof** and **licensing terms** as on-chain, immutable attributes. The combination of a Starknet transaction hash and an IPFS CID creates a Berne Convention-compatible copyright record valid in 181 countries.
+An digital asset on Medialane is a programmable NFT that encodes both **ownership proof** and **licensing terms** as on-chain, immutable attributes. The combination of a Starknet transaction hash and an IPFS CID creates a Berne Convention-compatible copyright record valid in 181 countries.
 
 ---
 
 ## The Registration Model
 
-When a creator mints an IP asset, three things happen simultaneously:
+When a creator mints an digital asset, three things happen simultaneously:
 
 1. **Media upload** — The file is pinned to IPFS via Pinata. The CID is a cryptographic fingerprint of the content — if the file changes, the CID changes.
 2. **Metadata anchoring** — A JSON metadata file (also IPFS-pinned) records title, description, IP type, license terms, and a pointer to the media CID.
@@ -46,7 +46,7 @@ Medialane supports 12 IP categories, each with appropriate metadata schema guida
 
 ## Licensing System
 
-Every IP asset carries machine-readable license terms embedded as NFT attributes. The licensing framework covers nine dimensions:
+Every digital asset carries machine-readable license terms embedded as NFT attributes. The licensing framework covers nine dimensions:
 
 ### Creative Commons Presets
 
@@ -151,7 +151,7 @@ This does **not** replace legal counsel for disputes — it provides the evidenc
 
 ## On-chain Provenance
 
-Every IP asset accrues a provenance record — a chain of transfer, sale, and remix events indexed from Starknet. The Medialane API (`getTokenHistory`) returns a full timeline for any asset, including:
+Every digital asset accrues a provenance record — a chain of transfer, sale, and remix events indexed from Starknet. The Medialane API (`getTokenHistory`) returns a full timeline for any asset, including:
 
 - Mint event (creator, timestamp, tx hash)
 - Transfer history (from/to, timestamps)

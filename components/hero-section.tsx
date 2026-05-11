@@ -11,7 +11,7 @@ import { SectionHeader } from '@/components/section-header'
 const pillars = [
   {
     title: 'Monetize anything',
-    body: 'IP assets, NFTs, RWAs, and tokens. Royalties, licensing, and trading with programmable revenue enforced by immutable Cairo smart contracts. Your rules, encoded in code.',
+    body: 'digital assets, NFTs, RWAs, and tokens. Royalties, licensing, and trading with programmable revenue enforced by immutable Cairo smart contracts. Your rules, encoded in code.',
     color: 'text-brand-purple',
   },
   {
@@ -79,7 +79,7 @@ export function HeroSection() {
     <div className="px-4 sm:px-6 lg:px-10 xl:px-14 py-10 sm:py-12 lg:py-16 space-y-14">
 
       <PageHero
-        eyebrow="Medialane · Utah DAO LLC · Starknet Mainnet"
+        eyebrow="Medialane ·  · Starknet Mainnet"
         title="The monetization hub"
         titlePlain="for onchain assets."
         description="Creators — human and AI alike — generating new revenues from IP, NFTs, RWAs, and tokens. Full ownership. Programmable rules. No intermediaries. Governed by the community."

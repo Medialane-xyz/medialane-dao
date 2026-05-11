@@ -19,7 +19,7 @@ Medialane is a decentralized, permissionless infrastructure for programmable IP.
 ## Core Protocol
 
 ### Networks
-- **Starknet Mainnet** — all IP assets, marketplace, collections, launchpad
+- **Starknet Mainnet** — all digital assets, marketplace, collections, launchpad
 - **Ethereum Mainnet** — MDLN governance token, Gnosis Safe treasury
 
 ### Smart Contracts (Starknet Mainnet)
@@ -60,7 +60,7 @@ Medialane is a decentralized, permissionless infrastructure for programmable IP.
 
 ## Governance
 
-- **Legal structure:** Utah DAO LLC (United States)
+- **Legal structure:**  (United States)
 - **Voting platform:** Snapshot (off-chain, gasless)
 - **Proposal threshold:** 100 MDLN to submit
 - **Voting period:** Minimum 5 days
@@ -81,7 +81,7 @@ Medialane is a decentralized, permissionless infrastructure for programmable IP.
 ## Platform Features
 
 ### Create
-- **Mint IP Asset** — Register creative work as programmable NFT, 12 IP types, gasless, IPFS metadata
+- **Mint digital asset** — Register creative work as programmable NFT, 12 IP types, gasless, IPFS metadata
 - **Create Collection** — Deploy branded ERC-721 or ERC-1155 collections via factory contracts
 - **Remix & License** — Create licensed derivatives with on-chain attribution graph
 

@@ -27,7 +27,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         </main>
         <footer className="bg-background border-t border-border/60 px-6 py-8 mt-auto">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-            <p className="text-xs">© {new Date().getFullYear()} Medialane DAO · Utah DAO LLC</p>
+            <p className="text-xs">© {new Date().getFullYear()} Medialane DAO · </p>
             <nav className="flex items-center gap-4 flex-wrap justify-center text-xs">
               <Link href="/dao"     className="hover:text-foreground transition-colors">Governance</Link>
               <Link href="/explore" className="hover:text-foreground transition-colors">Protocol</Link>

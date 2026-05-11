@@ -44,8 +44,8 @@ export const starknet = {
   mdlnL2: '0x6730d6a357690cebffad800219e9630e15b6f44d35526e0fc9ee52bdf7418e8',
   starkgateL2Bridge: '0x0616757a151c21f9be8775098d591c2807316d992bbc3bb1a5c1821630589256',
   voyagerMdln: 'https://voyager.online/contract/0x6730d6a357690cebffad800219e9630e15b6f44d35526e0fc9ee52bdf7418e8',
-  starkscanMarketplace721: 'https://starkscan.co/contract/0x00f8ccaae0bc811c79605974cc1dab769b9cea8877f033f8e3c17f30457caba6',
-  starkscanMarketplace1155: 'https://starkscan.co/contract/0x02bfa521c25461a09d735889b469418608d7d92f8b26e3d37ef174a4c2e22f99',
+  starkscanMarketplace721: 'https://voyager.online/contract/0x00f8ccaae0bc811c79605974cc1dab769b9cea8877f033f8e3c17f30457caba6',
+  starkscanMarketplace1155: 'https://voyager.online/contract/0x02bfa521c25461a09d735889b469418608d7d92f8b26e3d37ef174a4c2e22f99',
 } as const
 
 // brand colors used throughout the app; pulling from a single source makes

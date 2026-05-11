@@ -15,7 +15,7 @@ const features = [
     buttonColor: 'bg-brand-purple',
     items: [
       {
-        title: 'Mint IP Asset',
+        title: 'Mint digital asset',
         status: 'Live',
         href: 'https://medialane.io/create/asset',
         external: true,
@@ -124,7 +124,7 @@ const features = [
       {
         title: 'Protocol v2',
         status: 'Audited',
-        href: `https://starkscan.co/contract/${starknet.marketplace721}`,
+        href: `https://voyager.online/contract/${starknet.marketplace721}`,
         external: true,
         description: 'Audited ERC-721 and ERC-1155 marketplace contracts on Starknet. CEI pattern, front-running protection, SNIP-12 typed-data orders. Non-upgradeable by design.',
         tags: ['Cairo', 'ERC-721', 'ERC-1155'],

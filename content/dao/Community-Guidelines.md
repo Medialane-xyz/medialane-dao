@@ -59,7 +59,7 @@ Medialane welcomes contributions across multiple domains:
 * Build smart contracts, dApps, and services.
 
 ### Curators
-* Organize, promote, and contextualize IP assets.
+* Organize, promote, and contextualize digital assets.
 
 ### Governors
 * Propose and vote on upgrades and policies.

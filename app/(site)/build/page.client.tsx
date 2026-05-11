@@ -52,7 +52,7 @@ const sdkCapabilities = [
     iconColor: 'bg-brand-blue/10 text-brand-blue',
     gradient: 'from-brand-blue/10 to-transparent',
     buttonColor: 'bg-brand-blue',
-    description: 'Berne Convention-aligned TypeScript types for IP assets. 12 IP categories, 9 Creative Commons variants, AI training policy fields.',
+    description: 'Berne Convention-aligned TypeScript types for digital assets. 12 IP categories, 9 Creative Commons variants, AI training policy fields.',
     tags: ['Berne Convention', 'CC0/CC BY', 'AI Policy'],
     href: '/docs/IP-Assets',
     external: false,
@@ -76,22 +76,22 @@ const aiAgentCapabilities = [
     title: 'Sponsored Gas',
     icon: Shield,
     color: 'bg-brand-purple/10 text-brand-purple',
-    body: 'Medialane sponsors gas fees for creator actions via native paymaster. AI agents minting IP assets pay zero gas — no ETH required to start.',
+    body: 'Medialane sponsors gas fees for creator actions via native paymaster. AI agents minting digital assets pay zero gas — no ETH required to start.',
   },
 ]
 
 const contracts = [
   { label: 'ERC-721 Marketplace v2',      address: starknet.marketplace721,  href: starknet.starkscanMarketplace721  },
   { label: 'ERC-1155 Marketplace v2',     address: starknet.marketplace1155, href: starknet.starkscanMarketplace1155 },
-  { label: 'ERC-721 Collection Registry', address: starknet.collection721,   href: `https://starkscan.co/contract/${starknet.collection721}` },
-  { label: 'ERC-1155 Collection Factory', address: starknet.collection1155,  href: `https://starkscan.co/contract/${starknet.collection1155}` },
-  { label: 'Drop Factory',                address: starknet.dropFactory,     href: `https://starkscan.co/contract/${starknet.dropFactory}` },
-  { label: 'POP Factory',                 address: starknet.popFactory,      href: `https://starkscan.co/contract/${starknet.popFactory}` },
+  { label: 'ERC-721 Collection Registry', address: starknet.collection721,   href: `https://voyager.online/contract/${starknet.collection721}` },
+  { label: 'ERC-1155 Collection Factory', address: starknet.collection1155,  href: `https://voyager.online/contract/${starknet.collection1155}` },
+  { label: 'Drop Factory',                address: starknet.dropFactory,     href: `https://voyager.online/contract/${starknet.dropFactory}` },
+  { label: 'POP Factory',                 address: starknet.popFactory,      href: `https://voyager.online/contract/${starknet.popFactory}` },
 ]
 
 const protocolDocs = [
   { title: 'Getting Started',  slug: 'Getting-Started', description: 'First asset in minutes. Gasless. No registration.' },
-  { title: 'IP Assets',        slug: 'IP-Assets',       description: '12 IP types, licensing terms, Berne Convention proof.' },
+  { title: 'digital assets',        slug: 'IP-Assets',       description: '12 IP types, licensing terms, Berne Convention proof.' },
   { title: 'Marketplace',      slug: 'Marketplace',     description: 'Trading mechanics, SNIP-12 orders, royalties.' },
   { title: 'Launchpad',        slug: 'Launchpad',       description: 'Timed drops, editions, POP credentials.' },
   { title: 'Contracts',        slug: 'Contracts',       description: 'All Starknet contract addresses and ABI reference.' },

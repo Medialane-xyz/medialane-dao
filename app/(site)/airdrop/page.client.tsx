@@ -24,7 +24,7 @@ const tiers = [
     share: 'Higher share',
     color: 'text-brand-blue',
     steps: [
-      'Mint original IP assets or collections',
+      'Mint original digital assets or collections',
       'Set up your creator profile',
       'Demonstrate legitimate creative activity',
     ],
@@ -59,7 +59,7 @@ const howToParticipate = [
   {
     step: '01',
     title: 'Get on Starknet',
-    desc: 'Install Argent X or Braavos, or use Medialane\'s built-in wallet (no extension required). Bridge ETH or USDC via StarkGate.',
+    desc: 'Install Ready or Braavos, or use Medialane\'s built-in wallet (no extension required). Bridge ETH or USDC via StarkGate.',
   },
   {
     step: '02',
@@ -69,7 +69,7 @@ const howToParticipate = [
   {
     step: '03',
     title: 'Create and engage',
-    desc: 'Mint IP assets, set up a collection, trade on the marketplace. Every action is recorded on-chain and counted toward your tier.',
+    desc: 'Mint digital assets, set up a collection, trade on the marketplace. Every action is recorded on-chain and counted toward your tier.',
   },
   {
     step: '04',

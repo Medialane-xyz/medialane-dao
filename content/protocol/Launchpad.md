@@ -24,7 +24,7 @@ The Medialane Launchpad provides four launch formats for creators and organizati
 
 ## ERC-721 Collection
 
-Deploy a branded collection contract where each token is a unique, individually identified IP asset.
+Deploy a branded collection contract where each token is a unique, individually identified digital asset.
 
 ### Features
 - Factory pattern via the Collection Registry contract

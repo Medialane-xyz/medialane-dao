@@ -7,7 +7,7 @@ author: "Medialane DAO"
 
 # Smart Contracts
 
-All Medialane protocol contracts are deployed on **Starknet Mainnet**. The MDLN governance token and DAO treasury are on **Ethereum Mainnet**.
+All Medialane protocol contracts are **immutable and deployed onchain**.
 
 ---
 
@@ -17,8 +17,8 @@ All Medialane protocol contracts are deployed on **Starknet Mainnet**. The MDLN 
 
 | Contract | Address | Notes |
 |----------|---------|-------|
-| **Marketplace v2 (ERC-721)** | `0x00f8ccaae0bc811c79605974cc1dab769b9cea8877f033f8e3c17f30457caba6` | Audited, non-upgradeable |
-| **Marketplace v2 (ERC-1155)** | `0x02bfa521c25461a09d735889b469418608d7d92f8b26e3d37ef174a4c2e22f99` | Audited, non-upgradeable |
+| **Marketplace (ERC-721)** | `0x00f8ccaae0bc811c79605974cc1dab769b9cea8877f033f8e3c17f30457caba6` | Audited, non-upgradeable |
+| **Marketplace (ERC-1155)** | `0x02bfa521c25461a09d735889b469418608d7d92f8b26e3d37ef174a4c2e22f99` | Audited, non-upgradeable |
 
 SNIP-12 domain: name `Medialane`, version `1` (ERC-721) / `2` (ERC-1155).
 
@@ -49,7 +49,7 @@ SNIP-12 domain: name `Medialane`, version `1` (ERC-721) / `2` (ERC-1155).
 | **MDLN L2 (StarkGate)** | `0x06730d6a357690cebffad800219e9630e15b6f44d35526e0fc9ee52bdf7418e8` |
 | **StarkGate L2 Bridge** | `0x0616757a151c21f9be8775098d591c2807316d992bbc3bb1a5c1821630589256` |
 
-Explorer links: [Voyager](https://voyager.online/contract/0x06730d6a357690cebffad800219e9630e15b6f44d35526e0fc9ee52bdf7418e8) · [Starkscan Marketplace 721](https://starkscan.co/contract/0x00f8ccaae0bc811c79605974cc1dab769b9cea8877f033f8e3c17f30457caba6) · [Starkscan Marketplace 1155](https://starkscan.co/contract/0x02bfa521c25461a09d735889b469418608d7d92f8b26e3d37ef174a4c2e22f99)
+Explorer links: [Voyager](https://voyager.online/contract/0x06730d6a357690cebffad800219e9630e15b6f44d35526e0fc9ee52bdf7418e8) · [Starkscan Marketplace 721](https://voyager.online/contract/0x00f8ccaae0bc811c79605974cc1dab769b9cea8877f033f8e3c17f30457caba6) · [Starkscan Marketplace 1155](https://voyager.online/contract/0x02bfa521c25461a09d735889b469418608d7d92f8b26e3d37ef174a4c2e22f99)
 
 ---
 
@@ -77,10 +77,10 @@ Explorer links: [Voyager](https://voyager.online/contract/0x06730d6a357690cebffa
 
 ## Contract Security
 
-- **Audited** — All marketplace contracts have undergone professional third-party security audits
+- **Audited** — All marketplace contracts have undergone security audits
 - **Non-upgradeable** — Marketplace contracts have no admin keys or proxy patterns; logic cannot be altered after deployment
 - **CEI pattern** — Checks-effects-interactions ordering prevents reentrancy attacks
-- **Open source** — Contract source code is publicly verifiable on Starkscan and Voyager
+- **Open source** — Contract source code is publicly verifiable onchain
 
 ---
 
@@ -89,6 +89,6 @@ Explorer links: [Voyager](https://voyager.online/contract/0x06730d6a357690cebffa
 | Resource | Link |
 |----------|------|
 | Medialane SDK (includes ABIs) | [github.com/medialane-io/medialane-sdk](https://github.com/medialane-io/medialane-sdk) |
-| Marketplace 721 on Starkscan | [starkscan.co](https://starkscan.co/contract/0x00f8ccaae0bc811c79605974cc1dab769b9cea8877f033f8e3c17f30457caba6) |
-| Marketplace 1155 on Starkscan | [starkscan.co](https://starkscan.co/contract/0x02bfa521c25461a09d735889b469418608d7d92f8b26e3d37ef174a4c2e22f99) |
+| Marketplace 721 on Starkscan | [voyager.online](https://voyager.online/contract/0x00f8ccaae0bc811c79605974cc1dab769b9cea8877f033f8e3c17f30457caba6) |
+| Marketplace 1155 on Starkscan | [voyager.online](https://voyager.online/contract/0x02bfa521c25461a09d735889b469418608d7d92f8b26e3d37ef174a4c2e22f99) |
 | MDLN on Etherscan | [etherscan.io](https://etherscan.io/token/0x0DC90d57F3Aa3E836Ffd6E777E543a43A487dB15) |

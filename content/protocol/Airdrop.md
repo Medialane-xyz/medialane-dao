@@ -1,19 +1,28 @@
 ---
-title: "Creator's Airdrop"
-description: "Platform revenue distributed to creators, collectors, and active participants. No investors. No extraction. Community-governed distribution cycles."
+title: "Airdrop"
+description: "Medialane Launch: Creator's fund and platform revenue distributed to creators, collectors, and active participants."
 date: "2026-05-01"
 author: "Medialane DAO"
 ---
 
 # Creator's Airdrop
 
+**Launch Campaing**
+
+To celebrate mainnet launch on Starknet, Medialane is sharing a creator's fund of 2,000 dollars + all platform revenue while the campaign is active. The creator's fund will be distributed with tokens airdrop and content aquisition within the platform.
+
 **Community Program**
 
-Platform revenue distributed to creators, collectors, and active participants — not extracted by investors or insiders. Every cycle is governed by MDLN holders and verified on-chain.
+Platform revenue distributed to creators, collectors, and active participants. When the community hits a milestone, platform revenue gets distributed to all participants.
 
 ## Governance First
 
-A 1% marketplace fee flows to the Medialane DAO treasury. Each year, MDLN holders vote on Snapshot to decide how that revenue is used — Creator's Airdrop, token buyback, token burn, protocol development, or operations. No predetermined formula. The Creator's Airdrop is one option, not a guarantee.
+A 1% marketplace fee flows to the Medialane DAO treasury. Each year, MDLN holders vote on Snapshot to decide how that revenue is used — Creator's Airdrop, token buyback, token burn, protocol development, or operations. No predetermined formula.
+
+Phase 1 : 5,000 members : First distribution from the creator fund. All eligible participants receive a proportional share based on their activity.
+
+Phase 2 : 10,000 members : Second distribution, including all revenue since Phase 1. Activity scores are recalculated from all activity since launch.
+
 
 ## The Model
 
@@ -33,33 +42,32 @@ Your share is determined by your tier. Higher engagement earns a larger portion 
 
 ### Tier 1 — Register
 
-**Base share**
+**Special share**
 
-The entry point. Secure your place in the airdrop by creating your account.
+The entry point. Secure your place in the airdrop by creating your account on Medialane.io
 
-- Create your Medialane account
-- Secure with PIN or passkey
-- No further action required to qualify for Tier 1
+- Sign up with Google
+- Secure your account with PIN or passkey
+- You're qualified for Tier 1
 
 ### Tier 2 — Create
 
-**Higher share**
+**Creator's share**
 
 Publish original work and establish your creator presence.
 
-- Publish original content (IP assets, collections)
+- Publish original content (digital assets, collections)
 - Set up your creator profile
-- Demonstrate legitimate creative activity
+- Share, collect, engage to build your presence
 
-### Tier 3 — Engage
+### Tier 3 — Trade
 
-**Largest share**
+**Market share**
 
-Active participants who contribute to the marketplace economy.
+Active participants who contribute to the Creator's Capital Markets economy.
 
 - Trade, collect, and make offers
-- Collaborate and remix other creators' work
-- Maintain consistent, genuine activity
+- Collaborate and remix
 
 ## Distribution Phases
 
@@ -69,16 +77,16 @@ Active participants who contribute to the marketplace economy.
 | **Phase 2** | 10,000 participants | Milestone |
 | **Annual Cycle** | Each year thereafter | Ongoing |
 
-Phases are not time-gated — they unlock when the community reaches the participation milestone. Annual cycles continue indefinitely as long as the protocol generates revenue.
+Phases are not time-gated — they unlock when the community reaches the participation milestone.
 
 ## Fair by Design
 
 The Creator's Airdrop is built to reward genuine participation, not farming.
 
-- **On-chain verifiable** — all qualifying activity is recorded on Starknet and auditable by anyone
-- **Automated disqualification** — bot activity, duplicate accounts, and inorganic behavior are automatically excluded
+- **Onchain verifiable** — all qualifying activity is recorded onchain and auditable
+- **Automated disqualification** — inorganic behavior are automatically excluded
 - **No snapshots to game** — activity is measured across the full cycle, not at a single point in time
-- **Community-governed rules** — MDLN holders can adjust criteria each cycle to prevent gaming
+- **Community-governed rules** — MDLN holders can adjust criteria each cycle
 
 ## Community Governance
 
@@ -95,36 +103,20 @@ Submit proposals and vote at [snapshot.org/#/s:medialane.eth](https://snapshot.o
 
 ### Global Campaign
 
-Open to all participants worldwide. Participate at [medialane.io](https://medialane.io).
-
-### Brasil Campaign
-
-Dedicated campaign for Portuguese-speaking creators in Brazil and the broader Portuguese-speaking community. Same structure, same rules, tracked as a separate cohort.
+Open to all participants worldwide. Participate at [medialane.io](https://medialane.io/airdrop).
 
 ---
 
 ## How to Participate
 
-**Step 1 — Get on Starknet**
+**Create your account**
 
-Install [Argent X](https://www.argent.xyz/) or [Braavos](https://braavos.app/), or use Medialane's built-in wallet (no browser extension required). Bridge ETH or USDC to Starknet via [StarkGate](https://starkgate.starknet.io/).
-
-**Step 2 — Create your account**
-
-Go to [medialane.io](https://medialane.io) and create your creator profile. Secure it with a PIN or passkey. This qualifies you for Tier 1.
-
-**Step 3 — Create and engage**
-
-Mint IP assets, set up a collection, trade on the marketplace. Every action is recorded on-chain and counted toward your tier.
-
-**Step 4 — Hold MDLN to govern**
-
-Acquire MDLN on Ethereum via [Uniswap](https://app.uniswap.org) or trade on Starknet via [Ekubo](https://app.ekubo.org). MDLN holders vote on airdrop rules, pool size, and cycle timing.
+Go to [medialane.io](https://medialane.io/airdrop) and create your profile. Secure it with a PIN or passkey. This qualifies you for Tier 1.
 
 ---
 
 *Creator's Airdrop rules and pool sizes are governed by MDLN holders and may change between cycles. All qualifying activity is verified on-chain. Medialane DAO does not guarantee specific airdrop amounts.*
 
-*Last updated: May 1, 2026*
+*Last updated: May 11, 2026*
 
 © Medialane DAO

@@ -62,7 +62,7 @@ export default function DAOPageClient({ documents, proposals, stats }: DAOPageCl
     <div className="px-4 sm:px-6 lg:px-10 xl:px-14 py-10 sm:py-12 lg:py-16 space-y-12">
 
       <PageHero
-        eyebrow="Medialane · Utah DAO LLC"
+        eyebrow="Medialane · "
         title="Governance"
         description="Medialane is governed by its community — creators, collectors, builders, and autonomous AI that hold MDLN. Every protocol upgrade and revenue decision is voted on-chain. No VCs. No insiders. No company."
       />

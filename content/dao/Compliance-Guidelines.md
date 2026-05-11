@@ -27,7 +27,7 @@ Medialane DAO is registered as a **DAO LLC under the Utah Decentralized Autonomo
 * Allows the DAO to enter contracts, hold assets, and operate as a legal entity.
 * Does not require KYC or registration from community members for protocol use.
 
-The Utah DAO LLC structure is designed to align legal accountability with decentralized governance, enabling Medialane to operate transparently within regulatory frameworks while preserving community ownership.
+The  structure is designed to align legal accountability with decentralized governance, enabling Medialane to operate transparently within regulatory frameworks while preserving community ownership.
 
 ## 3. Purpose & Scope
 
@@ -83,7 +83,7 @@ Medialane is governed by a DAO LLC. While decentralized, participants may face l
 **To mitigate risk:**
 * Operate transparently and document decisions.
 * Avoid centralized control or collusion.
-* Leverage the Utah DAO LLC structure for jurisdictional clarity.
+* Leverage the  structure for jurisdictional clarity.
 
 ## 7. Regulatory Awareness
 
@@ -133,7 +133,7 @@ Explore these sources for deeper guidance:
 * [Berne Convention Overview](https://www.wipo.int/treaties/en/ip/berne/)
 * [WIPO IP Portal](https://www.wipo.int/about-ip/en/)
 * [TRIPS Agreement Summary](https://www.wto.org/english/tratop_e/trips_e/trips_e.htm)
-* [Utah DAO LLC Act](https://le.utah.gov/xcode/Title48/Chapter3/48-3.html)
+* [ Act](https://le.utah.gov/xcode/Title48/Chapter3/48-3.html)
 * [Legal Nodes Playbook for Web3](https://legalnodes.com/)
 
 ## 11. Report Content
