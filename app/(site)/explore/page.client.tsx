@@ -35,7 +35,7 @@ const features = [
         status: 'Live',
         href: 'https://medialane.io/create/remix',
         external: true,
-        description: 'Create licensed derivatives. CC0/CC BY assets auto-approve. Custom terms: price, scope, rights, AI policy. Attribution chain recorded on-chain forever.',
+        description: 'Create licensed derivatives. CC0/CC BY assets auto-approve. Custom terms: price, scope, rights, AI policy. Attribution chain recorded onchain forever.',
         tags: ['Creative Commons', 'Attribution', 'Remix Graph'],
       },
     ],
@@ -118,7 +118,7 @@ const features = [
         status: 'v0.6.4',
         href: '/build',
         external: false,
-        description: 'TypeScript SDK. Full on-chain and REST API coverage. Dual ESM + CJS. Berne Convention-aligned IP metadata schema. Framework-agnostic.',
+        description: 'TypeScript SDK. Full onchain and REST API coverage. Dual ESM + CJS. Berne Convention-aligned IP metadata schema. Framework-agnostic.',
         tags: ['TypeScript', 'ESM', 'Open Source'],
       },
       {

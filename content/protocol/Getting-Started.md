@@ -50,11 +50,11 @@ After signing, the mint transaction is submitted gaslessly. The IPFS CID and onc
 
 ## Step 4: Monetize
 
-Once your asset exists on-chain, you have three monetization paths:
+Once your asset exists onchain, you have three monetization paths:
 
 1. **Fixed-price listing** — set a price in USDC, USDT, ETH, STRK, or WBTC
 2. **Offer & negotiate** — receive bids from buyers; accept, counter, or decline
-3. **Remix licensing** — enable other creators to build on your work with automatic on-chain attribution
+3. **Remix licensing** — enable other creators to build on your work with automatic onchain attribution
 
 See the [Marketplace guide](./Marketplace) for full trading mechanics.
 

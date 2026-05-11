@@ -54,12 +54,12 @@ You agree not to use the platform for any illegal activities, including but not 
 
 * All protocol upgrades, policy changes, and treasury decisions are made via DAO proposals and votes.
 * Participation is pseudonymous and open to all wallet holders.
-* Governance actions are recorded on-chain and publicly auditable.
+* Governance actions are recorded onchain and publicly auditable.
 
 ## 8. Privacy & Data Sovereignty
 
 * Medialane does not collect personal data or deploy trackers.
-* All user interactions are pseudonymous and stored on-chain.
+* All user interactions are pseudonymous and stored onchain.
 * Zero-knowledge proofs may be used to preserve confidentiality while ensuring verifiability.
 
 ## 9. Security & Risk Disclosure
@@ -70,7 +70,7 @@ You agree not to use the platform for any illegal activities, including but not 
 
 ## 10. Legal Recognition & Jurisdiction
 
-* IP registered on-chain is legally recognized under the Berne Convention.
+* IP registered onchain is legally recognized under the Berne Convention.
 * Medialane does not provide legal advice or representation.
 * Jurisdictional enforcement of IP rights remains the responsibility of the creator.
 

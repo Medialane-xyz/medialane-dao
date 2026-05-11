@@ -126,6 +126,6 @@ Single source of truth for:
 
 ## Content Principles
 
-No fake data, no mockups, no placeholder stats. Every number on the site must be derivable from on-chain addresses, the SDK, or the Markdown docs. If a stat is uncertain, omit it or show `—`.
+No fake data, no mockups, no placeholder stats. Every number on the site must be derivable from onchain addresses, the SDK, or the Markdown docs. If a stat is uncertain, omit it or show `—`.
 
 Revenue framing: 1% marketplace fee → DAO treasury → MDLN holders vote annually on allocation (Creator's Airdrop, buyback, burn, development, operations). The Creator's Airdrop is one option, not a guaranteed formula. All copy must reflect this.

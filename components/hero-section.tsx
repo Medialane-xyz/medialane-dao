@@ -137,7 +137,7 @@ export function HeroSection() {
         <SectionHeader label="DAO Treasury & Governance" className="mb-3" />
         <p className="text-sm text-foreground leading-relaxed mb-5 max-w-2xl">
           A 1% marketplace fee funds the Medialane DAO treasury — held in a Gnosis Safe multisig on Ethereum,
-          fully auditable on-chain. MDLN holders vote on Snapshot each year to decide how revenue is used:
+          fully auditable onchain. MDLN holders vote on Snapshot each year to decide how revenue is used:
           Creator&#39;s Airdrop, token buyback, token burn, protocol development, or operations.
           No predetermined formula. Community-governed.
         </p>

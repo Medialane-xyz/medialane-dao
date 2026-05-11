@@ -11,7 +11,7 @@ import { SectionHeader } from '@/components/section-header'
 const tiers = [
   {
     num: '01',
-    title: 'Observer',
+    title: 'User',
     requirement: '1+ MDLN',
     description: 'Follow governance and join the community.',
     perks: ['View all proposals', 'Community forums', 'Discussions & feedback'],
@@ -19,27 +19,44 @@ const tiers = [
   },
   {
     num: '02',
-    title: 'Contributor',
-    requirement: '100+ MDLN',
+    title: 'SDK',
+    requirement: '500+ MDLN',
     description: 'Vote on proposals and shape the platform.',
-    perks: ['Submit governance proposals', 'Vote on Snapshot', 'Early feature access', 'Contributor channels'],
+    perks: ['Vote on Snapshot', 'Early feature access', 'Contributor channels'],
     color: 'text-brand-blue',
   },
   {
     num: '03',
-    title: 'Guardian',
+    title: 'Premium',
     requirement: '1,000+ MDLN',
-    description: 'Lead working groups and represent creators.',
-    perks: ['Council nomination rights', 'Working group leadership', 'Ecosystem grants', 'Priority API access'],
+    description: 'Business, partnerships, and ecosystem leadership.',
+    perks: ['Premium support', 'Ecosystem grants', 'Priority API access'],
     color: 'text-brand-purple',
   },
+  {
+    num: '04',
+    title: 'Scale',
+    requirement: '10,000+ MDLN',
+    description: 'Custom solutions, SLAs, and dedicated support.',
+    perks: ['Dedicated account manager', 'Custom integrations', 'SLA guarantees'],
+    color: 'text-brand-blue',
+  },
+  {
+    num: '05',
+    title: 'DAO',
+    requirement: '100,000+ MDLN',
+    description: 'Sage.',
+    perks: ['DAO governance rights', 'Submit proposals', 'Mediation'],
+    color: 'text-brand-blue',
+  }
+
 ]
 
 const starknetBenefits = [
-  { icon: Zap,    color: 'bg-brand-purple/10 text-brand-purple', title: 'Fraction-of-cent fees',      body: 'Starknet transactions cost a fraction of Ethereum mainnet. Mint, list, and trade digital assets with near-zero gas.' },
-  { icon: Shield, color: 'bg-brand-blue/10 text-brand-blue',     title: 'ZK-STARK security',          body: 'Every transaction batch is verified by STARK proofs on Ethereum. Cryptographic security without trusting a sequencer.' },
-  { icon: Coins,  color: 'bg-brand-purple/10 text-brand-purple', title: 'Sponsored transactions',     body: 'Medialane sponsors gas for creator actions via native account abstraction. ' },
-  { icon: Globe,  color: 'bg-brand-blue/10 text-brand-blue',     title: 'Native account abstraction', body: 'Wallets are smart contracts. Session keys (SNIP-9) enable PIN-authenticated gasless sessions across multiple actions.' },
+  { icon: Zap,    color: 'bg-brand-purple/10 text-brand-purple', title: 'Fraction-of-cent fees',      body: 'Starknet transactions cost a fraction of a cent.' },
+  { icon: Shield, color: 'bg-brand-blue/10 text-brand-blue',     title: 'ZK-STARK security',          body: 'Every transaction batch is verified by STARK proofs on Ethereum.' },
+  { icon: Coins,  color: 'bg-brand-purple/10 text-brand-purple', title: 'Sponsored transactions',     body: 'Medialane sponsors gas for frictionless app experience. ' },
+  { icon: Globe,  color: 'bg-brand-blue/10 text-brand-blue',     title: 'Native account abstraction', body: 'Transactions are atomic executions with immutable smart contracts' },
 ]
 
 export default function MembersPageClient() {
@@ -67,7 +84,7 @@ export default function MembersPageClient() {
           {[
             { label: 'Vesting (9 years)',  value: '18,900,000', pct: '90%', bar: 'w-[90%] bg-brand-purple' },
             { label: 'Operational runway', value: '2,100,000',  pct: '10%', bar: 'w-[10%] bg-brand-blue'   },
-            { label: 'VC allocation',      value: '0',           pct: '0%',  bar: 'w-0'                      },
+            { label: 'Investor allocation',      value: '0',           pct: '0%',  bar: 'w-0'                      },
             { label: 'Team allocation',    value: '0',           pct: '0%',  bar: 'w-0'                      },
           ].map((row) => (
             <div key={row.label} className="py-2.5 border-b border-border/60 last:border-0">
@@ -86,7 +103,7 @@ export default function MembersPageClient() {
         </div>
 
         <div className="bento-cell p-5">
-          <SectionHeader label="On-chain Addresses · Ethereum" />
+          <SectionHeader label="onchain Addresses · Ethereum" />
           <AddressRow label="Network"           value="Ethereum Mainnet" />
           <AddressRow label="Token Contract"    value={`${mdln.token.slice(0, 10)}…${mdln.token.slice(-6)}`}     href={mdln.etherscanToken}    />
           <AddressRow label="Vesting Contract"  value={`${mdln.vesting.slice(0, 10)}…${mdln.vesting.slice(-6)}`}  href={mdln.etherscanVesting}  />
@@ -116,26 +133,12 @@ export default function MembersPageClient() {
             </a>
           </StaggerItem>
 
-          <StaggerItem>
-            <a href="https://app.ekubo.org" target="_blank" rel="noopener noreferrer"
-              className="group flex flex-col gap-3 p-5 bento-cell hover:border-brand-blue/40 hover:shadow-sm transition-all duration-150 h-full">
-              <div className="flex items-start justify-between gap-2">
-                <p className="text-sm font-semibold text-foreground group-hover:text-brand-blue transition-colors">Ekubo Protocol</p>
-                <ArrowUpRight className="size-3.5 text-muted-foreground/20 group-hover:text-brand-blue transition-colors shrink-0" />
-              </div>
-              <p className="text-sm text-foreground leading-relaxed flex-1">Trade MDLN on Starknet via Ekubo — Starknet&#39;s native concentrated liquidity AMM. MDLN/ETH and MDLN/USDC pools. Gasless swaps powered by account abstraction.</p>
-              <div className="flex flex-wrap gap-1.5">
-                {['AMM DEX', 'Starknet Native', 'Concentrated Liquidity'].map((t) => (
-                  <span key={t} className="text-[10px] px-2 py-0.5 rounded-full bg-muted text-muted-foreground/60 border border-border">{t}</span>
-                ))}
-              </div>
-            </a>
-          </StaggerItem>
+          
 
           <StaggerItem>
             <div className="flex flex-col gap-3 p-5 bento-cell h-full">
               <p className="text-sm font-semibold text-foreground">Zero-fee Tokenization</p>
-              <p className="text-sm text-foreground leading-relaxed flex-1">Minting digital assets on Medialane costs zero platform fees. Starknet transactions cost a fraction of a cent. Creator economy without extractive fees — 1% only on marketplace monetization.</p>
+              <p className="text-sm text-foreground leading-relaxed flex-1">Minting digital assets on Medialane costs zero platform fees.</p>
               <div className="flex flex-wrap gap-1.5">
                 {['Free to Mint', '1% Marketplace Fee', 'Starknet L2'].map((t) => (
                   <span key={t} className="text-[10px] px-2 py-0.5 rounded-full bg-muted text-muted-foreground/60 border border-border">{t}</span>
@@ -225,14 +228,7 @@ export default function MembersPageClient() {
             className="inline-flex items-center gap-2 rounded-xl border border-border bg-background px-5 py-2.5 text-sm font-semibold text-foreground hover:bg-muted/50 transition-colors">
             Bridge via Starkgate <ArrowUpRight className="size-3.5" />
           </a>
-          <a href="https://app.ekubo.org" target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-xl border border-border bg-background px-5 py-2.5 text-sm font-semibold text-foreground hover:bg-muted/50 transition-colors">
-            Trade on Ekubo <ArrowUpRight className="size-3.5" />
-          </a>
-          <a href={`https://app.uniswap.org/swap?outputCurrency=${mdln.token}`} target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-xl border border-border bg-background px-5 py-2.5 text-sm font-semibold text-foreground hover:bg-muted/50 transition-colors">
-            Buy on Uniswap <ArrowUpRight className="size-3.5" />
-          </a>
+         
         </div>
       </div>
     </div>

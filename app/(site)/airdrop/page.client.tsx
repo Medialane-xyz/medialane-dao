@@ -31,13 +31,13 @@ const tiers = [
   },
   {
     tier: '03',
-    title: 'Engage',
+    title: 'Trade',
     share: 'Largest share',
     color: 'text-brand-purple',
     steps: [
       'Trade, collect, and make offers on the marketplace',
       'Collaborate and remix other creators\' work',
-      'Maintain consistent, genuine on-chain activity',
+      'Maintain consistent onchain activity',
     ],
   },
 ]
@@ -49,7 +49,7 @@ const phases = [
 ]
 
 const fairDesign = [
-  'On-chain verifiable — all qualifying activity is recorded on Starknet and auditable by anyone.',
+  'onchain verifiable — all qualifying activity is recorded on Starknet and auditable by anyone.',
   'Automated disqualification — bot activity, duplicate accounts, and inorganic behavior are automatically excluded.',
   'No snapshots to game — activity is measured across the full cycle, not at a single point in time.',
   'Community-governed rules — MDLN holders can adjust criteria each cycle to prevent gaming.',
@@ -58,23 +58,18 @@ const fairDesign = [
 const howToParticipate = [
   {
     step: '01',
-    title: 'Get on Starknet',
-    desc: 'Install Ready or Braavos, or use Medialane\'s built-in wallet (no extension required). Bridge ETH or USDC via StarkGate.',
-  },
-  {
-    step: '02',
     title: 'Create your account',
     desc: 'Go to medialane.io and create your creator profile. Secure it with a PIN or passkey. This qualifies you for Tier 1.',
   },
   {
-    step: '03',
+    step: '02',
     title: 'Create and engage',
-    desc: 'Mint digital assets, set up a collection, trade on the marketplace. Every action is recorded on-chain and counted toward your tier.',
+    desc: 'Mint digital assets, set up a collection, trade on the marketplace. Every action is recorded onchain and counted toward your tier.',
   },
   {
-    step: '04',
-    title: 'Hold MDLN to govern',
-    desc: 'Acquire MDLN via Uniswap or Ekubo. MDLN holders vote on airdrop rules, pool size, cycle timing — and whether the airdrop runs at all.',
+    step: '03',
+    title: 'Trade and grow',
+    desc: 'Engage in trading activities and build your presence on the platform. Consistent onchain activity increases your chances of receiving a larger share.',
   },
 ]
 
@@ -85,7 +80,7 @@ export default function AirdropPageClient() {
       <PageHero
         eyebrow="Medialane · Creator's Airdrop"
         title="Creator's Airdrop"
-        description="Platform revenue flows to the Medialane DAO treasury. Each year, MDLN holders vote on how it's used — Creator's Airdrop, token buyback, token burn, development, or operations. The community decides."
+        description="Airdrop campaign fro creators celebrating Medialane launch on Starknet mainnet."
       />
 
       {/* Governance framing */}
@@ -93,9 +88,9 @@ export default function AirdropPageClient() {
         <div className="rounded-[calc(1rem-1px)] bg-card p-6 sm:p-8">
           <SectionHeader label="How Revenue Works" className="mb-3" />
           <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-            A 1% marketplace fee flows into the Medialane DAO treasury — held in a Gnosis Safe multisig on Ethereum, fully auditable on-chain.
+            Medialane revenue flows into the Medialane creators fund to support the ecosystem growth.
             Each year, MDLN holders vote on Snapshot to decide allocation. The Creator&#39;s Airdrop is one option; others include token buyback,
-            token burn, protocol development, and operations. No predetermined formula. Community-governed every cycle.
+            token burn, protocol development, and operations. Community-governed.
           </p>
           <div className="grid sm:grid-cols-3 gap-3">
             {['Creator\'s Airdrop', 'Token Buyback', 'Token Burn', 'Development', 'Operations', 'MDLN holders decide'].map((opt, i) => (
@@ -119,7 +114,7 @@ export default function AirdropPageClient() {
       <div>
         <SectionHeader label="Participation Tiers" color="text-brand-purple" bg="bg-brand-purple" className="mb-3" />
         <p className="text-sm text-foreground mb-6 max-w-xl">
-          If the Creator&#39;s Airdrop is voted in by MDLN holders, your share is determined by your tier. Higher engagement earns a larger portion of the pool.
+          On Medialane Airdrop your share is determined by your tier. Higher trading and engagement earns a larger portion of the pool.
         </p>
         <Stagger className="grid sm:grid-cols-3 gap-4">
           {tiers.map((tier) => (
@@ -206,18 +201,7 @@ export default function AirdropPageClient() {
               </p>
             </div>
           </StaggerItem>
-          <StaggerItem>
-            <div className="bento-cell p-5 sm:p-6 h-full bg-gradient-to-br from-brand-blue/5 to-transparent">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="size-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="text-[10px] font-bold tracking-widest uppercase text-emerald-600 dark:text-emerald-400">Live</span>
-              </div>
-              <p className="text-base font-bold text-foreground mb-2">Brasil Campaign</p>
-              <p className="text-sm text-foreground leading-relaxed">
-                Dedicated campaign for Portuguese-speaking creators in Brazil and the broader Portuguese-speaking community. Same structure, same rules — tracked as a separate cohort.
-              </p>
-            </div>
-          </StaggerItem>
+          
         </Stagger>
       </div>
 
@@ -237,27 +221,20 @@ export default function AirdropPageClient() {
         </div>
         <div className="flex flex-wrap gap-3 pt-5 border-t border-border">
           <a
-            href="https://medialane.io"
+            href="https://medialane.io/airdrop"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-xl bg-brand-purple px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-purple/90 transition-colors"
           >
             Open Medialane <ArrowUpRight className="size-3.5" />
           </a>
-          <a
-            href={siteConfig.snapshot}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-xl border border-border bg-background px-5 py-2.5 text-sm font-semibold text-foreground hover:bg-muted/50 transition-colors"
-          >
-            Vote on Snapshot <ArrowUpRight className="size-3.5" />
-          </a>
+          
         </div>
       </div>
 
       {/* Disclaimer */}
       <p className="text-[11px] text-muted-foreground/30 leading-relaxed max-w-2xl">
-        Creator&#39;s Airdrop rules and pool sizes are governed by MDLN holders and may change between cycles. The airdrop is one of several options MDLN holders can vote to fund — not a guaranteed allocation. All qualifying activity is verified on-chain.
+        Creator&#39;s Airdrop rules and pool sizes are governed by MDLN holders and may change between cycles. The airdrop is one of several options MDLN holders can vote to fund — not a guaranteed allocation. All qualifying activity is verified onchain.
       </p>
 
     </div>

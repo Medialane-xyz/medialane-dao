@@ -2,7 +2,7 @@
 
 > Open protocol for intellectual property registration, licensing, and trade. Deployed on Starknet Mainnet. Governed by MDLN token holders.
 
-Medialane is a decentralized, permissionless infrastructure for programmable IP. Creators register any creative work as a smart-contract-backed NFT with automatic Berne Convention copyright protection valid in 181 countries. Assets can be licensed, sold, traded, or remixed with attribution chains recorded immutably on-chain.
+Medialane is a decentralized, permissionless infrastructure for programmable IP. Creators register any creative work as a smart-contract-backed NFT with automatic Berne Convention copyright protection valid in 181 countries. Assets can be licensed, sold, traded, or remixed with attribution chains recorded immutably onchain.
 
 ---
 
@@ -83,7 +83,7 @@ Medialane is a decentralized, permissionless infrastructure for programmable IP.
 ### Create
 - **Mint digital asset** — Register creative work as programmable NFT, 12 IP types, gasless, IPFS metadata
 - **Create Collection** — Deploy branded ERC-721 or ERC-1155 collections via factory contracts
-- **Remix & License** — Create licensed derivatives with on-chain attribution graph
+- **Remix & License** — Create licensed derivatives with onchain attribution graph
 
 ### Marketplace
 - **Fixed-price listings** — ERC-721 and ERC-1155 supported
@@ -99,7 +99,7 @@ Medialane is a decentralized, permissionless infrastructure for programmable IP.
 - **ERC-1155 Edition** — Multi-copy editions for music, publications, prints
 
 ### IP Protection
-- **Berne Convention** — On-chain timestamp = copyright proof in 181 countries
+- **Berne Convention** — onchain timestamp = copyright proof in 181 countries
 - **Programmable licensing** — 9 CC variants + custom terms (AI policy, commercial use, derivatives, royalties)
 - **Immutable attribution** — Remix graph stored on Starknet + IPFS, cannot be altered
 
@@ -141,7 +141,7 @@ Medialane is a decentralized, permissionless infrastructure for programmable IP.
 
 ## Order Model (Marketplace)
 
-Orders are SNIP-12 typed-data signed off-chain and registered on-chain.
+Orders are SNIP-12 typed-data signed off-chain and registered onchain.
 
 ```
 OrderParameters {
@@ -184,5 +184,5 @@ Base URL: configured via `NEXT_PUBLIC_MEDIALANE_BACKEND_URL`
 
 - **DAO email:** dao@medialane.org
 - **X / Twitter:** https://x.com/medialane_io
-- **YouTube:** https://www.youtube.com/@medialanexyz
+- **YouTube:** https://www.youtube.com/@medialaneio
 - **GitHub:** https://github.com/medialane-io

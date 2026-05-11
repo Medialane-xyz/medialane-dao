@@ -125,7 +125,7 @@ As Medialane evolves:
 
 * Governance power will shift increasingly to the community.
 * Contributor roles may expand through subDAOs and working groups.
-* Guidelines will be updated through transparent, on-chain proposals.
+* Guidelines will be updated through transparent, onchain proposals.
 
 ***
 

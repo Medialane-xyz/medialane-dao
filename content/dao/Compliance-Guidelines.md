@@ -23,7 +23,7 @@ Medialane is not a product — it's infrastructure for humanity:
 Medialane DAO is registered as a **DAO LLC under the Utah Decentralized Autonomous Organization Act**. This legal wrapper:
 
 * Provides members with limited liability protection.
-* Recognizes on-chain governance as legally binding.
+* Recognizes onchain governance as legally binding.
 * Allows the DAO to enter contracts, hold assets, and operate as a legal entity.
 * Does not require KYC or registration from community members for protocol use.
 
@@ -60,7 +60,7 @@ Medialane aligns with the Berne Convention (1886), covering 181 countries:
 
 Medialane operates on Starknet and Ethereum using smart contracts and zero-knowledge proofs. Key compliance features:
 
-* **On-chain transparency:** All IP registrations and licenses are public and immutable.
+* **onchain transparency:** All IP registrations and licenses are public and immutable.
 * **Metadata:** Stored on IPFS (decentralized storage).
 * **Privacy:** No personal data is required for core protocol use.
 * **Zero-knowledge proofs:** Verify information without revealing underlying data.
@@ -78,7 +78,7 @@ Medialane is governed by a DAO LLC. While decentralized, participants may face l
 * Contributors must comply with local laws and regulations.
 * Proposal authors may be viewed as initiators of protocol changes.
 * DAO members are responsible for their actions and decisions.
-* Disputes should be resolved through community discussion and on-chain voting.
+* Disputes should be resolved through community discussion and onchain voting.
 
 **To mitigate risk:**
 * Operate transparently and document decisions.
@@ -98,7 +98,7 @@ Medialane does not require KYC or AML procedures for core protocol use. However:
 
 Medialane does not mediate disputes. Creators may pursue enforcement through:
 
-* **Proof of Ownership:** On-chain evidence (e.g., timestamped IP registration, block explorer verification).
+* **Proof of Ownership:** onchain evidence (e.g., timestamped IP registration, block explorer verification).
 * **Off-chain legal channels:** Such as DMCA takedowns or copyright claims.
 * **DAO governance:** Propose community-level responses to systemic issues.
 

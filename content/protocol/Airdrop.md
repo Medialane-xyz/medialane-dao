@@ -33,7 +33,7 @@ When MDLN holders vote to fund the Creator's Airdrop, the allocated pool is dist
 | **Revenue source** | 1% marketplace fee |
 | **Recipient** | 100% to participating creators and collectors |
 | **Governance** | MDLN holders vote on amount, rules, and timing |
-| **Verification** | On-chain activity — fully auditable |
+| **Verification** | onchain activity — fully auditable |
 | **Cadence** | Milestone triggers + annual cycles |
 
 ## Participation Tiers
@@ -115,7 +115,7 @@ Go to [medialane.io](https://medialane.io/airdrop) and create your profile. Secu
 
 ---
 
-*Creator's Airdrop rules and pool sizes are governed by MDLN holders and may change between cycles. All qualifying activity is verified on-chain. Medialane DAO does not guarantee specific airdrop amounts.*
+*Creator's Airdrop rules and pool sizes are governed by MDLN holders and may change between cycles. All qualifying activity is verified onchain. Medialane DAO does not guarantee specific airdrop amounts.*
 
 *Last updated: May 11, 2026*
 

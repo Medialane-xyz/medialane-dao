@@ -7,7 +7,7 @@ author: "Medialane DAO"
 
 # digital assets
 
-An digital asset on Medialane is a programmable NFT that encodes both **ownership proof** and **licensing terms** as on-chain, immutable attributes. The combination of a Starknet transaction hash and an IPFS CID creates a Berne Convention-compatible copyright record valid in 181 countries.
+An digital asset on Medialane is a programmable NFT that encodes both **ownership proof** and **licensing terms** as onchain, immutable attributes. The combination of a Starknet transaction hash and an IPFS CID creates a Berne Convention-compatible copyright record valid in 181 countries.
 
 ---
 
@@ -17,7 +17,7 @@ When a creator mints an digital asset, three things happen simultaneously:
 
 1. **Media upload** — The file is pinned to IPFS via Pinata. The CID is a cryptographic fingerprint of the content — if the file changes, the CID changes.
 2. **Metadata anchoring** — A JSON metadata file (also IPFS-pinned) records title, description, IP type, license terms, and a pointer to the media CID.
-3. **On-chain mint** — The NFT is minted with the metadata IPFS URI. The Starknet transaction timestamp is immutable and globally verifiable.
+3. **onchain mint** — The NFT is minted with the metadata IPFS URI. The Starknet transaction timestamp is immutable and globally verifiable.
 
 Together, the IPFS CID + Starknet block timestamp = **permanent proof of prior art**, enforceable under Berne Convention Article 5 (automatic protection upon creation, no registration required).
 
@@ -71,7 +71,7 @@ Beyond CC presets, creators can define:
 | **Derivative works** | Allowed / Allowed with attribution / Prohibited |
 | **AI training** | Allowed / Prohibited / Allowed for non-commercial |
 | **Geographic scope** | Worldwide / Specific regions |
-| **Royalty %** | 0–25% (enforced at on-chain sale) |
+| **Royalty %** | 0–25% (enforced at onchain sale) |
 | **Sublicensing** | Allowed / Prohibited |
 | **Exclusivity** | Non-exclusive / Exclusive (requires negotiation) |
 
@@ -81,10 +81,10 @@ License terms are stored as IPFS metadata attributes and are indexable by any co
 
 ## Remix & Attribution Graph
 
-When a creator builds a derivative work, they reference the original asset's token ID and contract address in their mint transaction. This creates an **on-chain attribution chain** — a graph tracing creative lineage back to the originating work.
+When a creator builds a derivative work, they reference the original asset's token ID and contract address in their mint transaction. This creates an **onchain attribution chain** — a graph tracing creative lineage back to the originating work.
 
 - CC0 and CC BY assets auto-approve remix requests
-- Custom license terms require explicit on-chain acceptance by the original creator
+- Custom license terms require explicit onchain acceptance by the original creator
 - Attribution is permanent — the remix record cannot be altered or deleted
 
 ---
@@ -139,7 +139,7 @@ A 24-hour local cache prevents redundant gateway requests. `ipfs://` URIs are al
 
 ## Berne Convention Compliance
 
-The Berne Convention (181 signatory countries, administered by WIPO) grants automatic copyright from the moment of creation. No registration is required. Medialane's on-chain timestamp provides:
+The Berne Convention (181 signatory countries, administered by WIPO) grants automatic copyright from the moment of creation. No registration is required. Medialane's onchain timestamp provides:
 
 1. **Prior art evidence** — Immutable proof of existence before any given date
 2. **Ownership proof** — Wallet signature establishes the creator's identity at mint time
@@ -149,7 +149,7 @@ This does **not** replace legal counsel for disputes — it provides the evidenc
 
 ---
 
-## On-chain Provenance
+## onchain Provenance
 
 Every digital asset accrues a provenance record — a chain of transfer, sale, and remix events indexed from Starknet. The Medialane API (`getTokenHistory`) returns a full timeline for any asset, including:
 

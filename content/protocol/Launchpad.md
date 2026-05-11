@@ -7,7 +7,7 @@ author: "Medialane DAO"
 
 # Launchpad
 
-The Medialane Launchpad provides four launch formats for creators and organizations. All formats deploy audited Cairo smart contracts directly to Starknet Mainnet — no centralized mint server, no admin key, every rule enforced on-chain.
+The Medialane Launchpad provides four launch formats for creators and organizations. All formats deploy audited Cairo smart contracts directly to Starknet Mainnet — no centralized mint server, no admin key, every rule enforced onchain.
 
 ---
 
@@ -85,7 +85,7 @@ Drop Factory: `0x03587f42e29daee1b193f6cf83bf8627908ed6632d0d83fcb26225c50547d80
 
 ## POP Protocol (Proof of Participation)
 
-Soulbound credentials for events, DAO governance, education, and community milestones. POP tokens are non-transferable by design — they represent verifiable on-chain proof that cannot be bought or sold.
+Soulbound credentials for events, DAO governance, education, and community milestones. POP tokens are non-transferable by design — they represent verifiable onchain proof that cannot be bought or sold.
 
 ### Use Cases
 - **Events** — conference attendance, concert, workshop participation
@@ -98,7 +98,7 @@ Soulbound credentials for events, DAO governance, education, and community miles
 - Non-transferable (soulbound): `transfer` reverts
 - Gas-free for recipients — organizer sponsors or AVNU paymaster covers fees
 - Self-sovereign: credential belongs to the holder's wallet forever; Medialane cannot revoke
-- On-chain verification: any app or contract can read and verify POP ownership
+- onchain verification: any app or contract can read and verify POP ownership
 
 ### Minting a POP Credential
 

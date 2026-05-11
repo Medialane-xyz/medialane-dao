@@ -18,7 +18,7 @@ This Charter defines how decisions are made, responsibilities are shared, and th
 We are governed by values that reflect our commitment to a fair and open digital future:
 
 * **Decentralization:** Decisions are made collectively by MDLN token holders.
-* **Transparency:** Governance actions are recorded on-chain and publicly auditable.
+* **Transparency:** Governance actions are recorded onchain and publicly auditable.
 * **Sovereignty:** Creators retain full control over their IP and participation.
 * **Inclusivity:** Participation is open to all — no KYC, no gatekeeping.
 * **Integrity:** We uphold ethical standards in all protocol and community actions.
@@ -97,7 +97,7 @@ Disputes are resolved through:
 This Charter may be amended through DAO proposals:
 
 * Changes require quorum and supermajority approval (>66%).
-* Decisions and updates are recorded on-chain for transparency.
+* Decisions and updates are recorded onchain for transparency.
 * The DAO may evolve its structure through progressive decentralization.
 
 ---

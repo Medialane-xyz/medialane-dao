@@ -75,7 +75,7 @@ Medialane may interface with external platforms (e.g., games, marketplaces, AI a
 
 Medialane is governed by a decentralized autonomous organization (DAO):
 
-* All proposals, votes, and governance actions are recorded on-chain.
+* All proposals, votes, and governance actions are recorded onchain.
 * Participation is pseudonymous and open to any wallet holder.
 * No centralized moderation or surveillance is conducted.
 

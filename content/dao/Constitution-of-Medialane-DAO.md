@@ -22,7 +22,7 @@ We operate at the intersection of blockchain and artificial intelligence, expand
 The organization shall be called Medialane DAO.
 
 ### Section 2: Legal Structure
-Medialane DAO is registered as a DAO LLC under the Utah Decentralized Autonomous Organization Act. This legal wrapper provides members with limited liability protection while preserving the decentralized, on-chain governance model.
+Medialane DAO is registered as a DAO LLC under the Utah Decentralized Autonomous Organization Act. This legal wrapper provides members with limited liability protection while preserving the decentralized, onchain governance model.
 
 ### Section 3: Purpose
 To build trust-minimized infrastructure where content, code, and culture can be tokenized, governed, and monetized via smart contracts. Medialane seeks to empower:

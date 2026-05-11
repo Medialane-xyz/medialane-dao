@@ -6,8 +6,8 @@ import { Mail, Video, Vote, Copy, Check, ArrowUpRight } from 'lucide-react'
 const socials = [
   {
     name: 'X / Twitter',
-    handle: '@medialane_xyz',
-    href: 'https://x.com/medialane_xyz',
+    handle: '@medialane_io',
+    href: 'https://x.com/medialane_io',
     description: 'Latest updates and announcements.',
     color: 'bg-violet-500/10 text-violet-500',
     icon: (
@@ -18,8 +18,8 @@ const socials = [
   },
   {
     name: 'YouTube',
-    handle: '@medialanexyz',
-    href: 'https://www.youtube.com/@medialanexyz',
+    handle: '@medialaneio',
+    href: 'https://www.youtube.com/@medialaneio',
     description: 'Tutorials, demos, and community calls.',
     color: 'bg-blue-500/10 text-blue-500',
     icon: <Video className="size-4" />,

@@ -7,7 +7,7 @@ author: "Medialane DAO"
 
 # Marketplace
 
-The Medialane marketplace runs on two audited Cairo smart contracts on Starknet Mainnet — one for ERC-721 (unique assets) and one for ERC-1155 (multi-edition assets). All orders are SNIP-12 typed-data signed off-chain and fulfilled atomically on-chain.
+The Medialane marketplace runs on two audited Cairo smart contracts on Starknet Mainnet — one for ERC-721 (unique assets) and one for ERC-1155 (multi-edition assets). All orders are SNIP-12 typed-data signed off-chain and fulfilled atomically onchain.
 
 ---
 
