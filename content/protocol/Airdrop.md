@@ -7,21 +7,19 @@ author: "Medialane DAO"
 
 # Creator's Airdrop
 
-**Launch Campaing**
+**Launch Campaign**
 
-To celebrate mainnet launch on Starknet, Medialane is sharing a creator's fund of 2,000 dollars + all platform revenue while the campaign is active. The creator's fund will be distributed with tokens airdrop and content aquisition within the platform.
+To celebrate the Medialane mainnet launch on Starknet, the Creator's Fund returns all platform revenue to the community while the campaign is active. Revenue is airdropped to creators, collectors, and active participants.
 
 **Community Program**
 
-Platform revenue distributed to creators, collectors, and active participants. When the community hits a milestone, platform revenue gets distributed to all participants.
+Each time the Creator's Fund reaches $1,000, that round is airdropped to all participants — weighted by Score Board points earned through real activity on the platform.
 
 ## Governance First
 
-A 1% marketplace fee flows to the Medialane DAO treasury. Each year, MDLN holders vote on Snapshot to decide how that revenue is used — Creator's Airdrop, token buyback, token burn, protocol development, or operations. No predetermined formula.
+A 1% marketplace fee funds the Creator's Fund. Each year, MDLN holders vote on Snapshot to decide how platform revenue is used — Creator's Airdrop, token buyback, token burn, protocol development, or operations. No predetermined formula.
 
-Phase 1 : 5,000 members : First distribution from the creator fund. All eligible participants receive a proportional share based on their activity.
-
-Phase 2 : 10,000 members : Second distribution, including all revenue since Phase 1. Activity scores are recalculated from all activity since launch.
+For year one, the DAO's decision is the Creator's Airdrop: every dollar of revenue is returned to the community. The campaign runs until July 1, 2027.
 
 
 ## The Model
@@ -34,7 +32,7 @@ When MDLN holders vote to fund the Creator's Airdrop, the allocated pool is dist
 | **Recipient** | 100% to participating creators and collectors |
 | **Governance** | MDLN holders vote on amount, rules, and timing |
 | **Verification** | onchain activity — fully auditable |
-| **Cadence** | Milestone triggers + annual cycles |
+| **Cadence** | $1,000 distribution rounds, until July 1, 2027 |
 
 ## Participation Tiers
 
@@ -69,15 +67,15 @@ Active participants who contribute to the Creator's Capital Markets economy.
 - Trade, collect, and make offers
 - Collaborate and remix
 
-## Distribution Phases
+## Distribution Rounds
 
-| Phase | Trigger | Type |
-|-------|---------|------|
-| **Phase 1** | 5,000 participants | Milestone |
-| **Phase 2** | 10,000 participants | Milestone |
-| **Annual Cycle** | Each year thereafter | Ongoing |
+| Round | Trigger | Weight |
+|-------|---------|--------|
+| **Each round** | Creator's Fund reaches $1,000 | Score Board points |
+| **Year-one campaign** | Until July 1, 2027 | All revenue returned |
+| **Annual cycle** | Each year thereafter | DAO vote decides |
 
-Phases are not time-gated — they unlock when the community reaches the participation milestone.
+Distribution is not member-gated — every $1,000 the Creator's Fund collects is airdropped. $5,000 of revenue means 5 rounds; $10,000 means 10. Your share of each round is your Score Board points relative to all participants.
 
 ## Fair by Design
 
@@ -117,6 +115,6 @@ Go to [medialane.io](https://medialane.io/airdrop) and create your profile. Secu
 
 *Creator's Airdrop rules and pool sizes are governed by MDLN holders and may change between cycles. All qualifying activity is verified onchain. Medialane DAO does not guarantee specific airdrop amounts.*
 
-*Last updated: May 11, 2026*
+*Last updated: May 20, 2026*
 
 © Medialane DAO
