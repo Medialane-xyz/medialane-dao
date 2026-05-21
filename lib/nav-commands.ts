@@ -14,7 +14,7 @@ export const NAV_COMMANDS: NavCommandGroup[] = [
       { id: 'home',    label: 'Start',   icon: Home,     href: '/',        keywords: ['home', 'start', 'enter', 'medialane'] },
       { id: 'explore', label: 'Explore', icon: Compass,  href: '/explore', keywords: ['apps', 'features', 'services', 'protocol'] },
       { id: 'dao',     label: 'DAO',     icon: Landmark, href: '/dao',     keywords: ['governance', 'foundation', 'snapshot', 'vote', 'proposals'] },
-      { id: 'members', label: 'Members', icon: Coins,    href: '/members', keywords: ['token', 'mdln', 'membership', 'tokenomics'] },
+      { id: 'token',   label: 'Token',   icon: Coins,    href: '/token',   keywords: ['mdln', 'membership', 'tokenomics', 'governance token'] },
     ],
   },
   {

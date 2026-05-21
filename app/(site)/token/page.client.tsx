@@ -15,12 +15,12 @@ const starknetBenefits = [
   { icon: Globe,  color: 'bg-brand-blue/10 text-brand-blue',     title: 'Native account abstraction', body: 'Transactions are atomic executions with immutable smart contracts' },
 ]
 
-export default function MembersPageClient() {
+export default function TokenPageClient() {
   return (
     <div className="px-4 sm:px-6 lg:px-10 xl:px-14 py-10 sm:py-12 lg:py-16 space-y-12">
 
       <PageHero
-        eyebrow="Medialane · Membership"
+        eyebrow="Medialane · Token"
         title="MDLN Token"
         description="21,000,000 fixed supply. 100% DAO-controlled — no investor or team allocation, no preferential treatment. MDLN is the governance token: one MDLN, one vote. Holders steward Medialane's commercial layer and decide, each year, how protocol revenue is used."
       />

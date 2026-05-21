@@ -49,7 +49,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
             <nav className="flex items-center gap-4 flex-wrap justify-center text-xs">
               <Link href="/dao" className="hover:text-foreground transition-colors">Governance</Link>
               <Link href="/explore" className="hover:text-foreground transition-colors">Protocol</Link>
-              <Link href="/members" className="hover:text-foreground transition-colors">Token</Link>
+              <Link href="/token" className="hover:text-foreground transition-colors">Token</Link>
               <Link href="/build" className="hover:text-foreground transition-colors">Build</Link>
               <Link href="/airdrop" className="hover:text-foreground transition-colors">Airdrop</Link>
               <Link href="/docs" className="hover:text-foreground transition-colors">Docs</Link>

@@ -112,9 +112,9 @@ export const navSections: NavSection[] = [
     description: 'Foundation & Governance',
   },
   {
-    label: 'Members',
-    href: '/members',
-    description: 'Membership & Token',
+    label: 'Token',
+    href: '/token',
+    description: 'MDLN governance token',
   },
   {
     label: 'Build',

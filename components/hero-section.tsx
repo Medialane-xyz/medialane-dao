@@ -53,7 +53,7 @@ const quickLinks = [
     external: false,
   },
   {
-    href: '/members',
+    href: '/token',
     title: 'MDLN Token',
     description: 'Ownership, governance rights, and how to participate.',
     icon: Coins,
