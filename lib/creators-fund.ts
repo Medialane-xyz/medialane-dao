@@ -8,6 +8,9 @@
  * that cannot be fetched becomes `null` so the UI can render `—`.
  */
 
+import distributionsData from '@/content/data/fund-distributions.json'
+import { creatorsFund } from '@/lib/site-config'
+
 export interface Distribution {
   round: number
   date: string
@@ -82,5 +85,100 @@ export function deriveFundStatus(
     roundsPaid: distributions.length,
     totalReturnedUsd: distributions.reduce((s, d) => s + d.amountUsd, 0),
     distributions,
+  }
+}
+
+/** `balanceOf(felt252)` entry-point selector. */
+const BALANCE_OF_SELECTOR =
+  '0x2e4263afad30923c891518314c3c95dbe830a16874e8abc5777a9a20b54c76e'
+
+/**
+ * Starknet RPC endpoint. Set `STARKNET_RPC_URL` in the deployment environment
+ * to a production provider. The fallback is Alchemy's public demo endpoint —
+ * rate-limited but adequate for a single 5-minute-cached call; if it fails the
+ * page degrades to `—` and the Voyager link still works.
+ */
+const RPC_URL =
+  process.env.STARKNET_RPC_URL ??
+  'https://starknet-mainnet.g.alchemy.com/starknet/version/rpc/v0_7/demo'
+
+const COINGECKO_PRICE =
+  'https://api.coingecko.com/api/v3/simple/price?ids=starknet,ethereum&vs_currencies=usd'
+
+/** Fetch one token's balance held by the fund wallet. Returns `null` on failure. */
+async function fetchBalance(tokenAddress: string): Promise<bigint | null> {
+  try {
+    const res = await fetch(RPC_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        jsonrpc: '2.0',
+        id: 1,
+        method: 'starknet_call',
+        params: [
+          {
+            contract_address: tokenAddress,
+            entry_point_selector: BALANCE_OF_SELECTOR,
+            calldata: [creatorsFund.address],
+          },
+          'latest',
+        ],
+      }),
+      next: { revalidate: 300 },
+    })
+    if (!res.ok) return null
+    const json = await res.json()
+    if (!Array.isArray(json?.result)) return null
+    return parseU256(json.result)
+  } catch {
+    return null
+  }
+}
+
+/** Fetch STRK + ETH USD prices keyed by CoinGecko id. Returns `{}` on failure. */
+async function fetchPrices(): Promise<Record<string, number>> {
+  try {
+    const res = await fetch(COINGECKO_PRICE, { next: { revalidate: 300 } })
+    if (!res.ok) return {}
+    const json = await res.json()
+    const out: Record<string, number> = {}
+    if (typeof json?.starknet?.usd === 'number') out.starknet = json.starknet.usd
+    if (typeof json?.ethereum?.usd === 'number') out.ethereum = json.ethereum.usd
+    return out
+  } catch {
+    return {}
+  }
+}
+
+/**
+ * Fetch the full Creator's Fund status. Best-effort: always resolves, never
+ * throws. Failed reads surface as `null` values.
+ */
+export async function getCreatorsFundStatus(): Promise<CreatorsFundStatus> {
+  const distributions = distributionsData as Distribution[]
+  const prices = await fetchPrices()
+
+  const rawTokens: FundToken[] = await Promise.all(
+    creatorsFund.tokens.map(async (token) => {
+      const raw = await fetchBalance(token.address)
+      const balance = raw === null ? 0 : toHuman(raw, token.decimals)
+      let usd: number | null
+      if (raw === null) {
+        usd = null // balance fetch failed — value unknown
+      } else if (token.coingeckoId === null) {
+        usd = balance // stablecoin — treat as $1
+      } else {
+        const price = prices[token.coingeckoId]
+        usd = typeof price === 'number' ? balance * price : null
+      }
+      return { symbol: token.symbol, balance, usd }
+    }),
+  )
+
+  return {
+    address: creatorsFund.address,
+    voyager: creatorsFund.voyager,
+    nextRoundUsd: creatorsFund.nextRoundUsd,
+    ...deriveFundStatus(rawTokens, distributions),
   }
 }
