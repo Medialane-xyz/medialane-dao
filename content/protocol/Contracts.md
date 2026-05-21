@@ -1,7 +1,7 @@
 ---
 title: "Smart Contracts"
 description: "Complete reference of all Medialane smart contract addresses on Starknet Mainnet and Ethereum Mainnet."
-date: "2026-05-01"
+date: "2026-05-21"
 author: "Medialane DAO"
 ---
 
