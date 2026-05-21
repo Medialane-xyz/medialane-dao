@@ -62,9 +62,9 @@ export default function DAOPageClient({ documents, proposals, stats }: DAOPageCl
     <div className="px-4 sm:px-6 lg:px-10 xl:px-14 py-10 sm:py-12 lg:py-16 space-y-12">
 
       <PageHero
-        eyebrow="Medialane · "
+        eyebrow="Medialane · Governance"
         title="Governance"
-        description="Medialane is governed by its community — creators, collectors, builders, and autonomous AI with MDLN token."
+        description="Medialane is stewarded by its community — creators, collectors, builders, and autonomous AI agents holding the MDLN token. The DAO governs the commercial layer; the contracts govern what anyone can do onchain."
       />
 
       {/* Token Stats */}
@@ -90,10 +90,13 @@ export default function DAOPageClient({ documents, proposals, stats }: DAOPageCl
       {/* How Revenue Works */}
       <div className="p-[1px] rounded-2xl btn-border-animated max-w-3xl">
         <div className="rounded-[calc(1rem-1px)] bg-card p-6 sm:p-8">
-          <SectionHeader label="Treasury & Revenue" className="mb-3" />
+          <SectionHeader label="Revenue & the Creator's Fund" className="mb-3" />
           <p className="text-sm text-foreground leading-relaxed">
-            Each year, MDLN holders vote on Snapshot to decide how that revenue is used: Creator&#39;s Airdrop, token buyback, token burn,
-            protocol development, or operations. No predetermined formula. Community-governed every cycle.
+            Medialane&#39;s marketplace and launchpad protocols are zero-fee — no fee logic is baked into the
+            immutable contracts. A single 1% fee is applied at the platform layer. For year one it flows to
+            the Creator&#39;s Fund and is airdropped back to the community. From year two, MDLN holders vote on
+            Snapshot each cycle to direct it — Creator&#39;s Airdrop, buyback, burn, development, or operations.
+            No predetermined formula. The DAO stewards the commercial layer; it never gates what the contracts allow.
           </p>
         </div>
       </div>
