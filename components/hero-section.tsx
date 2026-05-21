@@ -11,22 +11,22 @@ import { SectionHeader } from '@/components/section-header'
 const pillars = [
   {
     title: 'Monetize anything',
-    body: 'digital assets, NFTs, RWAs, and tokens. Royalties, licensing, and trading with programmable revenue enforced by immutable Cairo smart contracts. Your rules, encoded in code.',
+    body: 'Digital assets, NFTs, RWAs, and tokens — earning through royalties, licensing, and trading. Revenue rules are programmable and enforced by immutable Cairo smart contracts. Your terms, encoded.',
     color: 'text-brand-purple',
   },
   {
     title: 'Own it forever',
-    body: 'Minting creates a Berne Convention-compatible copyright record — IPFS content fingerprint plus a Starknet block timestamp. Proof of prior art valid in 181 countries. No registration. No lawyers.',
+    body: 'Minting creates a Berne Convention-compatible copyright record — an IPFS content fingerprint plus a Starknet block timestamp. Proof of prior art valid in 181 countries. No registration. No lawyers.',
     color: 'text-brand-blue',
   },
   {
-    title: 'Built for all intelligences',
-    body: 'Human creators, organizations, and autonomous AI agents are first-class participants. Any intelligence with a cryptographic identifier can register, license, and govern. No KYC. No gatekeeping.',
+    title: 'Built for every intelligence',
+    body: 'Humans, organizations, and autonomous AI agents are first-class participants. Any intelligence with a cryptographic identity can register, license, trade, and govern. No KYC. No gatekeeping.',
     color: 'text-brand-purple',
   },
   {
-    title: 'Governed by the community',
-    body: "A 1% marketplace fee funds the DAO treasury. MDLN holders vote on Snapshot each year: Creator's Airdrop, token buyback, token burn, development, or operations. Community-governed — not predetermined.",
+    title: 'Zero-fee protocols',
+    body: 'The marketplace and launchpad protocols carry no fee logic — nothing extractive is baked into the contracts. Medialane applies one 1% fee at the platform layer, and the community decides where it goes.',
     color: 'text-brand-blue',
   },
 ]
@@ -45,7 +45,7 @@ const quickLinks = [
   {
     href: '/explore',
     title: 'Protocol',
-    description: 'Monetization tools, features, and onchain contracts.',
+    description: 'Monetization tools, services, and onchain contracts.',
     icon: Layers,
     iconColor: 'bg-brand-blue/10 text-brand-blue',
     gradient: 'from-brand-blue/10 to-transparent',
@@ -79,10 +79,10 @@ export function HeroSection() {
     <div className="px-4 sm:px-6 lg:px-10 xl:px-14 py-10 sm:py-12 lg:py-16 space-y-14">
 
       <PageHero
-        eyebrow="Medialane ·  · Starknet Mainnet"
+        eyebrow="Medialane · Starknet Mainnet"
         title="The monetization hub"
         titlePlain="for onchain assets."
-        description="Creators — human and AI alike — generating new revenues from IP, NFTs, RWAs, and tokens. Full ownership. Programmable rules. No intermediaries. Governed by the community."
+        description="A protocol where creators — human and AI alike — earn from IP, NFTs, RWAs, and tokens. Full ownership. Programmable rules. No intermediaries. Stewarded by the community."
       >
         <div className="flex items-center gap-4 flex-wrap">
           <a
@@ -109,10 +109,10 @@ export function HeroSection() {
             The Integrity Web
           </p>
           <p className="text-sm text-foreground leading-relaxed">
-            The Integrity Web is an information economy built on verifiable truth. Every asset, every license,
-            every transfer is recorded in immutable smart contracts and IPFS — not on servers any company controls.
-            Medialane is the monetization layer of that economy: where ownership is cryptographic, revenue is
-            programmable, and the rules cannot be changed by anyone after the fact.
+            The Integrity Web is an information economy built on verifiable truth. Every asset, every
+            license, every transfer is recorded in immutable smart contracts and IPFS — not on servers any
+            company controls. Medialane is the monetization layer of that economy: ownership is
+            cryptographic, revenue is programmable, and the rules cannot be rewritten by anyone after the fact.
           </p>
         </div>
       </div>
@@ -132,21 +132,28 @@ export function HeroSection() {
         </Stagger>
       </div>
 
-      {/* DAO Treasury */}
+      {/* Creator's Fund & governance */}
       <div className="bento-cell p-6 sm:p-8">
-        <SectionHeader label="DAO Treasury & Governance" className="mb-3" />
+        <SectionHeader label="The Creator's Fund & the DAO" className="mb-3" />
         <p className="text-sm text-foreground leading-relaxed mb-5 max-w-2xl">
-          A 1% marketplace fee funds the Medialane DAO treasury — held in a Gnosis Safe multisig on Ethereum,
-          fully auditable onchain. MDLN holders vote on Snapshot each year to decide how revenue is used:
-          Creator&#39;s Airdrop, token buyback, token burn, protocol development, or operations.
-          No predetermined formula. Community-governed.
+          The marketplace and launchpad protocols are zero-fee — no fee logic lives in the immutable
+          contracts. Medialane applies a single 1% fee at the platform layer. For year one, every dollar of
+          it flows to the Creator&#39;s Fund — a public Starknet multisig — and is airdropped back to the
+          community. From year two, MDLN holders vote on Snapshot to direct it. The DAO stewards
+          Medialane&#39;s commercial layer; it never gates what the contracts allow.
         </p>
         <div className="flex flex-wrap gap-3">
+          <Link
+            href="/airdrop/fund"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-brand-purple text-white text-sm font-semibold hover:bg-brand-purple/90 transition-colors"
+          >
+            View the Creator&#39;s Fund →
+          </Link>
           <a
             href={siteConfig.snapshot}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-brand-purple text-white text-sm font-semibold hover:bg-brand-purple/90 transition-colors"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-border bg-background text-sm font-medium text-foreground hover:bg-muted/50 transition-colors"
           >
             Vote on Snapshot <ArrowUpRight className="size-3.5" />
           </a>
