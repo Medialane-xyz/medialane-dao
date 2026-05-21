@@ -31,7 +31,7 @@ You retain ownership of all intellectual property rights in the content you crea
 
 * You retain full ownership of any IP registered or tokenized.
 * Medialane does not claim rights over your content.
-* Tokenized IP is recognized under the Berne Convention, recognized in 173+ countries and protected for 50–70 years depending on jurisdiction.
+* Tokenized IP is recognized under the Berne Convention, recognized in 181 countries and protected for 50–70 years depending on jurisdiction.
 
 ## 5. Licensing & Monetization
 
