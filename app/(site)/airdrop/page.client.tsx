@@ -1,7 +1,7 @@
 'use client'
 
 import { ArrowUpRight, CheckCircle } from 'lucide-react'
-import { siteConfig } from '@/lib/site-config'
+import { siteConfig, creatorsFund } from '@/lib/site-config'
 import { Stagger, StaggerItem } from '@medialane/ui'
 import { PageHero } from '@/components/page-hero'
 import { SectionHeader } from '@/components/section-header'
@@ -43,9 +43,9 @@ const tiers = [
 ]
 
 const phases = [
-  { phase: 'Phase 1', trigger: '5,000 participants', type: 'Milestone' },
-  { phase: 'Phase 2', trigger: '10,000 participants', type: 'Milestone' },
-  { phase: 'Annual Cycle', trigger: 'Each year thereafter', type: 'Ongoing' },
+  { phase: 'Distribution rounds', trigger: 'Each time the Creator\'s Fund reaches $1,000', type: 'Score Board' },
+  { phase: 'Year-one campaign', trigger: 'Until July 1, 2027', type: 'All revenue returned' },
+  { phase: 'Annual cycle', trigger: 'Each year thereafter', type: 'DAO vote decides' },
 ]
 
 const fairDesign = [
@@ -80,7 +80,7 @@ export default function AirdropPageClient() {
       <PageHero
         eyebrow="Medialane · Creator's Airdrop"
         title="Creator's Airdrop"
-        description="Airdrop campaign fro creators celebrating Medialane launch on Starknet mainnet."
+        description="Airdrop campaign for creators celebrating the Medialane launch on Starknet mainnet."
       />
 
       {/* Governance framing */}
@@ -107,6 +107,23 @@ export default function AirdropPageClient() {
               </div>
             ))}
           </div>
+        </div>
+      </div>
+
+      {/* Creator's Fund */}
+      <div className="bento-cell p-6 sm:p-8 max-w-3xl">
+        <SectionHeader label="The Creator's Fund" color="text-brand-blue" bg="bg-brand-blue" className="mb-3" />
+        <p className="text-sm text-foreground leading-relaxed mb-4">
+          Every airdrop is paid from the Creator&#39;s Fund — a public wallet on Starknet that collects the 1% platform fee. Watch the balance and every distribution in real time.
+        </p>
+        <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+          <a
+            href="/airdrop/fund"
+            className="inline-flex items-center gap-2 rounded-xl bg-brand-blue px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-blue/90 transition-colors shrink-0"
+          >
+            View the Creator&#39;s Fund <ArrowUpRight className="size-3.5" />
+          </a>
+          <code className="text-[11px] font-mono text-muted-foreground/60 break-all">{creatorsFund.address}</code>
         </div>
       </div>
 
@@ -147,7 +164,7 @@ export default function AirdropPageClient() {
       {/* Distribution phases + fair design */}
       <div className="grid lg:grid-cols-2 gap-6">
         <div className="bento-cell p-5 sm:p-6">
-          <SectionHeader label="Distribution Phases" className="mb-4" />
+          <SectionHeader label="Distribution Rounds" className="mb-4" />
           <div className="space-y-4">
             {phases.map((p, i) => (
               <div key={p.phase} className="flex gap-4">
@@ -168,7 +185,7 @@ export default function AirdropPageClient() {
             ))}
           </div>
           <p className="text-sm text-foreground mt-2 leading-relaxed border-t border-border/60 pt-4">
-            Phases unlock when the community reaches the milestone — not time-gated. Annual cycles continue as long as the protocol generates revenue and MDLN holders vote to continue.
+            Distribution is not member-gated — every $1,000 the Creator&#39;s Fund collects is airdropped. $5,000 of revenue means 5 rounds; $10,000 means 10. Your share of each round is your Score Board points relative to all participants.
           </p>
         </div>
 
