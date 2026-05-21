@@ -1,237 +1,217 @@
 'use client'
 
-import { Stagger, StaggerItem } from '@medialane/ui'
-import { starknet } from '@/lib/site-config'
-import { PageHero } from '@/components/page-hero'
-import { SectionHeader } from '@/components/section-header'
-import { FeatureCard } from '@/components/feature-card'
+import Link from 'next/link'
+import { ArrowUpRight, ArrowRight } from 'lucide-react'
+import { FadeIn } from '@medialane/ui'
 
-const features = [
+type Item = { title: string; desc: string; href?: string; external?: boolean }
+type Section = { eyebrow: string; accent: string; heading: string; intro: string; items: Item[] }
+
+const sections: Section[] = [
   {
-    section: 'Monetize',
-    color: 'text-brand-purple',
-    bg: 'bg-brand-purple',
-    gradient: 'from-brand-purple/10 to-transparent',
-    buttonColor: 'bg-brand-purple',
+    eyebrow: 'Create',
+    accent: 'text-brand-purple',
+    heading: 'Publish and shape your work',
+    intro: 'Turn what you make into something you fully own — in seconds, with no fees and no paperwork.',
     items: [
       {
-        title: 'Mint digital asset',
-        status: 'Live',
+        title: 'Publish your work',
+        desc: 'Register art, music, writing, or video as work you own and can sell. It takes seconds and costs nothing.',
         href: 'https://medialane.io/create/asset',
         external: true,
-        description: 'Register any creative work as a programmable NFT. 12 IP types. Gasless. Metadata anchored on IPFS — permanent and censorship-resistant.',
-        tags: ['ERC-721', 'IPFS', 'Berne Convention'],
       },
       {
-        title: 'Create Collection',
-        status: 'Live',
+        title: 'Create a collection',
+        desc: 'Group related work into a branded collection — an album, a series, a gallery.',
         href: 'https://medialane.io/create/collection',
         external: true,
-        description: 'Deploy branded ERC-721 collections on Starknet. Factory pattern via Cairo smart contract. Metadata on IPFS, resolvable by any dApp forever.',
-        tags: ['ERC-721', 'Cairo', 'Factory Pattern'],
       },
       {
-        title: 'Remix & License',
-        status: 'Live',
+        title: 'Remix and license',
+        desc: 'Let others build on your work under terms you choose. Every remix credits the original automatically.',
         href: 'https://medialane.io/create/remix',
         external: true,
-        description: 'Create licensed derivatives. CC0/CC BY assets auto-approve. Custom terms: price, scope, rights, AI policy. Attribution chain recorded onchain forever.',
-        tags: ['Creative Commons', 'Attribution', 'Remix Graph'],
       },
     ],
   },
   {
-    section: 'Marketplace',
-    color: 'text-brand-blue',
-    bg: 'bg-brand-blue',
-    gradient: 'from-brand-blue/10 to-transparent',
-    buttonColor: 'bg-brand-blue',
+    eyebrow: 'Trade',
+    accent: 'text-brand-blue',
+    heading: 'Sell, collect, and earn',
+    intro: 'A full marketplace for creative work — sell yours, collect others, and earn every time your work changes hands.',
     items: [
       {
-        title: 'Browse & Discover',
-        status: 'Live',
+        title: 'Sell and make offers',
+        desc: 'List your work at a fixed price or take offers from buyers. You stay in control until the moment of sale.',
         href: 'https://medialane.io/marketplace',
         external: true,
-        description: 'Full marketplace with search, currency filters, dynamic asset themes. Floor price, volume, holder stats. USDC, USDT, ETH, STRK, WBTC.',
-        tags: ['USDC', 'ETH', 'STRK', 'WBTC'],
       },
       {
-        title: 'Buy & Make Offers',
-        status: 'Live',
+        title: 'Earn royalties forever',
+        desc: 'Set a royalty once and receive it automatically every time your work is resold — no chasing payments.',
         href: 'https://medialane.io/marketplace',
         external: true,
-        description: 'Buy directly or make offers. Batch cart checkout — multiple items in one PIN-authenticated session key transaction. Royalties enforced by contract.',
-        tags: ['Gasless', 'Session Keys', 'SNIP-9'],
       },
       {
-        title: 'Creator Profiles',
-        status: 'Live',
+        title: 'Build your profile',
+        desc: 'A dedicated page for your work, your collections, and your story — with content only your collectors can see.',
         href: 'https://medialane.io/creators',
         external: true,
-        description: 'Dedicated pages with portfolio, collection stats, activity timelines. Token-gated content for MDLN and NFT holders.',
-        tags: ['Token Gating', 'Profiles'],
       },
     ],
   },
   {
-    section: 'Launchpad',
-    color: 'text-brand-purple',
-    bg: 'bg-brand-purple',
-    gradient: 'from-brand-purple/10 to-transparent',
-    buttonColor: 'bg-brand-purple',
+    eyebrow: 'Launch',
+    accent: 'text-brand-orange',
+    heading: 'Release work to the world',
+    intro: 'Bring an audience to a launch — on your terms, on a schedule you set.',
     items: [
       {
-        title: 'Collection Drop',
-        status: 'Live',
+        title: 'Run a drop',
+        desc: 'Release a collection to the public with a set size, price, and timing. The rules run themselves.',
         href: 'https://medialane.io/launchpad',
         external: true,
-        description: 'Timed ERC-721 releases with configurable supply, mint window, price, per-wallet limit, and allowlists. Contract enforces every rule — no centralized mint server.',
-        tags: ['Allowlist', 'Supply Cap', 'Timed'],
       },
       {
-        title: 'ERC-1155 Edition',
-        status: 'Live',
+        title: 'Sell editions',
+        desc: 'Offer multiple copies of the same work — ideal for music, writing, and prints.',
         href: 'https://medialane.io/launchpad',
         external: true,
-        description: 'Multi-copy editions for music, publications, and prints. One contract, multiple token IDs and quantities. Partial listing support.',
-        tags: ['ERC-1155', 'Editions', 'Multi-copy'],
       },
       {
-        title: 'POP Protocol',
-        status: 'Live',
+        title: 'Give participation badges',
+        desc: 'Hand out collectible badges for events, courses, and communities. They belong to the holder for good.',
         href: 'https://medialane.io/launchpad',
         external: true,
-        description: 'Soulbound proof-of-participation credentials for events, bootcamps, hackathons, DAO membership. Gas-free. Self-sovereign — cannot be taken away.',
-        tags: ['Soulbound', 'Non-transferable', 'Credentials'],
       },
     ],
   },
   {
-    section: 'Developer',
-    color: 'text-brand-blue',
-    bg: 'bg-brand-blue',
-    gradient: 'from-brand-blue/10 to-transparent',
-    buttonColor: 'bg-brand-blue',
+    eyebrow: 'Protect',
+    accent: 'text-brand-rose',
+    heading: 'Your rights, built in',
+    intro: 'Ownership and protection are not extra steps — they come the moment you publish.',
     items: [
       {
-        title: 'Medialane SDK',
-        status: 'v0.14',
+        title: 'Copyright in 181 countries',
+        desc: 'Publishing creates a copyright record recognised across 181 countries — instantly, with no registration or lawyers.',
+      },
+      {
+        title: 'You set the terms',
+        desc: 'Decide how your work can be used — commercial use, remixes, AI training — and the platform holds everyone to it.',
+      },
+      {
+        title: 'Credit that lasts',
+        desc: 'Every use and remix traces back to you. The record cannot be altered, hidden, or taken down.',
+      },
+    ],
+  },
+  {
+    eyebrow: 'Build',
+    accent: 'text-brand-purple',
+    heading: 'Open for developers and AI',
+    intro: 'Medialane is an open protocol — anyone, human or AI agent, can build on it.',
+    items: [
+      {
+        title: 'Developer tools and docs',
+        desc: 'The SDK, contracts, and guides for building on Medialane.',
+        href: 'https://docs.medialane.org/docs/developers',
+        external: true,
+      },
+      {
+        title: 'For AI agents',
+        desc: 'Autonomous agents take part as first-class participants — no special access needed.',
         href: '/build',
         external: false,
-        description: 'TypeScript SDK. Full onchain and REST API coverage. Dual ESM + CJS. Berne Convention-aligned IP metadata schema. Framework-agnostic.',
-        tags: ['TypeScript', 'ESM', 'Open Source'],
-      },
-      {
-        title: 'Protocol v2',
-        status: 'Audited',
-        href: `https://voyager.online/contract/${starknet.marketplace721}`,
-        external: true,
-        description: 'Audited ERC-721 and ERC-1155 marketplace contracts on Starknet. CEI pattern, front-running protection, SNIP-12 typed-data orders. Non-upgradeable by design.',
-        tags: ['Cairo', 'ERC-721', 'ERC-1155'],
-      },
-      {
-        title: 'ZK Infrastructure',
-        status: 'Core',
-        href: '/build',
-        external: false,
-        description: 'STARK proofs secure every transaction. STWO prover for faster finality. Recursive proofs for unlimited scale. Ethereum-level security at a fraction of cost.',
-        tags: ['STARK', 'STWO Prover', 'ZK-Rollup'],
-      },
-    ],
-  },
-  {
-    section: 'Creator Rights',
-    color: 'text-brand-purple',
-    bg: 'bg-brand-purple',
-    gradient: 'from-brand-purple/10 to-transparent',
-    buttonColor: 'bg-brand-purple',
-    items: [
-      {
-        title: 'Born Protected',
-        status: 'Core',
-        href: null,
-        external: false,
-        description: 'Minting timestamps your work under the Berne Convention — instant copyright proof in 181 countries. No registration fees, no WIPO filings, no lawyers. Protected the moment it exists.',
-        tags: ['181 Countries', 'Automatic', 'No Lawyers'],
-      },
-      {
-        title: 'Programmable Revenue',
-        status: 'Live',
-        href: 'https://medialane.io/create/asset',
-        external: true,
-        description: 'Royalties, licensing terms, and revenue splits encoded in Cairo smart contracts. 9 Creative Commons variants + custom terms — commercial use, AI policy, derivative rights, geographic scope.',
-        tags: ['Royalties', 'CC0', 'CC BY', 'AI Policy'],
-      },
-      {
-        title: 'Immutable Attribution',
-        status: 'Core',
-        href: null,
-        external: false,
-        description: 'Every record lives on Starknet and IPFS — not on Medialane servers. Remix graph traces creative lineage back to the original source. Cannot be altered, delisted, or censored by anyone.',
-        tags: ['IPFS', 'Remix Graph', 'Censorship-proof'],
-      },
-    ],
-  },
-  {
-    section: 'Starknet Infrastructure',
-    color: 'text-brand-blue',
-    bg: 'bg-brand-blue',
-    gradient: 'from-brand-blue/10 to-transparent',
-    buttonColor: 'bg-brand-blue',
-    items: [
-      {
-        title: 'Native Account Abstraction',
-        status: 'Core',
-        href: null,
-        external: false,
-        description: 'Wallets are smart contracts on Starknet. Session keys (SNIP-9) enable PIN-authenticated gasless sessions — mint, list, and trade multiple items without re-signing each action.',
-        tags: ['SNIP-9', 'Session Keys', 'Gasless'],
-      },
-      {
-        title: 'STWO Prover & ZK-STARK',
-        status: 'Core',
-        href: null,
-        external: false,
-        description: "Cairo's next-generation STARK prover. Recursive proofs verify other proofs — unlimited scale while maintaining full cryptographic integrity. Ethereum-level finality.",
-        tags: ['STWO', 'Recursive Proofs', 'ZK-STARK'],
-      },
-      {
-        title: 'Sponsored Transactions',
-        status: 'Core',
-        href: null,
-        external: false,
-        description: 'Medialane sponsors gas fees for creator actions via Starknet paymaster. No ETH required. Zero-fee IP tokenization — creators keep 100% of what they earn.',
-        tags: ['Paymaster', 'Zero Gas', 'Creator First'],
       },
     ],
   },
 ]
 
+function ItemRow({ item }: { item: Item }) {
+  const inner = (
+    <div className="flex items-start justify-between gap-6 py-5">
+      <div>
+        <p className="text-base font-bold text-foreground">{item.title}</p>
+        <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
+      </div>
+      {item.href &&
+        (item.external ? (
+          <ArrowUpRight className="mt-1 size-5 shrink-0 text-muted-foreground/30 transition-colors group-hover:text-foreground" />
+        ) : (
+          <ArrowRight className="mt-1 size-5 shrink-0 text-muted-foreground/30 transition-colors group-hover:text-foreground" />
+        ))}
+    </div>
+  )
+  if (!item.href) return inner
+  return item.external ? (
+    <a href={item.href} target="_blank" rel="noopener noreferrer" className="group block">
+      {inner}
+    </a>
+  ) : (
+    <Link href={item.href} className="group block">
+      {inner}
+    </Link>
+  )
+}
+
 export default function ExplorePageClient() {
   return (
-    <div className="px-4 sm:px-6 lg:px-10 xl:px-14 py-10 sm:py-12 lg:py-16 space-y-12">
-      <PageHero
-        eyebrow="Medialane · Protocol"
-        title="Protocol"
-        description="New revenue tools for creators, collectors, organizations, and autonomous AI. Mint, license, trade, and build capital markets around your work — on Starknet, governed by the community."
-      />
+    <div className="space-y-20 sm:space-y-24">
 
-      {features.map((section) => (
-        <div key={section.section}>
-          <SectionHeader label={section.section} color={section.color} bg={section.bg} className="mb-6" />
-          <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {section.items.map((item) => (
-              <StaggerItem key={item.title}>
-                <FeatureCard
-                  {...item}
-                  gradient={section.gradient}
-                  buttonColor={section.buttonColor}
-                />
-              </StaggerItem>
-            ))}
-          </Stagger>
-        </div>
+      {/* Hero */}
+      <section className="px-4 pt-16 sm:px-6 sm:pt-20 lg:px-10 lg:pt-24 xl:px-14">
+        <FadeIn className="max-w-3xl">
+          <p className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">
+            Explore
+          </p>
+          <h1 className="text-4xl font-black leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
+            Everything you can do on Medialane
+          </h1>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+            One place to create, protect, sell, and grow your creative work — and a community that
+            owns the platform together.
+          </p>
+        </FadeIn>
+      </section>
+
+      {/* Sections */}
+      {sections.map((s) => (
+        <section key={s.eyebrow} className="px-4 sm:px-6 lg:px-10 xl:px-14">
+          <FadeIn>
+            <p className={`mb-3 text-xs font-bold uppercase tracking-[0.2em] ${s.accent}`}>{s.eyebrow}</p>
+            <h2 className="text-3xl font-black tracking-tight sm:text-4xl">{s.heading}</h2>
+            <p className="mt-3 max-w-2xl text-base text-muted-foreground">{s.intro}</p>
+            <div className="mt-6 divide-y divide-border/50 border-t border-border/50">
+              {s.items.map((item) => (
+                <ItemRow key={item.title} item={item} />
+              ))}
+            </div>
+          </FadeIn>
+        </section>
       ))}
+
+      {/* Simple by design */}
+      <section className="px-4 pb-8 sm:px-6 lg:px-10 xl:px-14">
+        <FadeIn className="max-w-3xl">
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-brand-blue">Simple by design</p>
+          <h2 className="text-3xl font-black tracking-tight sm:text-4xl">No crypto experience needed</h2>
+          <p className="mt-3 text-lg leading-relaxed text-muted-foreground">
+            Sign in with an email and start in minutes. You never pay a network fee, and there are
+            no wallets to manage or jargon to learn — Medialane handles the hard parts so you can
+            focus on your work.
+          </p>
+          <a
+            href="https://medialane.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-brand-purple px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-purple/90"
+          >
+            Open the app <ArrowUpRight className="size-4" />
+          </a>
+        </FadeIn>
+      </section>
+
     </div>
   )
 }
