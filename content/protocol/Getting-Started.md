@@ -1,13 +1,13 @@
 ---
 title: "Getting Started"
 description: "Create your first digital asset on Medialane in seconds — no gas required, no registration fee, no intermediaries."
-date: "2026-05-01"
+date: "2026-05-21"
 author: "Medialane DAO"
 ---
 
 # Getting Started with Medialane
 
-Medialane is an open protocol for intellectual property monetization **onchain**. Every asset you create is a programmable NFT with Berne Convention-backed copyright proof valid in 181 countries.
+Medialane is an open, permissionless protocol for monetizing intellectual property **onchain** — with a set of reference apps built on top of it. Every asset you create is a programmable NFT with Berne Convention-backed copyright proof valid in 181 countries. The protocol is the authority; the apps are just one way to reach it.
 
 ---
 
@@ -19,7 +19,7 @@ Navigate to [medialane.io](https://medialane.io). Sign up with Google. First-tim
 
 ## Step 2: Create a Collection (optional but recommended)
 
-Before minting individual assets, creators needs to deploy a **collection** — a branded smart contract that groups related work.
+Before minting individual assets, you can deploy a **collection** — a branded smart contract that groups related work.
 
 **Go to** → Launchpad → Create Collection
 
@@ -34,7 +34,7 @@ Collections are deployed as Cairo smart contracts on Starknet. Metadata resolves
 
 ---
 
-## Step 3: Mint an digital asset
+## Step 3: Mint a Digital Asset
 
 Each asset contains:
 
@@ -69,9 +69,9 @@ See the [Marketplace guide](./Marketplace) for full trading mechanics.
 | List for sale | Free (gas sponsored) |
 | Make offer | Free (gas sponsored) |
 | Buy / sell | 1% platform fee on transaction value |
-| Remix license | Custom (set by original creator) |
+| Remix license | Custom (set by the original author) |
 
-The 1% marketplace fee flows to the Medialane DAO treasury and is governed by MDLN token holders.
+The marketplace and launchpad **protocols are zero-fee** — no fee logic is baked into the immutable contracts. The 1% fee is applied at the platform layer, where the DAO can change it without a contract migration. For year one, every dollar of it flows to the **Creator's Fund** — a public Starknet multisig — and is airdropped back to the community. From year two, MDLN holders vote on how it is used.
 
 ---
 
