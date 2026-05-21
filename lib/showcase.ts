@@ -46,9 +46,12 @@ export function pickShowcase(raw: RawCollection[]): ShowcaseCollection[] {
   return out
 }
 
+// Server-only env — this module runs exclusively in server components
+// (getShowcaseCollections is awaited in an async server component). The key is
+// never bundled into client JS. Do NOT add a NEXT_PUBLIC_ prefix here.
 const BACKEND_URL =
-  process.env.NEXT_PUBLIC_MEDIALANE_BACKEND_URL ?? 'https://api.medialane.io'
-const API_KEY = process.env.NEXT_PUBLIC_MEDIALANE_API_KEY ?? ''
+  process.env.MEDIALANE_BACKEND_URL ?? 'https://api.medialane.io'
+const API_KEY = process.env.MEDIALANE_API_KEY ?? ''
 
 /**
  * Fetch collections to showcase. Best-effort: returns [] if the backend is
