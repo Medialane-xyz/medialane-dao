@@ -1,7 +1,7 @@
 ---
 title: "SDK & Developer Integration"
 description: "TypeScript SDK reference for building on the Medialane protocol — orders, collections, tokens, and marketplace operations."
-date: "2026-05-01"
+date: "2026-05-21"
 author: "Medialane DAO"
 ---
 
@@ -208,6 +208,26 @@ const offers = orders.filter(
   (o) => o.offer.itemType === 'ERC20' && o.status === 'ACTIVE'
 )
 ```
+
+---
+
+## Platform Fee
+
+The marketplace and launchpad protocols are zero-fee — the 1% platform fee is applied at the **app layer**, not in the contracts. The SDK is the single source of truth for it:
+
+```typescript
+import { resolveFeeConfig, buildFeeCall } from '@medialane/sdk'
+
+const cfg = resolveFeeConfig()
+const feeCall = buildFeeCall(
+  { surface: 'marketplace', token: usdcAddress, grossAmount: price },
+  cfg,
+)
+// feeCall is a single ERC-20 transfer Call to the Creator's Fund —
+// or null when the fee is disabled or floors to zero.
+```
+
+`buildFeeCall` returns `null` when no fund address is configured — fail-safe by design. For year one, fees route to the Creator's Fund.
 
 ---
 
