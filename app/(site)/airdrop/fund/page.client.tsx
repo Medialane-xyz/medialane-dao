@@ -41,7 +41,7 @@ export function CreatorsFundClient({ status }: { status: CreatorsFundStatus }) {
       <PageHero
         eyebrow="Creator's Fund"
         title="Every dollar comes back to you"
-        description="Medialane charges a small 1% fee on every transaction. All of it goes into one public wallet — and all of it is airdropped back to the creators and collectors who use the platform."
+        description="Medialane charges a small 1% fee on earnings — minting is always free. All of it goes into one public wallet and is airdropped back to the creators and collectors who use the platform."
       />
 
       {/* Live status */}

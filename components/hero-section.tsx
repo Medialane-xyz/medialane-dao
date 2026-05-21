@@ -154,7 +154,7 @@ const stats = [
   { value: '21M', label: 'MDLN — the fixed community supply', text: 'text-brand-purple' },
   { value: '181', label: 'countries recognise your copyright', text: 'text-brand-blue' },
   { value: '100%', label: 'community-owned', text: 'text-brand-orange' },
-  { value: '1%', label: 'fee on every transaction — returned to creators', text: 'text-brand-rose' },
+  { value: '1%', label: 'fee on earnings — returned to creators', text: 'text-brand-rose' },
 ]
 
 const explore = [
