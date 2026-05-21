@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { FileText, ArrowUpRight } from 'lucide-react'
 import { getAllPosts } from '@/lib/markdown'
+import { PageHero } from '@/components/page-hero'
+import { SectionHeader } from '@/components/section-header'
 
 export const metadata: Metadata = {
   title: 'Docs | Medialane DAO',
@@ -16,30 +18,20 @@ const sections = [
 
 export default function DocsPage() {
   return (
-    <div className="px-6 lg:px-10 xl:px-14 py-8 space-y-10">
+    <div className="px-4 sm:px-6 lg:px-10 xl:px-14 py-10 sm:py-12 lg:py-16 space-y-12">
 
-      {/* Header */}
-      <div>
-        <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground/40 mb-4">Medialane · Documentation</p>
-        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-3">
-          <span className="gradient-text">Docs</span>
-        </h1>
-        <p className="text-base text-muted-foreground max-w-xl">
-          Protocol guides, DAO founding documents, governance charter, and legal policies.
-        </p>
-      </div>
+      <PageHero
+        eyebrow="Medialane · Documentation"
+        title="Docs"
+        description="Protocol guides, DAO founding documents, the governance charter, and legal policies — all in one place."
+      />
 
       {sections.map((section) => {
         if (section.docs.length === 0) return null
         return (
           <div key={section.label}>
-            <div className="flex items-center gap-3 mb-4">
-              <span className={`block w-6 h-0.5 rounded-full ${section.bg}`} />
-              <p className={`text-[10px] font-mono uppercase tracking-[0.18em] font-bold ${section.color}`}>
-                {section.label}
-              </p>
-            </div>
-            <div className="rounded-xl border border-border bg-card divide-y divide-border/60">
+            <SectionHeader label={section.label} color={section.color} bg={section.bg} className="mb-4" />
+            <div className="bento-cell divide-y divide-border/60">
               {section.docs.map((doc) => (
                 <Link key={doc.slug} href={`/docs/${doc.slug}`}
                   className="group flex items-center gap-4 px-5 py-4 hover:bg-muted/30 transition-colors">
