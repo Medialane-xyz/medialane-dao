@@ -94,13 +94,14 @@ const BALANCE_OF_SELECTOR =
 
 /**
  * Starknet RPC endpoint. Set `STARKNET_RPC_URL` in the deployment environment
- * to a production provider. The fallback is Alchemy's public demo endpoint —
- * rate-limited but adequate for a single 5-minute-cached call; if it fails the
- * page degrades to `—` and the Voyager link still works.
+ * to a production provider. The fallback is Lava's public, keyless Starknet
+ * RPC — adequate for a single 5-minute-cached call; if it fails the page
+ * degrades to `—` and the Voyager link still works. The fallback must stay
+ * keyless: this string is bundled, so never put an API-keyed URL here.
  */
 const RPC_URL =
   process.env.STARKNET_RPC_URL ??
-  'https://starknet-mainnet.g.alchemy.com/starknet/version/rpc/v0_7/demo'
+  'https://rpc.starknet.lava.build'
 
 const COINGECKO_PRICE =
   'https://api.coingecko.com/api/v3/simple/price?ids=starknet,ethereum&vs_currencies=usd'
