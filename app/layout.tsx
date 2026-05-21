@@ -1,17 +1,14 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter, Geist_Mono } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
 import './globals.css'
 
+// Inter is the single typeface across medialane.org — display and body.
 const _inter = Inter({
   subsets: ['latin'],
   variable: '--font-sans',
   display: 'swap',
-})
-const _geistMono = Geist_Mono({
-  subsets: ['latin'],
-  variable: '--font-mono',
 })
 
 import { colors } from '@/lib/site-config'
@@ -43,7 +40,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${_inter.variable} ${_geistMono.variable} font-sans antialiased`}>
+      <body className={`${_inter.variable} font-sans antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}
         </ThemeProvider>

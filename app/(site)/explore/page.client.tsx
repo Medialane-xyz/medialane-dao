@@ -115,7 +115,7 @@ const sections: Section[] = [
       {
         title: 'Developer tools and docs',
         desc: 'The SDK, contracts, and guides for building on Medialane.',
-        href: 'https://docs.medialane.org/docs/developers',
+        href: 'https://docs.medialane.io/docs/developers',
         external: true,
       },
       {

@@ -8,14 +8,18 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      // Protocol docs now live on docs.medialane.org — see spec v2 §2.
-      { source: '/docs/Getting-Started', destination: 'https://docs.medialane.org/docs/protocol', permanent: true },
-      { source: '/docs/IP-Assets', destination: 'https://docs.medialane.org/learn/programmable-ip', permanent: true },
-      { source: '/docs/Launchpad', destination: 'https://docs.medialane.org/learn/creator-launchpad', permanent: true },
-      { source: '/docs/Marketplace', destination: 'https://docs.medialane.org/learn/marketplace', permanent: true },
-      { source: '/docs/SDK', destination: 'https://docs.medialane.org/docs/sdk', permanent: true },
-      { source: '/docs/Contracts', destination: 'https://docs.medialane.org/docs/contracts', permanent: true },
-      // Members page renamed to Token (Task 2).
+      // Protocol docs live on docs.medialane.io — must come before the
+      // /docs/:slug catch-all below (first match wins).
+      { source: '/docs/Getting-Started', destination: 'https://docs.medialane.io/docs/protocol', permanent: true },
+      { source: '/docs/IP-Assets', destination: 'https://docs.medialane.io/learn/programmable-ip', permanent: true },
+      { source: '/docs/Launchpad', destination: 'https://docs.medialane.io/learn/creator-launchpad', permanent: true },
+      { source: '/docs/Marketplace', destination: 'https://docs.medialane.io/learn/marketplace', permanent: true },
+      { source: '/docs/SDK', destination: 'https://docs.medialane.io/docs/sdk', permanent: true },
+      { source: '/docs/Contracts', destination: 'https://docs.medialane.io/docs/contracts', permanent: true },
+      // The DAO library moved from /docs to /guidelines.
+      { source: '/docs/:slug', destination: '/guidelines/:slug', permanent: true },
+      { source: '/docs', destination: '/guidelines', permanent: true },
+      // Members page renamed to Token.
       { source: '/members', destination: '/token', permanent: true },
     ]
   },

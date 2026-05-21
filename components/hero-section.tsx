@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { ArrowUpRight, ArrowRight, Check } from 'lucide-react'
+import { ArrowUpRight, ArrowRight, Check, PenLine, Layers, Copy, Rocket, Award } from 'lucide-react'
 import { FadeIn } from '@medialane/ui'
 import type { ShowcaseCollection } from '@/lib/showcase'
 import { siteConfig } from '@/lib/site-config'
@@ -16,11 +16,8 @@ type Feature = {
   title: string
   body: string
   points: string[]
-  /** Active tab fill. */
   fill: string
-  /** Accent text/heading colour. */
   text: string
-  /** Soft tint for the points. */
   soft: string
 }
 
@@ -72,7 +69,6 @@ function FeatureShowcase() {
   const f = FEATURES[active]
   return (
     <div>
-      {/* Tabs */}
       <div className="mb-8 flex flex-wrap gap-2">
         {FEATURES.map((feat, i) => (
           <button
@@ -80,22 +76,16 @@ function FeatureShowcase() {
             type="button"
             onClick={() => setActive(i)}
             className={`rounded-full px-5 py-2 text-sm font-semibold transition-colors ${
-              i === active
-                ? `${feat.fill} text-white`
-                : 'bg-muted text-muted-foreground hover:text-foreground'
+              i === active ? `${feat.fill} text-white` : 'bg-muted text-muted-foreground hover:text-foreground'
             }`}
           >
             {feat.tab}
           </button>
         ))}
       </div>
-
-      {/* Active feature — open, no panel */}
       <div className="grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:gap-12">
         <div>
-          <h3 className={`text-3xl font-black leading-tight tracking-tight sm:text-4xl ${f.text}`}>
-            {f.title}
-          </h3>
+          <h3 className={`text-3xl font-black leading-tight tracking-tight sm:text-4xl ${f.text}`}>{f.title}</h3>
           <p className="mt-4 max-w-xl text-lg leading-relaxed text-muted-foreground">{f.body}</p>
         </div>
         <ul className="space-y-3 lg:pt-2">
@@ -113,32 +103,75 @@ function FeatureShowcase() {
   )
 }
 
+/* ── Launchpad cards ───────────────────────────────────────────────────── */
+
+const launchpad = [
+  {
+    icon: PenLine,
+    title: 'Mint your work',
+    desc: 'Publish a song, photo, piece of writing, or video as work you fully own.',
+    href: 'https://medialane.io/create/asset',
+    text: 'text-brand-purple',
+    soft: 'bg-brand-purple/10 text-brand-purple',
+  },
+  {
+    icon: Layers,
+    title: 'Create a collection',
+    desc: 'Group your work into a branded collection with its own page.',
+    href: 'https://medialane.io/create/collection',
+    text: 'text-brand-blue',
+    soft: 'bg-brand-blue/10 text-brand-blue',
+  },
+  {
+    icon: Copy,
+    title: 'Limited editions',
+    desc: 'Release your work in a set number of numbered copies.',
+    href: 'https://medialane.io/launchpad',
+    text: 'text-brand-rose',
+    soft: 'bg-brand-rose/10 text-brand-rose',
+  },
+  {
+    icon: Rocket,
+    title: 'Collection drop',
+    desc: 'Run a timed public release with a set size and price.',
+    href: 'https://medialane.io/launchpad',
+    text: 'text-brand-orange',
+    soft: 'bg-brand-orange/10 text-brand-orange',
+  },
+  {
+    icon: Award,
+    title: 'Participation badges',
+    desc: 'Hand out collectible badges for events and communities.',
+    href: 'https://medialane.io/launchpad',
+    text: 'text-brand-purple',
+    soft: 'bg-brand-purple/10 text-brand-purple',
+  },
+]
+
 /* ── Homepage ──────────────────────────────────────────────────────────── */
 
 const stats = [
   { value: '21M', label: 'MDLN — the fixed community supply', text: 'text-brand-purple' },
   { value: '181', label: 'countries recognise your copyright', text: 'text-brand-blue' },
   { value: '100%', label: 'community-owned', text: 'text-brand-orange' },
-  { value: '1%', label: 'fee on sales — returned to creators', text: 'text-brand-rose' },
+  { value: '1%', label: 'fee on every transaction — returned to creators', text: 'text-brand-rose' },
 ]
 
 const explore = [
   { href: '/explore', title: 'Explore Medialane', desc: 'What you can do and how it works.' },
   { href: '/dao', title: 'Governance', desc: 'Proposals, voting, and the DAO.' },
   { href: '/token', title: 'MDLN Token', desc: 'How the community owns Medialane.' },
-  { href: '/airdrop', title: "Creator's Airdrop", desc: 'How fees come back to creators.' },
+  { href: '/guidelines', title: 'Guidelines', desc: 'The documents that govern the DAO.' },
 ]
 
 export function HeroSection({ collections }: { collections: ShowcaseCollection[] }) {
   return (
     <div className="space-y-20 sm:space-y-28">
 
-      {/* Hero — open, no panel */}
+      {/* Hero */}
       <section className="px-4 pt-16 sm:px-6 sm:pt-20 lg:px-10 lg:pt-24 xl:px-14">
         <FadeIn className="max-w-3xl">
-          <p className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">
-            Medialane
-          </p>
+          <p className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">Medialane</p>
           <h1 className="text-5xl font-black leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
             <span className="text-brand-purple">Create it.</span>{' '}
             <span className="text-brand-blue">Own it.</span>
@@ -169,7 +202,7 @@ export function HeroSection({ collections }: { collections: ShowcaseCollection[]
         </FadeIn>
       </section>
 
-      {/* Real collections — full-bleed filmstrip */}
+      {/* Real collections */}
       {collections.length > 0 && (
         <section>
           <p className="mb-5 px-4 text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground/60 sm:px-6 lg:px-10 xl:px-14">
@@ -193,15 +226,51 @@ export function HeroSection({ collections }: { collections: ShowcaseCollection[]
         </FadeIn>
       </section>
 
-      {/* Stats — open, colourful */}
+      {/* Launchpad */}
+      <section className="px-4 sm:px-6 lg:px-10 xl:px-14">
+        <FadeIn>
+          <div className="mb-8 flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-brand-blue">Launchpad</p>
+              <h2 className="text-3xl font-black tracking-tight sm:text-4xl">Ways to launch your work</h2>
+            </div>
+            <Link
+              href="/explore"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blue transition-opacity hover:opacity-80"
+            >
+              Explore all <ArrowRight className="size-4" />
+            </Link>
+          </div>
+          <div className="flex gap-5 overflow-x-auto pb-2">
+            {launchpad.map(({ icon: Icon, title, desc, href, text, soft }) => (
+              <a
+                key={title}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex w-72 shrink-0 flex-col rounded-2xl border border-border/60 p-6 transition-colors hover:border-foreground/20"
+              >
+                <span className={`flex size-11 items-center justify-center rounded-xl ${soft}`}>
+                  <Icon className="size-5" />
+                </span>
+                <p className="mt-5 text-lg font-bold text-foreground">{title}</p>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{desc}</p>
+                <span className={`mt-5 inline-flex items-center gap-1.5 text-sm font-semibold ${text}`}>
+                  Open <ArrowUpRight className="size-4" />
+                </span>
+              </a>
+            ))}
+          </div>
+        </FadeIn>
+      </section>
+
+      {/* Stats */}
       <section className="px-4 sm:px-6 lg:px-10 xl:px-14">
         <FadeIn>
           <div className="grid gap-10 border-t border-border/50 pt-12 sm:grid-cols-2 lg:grid-cols-4">
             {stats.map((s) => (
               <div key={s.label}>
-                <p className={`font-mono text-5xl font-black leading-none tabular-nums sm:text-6xl ${s.text}`}>
-                  {s.value}
-                </p>
+                <p className={`text-5xl font-black leading-none tabular-nums sm:text-6xl ${s.text}`}>{s.value}</p>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.label}</p>
               </div>
             ))}
@@ -209,30 +278,34 @@ export function HeroSection({ collections }: { collections: ShowcaseCollection[]
         </FadeIn>
       </section>
 
-      {/* Creator's Airdrop */}
+      {/* Airdrop callout */}
       <section className="px-4 sm:px-6 lg:px-10 xl:px-14">
-        <FadeIn className="max-w-3xl">
-          <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-brand-orange">
-            Creator&apos;s Airdrop
-          </p>
-          <h2 className="text-3xl font-black tracking-tight sm:text-4xl">
-            Every fee comes back to creators
-          </h2>
-          <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
-            Medialane charges a small 1% fee on sales — and gives all of it back. The fee collects
-            in the Creator&apos;s Fund and is shared with the community through the Creator&apos;s
-            Airdrop. The people who make Medialane valuable are the people it rewards.
-          </p>
-          <Link
-            href="/airdrop"
-            className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-orange transition-opacity hover:opacity-80"
-          >
-            See the Creator&apos;s Airdrop <ArrowRight className="size-4" />
-          </Link>
+        <FadeIn>
+          <div className="rounded-2xl bg-gradient-to-br from-brand-orange/12 via-brand-rose/6 to-brand-purple/12 p-8 sm:p-12">
+            <div className="flex items-center gap-2">
+              <span className="size-2 rounded-full bg-brand-orange" />
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-orange">
+                Live · Creator&apos;s Airdrop
+              </span>
+            </div>
+            <h2 className="mt-4 max-w-2xl text-3xl font-black tracking-tight sm:text-4xl">
+              Every fee comes back to the community
+            </h2>
+            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+              Medialane gives all of its 1% fee back. Each time the Creator&apos;s Fund reaches
+              $1,000, it is shared with everyone taking part — and joining is free.
+            </p>
+            <Link
+              href="/airdrop"
+              className="mt-7 inline-flex items-center gap-2 rounded-xl bg-brand-orange px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-orange/90"
+            >
+              See the Creator&apos;s Airdrop <ArrowRight className="size-4" />
+            </Link>
+          </div>
         </FadeIn>
       </section>
 
-      {/* Explore */}
+      {/* Go further */}
       <section className="px-4 pb-8 sm:px-6 lg:px-10 xl:px-14">
         <FadeIn>
           <h2 className="mb-8 text-3xl font-black tracking-tight sm:text-4xl">Go further</h2>

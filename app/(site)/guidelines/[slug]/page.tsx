@@ -30,7 +30,7 @@ export default async function PostPage({ params }: PostPageProps) {
 
       {/* Back */}
       <Link
-        href="/docs"
+        href="/guidelines"
         className="inline-flex items-center gap-1.5 text-xs text-muted-foreground/60 hover:text-foreground transition-colors mb-6"
       >
         <ChevronLeft className="size-3.5" />

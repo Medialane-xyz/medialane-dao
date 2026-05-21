@@ -8,19 +8,19 @@ const destinations = [
   {
     title: 'Developer Hub',
     description: 'The Medialane SDK, REST API, and integration guides — everything to build on the protocol.',
-    href: 'https://docs.medialane.org/docs/developers',
+    href: 'https://docs.medialane.io/docs/developers',
     icon: Code2,
   },
   {
     title: 'Smart Contracts',
     description: 'Audited, non-upgradeable Cairo contracts on Starknet — addresses, ABIs, and the security model.',
-    href: 'https://docs.medialane.org/docs/contracts',
+    href: 'https://docs.medialane.io/docs/contracts',
     icon: FileText,
   },
   {
     title: 'AI Agents',
     description: 'Permissionless access for autonomous agents — any intelligence with a Starknet address is a first-class participant.',
-    href: 'https://docs.medialane.org/docs/agents',
+    href: 'https://docs.medialane.io/docs/agents',
     icon: Bot,
   },
 ]
@@ -32,11 +32,11 @@ export default function BuildPageClient() {
       <PageHero
         eyebrow="Medialane · Build"
         title="Build on Medialane"
-        description="Medialane is an open, permissionless protocol — anyone, human or AI agent, can build on it. The SDK, contracts, and full developer documentation live at docs.medialane.org."
+        description="Medialane is an open, permissionless protocol — anyone, human or AI agent, can build on it. The SDK, contracts, and full developer documentation live at docs.medialane.io."
       >
         <div className="flex items-center gap-4 flex-wrap">
           <a
-            href="https://docs.medialane.org/docs/developers"
+            href="https://docs.medialane.io/docs/developers"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-purple text-white text-sm font-semibold hover:bg-brand-purple/90 transition-colors shadow-sm"
