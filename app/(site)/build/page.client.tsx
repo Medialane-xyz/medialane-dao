@@ -1,82 +1,85 @@
 'use client'
 
-import { ArrowUpRight, Code2, Bot, FileText } from 'lucide-react'
-import { PageHero } from '@/components/page-hero'
-import { SectionHeader } from '@/components/section-header'
+import { ArrowUpRight } from 'lucide-react'
+import { FadeIn } from '@medialane/ui'
 
 const destinations = [
   {
-    title: 'Developer Hub',
-    description: 'The Medialane SDK, REST API, and integration guides — everything to build on the protocol.',
+    title: 'Developer hub',
+    desc: 'The Medialane SDK, the API, and step-by-step guides — everything you need to build on the protocol.',
     href: 'https://docs.medialane.io/docs/developers',
-    icon: Code2,
   },
   {
-    title: 'Smart Contracts',
-    description: 'Audited, non-upgradeable Cairo contracts on Starknet — addresses, ABIs, and the security model.',
+    title: 'Smart contracts',
+    desc: 'The audited, non-upgradeable contracts that run Medialane — addresses, references, and the security model.',
     href: 'https://docs.medialane.io/docs/contracts',
-    icon: FileText,
   },
   {
-    title: 'AI Agents',
-    description: 'Permissionless access for autonomous agents — any intelligence with a Starknet address is a first-class participant.',
+    title: 'For AI agents',
+    desc: 'Autonomous agents take part as first-class participants. Anyone — human or AI — can build without asking.',
     href: 'https://docs.medialane.io/docs/agents',
-    icon: Bot,
   },
 ]
 
 export default function BuildPageClient() {
   return (
-    <div className="px-4 sm:px-6 lg:px-10 xl:px-14 py-10 sm:py-12 lg:py-16 space-y-12">
+    <div className="space-y-20 sm:space-y-24">
 
-      <PageHero
-        eyebrow="Medialane · Build"
-        title="Build on Medialane"
-        description="Medialane is an open, permissionless protocol — anyone, human or AI agent, can build on it. The SDK, contracts, and full developer documentation live at docs.medialane.io."
-      >
-        <div className="flex items-center gap-4 flex-wrap">
-          <a
-            href="https://docs.medialane.io/docs/developers"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-purple text-white text-sm font-semibold hover:bg-brand-purple/90 transition-colors shadow-sm"
-          >
-            Developer Docs <ArrowUpRight className="size-4" />
-          </a>
-          <a
-            href="https://github.com/medialane-io"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-          >
-            GitHub →
-          </a>
-        </div>
-      </PageHero>
-
-      <div>
-        <SectionHeader label="Where to go" className="mb-6" />
-        <div className="grid gap-4 sm:grid-cols-3">
-          {destinations.map(({ title, description, href, icon: Icon }) => (
+      {/* Hero */}
+      <section className="px-4 pt-16 sm:px-6 sm:pt-20 lg:px-10 lg:pt-24 xl:px-14">
+        <FadeIn className="max-w-3xl">
+          <p className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">Build</p>
+          <h1 className="text-4xl font-black leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
+            Build on Medialane
+          </h1>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+            Medialane is an open protocol — anyone can build on it, no permission needed. The tools,
+            references, and full documentation live at docs.medialane.io.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center gap-5">
             <a
-              key={title}
-              href={href}
+              href="https://docs.medialane.io/docs/developers"
               target="_blank"
               rel="noopener noreferrer"
-              className="group bento-cell p-5 flex flex-col gap-3 hover:border-primary/30 transition-colors"
+              className="inline-flex items-center gap-2 rounded-xl bg-brand-purple px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-purple/90"
             >
-              <div className="flex items-center justify-between">
-                <div className="flex size-9 items-center justify-center rounded-lg bg-primary/10 text-primary shrink-0">
-                  <Icon className="size-4" />
-                </div>
-                <ArrowUpRight className="size-4 text-muted-foreground/25 group-hover:text-primary transition-colors" />
-              </div>
-              <p className="text-sm font-bold text-foreground group-hover:text-primary transition-colors">{title}</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+              Developer docs <ArrowUpRight className="size-4" />
             </a>
-          ))}
-        </div>
-      </div>
+            <a
+              href="https://github.com/medialane-io"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground transition-colors hover:text-brand-purple"
+            >
+              GitHub <ArrowUpRight className="size-4" />
+            </a>
+          </div>
+        </FadeIn>
+      </section>
+
+      {/* Destinations */}
+      <section className="px-4 pb-8 sm:px-6 lg:px-10 xl:px-14">
+        <FadeIn>
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-brand-blue">Where to go</p>
+          <div className="divide-y divide-border/50 border-t border-border/50">
+            {destinations.map((d) => (
+              <a
+                key={d.title}
+                href={d.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-start justify-between gap-6 py-5"
+              >
+                <div>
+                  <p className="text-base font-bold text-foreground">{d.title}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{d.desc}</p>
+                </div>
+                <ArrowUpRight className="mt-1 size-5 shrink-0 text-muted-foreground/30 transition-colors group-hover:text-foreground" />
+              </a>
+            ))}
+          </div>
+        </FadeIn>
+      </section>
 
     </div>
   )

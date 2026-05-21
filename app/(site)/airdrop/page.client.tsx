@@ -1,258 +1,182 @@
 'use client'
 
-import { ArrowUpRight, CheckCircle } from 'lucide-react'
-import { siteConfig, creatorsFund } from '@/lib/site-config'
-import { Stagger, StaggerItem } from '@medialane/ui'
-import { PageHero } from '@/components/page-hero'
-import { SectionHeader } from '@/components/section-header'
+import Link from 'next/link'
+import { ArrowUpRight, ArrowRight } from 'lucide-react'
+import { FadeIn } from '@medialane/ui'
+import { creatorsFund } from '@/lib/site-config'
 
-const tiers = [
+const rounds = [
   {
-    tier: '01',
-    title: 'Register',
-    share: 'Base share',
-    color: 'text-brand-purple',
-    steps: [
-      'Create your Medialane account at medialane.io',
-      'Secure with PIN or passkey',
-      'No further action required to qualify',
-    ],
+    title: 'Each round',
+    desc: 'Every time the Creator’s Fund reaches $1,000, that amount is airdropped to everyone taking part.',
   },
   {
-    tier: '02',
-    title: 'Create',
-    share: 'Higher share',
-    color: 'text-brand-blue',
-    steps: [
-      'Mint original digital assets or collections',
-      'Set up your creator profile',
-      'Demonstrate legitimate creative activity',
-    ],
+    title: 'Year one',
+    desc: 'All platform revenue is returned to the community this way — the campaign runs until July 1, 2027.',
   },
   {
-    tier: '03',
-    title: 'Trade',
-    share: 'Largest share',
-    color: 'text-brand-purple',
-    steps: [
-      'Trade, collect, and make offers on the marketplace',
-      'Collaborate and remix other creators\' work',
-      'Maintain consistent onchain activity',
-    ],
+    title: 'After year one',
+    desc: 'MDLN holders vote each year on what the fee should support next.',
   },
 ]
 
-const phases = [
-  { phase: 'Distribution rounds', trigger: 'Each time the Creator\'s Fund reaches $1,000', type: 'Score Board' },
-  { phase: 'Year-one campaign', trigger: 'Until July 1, 2027', type: 'All revenue returned' },
-  { phase: 'Annual cycle', trigger: 'Each year thereafter', type: 'DAO vote decides' },
+const fair = [
+  'Everything is public — every round and every payment can be checked by anyone.',
+  'Real activity only — bot and duplicate accounts are excluded automatically.',
+  'No moment to game — your share reflects the whole campaign, not a single snapshot.',
+  'Community rules — MDLN holders can adjust how shares are decided.',
 ]
 
-const fairDesign = [
-  'onchain verifiable — all qualifying activity is recorded on Starknet and auditable by anyone.',
-  'Automated disqualification — bot activity, duplicate accounts, and inorganic behavior are automatically excluded.',
-  'No snapshots to game — activity is measured across the full cycle, not at a single point in time.',
-  'Community-governed rules — MDLN holders can adjust criteria each cycle to prevent gaming.',
-]
-
-const howToParticipate = [
+const steps = [
   {
-    step: '01',
     title: 'Create your account',
-    desc: 'Go to medialane.io and create your creator profile. Secure it with a PIN or passkey. This qualifies you for Tier 1.',
+    desc: 'Sign up at medialane.io with an email. That alone includes you in the airdrop.',
   },
   {
-    step: '02',
-    title: 'Create and engage',
-    desc: 'Mint digital assets, set up a collection, trade on the marketplace. Every action is recorded onchain and counted toward your tier.',
+    title: 'Create and collect',
+    desc: 'Publish work, build collections, collect and trade. Every action earns Score Board points.',
   },
   {
-    step: '03',
-    title: 'Trade and grow',
-    desc: 'Engage in trading activities and build your presence on the platform. Consistent onchain activity increases your chances of receiving a larger share.',
+    title: 'Receive your share',
+    desc: 'When a round is paid out, your points decide your share — there is nothing to claim by hand.',
   },
 ]
 
 export default function AirdropPageClient() {
   return (
-    <div className="px-4 sm:px-6 lg:px-10 xl:px-14 py-10 sm:py-12 lg:py-16 space-y-12">
+    <div className="space-y-20 sm:space-y-24">
 
-      <PageHero
-        eyebrow="Medialane · Creator's Airdrop"
-        title="Creator's Airdrop"
-        description="Airdrop campaign for creators celebrating the Medialane launch on Starknet mainnet."
-      />
-
-      {/* Governance framing */}
-      <div className="p-[1px] rounded-2xl btn-border-animated max-w-3xl">
-        <div className="rounded-[calc(1rem-1px)] bg-card p-6 sm:p-8">
-          <SectionHeader label="How Revenue Works" className="mb-3" />
-          <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-            Medialane revenue flows into the Medialane creators fund to support the ecosystem growth.
-            Each year, MDLN holders vote on Snapshot to decide allocation. The Creator&#39;s Airdrop is one option; others include token buyback,
-            token burn, protocol development, and operations. Community-governed.
+      {/* Hero */}
+      <section className="px-4 pt-16 sm:px-6 sm:pt-20 lg:px-10 lg:pt-24 xl:px-14">
+        <FadeIn className="max-w-3xl">
+          <div className="mb-5 flex items-center gap-2">
+            <span className="size-2 rounded-full bg-brand-orange" />
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-orange">Live</span>
+          </div>
+          <h1 className="text-4xl font-black leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
+            The Creator&apos;s Airdrop
+          </h1>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+            Medialane gives all of its revenue back to the people who use it. As the platform
+            earns, the money is shared with the community — and taking part is free.
           </p>
-          <div className="grid sm:grid-cols-3 gap-3">
-            {['Creator\'s Airdrop', 'Token Buyback', 'Token Burn', 'Development', 'Operations', 'MDLN holders decide'].map((opt, i) => (
-              <div
-                key={opt}
-                className={`rounded-lg px-3 py-2.5 text-xs font-medium border ${
-                  i === 5
-                    ? 'border-brand-purple/30 bg-brand-purple/5 text-brand-purple'
-                    : 'border-border bg-muted/50 text-muted-foreground/70'
-                }`}
-              >
-                {i < 5 && <span className="text-muted-foreground/30 font-mono mr-1.5">→</span>}
-                {opt}
+        </FadeIn>
+      </section>
+
+      {/* How it works */}
+      <section className="px-4 sm:px-6 lg:px-10 xl:px-14">
+        <FadeIn className="max-w-3xl">
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-brand-orange">How it works</p>
+          <h2 className="text-3xl font-black tracking-tight sm:text-4xl">A simple, repeating cycle</h2>
+          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+            Medialane charges a small 1% fee on earnings and gives all of it back. The fee collects
+            in the Creator&apos;s Fund. Each time the Fund reaches $1,000, that amount is shared with
+            everyone taking part — weighted by how active they have been.
+          </p>
+        </FadeIn>
+      </section>
+
+      {/* Rounds */}
+      <section className="px-4 sm:px-6 lg:px-10 xl:px-14">
+        <FadeIn>
+          <h2 className="mb-6 text-3xl font-black tracking-tight sm:text-4xl">Distribution rounds</h2>
+          <div className="divide-y divide-border/50 border-t border-border/50">
+            {rounds.map((r) => (
+              <div key={r.title} className="py-5">
+                <p className="text-base font-bold text-foreground">{r.title}</p>
+                <p className="mt-1 max-w-2xl text-sm leading-relaxed text-muted-foreground">{r.desc}</p>
               </div>
             ))}
           </div>
-        </div>
-      </div>
+        </FadeIn>
+      </section>
 
-      {/* Creator's Fund */}
-      <div className="bento-cell p-6 sm:p-8 max-w-3xl">
-        <SectionHeader label="The Creator's Fund" color="text-brand-blue" bg="bg-brand-blue" className="mb-3" />
-        <p className="text-sm text-foreground leading-relaxed mb-4">
-          Every airdrop is paid from the Creator&#39;s Fund — a public wallet on Starknet that collects the 1% platform fee. Watch the balance and every distribution in real time.
-        </p>
-        <div className="flex flex-col sm:flex-row sm:items-center gap-3">
-          <a
-            href="/airdrop/fund"
-            className="inline-flex items-center gap-2 rounded-xl bg-brand-blue px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-blue/90 transition-colors shrink-0"
-          >
-            View the Creator&#39;s Fund <ArrowUpRight className="size-3.5" />
-          </a>
-          <code className="text-[11px] font-mono text-muted-foreground/60 break-all">{creatorsFund.address}</code>
-        </div>
-      </div>
-
-      {/* Participation tiers */}
-      <div>
-        <SectionHeader label="Participation Tiers" color="text-brand-purple" bg="bg-brand-purple" className="mb-3" />
-        <p className="text-sm text-foreground mb-6 max-w-xl">
-          On Medialane Airdrop your share is determined by your tier. Higher trading and engagement earns a larger portion of the pool.
-        </p>
-        <Stagger className="grid sm:grid-cols-3 gap-4">
-          {tiers.map((tier) => (
-            <StaggerItem key={tier.tier}>
-              <div className="flex flex-col gap-4 p-5 bento-cell h-full">
-                <div className="flex items-start justify-between">
-                  <span className={`font-mono text-3xl font-black leading-none ${tier.color} opacity-80`}>
-                    {tier.tier}
-                  </span>
-                  <span className="text-[10px] font-mono text-muted-foreground/50 bg-muted px-2 py-1 rounded-full">{tier.share}</span>
-                </div>
-                <div>
-                  <p className={`text-base font-bold ${tier.color}`}>{tier.title}</p>
-                </div>
-                <div className="h-px bg-border/60" />
-                <ul className="space-y-2.5 flex-1">
-                  {tier.steps.map((step) => (
-                    <li key={step} className="flex items-start gap-2 text-sm text-foreground leading-relaxed">
-                      <CheckCircle className="size-3.5 shrink-0 text-brand-purple mt-0.5" />
-                      {step}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </StaggerItem>
-          ))}
-        </Stagger>
-      </div>
-
-      {/* Distribution phases + fair design */}
-      <div className="grid lg:grid-cols-2 gap-6">
-        <div className="bento-cell p-5 sm:p-6">
-          <SectionHeader label="Distribution Rounds" className="mb-4" />
-          <div className="space-y-4">
-            {phases.map((p, i) => (
-              <div key={p.phase} className="flex gap-4">
-                <div className="flex flex-col items-center">
-                  <div className={`flex size-7 items-center justify-center rounded-full text-[10px] font-bold font-mono shrink-0 ${
-                    i < phases.length - 1 ? 'bg-brand-purple/10 text-brand-purple' : 'bg-brand-blue/10 text-brand-blue'
-                  }`}>
-                    {String(i + 1).padStart(2, '0')}
-                  </div>
-                  {i < phases.length - 1 && <div className="w-px flex-1 bg-border/60 mt-2" />}
-                </div>
-                <div className="pb-4">
-                  <p className="text-sm font-semibold text-foreground">{p.phase}</p>
-                  <p className="text-sm text-foreground mt-0.5">{p.trigger}</p>
-                  <span className="inline-block mt-1.5 text-[10px] font-mono text-muted-foreground/50 bg-muted px-2 py-0.5 rounded-full">{p.type}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-          <p className="text-sm text-foreground mt-2 leading-relaxed border-t border-border/60 pt-4">
-            Distribution is not member-gated — every $1,000 the Creator&#39;s Fund collects is airdropped. $5,000 of revenue means 5 rounds; $10,000 means 10. Your share of each round is your Score Board points relative to all participants.
+      {/* Your share */}
+      <section className="px-4 sm:px-6 lg:px-10 xl:px-14">
+        <FadeIn className="max-w-3xl">
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-brand-purple">Your share</p>
+          <h2 className="text-3xl font-black tracking-tight sm:text-4xl">The more you take part, the more you receive</h2>
+          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+            Your share of each round is decided by your Score Board points — earned by creating,
+            collecting, and trading on Medialane. There is no fixed tier and no cap: every active
+            participant is included, and doing more simply earns a larger share.
           </p>
-        </div>
+        </FadeIn>
+      </section>
 
-        <div className="bento-cell p-5 sm:p-6">
-          <SectionHeader label="Fair by Design" className="mb-4" />
-          <ul className="space-y-4">
-            {fairDesign.map((item, i) => (
-              <li key={i} className="flex gap-3">
-                <span className="font-mono text-[10px] font-bold text-brand-purple/50 shrink-0 pt-0.5">{String(i + 1).padStart(2, '0')}</span>
-                <p className="text-sm text-foreground leading-relaxed">{item}</p>
+      {/* Fair by design */}
+      <section className="px-4 sm:px-6 lg:px-10 xl:px-14">
+        <FadeIn className="max-w-3xl">
+          <h2 className="mb-6 text-3xl font-black tracking-tight sm:text-4xl">Fair by design</h2>
+          <ul className="divide-y divide-border/50 border-t border-border/50">
+            {fair.map((item) => (
+              <li key={item} className="py-4 text-base leading-relaxed text-foreground">
+                {item}
               </li>
             ))}
           </ul>
-        </div>
-      </div>
+        </FadeIn>
+      </section>
 
-      {/* Campaigns */}
-      <div>
-        <SectionHeader label="Active Campaigns" color="text-brand-blue" bg="bg-brand-blue" className="mb-6" />
-        <Stagger className="grid sm:grid-cols-2 gap-4">
-          <StaggerItem>
-            <div className="bento-cell p-5 sm:p-6 h-full bg-gradient-to-br from-brand-purple/5 to-transparent">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="size-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="text-[10px] font-bold tracking-widest uppercase text-emerald-600 dark:text-emerald-400">Live</span>
-              </div>
-              <p className="text-base font-bold text-foreground mb-2">Global Campaign</p>
-              <p className="text-sm text-foreground leading-relaxed">
-                Open to all participants worldwide. Participate at medialane.io. Activity tracked on Starknet — auditable by anyone.
-              </p>
-            </div>
-          </StaggerItem>
-          
-        </Stagger>
-      </div>
-
-      {/* How to participate */}
-      <div className="bento-cell p-6 sm:p-8">
-        <SectionHeader label="How to Participate" className="mb-6" />
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-          {howToParticipate.map((s) => (
-            <div key={s.step} className="flex gap-3">
-              <span className="font-mono text-xl font-black text-brand-purple/20 leading-none shrink-0">{s.step}</span>
-              <div>
-                <p className="text-sm font-bold text-foreground mb-1.5">{s.title}</p>
-                <p className="text-sm text-foreground leading-relaxed">{s.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="flex flex-wrap gap-3 pt-5 border-t border-border">
+      {/* How to take part */}
+      <section className="px-4 sm:px-6 lg:px-10 xl:px-14">
+        <FadeIn className="max-w-3xl">
+          <h2 className="text-3xl font-black tracking-tight sm:text-4xl">How to take part</h2>
+          <ol className="mt-6 space-y-5">
+            {steps.map((s, i) => (
+              <li key={s.title} className="flex gap-4">
+                <span className="font-mono text-2xl font-black leading-none text-brand-orange/50">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <div className="pt-0.5">
+                  <p className="text-base font-bold text-foreground">{s.title}</p>
+                  <p className="mt-1 text-base leading-relaxed text-muted-foreground">{s.desc}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
           <a
-            href="https://medialane.io/airdrop"
+            href="https://medialane.io"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-xl bg-brand-purple px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-purple/90 transition-colors"
+            className="mt-7 inline-flex items-center gap-2 rounded-xl bg-brand-orange px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-orange/90"
           >
-            Open Medialane <ArrowUpRight className="size-3.5" />
+            Get started <ArrowUpRight className="size-4" />
           </a>
-          
-        </div>
-      </div>
+        </FadeIn>
+      </section>
+
+      {/* Creator's Fund */}
+      <section className="px-4 sm:px-6 lg:px-10 xl:px-14">
+        <FadeIn>
+          <div className="rounded-2xl bg-gradient-to-br from-brand-blue/10 via-brand-purple/5 to-brand-orange/10 p-8 sm:p-12">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-brand-blue">Fully transparent</p>
+            <h2 className="max-w-2xl text-3xl font-black tracking-tight sm:text-4xl">
+              Watch the Creator&apos;s Fund in real time
+            </h2>
+            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+              The Creator&apos;s Fund is a public wallet. Anyone can see its balance, every round, and
+              every payment — nothing is hidden.
+            </p>
+            <Link
+              href="/airdrop/fund"
+              className="mt-7 inline-flex items-center gap-2 rounded-xl bg-brand-blue px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-blue/90"
+            >
+              View the Creator&apos;s Fund <ArrowRight className="size-4" />
+            </Link>
+            <p className="mt-5 break-all font-mono text-xs text-muted-foreground/60">{creatorsFund.address}</p>
+          </div>
+        </FadeIn>
+      </section>
 
       {/* Disclaimer */}
-      <p className="text-[11px] text-muted-foreground/30 leading-relaxed max-w-2xl">
-        Creator&#39;s Airdrop rules and pool sizes are governed by MDLN holders and may change between cycles. The airdrop is one of several options MDLN holders can vote to fund — not a guaranteed allocation. All qualifying activity is verified onchain.
-      </p>
+      <section className="px-4 pb-8 sm:px-6 lg:px-10 xl:px-14">
+        <p className="max-w-2xl text-xs leading-relaxed text-muted-foreground/50">
+          Airdrop rules are governed by MDLN holders and may change between cycles. The Creator&apos;s
+          Airdrop is one of several ways the community can choose to use platform revenue — not a
+          guaranteed allocation. All qualifying activity is verified publicly.
+        </p>
+      </section>
 
     </div>
   )
