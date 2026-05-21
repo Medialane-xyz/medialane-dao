@@ -1,19 +1,19 @@
 ---
-title: "digital assets"
+title: "IP Assets"
 description: "How Medialane registers, protects, and licenses intellectual property using Starknet and IPFS."
-date: "2026-05-01"
+date: "2026-05-21"
 author: "Medialane DAO"
 ---
 
-# digital assets
+# IP Assets
 
-An digital asset on Medialane is a programmable NFT that encodes both **ownership proof** and **licensing terms** as onchain, immutable attributes. The combination of a Starknet transaction hash and an IPFS CID creates a Berne Convention-compatible copyright record valid in 181 countries.
+An IP asset on Medialane is a programmable NFT that encodes both **ownership proof** and **licensing terms** as onchain, immutable attributes. The combination of a Starknet transaction hash and an IPFS CID creates a Berne Convention-compatible copyright record valid in 181 countries.
 
 ---
 
 ## The Registration Model
 
-When a creator mints an digital asset, three things happen simultaneously:
+When you mint an IP asset, three things happen simultaneously:
 
 1. **Media upload** — The file is pinned to IPFS via Pinata. The CID is a cryptographic fingerprint of the content — if the file changes, the CID changes.
 2. **Metadata anchoring** — A JSON metadata file (also IPFS-pinned) records title, description, IP type, license terms, and a pointer to the media CID.
