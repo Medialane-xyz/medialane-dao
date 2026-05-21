@@ -1,7 +1,7 @@
 ---
 title: "Marketplace"
 description: "Complete guide to listing, buying, bidding, counter-offers, and trading digital assets on the Medialane marketplace."
-date: "2026-05-01"
+date: "2026-05-21"
 author: "Medialane DAO"
 ---
 
@@ -122,8 +122,10 @@ Typed data is signed against a specific domain to prevent cross-contract replay 
 | Event | Fee |
 |-------|-----|
 | List / make offer | Free |
-| Sale completed | 1% of transaction value → DAO treasury |
-| Royalties | Set by creator (enforced by contract) |
+| Sale completed | 1% of transaction value → Creator's Fund |
+| Royalties | Set by the author (enforced by contract) |
+
+The marketplace **protocol is zero-fee** — no fee logic lives in the immutable contracts. The 1% is applied at the platform layer, at settlement, where the DAO can change it without a contract migration. For year one it flows to the Creator's Fund and is airdropped back to the community.
 
 ---
 
