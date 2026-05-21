@@ -11,9 +11,8 @@ export const metadata: Metadata = {
 }
 
 const sections = [
-  { label: 'Protocol',   color: 'text-primary',    bg: 'bg-primary',    docs: getAllPosts('protocol') },
-  { label: 'Governance', color: 'text-violet-500', bg: 'bg-violet-500', docs: getAllPosts('dao')      },
-  { label: 'Legal',      color: 'text-blue-500',   bg: 'bg-blue-500',   docs: getAllPosts('')         },
+  { label: 'Founding Documents', color: 'text-primary',  bg: 'bg-primary',  docs: getAllPosts('dao') },
+  { label: 'Legal',              color: 'text-blue-500', bg: 'bg-blue-500', docs: getAllPosts('')    },
 ]
 
 export default function DocsPage() {
@@ -21,9 +20,9 @@ export default function DocsPage() {
     <div className="px-4 sm:px-6 lg:px-10 xl:px-14 py-10 sm:py-12 lg:py-16 space-y-12">
 
       <PageHero
-        eyebrow="Medialane · Documentation"
-        title="Docs"
-        description="Protocol guides, DAO founding documents, the governance charter, and legal policies — all in one place."
+        eyebrow="Medialane DAO · Library"
+        title="DAO Library"
+        description="The Medialane DAO's founding documents, governance charter, community guidelines, and legal policies. Product and protocol documentation lives at docs.medialane.org."
       />
 
       {sections.map((section) => {
