@@ -1,28 +1,26 @@
 import type { NavCommandGroup } from '@medialane/ui'
-import { Home, Compass, Landmark, Coins, Wrench, Gift, BookOpen, Mail } from 'lucide-react'
+import { Home, Compass, Landmark, Gift, ShieldCheck, Coins, Wrench, BookOpen, Mail } from 'lucide-react'
 
 /**
- * Navigation model for the command menu (⌘K). Mirrors the routes in
- * `navSections` (lib/site-config.ts) — site-config stays the source of truth
- * for which pages exist; this file maps them to icons + search keywords for
- * the NavCommandMenu. The first (unheaded) group renders as the emphasized
- * top-level menu.
+ * Navigation model for the command menu (⌘K). The first (unheaded) group is
+ * the emphasized primary menu; the "Navigate" group is secondary.
  */
 export const NAV_COMMANDS: NavCommandGroup[] = [
   {
     items: [
-      { id: 'home',    label: 'Start',   icon: Home,     href: '/',        keywords: ['home', 'start', 'enter', 'medialane'] },
-      { id: 'explore', label: 'Explore', icon: Compass,  href: '/explore', keywords: ['apps', 'features', 'services', 'protocol'] },
-      { id: 'dao',     label: 'DAO',     icon: Landmark, href: '/dao',     keywords: ['governance', 'foundation', 'snapshot', 'vote', 'proposals'] },
-      { id: 'token',   label: 'Token',   icon: Coins,    href: '/token',   keywords: ['mdln', 'membership', 'tokenomics', 'governance token'] },
+      { id: 'home',       label: 'Start',      icon: Home,       href: '/',           keywords: ['home', 'start', 'medialane'] },
+      { id: 'explore',    label: 'Explore',    icon: Compass,    href: '/explore',    keywords: ['features', 'protocol', 'what is medialane'] },
+      { id: 'dao',        label: 'DAO',        icon: Landmark,   href: '/dao',        keywords: ['governance', 'foundation', 'snapshot', 'vote', 'proposals'] },
+      { id: 'airdrop',    label: 'Airdrop',    icon: Gift,       href: '/airdrop',    keywords: ['creators fund', 'rewards', 'claim', 'distribution'] },
+      { id: 'guidelines', label: 'Guidelines', icon: ShieldCheck, href: '/docs',      keywords: ['community', 'compliance', 'rules', 'conduct', 'constitution', 'legal'] },
     ],
   },
   {
     heading: 'Navigate',
     items: [
-      { id: 'build',   label: 'Build',   icon: Wrench,   href: '/build',   keywords: ['sdk', 'contracts', 'developers', 'ai agents'] },
-      { id: 'airdrop', label: 'Airdrop', icon: Gift,     href: '/airdrop', keywords: ['creators fund', 'rewards', 'claim', 'distribution'] },
-      { id: 'docs',    label: 'Docs',    icon: BookOpen, href: '/docs',    keywords: ['documentation', 'guides', 'protocol docs'] },
+      { id: 'token',   label: 'Token',   icon: Coins,    href: '/token',   keywords: ['mdln', 'tokenomics', 'governance token'] },
+      { id: 'build',   label: 'Build',   icon: Wrench,   href: '/build',   keywords: ['sdk', 'developers', 'ai agents'] },
+      { id: 'docs',    label: 'Docs',    icon: BookOpen, href: '/docs',    keywords: ['documentation', 'library', 'founding documents'] },
       { id: 'connect', label: 'Connect', icon: Mail,     href: '/connect', keywords: ['get involved', 'contact', 'community'] },
     ],
   },

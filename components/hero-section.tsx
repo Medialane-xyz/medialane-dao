@@ -1,72 +1,156 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
-import { ArrowUpRight } from 'lucide-react'
-import { FadeIn, KineticWords, Stagger, StaggerItem } from '@medialane/ui'
+import { ArrowUpRight, ArrowRight, Check } from 'lucide-react'
+import { FadeIn } from '@medialane/ui'
 import type { ShowcaseCollection } from '@/lib/showcase'
 import { siteConfig } from '@/lib/site-config'
-import { SectionHeader } from '@/components/section-header'
-import {
-  AssetMosaic,
-  FeatureBlock,
-  EditorialSplit,
-  StatBand,
-  Callout,
-  GraphicSlot,
-} from '@/components/elements'
+import { AssetMosaic } from '@/components/elements/asset-mosaic'
 
-const pillars = [
+/* ── Interactive feature showcase ──────────────────────────────────────── */
+
+type Feature = {
+  id: string
+  tab: string
+  title: string
+  body: string
+  points: string[]
+  /** Active tab fill. */
+  fill: string
+  /** Accent text/heading colour. */
+  text: string
+  /** Soft tint for the points. */
+  soft: string
+}
+
+const FEATURES: Feature[] = [
   {
-    eyebrow: 'Monetize',
-    title: 'Turn any work into onchain revenue',
-    body: 'Digital art, music, writing, NFTs, real-world assets, tokens — register them as programmable assets and earn through royalties, licensing, and trading. The revenue rules are yours, encoded in immutable Cairo smart contracts.',
-    tone: 'purple' as const,
-    cta: { label: 'Explore the protocol', href: '/explore' },
+    id: 'earn',
+    tab: 'Earn',
+    title: 'Earn from your work',
+    body: 'Sell your creations, license them, and collect royalties automatically every time they are used. You choose the price and the terms.',
+    points: ['Sell directly or take offers', 'Royalties on every resale', 'Licensing terms you set'],
+    fill: 'bg-brand-purple',
+    text: 'text-brand-purple',
+    soft: 'bg-brand-purple/10 text-brand-purple',
   },
   {
-    eyebrow: 'Own',
-    title: 'Proof of ownership that holds up anywhere',
-    body: 'Minting writes a Berne Convention-compatible copyright record — an IPFS content fingerprint plus a Starknet timestamp. Proof of authorship valid in 181 countries. No registration, no filings, no lawyers.',
-    tone: 'blue' as const,
-    cta: { label: 'How ownership works', href: '/explore' },
+    id: 'own',
+    tab: 'Own',
+    title: 'Ownership that stays yours',
+    body: 'Publish your work and get a copyright record recognised in 181 countries — instantly, with no registration, no paperwork, and no lawyers.',
+    points: ['Recognised in 181 countries', 'Timestamped the moment you publish', 'Always provably yours'],
+    fill: 'bg-brand-blue',
+    text: 'text-brand-blue',
+    soft: 'bg-brand-blue/10 text-brand-blue',
   },
   {
-    eyebrow: 'Participate',
-    title: 'Built for every intelligence',
-    body: 'Humans, organizations, and autonomous AI agents are first-class participants. Any intelligence with a cryptographic identity can create, license, trade, and govern. No KYC, no gatekeepers, no permission needed.',
-    tone: 'orange' as const,
-    cta: { label: 'Build on Medialane', href: '/build' },
+    id: 'open',
+    tab: 'Open',
+    title: 'Open to every creator',
+    body: 'Anyone can join. Artists, collectors, studios, and AI creators all take part as equals — no applications, no approvals, no gatekeepers.',
+    points: ['Free to join', 'No application or approval', 'For people and AI alike'],
+    fill: 'bg-brand-orange',
+    text: 'text-brand-orange',
+    soft: 'bg-brand-orange/10 text-brand-orange',
+  },
+  {
+    id: 'community',
+    tab: 'Community',
+    title: 'Run by its community',
+    body: 'Medialane answers to no company. The people who use it govern it together and decide how it grows.',
+    points: ['Governed by MDLN holders', 'Every decision is public', 'No company in control'],
+    fill: 'bg-brand-rose',
+    text: 'text-brand-rose',
+    soft: 'bg-brand-rose/10 text-brand-rose',
   },
 ]
 
+function FeatureShowcase() {
+  const [active, setActive] = useState(0)
+  const f = FEATURES[active]
+  return (
+    <div>
+      {/* Tabs */}
+      <div className="mb-8 flex flex-wrap gap-2">
+        {FEATURES.map((feat, i) => (
+          <button
+            key={feat.id}
+            type="button"
+            onClick={() => setActive(i)}
+            className={`rounded-full px-5 py-2 text-sm font-semibold transition-colors ${
+              i === active
+                ? `${feat.fill} text-white`
+                : 'bg-muted text-muted-foreground hover:text-foreground'
+            }`}
+          >
+            {feat.tab}
+          </button>
+        ))}
+      </div>
+
+      {/* Active feature — open, no panel */}
+      <div className="grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:gap-12">
+        <div>
+          <h3 className={`text-3xl font-black leading-tight tracking-tight sm:text-4xl ${f.text}`}>
+            {f.title}
+          </h3>
+          <p className="mt-4 max-w-xl text-lg leading-relaxed text-muted-foreground">{f.body}</p>
+        </div>
+        <ul className="space-y-3 lg:pt-2">
+          {f.points.map((p) => (
+            <li key={p} className="flex items-center gap-3">
+              <span className={`flex size-7 shrink-0 items-center justify-center rounded-full ${f.soft}`}>
+                <Check className="size-3.5" strokeWidth={3} />
+              </span>
+              <span className="text-base font-medium text-foreground">{p}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  )
+}
+
+/* ── Homepage ──────────────────────────────────────────────────────────── */
+
 const stats = [
-  { value: '21M', label: 'MDLN supply — fixed forever' },
-  { value: '0%', label: 'Protocol fees — zero, by design' },
-  { value: '181', label: 'Countries — Berne Convention reach' },
-  { value: '100%', label: 'Community-owned — no VCs, no team allocation' },
+  { value: '21M', label: 'MDLN — the fixed community supply', text: 'text-brand-purple' },
+  { value: '181', label: 'countries recognise your copyright', text: 'text-brand-blue' },
+  { value: '100%', label: 'community-owned', text: 'text-brand-orange' },
+  { value: '1%', label: 'fee on sales — returned to creators', text: 'text-brand-rose' },
+]
+
+const explore = [
+  { href: '/explore', title: 'Explore Medialane', desc: 'What you can do and how it works.' },
+  { href: '/dao', title: 'Governance', desc: 'Proposals, voting, and the DAO.' },
+  { href: '/token', title: 'MDLN Token', desc: 'How the community owns Medialane.' },
+  { href: '/airdrop', title: "Creator's Airdrop", desc: 'How fees come back to creators.' },
 ]
 
 export function HeroSection({ collections }: { collections: ShowcaseCollection[] }) {
   return (
-    <div className="px-4 sm:px-6 lg:px-10 xl:px-14 py-10 sm:py-12 lg:py-16 space-y-16 sm:space-y-20">
+    <div className="space-y-20 sm:space-y-28">
 
-      {/* Hero — full-bleed, aurora contained within the rounded section */}
-      <section className="relative overflow-hidden rounded-3xl border border-border/60 bg-card px-6 py-16 sm:px-12 sm:py-24">
-        <div className="aurora-blob aurora-purple pointer-events-none absolute -top-24 -left-16 h-96 w-96 animate-blob opacity-60" />
-        <div className="aurora-blob aurora-blue pointer-events-none absolute -bottom-24 -right-10 h-80 w-80 animate-blob-slow opacity-50" />
-        <div className="absolute inset-0 bg-grid opacity-[0.18] pointer-events-none" />
-        <FadeIn className="relative z-10 max-w-3xl">
-          <div className="pill-badge mb-6 inline-flex">Medialane · Creator Capital Markets</div>
-          <h1 className="mb-6 text-5xl font-black leading-[1.03] tracking-tight sm:text-6xl lg:text-7xl">
-            <KineticWords text="Create it. Own it." className="gradient-text block" />
-            <span className="block text-foreground">Earn from it.</span>
-          </h1>
-          <p className="mb-8 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Medialane is the open protocol where creators — human and AI alike — turn IP, art,
-            real-world assets, and tokens into programmable onchain revenue. Full ownership.
-            No intermediaries. Governed by the community.
+      {/* Hero — open, no panel */}
+      <section className="px-4 pt-16 sm:px-6 sm:pt-20 lg:px-10 lg:pt-24 xl:px-14">
+        <FadeIn className="max-w-3xl">
+          <p className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">
+            Medialane
           </p>
-          <div className="flex flex-wrap items-center gap-4">
+          <h1 className="text-5xl font-black leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
+            <span className="text-brand-purple">Create it.</span>{' '}
+            <span className="text-brand-blue">Own it.</span>
+            <br />
+            <span className="text-brand-orange">Earn from it.</span>
+          </h1>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
+            Medialane is the home for creative work — where artists, musicians, writers, and
+            designers earn from what they make and keep full ownership of it. Built and run by the
+            people who use it.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center gap-5">
             <a
               href="https://medialane.io"
               target="_blank"
@@ -76,108 +160,96 @@ export function HeroSection({ collections }: { collections: ShowcaseCollection[]
               Open the app <ArrowUpRight className="size-4" />
             </a>
             <Link
-              href="/docs/Constitution-of-Medialane-DAO"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              href="/explore"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground transition-colors hover:text-brand-purple"
             >
-              Read the Constitution →
+              See how it works <ArrowRight className="size-4" />
             </Link>
           </div>
         </FadeIn>
       </section>
 
-      {/* Real collections — live from the protocol */}
+      {/* Real collections — full-bleed filmstrip */}
       {collections.length > 0 && (
-        <FadeIn>
-          <p className="mb-4 text-xs font-bold uppercase tracking-widest text-muted-foreground/50">
+        <section>
+          <p className="mb-5 px-4 text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground/60 sm:px-6 lg:px-10 xl:px-14">
             Created on Medialane
           </p>
           <AssetMosaic items={collections} />
-        </FadeIn>
+        </section>
       )}
 
-      {/* The Integrity Web */}
-      <FadeIn>
-        <EditorialSplit
-          eyebrow="The Integrity Web"
-          title="An information economy built on verifiable truth"
-          body={
-            <>
-              <p>
-                Every asset, every license, every transfer lives in immutable smart contracts and
-                IPFS — not on servers any company controls. Ownership is cryptographic. Revenue is
-                programmable. The rules cannot be rewritten by anyone after the fact.
-              </p>
-              <p>Medialane is the monetization layer of that economy.</p>
-            </>
-          }
-          visual={<GraphicSlot label="Integrity Web" ratio="4/3" />}
-        />
-      </FadeIn>
+      {/* Feature showcase */}
+      <section className="px-4 sm:px-6 lg:px-10 xl:px-14">
+        <FadeIn>
+          <h2 className="mb-2 text-3xl font-black tracking-tight sm:text-4xl">
+            What you can do on Medialane
+          </h2>
+          <p className="mb-10 max-w-2xl text-base text-muted-foreground">
+            One platform for creating, owning, and earning from your work — and a community that
+            owns the platform itself.
+          </p>
+          <FeatureShowcase />
+        </FadeIn>
+      </section>
 
-      {/* Pillars — each its own feature block */}
-      <div className="space-y-6">
-        <SectionHeader label="What Medialane gives creators" size="lg" />
-        <Stagger className="space-y-6">
-          {pillars.map((p) => (
-            <StaggerItem key={p.title}>
-              <FeatureBlock
-                eyebrow={p.eyebrow}
-                title={p.title}
-                body={p.body}
-                tone={p.tone}
-                cta={p.cta}
-                graphic={<GraphicSlot label={p.eyebrow} ratio="4/3" />}
-              />
-            </StaggerItem>
-          ))}
-        </Stagger>
-      </div>
+      {/* Stats — open, colourful */}
+      <section className="px-4 sm:px-6 lg:px-10 xl:px-14">
+        <FadeIn>
+          <div className="grid gap-10 border-t border-border/50 pt-12 sm:grid-cols-2 lg:grid-cols-4">
+            {stats.map((s) => (
+              <div key={s.label}>
+                <p className={`font-mono text-5xl font-black leading-none tabular-nums sm:text-6xl ${s.text}`}>
+                  {s.value}
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.label}</p>
+              </div>
+            ))}
+          </div>
+        </FadeIn>
+      </section>
 
-      {/* Stat band */}
-      <FadeIn>
-        <StatBand stats={stats} />
-      </FadeIn>
+      {/* Creator's Airdrop */}
+      <section className="px-4 sm:px-6 lg:px-10 xl:px-14">
+        <FadeIn className="max-w-3xl">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-brand-orange">
+            Creator&apos;s Airdrop
+          </p>
+          <h2 className="text-3xl font-black tracking-tight sm:text-4xl">
+            Every fee comes back to creators
+          </h2>
+          <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+            Medialane charges a small 1% fee on sales — and gives all of it back. The fee collects
+            in the Creator&apos;s Fund and is shared with the community through the Creator&apos;s
+            Airdrop. The people who make Medialane valuable are the people it rewards.
+          </p>
+          <Link
+            href="/airdrop"
+            className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-orange transition-opacity hover:opacity-80"
+          >
+            See the Creator&apos;s Airdrop <ArrowRight className="size-4" />
+          </Link>
+        </FadeIn>
+      </section>
 
-      {/* Inspiring callout */}
-      <FadeIn>
-        <Callout>
-          Medialane is built so the people who create the value are the people who capture it —
-          and so no one can take that away.
-        </Callout>
-      </FadeIn>
-
-      {/* Creator's Fund & governance */}
-      <FadeIn>
-        <FeatureBlock
-          eyebrow="The Creator's Fund"
-          title="Every dollar of revenue comes back to the community"
-          body="The marketplace and launchpad protocols are zero-fee — no fee logic is baked into the contracts. Medialane applies a single 1% fee at the platform layer. For year one it flows to the Creator's Fund — a public Starknet multisig — and is airdropped back to participants. From year two, MDLN holders vote on what comes next."
-          tone="blue"
-          cta={{ label: 'View the Creator’s Fund', href: '/airdrop/fund' }}
-          graphic={<GraphicSlot label="Creator's Fund" ratio="4/3" />}
-        />
-      </FadeIn>
-
-      {/* Closing — explore the DAO */}
-      <FadeIn>
-        <div className="rounded-3xl border border-border/60 bg-card p-8 sm:p-10">
-          <SectionHeader label="Go deeper" size="lg" />
-          <div className="grid gap-4 sm:grid-cols-3">
-            {[
-              { href: '/dao', title: 'Governance', desc: 'Proposals, voting, and the founding documents.' },
-              { href: '/token', title: 'MDLN Token', desc: 'Ownership, governance rights, and how to take part.' },
-              { href: '/airdrop', title: "Creator's Airdrop", desc: 'How platform revenue returns to the community.' },
-            ].map((l) => (
+      {/* Explore */}
+      <section className="px-4 pb-8 sm:px-6 lg:px-10 xl:px-14">
+        <FadeIn>
+          <h2 className="mb-8 text-3xl font-black tracking-tight sm:text-4xl">Go further</h2>
+          <div className="grid gap-px overflow-hidden rounded-2xl bg-border/60 sm:grid-cols-2">
+            {explore.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
-                className="group rounded-2xl border border-border/60 p-5 transition-colors hover:border-primary/40"
+                className="group flex items-center justify-between gap-4 bg-background p-6 transition-colors hover:bg-muted/40"
               >
-                <p className="flex items-center justify-between text-sm font-bold text-foreground group-hover:text-primary transition-colors">
-                  {l.title}
-                  <ArrowUpRight className="size-4 text-muted-foreground/30 group-hover:text-primary transition-colors" />
-                </p>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{l.desc}</p>
+                <span>
+                  <span className="block text-base font-bold text-foreground transition-colors group-hover:text-brand-purple">
+                    {l.title}
+                  </span>
+                  <span className="mt-1 block text-sm text-muted-foreground">{l.desc}</span>
+                </span>
+                <ArrowRight className="size-5 shrink-0 text-muted-foreground/30 transition-colors group-hover:text-brand-purple" />
               </Link>
             ))}
           </div>
@@ -185,12 +257,12 @@ export function HeroSection({ collections }: { collections: ShowcaseCollection[]
             href={siteConfig.snapshot}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary transition-opacity hover:opacity-80"
+            className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-purple transition-opacity hover:opacity-80"
           >
             Vote on Snapshot <ArrowUpRight className="size-4" />
           </a>
-        </div>
-      </FadeIn>
+        </FadeIn>
+      </section>
 
     </div>
   )
