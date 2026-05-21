@@ -316,3 +316,11 @@
     border-top: 1px solid var(--border);
   }
 }
+
+/* ── Nav command menu — readable scrim on every theme ──────────────────── */
+/* @medialane/ui's .nav-canvas-overlay only blurs the page behind the menu;
+   with no tint the translucent panel reads as see-through on a light page.
+   A neutral dim makes the panel pop in both light and dark. */
+.nav-canvas-overlay {
+  background: rgb(0 0 0 / 0.55);
+}
