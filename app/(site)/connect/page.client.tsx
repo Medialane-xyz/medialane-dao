@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import { Mail, Video, Vote, Copy, Check, ArrowUpRight } from 'lucide-react'
+import { PageHero } from '@/components/page-hero'
+import { SectionHeader } from '@/components/section-header'
 
 const socials = [
   {
@@ -34,6 +36,15 @@ const socials = [
   },
 ]
 
+const quickLinks = [
+  { label: 'Open App', href: 'https://medialane.io' },
+  { label: 'Snapshot', href: 'https://snapshot.org/#/s:medialane.eth' },
+  { label: 'GitHub', href: 'https://github.com/medialane-io' },
+  { label: 'GitHub (SDK)', href: 'https://github.com/medialane-io/medialane-sdk' },
+  { label: 'Docs', href: 'https://docs.medialane.io' },
+  { label: 'MDLN on Etherscan', href: 'https://etherscan.io/token/0x0DC90d57F3Aa3E836Ffd6E777E543a43A487dB15' },
+]
+
 export default function ConnectPageClient() {
   const [copied, setCopied] = useState(false)
 
@@ -44,21 +55,16 @@ export default function ConnectPageClient() {
   }
 
   return (
-    <div className="px-6 lg:px-10 xl:px-14 py-8 space-y-10">
+    <div className="px-4 sm:px-6 lg:px-10 xl:px-14 py-10 sm:py-12 lg:py-16 space-y-12">
 
-      {/* Header */}
-      <div>
-        <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground/40 mb-4">Medialane · Contact</p>
-        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-3">
-          <span className="gradient-text">Connect</span>
-        </h1>
-        <p className="text-base text-muted-foreground max-w-xl">
-          Reach out for inquiries, partnerships, or anything else. Join the community and help build the creator capital markets of the open web.
-        </p>
-      </div>
+      <PageHero
+        eyebrow="Medialane · Connect"
+        title="Get involved"
+        description="Use the apps, govern on Snapshot, build on the protocol, or just say hello. Medialane is permissionless and community-stewarded — there is no gate to take part."
+      />
 
-      {/* Email */}
-      <div className="rounded-xl border border-border bg-card p-6">
+      {/* Email the DAO */}
+      <div className="bento-cell p-6 sm:p-8 max-w-2xl">
         <div className="flex items-center gap-4 mb-5">
           <div className="flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary shrink-0">
             <Mail className="size-5" />
@@ -91,11 +97,11 @@ export default function ConnectPageClient() {
 
       {/* Community platforms */}
       <div>
-        <p className="text-[10px] font-mono uppercase tracking-[0.18em] text-muted-foreground/40 mb-4">Community Platforms</p>
+        <SectionHeader label="Community Platforms" className="mb-6" />
         <div className="grid sm:grid-cols-3 gap-4">
           {socials.map((s) => (
             <a key={s.name} href={s.href} target="_blank" rel="noopener noreferrer"
-              className="group flex flex-col gap-4 p-5 rounded-xl border border-border bg-card hover:border-primary/30 hover:shadow-sm transition-all duration-150">
+              className="group flex flex-col gap-4 p-5 bento-cell hover:border-primary/30 transition-all duration-150">
               <div className="flex items-center justify-between">
                 <div className={`flex size-9 items-center justify-center rounded-lg shrink-0 ${s.color}`}>
                   {s.icon}
@@ -113,16 +119,9 @@ export default function ConnectPageClient() {
       </div>
 
       {/* Quick links */}
-      <div className="rounded-xl border border-border bg-card p-5">
-        <p className="text-[10px] font-mono uppercase tracking-[0.15em] text-muted-foreground/40 mb-4">Quick Links</p>
-        {[
-          { label: 'Open App',          href: 'https://medialane.io'                                            },
-          { label: 'Snapshot',          href: 'https://snapshot.org/#/s:medialane.eth'                         },
-          { label: 'GitHub',             href: 'https://github.com/medialane-io'                               },
-          { label: 'GitHub (SDK)',       href: 'https://github.com/medialane-io/medialane-sdk'                  },
-          { label: 'Docs',              href: 'https://docs.medialane.io'                                       },
-          { label: 'MDLN on Etherscan', href: 'https://etherscan.io/token/0x0DC90d57F3Aa3E836Ffd6E777E543a43A487dB15' },
-        ].map((l) => (
+      <div className="bento-cell p-6 max-w-2xl">
+        <SectionHeader label="Quick Links" />
+        {quickLinks.map((l) => (
           <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer"
             className="flex items-center justify-between py-3 border-b border-border/60 last:border-0 text-sm text-muted-foreground/70 hover:text-foreground transition-colors group">
             {l.label}
