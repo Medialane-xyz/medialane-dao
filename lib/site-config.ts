@@ -48,6 +48,39 @@ export const starknet = {
   starkscanMarketplace1155: 'https://voyager.online/contract/0x02bfa521c25461a09d735889b469418608d7d92f8b26e3d37ef174a4c2e22f99',
 } as const
 
+/**
+ * Creator's Fund — the public Starknet multisig that collects the 1% platform
+ * fee and airdrops it back to the community. Verified live 2026-05-21.
+ */
+export const creatorsFund = {
+  address: '0x064c51746dbcb7498cc6e4b8abfcacd60805c0762b0411bb0515c611b5ae8223',
+  voyager:
+    'https://voyager.online/contract/0x064c51746dbcb7498cc6e4b8abfcacd60805c0762b0411bb0515c611b5ae8223',
+  /** Next airdrop fires each time the fund reaches this USD amount. */
+  nextRoundUsd: 1000,
+  /** ERC-20 tokens the fund can hold. `coingeckoId: null` ⇒ treat as $1 (stablecoin). */
+  tokens: [
+    {
+      symbol: 'STRK',
+      address: '0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d',
+      decimals: 18,
+      coingeckoId: 'starknet' as string | null,
+    },
+    {
+      symbol: 'ETH',
+      address: '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7',
+      decimals: 18,
+      coingeckoId: 'ethereum' as string | null,
+    },
+    {
+      symbol: 'USDC',
+      address: '0x053c91253bc9682c04929ca02ed00b3e423f6710d2ee7e0d5ebb06f3ecf368a8',
+      decimals: 6,
+      coingeckoId: null as string | null,
+    },
+  ],
+} as const
+
 // brand colors used throughout the app; pulling from a single source makes
 // it trivial to adjust the palette without hunting through JSX files.
 export const colors = {
