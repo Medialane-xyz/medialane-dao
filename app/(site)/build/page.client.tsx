@@ -11,7 +11,7 @@ import { FeatureCard } from '@/components/feature-card'
 const sdkCapabilities = [
   {
     title: 'API Client',
-    status: 'v0.6.4',
+    status: 'v0.14',
     icon: Code2,
     iconColor: 'bg-brand-purple/10 text-brand-purple',
     gradient: 'from-brand-purple/10 to-transparent',
@@ -91,7 +91,7 @@ const contracts = [
 
 const protocolDocs = [
   { title: 'Getting Started',  slug: 'Getting-Started', description: 'First asset in minutes. Gasless. No registration.' },
-  { title: 'digital assets',        slug: 'IP-Assets',       description: '12 IP types, licensing terms, Berne Convention proof.' },
+  { title: 'IP Assets',        slug: 'IP-Assets',       description: '12 IP types, licensing terms, Berne Convention proof.' },
   { title: 'Marketplace',      slug: 'Marketplace',     description: 'Trading mechanics, SNIP-12 orders, royalties.' },
   { title: 'Launchpad',        slug: 'Launchpad',       description: 'Timed drops, editions, POP credentials.' },
   { title: 'Contracts',        slug: 'Contracts',       description: 'All Starknet contract addresses and ABI reference.' },

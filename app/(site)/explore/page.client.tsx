@@ -115,7 +115,7 @@ const features = [
     items: [
       {
         title: 'Medialane SDK',
-        status: 'v0.6.4',
+        status: 'v0.14',
         href: '/build',
         external: false,
         description: 'TypeScript SDK. Full onchain and REST API coverage. Dual ESM + CJS. Berne Convention-aligned IP metadata schema. Framework-agnostic.',
