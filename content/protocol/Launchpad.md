@@ -1,7 +1,7 @@
 ---
 title: "Launchpad"
 description: "Deploy Collection Drops, ERC-1155 editions, and POP credentials directly from the Medialane launchpad."
-date: "2026-05-01"
+date: "2026-05-21"
 author: "Medialane DAO"
 ---
 
@@ -135,4 +135,6 @@ IP-specific attributes (license, commercial use, AI policy, derivative rights) a
 
 ## Gasless Minting
 
-All Launchpad operations — collection deployment, minting, and drops — are sponsored by Medialane via the AVNU paymaster. Creators and minters need no ETH or STRK to participate. The 1% fee applies only to secondary marketplace sales, not primary minting.
+All Launchpad operations — collection deployment, minting, and drops — are sponsored by Medialane via the AVNU paymaster. Creators and minters need no ETH or STRK to participate.
+
+The launchpad protocol itself is zero-fee — no fee logic lives in the contracts. A 1% fee is applied at the platform layer on launchpad drop mints and marketplace sales alike. For year one it funds the **Creator's Fund** and is airdropped back to the community.
