@@ -1,7 +1,7 @@
 ---
 title: "Terms of Use"
 description: "The legal terms governing your access to and use of the Medialane intellectual property management platform."
-date: "2025-01-01"
+date: "2026-06-16"
 author: "Medialane DAO"
 ---
 
@@ -36,9 +36,9 @@ You retain ownership of all intellectual property rights in the content you crea
 ## 5. Licensing & Monetization
 
 * You may issue licenses for personal, commercial, or derivative use.
-* Licensing terms are programmable via smart contracts.
+* Licensing terms are expressed as programmable IP metadata and soft-enforced at the platform layer.
 * Royalties, usage fees, and attribution models can be customized.
-* Records are stored immutably on Starknet (with Ethereum settlement).
+* Ownership records are stored immutably on Starknet.
 
 ## 6. Usage Guidelines
 
@@ -60,7 +60,7 @@ You agree not to use the platform for any illegal activities, including but not 
 
 * Medialane does not collect personal data or deploy trackers.
 * All user interactions are pseudonymous and stored onchain.
-* Zero-knowledge proofs may be used to preserve confidentiality while ensuring verifiability.
+* Starknet's zero-knowledge (STARK) proofs preserve confidentiality while ensuring verifiability.
 
 ## 9. Security & Risk Disclosure
 

@@ -1,7 +1,7 @@
 ---
 title: "Privacy Policy"
 description: "Explanation of how data is handled across the Medialane decentralized ecosystem, emphasizing user sovereignty and privacy by design."
-date: "2025-01-01"
+date: "2026-06-16"
 author: "Medialane DAO"
 ---
 
@@ -35,19 +35,18 @@ Users may choose to share limited data when engaging with optional services:
 
 ## 4. Data Security
 
-We implement appropriate technical and organizational measures to protect your personal information:
+Medialane holds no custodial accounts and collects no personal data, so there is little to secure on our side. Security lives where it belongs — in the protocol and in your own wallet:
 
-* **Encryption:** Data encrypted in transit and at rest.
-* **Security Audits:** Regular security audits and assessments.
-* **Access Controls:** Strict access controls and authentication.
-* **Secure Integration:** Secure blockchain integration protocols.
+* **Self-custody:** You control your assets and identity through your own wallet and keys.
+* **Audited contracts:** Core smart contracts are professionally audited and verified on-chain.
+* **No central honeypot:** With no personal data store, there is no central database to breach.
 
 ## 5. Blockchain Transparency
 
 Starknet leverages STARK proofs and the Cairo VM to process transactions off-chain, then submits them to Ethereum for final settlement:
 
 * Tokenized digital assets, licensing contracts, and ownership proofs are public.
-* Zero-knowledge proofs may be used to preserve confidentiality while ensuring verifiability.
+* Starknet's zero-knowledge (STARK) proofs preserve confidentiality while keeping records verifiable.
 * Medialane cannot modify or delete blockchain records.
 
 ## 6. Licensing & Ownership Records
@@ -61,7 +60,7 @@ Through smart contract integrations, users can:
 
 ## 7. Cookies and Tracking
 
-We avoid cookies and similar technologies to protect your privacy on the dApp. For detailed information, please see our Cookie Policy.
+We avoid cookies, trackers, and behavioral analytics to protect your privacy. The platform sets no advertising or third-party tracking cookies.
 
 ## 8. Third-Party Ecosystem Interactions
 

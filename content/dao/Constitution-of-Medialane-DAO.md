@@ -21,10 +21,7 @@ We operate at the intersection of blockchain and artificial intelligence, expand
 ### Section 1: Name
 The organization shall be called Medialane DAO.
 
-### Section 2: Legal Structure
-Medialane DAO is registered as a DAO LLC under the Utah Decentralized Autonomous Organization Act. This legal wrapper provides members with limited liability protection while preserving the decentralized, onchain governance model.
-
-### Section 3: Purpose
+### Section 2: Purpose
 To build trust-minimized infrastructure where content, code, and culture can be tokenized, governed, and monetized via smart contracts. Medialane seeks to empower:
 * Creators, developers, collectors, and organizations.
 * Autonomous agents and AI entities.
@@ -32,7 +29,7 @@ To build trust-minimized infrastructure where content, code, and culture can be 
 
 The purpose of Medialane is to create public goods and services that empower creators and intellectual property (IP) owners. By tokenizing intelligence in Programmable IP, Medialane aims to establish new ways to create value that is accessible and inclusive through decentralized technology, including blockchain and zero-knowledge proofs.
 
-### Section 4: Roots
+### Section 3: Roots
 Rooted in privacy, freedom, transparency, and public goods — Medialane exists to dismantle bureaucracy silos and cultivate an open, composable information economy.
 
 ---
@@ -107,7 +104,7 @@ Medialane DAO operates with no investor allocations, no VC pre-sales, and no ins
 90% of MDLN (18,900,000 tokens) is time-locked in a trustless vesting contract (`0x912f61d5e6db656ec1a7be8db8957c5f1e345d58`), releasing 2,100,000 MDLN per year for 9 years. The remaining 10% (2,100,000 MDLN) is held in the Gnosis Safe as operational runway.
 
 ### Section 4: Sustainability
-Platform revenue (1% marketplace commission) is cycled back to the DAO treasury, creating a path to treasury-positive operations as platform usage grows.
+Medialane applies a single 1% fee on earnings — sales, paid mints, and launches (never free mints). The marketplace and launchpad protocols themselves are zero-fee; the fee is applied at the platform layer. This revenue accrues to the DAO treasury, creating a path to treasury-positive operations as usage grows. For year one, revenue flows directly to the Creator's Fund and is returned to the community through the Creator's Airdrop.
 
 ---
 
@@ -141,11 +138,11 @@ Medialane enables the tokenization of intellectual property using Starknet's hig
 * Music, literature, or datasets.
 
 ### Section 2: Licensing and Monetization
-Smart contracts enforce:
-* Proof of ownership and licensing.
-* Attribution standards.
-* Usage boundaries and licensing logic.
-* ID and reputation.
+Ownership is recorded on-chain. Licensing terms are expressed in programmable IP metadata and soft-enforced by default at the platform layer — interpreted and applied selectively per jurisdiction, not hardcoded into immutable contracts. The protocol records and exposes:
+* Proof of ownership.
+* License terms and attribution.
+* Usage rights as programmable metadata.
+* Identity and reputation.
 
 ### Section 3: Interoperability
 Programmable IP may interact with dApps, games, metaverse environments, and autonomous agents without censorship or gatekeeping.
@@ -160,19 +157,18 @@ The DAO is committed to maintaining the highest standards of security and transp
 Medialane integrates Starknet, Cairo VM, IPFS, and verifiable cryptographic proofs. The MDLN governance token lives on Ethereum mainnet and bridges to Starknet via StarkGate.
 
 ### Section 2: Smart Contracts
-Core deployed contracts:
+The DAO's governance contracts on Ethereum mainnet:
 
 | Contract | Network | Address |
 |----------|---------|---------|
 | MDLN Token | Ethereum | `0x0DC90d57F3Aa3E836Ffd6E777E543a43A487dB15` |
 | MDLN Vesting | Ethereum | `0x912f61d5e6db656ec1a7be8db8957c5f1e345d58` |
 | DAO Treasury | Ethereum | `0xA7603783edD8ee6FF4B085f90Af53341282d244C` |
-| Medialane Protocol | Starknet | `0x0234f4e8838801ebf01d7f4166d42aed9a55bc67c1301162decf9e2040e05f16` |
-| POP Factory | Starknet | `0x00b32c34b427d8f346b5843ada6a37bd3368d879fc752cd52b68a87287f60111` |
-| Collection Drop Factory | Starknet | `0x03587f42e29daee1b193f6cf83bf8627908ed6632d0d83fcb26225c50547d800` |
+
+The live Starknet protocol contracts — marketplace venues, collection and launchpad factories, and credentials — are published, with current addresses, at [docs.medialane.io/dev/contracts](https://docs.medialane.io/dev/contracts). Always verify an address against that registry before interacting.
 
 ### Section 3: Security
-The Medialane Protocol smart contract has been professionally audited. All contracts are verified and open-source on their respective block explorers.
+Medialane's smart contracts are professionally audited, verified, and open-source on their respective block explorers.
 
 ---
 

@@ -40,7 +40,7 @@ const ACCEPTED = creatorsFund.tokens.map((t) => t.symbol).join(' · ')
 const STEPS = [
   {
     title: 'You buy or sell',
-    body: 'Every sale on Medialane has a 1% fee. That fee goes straight to the Creator’s Fund.',
+    body: 'Every sale and paid mint on Medialane carries a 1% fee — free mints stay free. That fee goes straight to the Creator’s Fund.',
   },
   {
     title: 'The fund fills up',
@@ -124,13 +124,14 @@ export function CreatorsFundClient({ status }: { status: CreatorsFundStatus }) {
           </div>
         )}
 
-        {/* Year-one note: the fund and the DAO treasury are the same account */}
+        {/* Year-one note: revenue routes straight to the fund instead of the treasury */}
         <div className="mt-4 rounded-xl border border-brand-blue/20 bg-brand-blue/5 p-5">
           <p className="text-sm text-foreground leading-relaxed">
-            <span className="font-semibold">A note on year one.</span> While the Creator’s Airdrop
-            campaign is running, the Creator’s Fund and the Medialane DAO treasury are the same
-            wallet — every dollar of platform revenue flows here and is returned to the community.
-            From year two, MDLN holders govern the fund and vote each year on what the fee supports.
+            <span className="font-semibold">A note on year one.</span> Platform revenue normally
+            accrues to the Medialane DAO treasury. While the Creator’s Airdrop campaign is running,
+            it flows directly into the Creator’s Fund instead — keeping it in one wallet so every
+            dollar goes straight back to the community without an extra transfer. From year two,
+            MDLN holders vote each year on what the fee supports.
           </p>
         </div>
       </section>

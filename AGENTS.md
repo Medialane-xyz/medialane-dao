@@ -56,27 +56,19 @@ The `/docs` page renders sections from `content/dao/` (Governance) and `content/
 
 ---
 
-## Contracts — Current Authoritative Addresses
+## Contracts
 
-### Starknet Mainnet
-
-| Contract | Address |
-|----------|---------|
-| Marketplace v2 (ERC-721) | `0x00f8ccaae0bc811c79605974cc1dab769b9cea8877f033f8e3c17f30457caba6` |
-| Marketplace v2 (ERC-1155) | `0x02bfa521c25461a09d735889b469418608d7d92f8b26e3d37ef174a4c2e22f99` |
-| Collection Registry (ERC-721) | `0x05c49ee5d3208a2c2e150fdd0c247d1195ed9ab54fa2d5dea7a633f39e4b205b` |
-| Collection Factory (ERC-1155) | `0x006b2dc7ca7c4f466bb4575ba043d934310f052074f849caf853a86bcb819fd6` |
-| Drop Factory | `0x03587f42e29daee1b193f6cf83bf8627908ed6632d0d83fcb26225c50547d800` |
-| POP Factory | `0x00b32c34b427d8f346b5843ada6a37bd3368d879fc752cd52b68a87287f60111` |
-| MDLN L2 (bridged) | `0x06730d6a357690cebffad800219e9630e15b6f44d35526e0fc9ee52bdf7418e8` |
-
-### Ethereum Mainnet
+The DAO's own governance contracts on **Ethereum mainnet**:
 
 | Contract | Address |
 |----------|---------|
 | MDLN Token | `0x0DC90d57F3Aa3E836Ffd6E777E543a43A487dB15` |
 | Vesting | `0x912f61d5e6db656ec1a7be8db8957c5f1e345d58` |
 | Treasury (Gnosis Safe) | `0xA7603783edD8ee6FF4B085f90Af53341282d244C` |
+
+The bridged **MDLN on Starknet** is `0x06730d6a357690cebffad800219e9630e15b6f44d35526e0fc9ee52bdf7418e8`.
+
+Do **not** hardcode the live protocol contracts (marketplace venues, collection/launchpad factories, POP credentials) here — they redeploy and stale addresses become a hazard. The current, authoritative list is at [docs.medialane.io/dev/contracts](https://docs.medialane.io/dev/contracts).
 
 ---
 

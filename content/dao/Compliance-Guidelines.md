@@ -18,16 +18,16 @@ Medialane is not a product — it's infrastructure for humanity:
 * Designed for global accessibility.
 * Committed to ethical innovation and decentralization.
 
-## 2. Legal Structure
+## 2. Governance Structure
 
-Medialane DAO is registered as a **DAO LLC under the Utah Decentralized Autonomous Organization Act**. This legal wrapper:
+Medialane DAO is a decentralized autonomous organization governed by MDLN token holders:
 
-* Provides members with limited liability protection.
-* Recognizes onchain governance as legally binding.
-* Allows the DAO to enter contracts, hold assets, and operate as a legal entity.
-* Does not require KYC or registration from community members for protocol use.
+* Decisions are made through transparent, on-chain governance via Snapshot.
+* The treasury is held in a multisig and allocated by community proposal.
+* No KYC or registration is required from community members for protocol use.
+* Participation is open and pseudonymous.
 
-The  structure is designed to align legal accountability with decentralized governance, enabling Medialane to operate transparently within regulatory frameworks while preserving community ownership.
+This structure aligns accountability with decentralized governance — preserving community ownership while operating transparently.
 
 ## 3. Purpose & Scope
 
@@ -73,7 +73,7 @@ Medialane operates on Starknet and Ethereum using smart contracts and zero-knowl
 
 ## 6. Governance & Responsibility
 
-Medialane is governed by a DAO LLC. While decentralized, participants may face legal scrutiny in some jurisdictions:
+Medialane is governed by Medialane DAO. While decentralized, participants may face legal scrutiny in some jurisdictions:
 
 * Contributors must comply with local laws and regulations.
 * Proposal authors may be viewed as initiators of protocol changes.
@@ -83,7 +83,7 @@ Medialane is governed by a DAO LLC. While decentralized, participants may face l
 **To mitigate risk:**
 * Operate transparently and document decisions.
 * Avoid centralized control or collusion.
-* Leverage the  structure for jurisdictional clarity.
+* Seek independent legal advice for your jurisdiction.
 
 ## 7. Regulatory Awareness
 
@@ -111,20 +111,7 @@ To protect your intellectual property and contributions:
 * Stay informed about international IP and crypto regulations.
 * Verify contract addresses before interacting with any Medialane smart contract.
 
-**Official contract addresses:**
-
-| Contract | Network | Address |
-|----------|---------|---------|
-| MDLN Token | Ethereum | `0x0DC90d57F3Aa3E836Ffd6E777E543a43A487dB15` |
-| MDLN Vesting | Ethereum | `0x912f61d5e6db656ec1a7be8db8957c5f1e345d58` |
-| DAO Treasury (Gnosis Safe) | Ethereum | `0xA7603783edD8ee6FF4B085f90Af53341282d244C` |
-| Marketplace v2 (ERC-721) | Starknet | `0x00f8ccaae0bc811c79605974cc1dab769b9cea8877f033f8e3c17f30457caba6` |
-| Marketplace v2 (ERC-1155) | Starknet | `0x02bfa521c25461a09d735889b469418608d7d92f8b26e3d37ef174a4c2e22f99` |
-| Collection Registry (ERC-721) | Starknet | `0x05c49ee5d3208a2c2e150fdd0c247d1195ed9ab54fa2d5dea7a633f39e4b205b` |
-| Collection Factory (ERC-1155) | Starknet | `0x006b2dc7ca7c4f466bb4575ba043d934310f052074f849caf853a86bcb819fd6` |
-| Drop Factory | Starknet | `0x03587f42e29daee1b193f6cf83bf8627908ed6632d0d83fcb26225c50547d800` |
-| POP Factory | Starknet | `0x00b32c34b427d8f346b5843ada6a37bd3368d879fc752cd52b68a87287f60111` |
-| MDLN on Starknet (bridged) | Starknet | `0x06730d6a357690cebffad800219e9630e15b6f44d35526e0fc9ee52bdf7418e8` |
+**Verifying contract addresses:** the complete, current list of Medialane's live contracts — marketplace venues, collection and launchpad factories, credentials, and the MDLN token — is published at [docs.medialane.io/dev/contracts](https://docs.medialane.io/dev/contracts). Always confirm an address against that registry before signing any transaction.
 
 ## 10. Legal Resources & References
 
@@ -133,7 +120,6 @@ Explore these sources for deeper guidance:
 * [Berne Convention Overview](https://www.wipo.int/treaties/en/ip/berne/)
 * [WIPO IP Portal](https://www.wipo.int/about-ip/en/)
 * [TRIPS Agreement Summary](https://www.wto.org/english/tratop_e/trips_e/trips_e.htm)
-* [ Act](https://le.utah.gov/xcode/Title48/Chapter3/48-3.html)
 * [Legal Nodes Playbook for Web3](https://legalnodes.com/)
 
 ## 11. Report Content

@@ -61,7 +61,7 @@ The DAO treasury is managed via a **Gnosis Safe multisig** (`0xA7603783edD8ee6FF
 * **Vested treasury:** 18,900,000 MDLN time-locked, releasing 2,100,000/year for 9 years.
 * All fund allocation above operational threshold requires DAO proposal and multisig execution.
 * All transactions are publicly auditable on Etherscan.
-* Treasury inflows include platform commissions (1%), grants, and ecosystem revenue.
+* Treasury inflows include the platform fee (1% on earnings — sales, paid mints, and launches), grants, and ecosystem revenue. For year one, this revenue flows directly to the Creator's Fund and is returned to the community through the Creator's Airdrop.
 
 ## 7. Governance Domains
 

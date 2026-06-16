@@ -17,7 +17,7 @@ Each time the Creator's Fund reaches $1,000, that round is airdropped to all par
 
 ## Governance First
 
-A 1% marketplace fee funds the Creator's Fund. Each year, MDLN holders vote on Snapshot to decide how platform revenue is used — Creator's Airdrop, token buyback, token burn, protocol development, or operations. No predetermined formula.
+A 1% fee on earnings — sales, paid mints, and launches — funds the Creator's Fund. Each year, MDLN holders vote on Snapshot to decide how platform revenue is used — Creator's Airdrop, token buyback, token burn, protocol development, or operations. No predetermined formula.
 
 For year one, the DAO's decision is the Creator's Airdrop: every dollar of revenue is returned to the community. The campaign runs until July 1, 2027.
 
@@ -28,7 +28,7 @@ When MDLN holders vote to fund the Creator's Airdrop, the allocated pool is dist
 
 | Attribute | Detail |
 |-----------|--------|
-| **Revenue source** | 1% marketplace fee |
+| **Revenue source** | 1% fee on earnings (sales, paid mints, launches) |
 | **Recipient** | 100% to participating creators and collectors |
 | **Governance** | MDLN holders vote on amount, rules, and timing |
 | **Verification** | onchain activity — fully auditable |
