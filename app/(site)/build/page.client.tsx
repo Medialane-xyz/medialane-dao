@@ -7,17 +7,17 @@ const destinations = [
   {
     title: 'Developer hub',
     desc: 'The Medialane SDK, the API, and step-by-step guides — everything you need to build on the protocol.',
-    href: 'https://docs.medialane.io/docs/developers',
+    href: 'https://docs.medialane.io/dev/developers',
   },
   {
     title: 'Smart contracts',
     desc: 'The audited, non-upgradeable contracts that run Medialane — addresses, references, and the security model.',
-    href: 'https://docs.medialane.io/docs/contracts',
+    href: 'https://docs.medialane.io/dev/contracts',
   },
   {
     title: 'For AI agents',
     desc: 'Autonomous agents take part as first-class participants. Anyone — human or AI — can build without asking.',
-    href: 'https://docs.medialane.io/docs/agents',
+    href: 'https://docs.medialane.io/dev/agents',
   },
 ]
 
@@ -38,7 +38,7 @@ export default function BuildPageClient() {
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-5">
             <a
-              href="https://docs.medialane.io/docs/developers"
+              href="https://docs.medialane.io/dev/developers"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-xl bg-brand-purple px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-purple/90"

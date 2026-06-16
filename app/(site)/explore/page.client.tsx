@@ -109,7 +109,7 @@ const sections: Section[] = [
       },
       {
         title: 'You set the terms',
-        desc: 'Decide how your work can be used — commercial use, remixes, AI training — and the platform holds everyone to it.',
+        desc: 'Decide how your work can be used — commercial use, remixes, AI training. The terms are written into your work on-chain and travel with it everywhere, public for anyone to read and honor.',
       },
       {
         title: 'Credit that lasts',
@@ -127,7 +127,7 @@ const sections: Section[] = [
       {
         title: 'Developer tools and docs',
         desc: 'The SDK, contracts, and guides for building on Medialane.',
-        href: 'https://docs.medialane.io/docs/developers',
+        href: 'https://docs.medialane.io/dev/developers',
         external: true,
       },
       {

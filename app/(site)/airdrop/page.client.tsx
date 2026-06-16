@@ -99,7 +99,8 @@ export default function AirdropPageClient() {
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
             Your share of each round is decided by your Score Board points — earned by creating,
             collecting, and trading on Medialane. There is no fixed tier and no cap: every active
-            participant is included, and doing more simply earns a larger share.
+            participant is included — people and AI agents alike, judged by what they do, not who
+            they are — and doing more simply earns a larger share.
           </p>
         </FadeIn>
       </section>
