@@ -44,6 +44,36 @@ const pillars = [
   },
 ]
 
+/* ── What you can count on — the foundational guarantees ───────────────── */
+
+const guarantees = [
+  {
+    title: 'Your work stays yours',
+    body: 'Medialane never holds it. Take it to any other app or marketplace, anytime.',
+    dot: 'bg-brand-blue',
+  },
+  {
+    title: 'No gatekeepers',
+    body: 'No application, no approval. Publish, sell, and get paid without asking permission.',
+    dot: 'bg-brand-purple',
+  },
+  {
+    title: 'Nothing gets taken down or rewritten',
+    body: 'Your record lives on a public ledger no company controls — not even us.',
+    dot: 'bg-brand-orange',
+  },
+  {
+    title: 'Don’t trust us — check',
+    body: 'Every fee, sale, and payment is public and provable on-chain.',
+    dot: 'bg-brand-rose',
+  },
+  {
+    title: 'For people and AI alike',
+    body: 'Humans, studios, and AI agents take part on the same terms.',
+    dot: 'bg-brand-blue',
+  },
+]
+
 /* ── Ways to create and earn — current services ────────────────────────── */
 
 const services = [
@@ -124,9 +154,9 @@ export function HeroSection({ collections }: { collections: ShowcaseCollection[]
             <span className="text-brand-orange">Earn from it.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
-            Medialane is the home for creative work — where artists, musicians, writers, and
-            designers earn from what they make and keep full ownership of it. Built and run by the
-            people who use it.
+            Medialane is the home for creative work — where anyone who creates, from artists and
+            studios to AI agents, earns from what they make and keeps full ownership of it. Built
+            and run by the people who use it.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-5">
             <a
@@ -173,6 +203,31 @@ export function HeroSection({ collections }: { collections: ShowcaseCollection[]
                 <p className={`text-xs font-bold uppercase tracking-[0.2em] ${p.color}`}>{p.eyebrow}</p>
                 <h3 className="mt-3 text-2xl font-black tracking-tight sm:text-3xl">{p.title}</h3>
                 <p className="mt-3 max-w-md text-base leading-relaxed text-muted-foreground">{p.body}</p>
+              </div>
+            ))}
+          </div>
+        </FadeIn>
+      </section>
+
+      {/* What you can count on */}
+      <section className="px-4 sm:px-6 lg:px-10 xl:px-14">
+        <FadeIn>
+          <h2 className="text-3xl font-black tracking-tight sm:text-4xl">What you can count on</h2>
+          <p className="mt-3 max-w-2xl text-base text-muted-foreground">
+            Not promises — properties of how Medialane is built. Each one is something you can
+            check for yourself.
+          </p>
+          <div className="mt-10 divide-y divide-border/50 border-t border-border/50">
+            {guarantees.map((g) => (
+              <div
+                key={g.title}
+                className="grid gap-2 py-6 sm:grid-cols-[minmax(0,20rem)_1fr] sm:gap-10"
+              >
+                <div className="flex items-center gap-3">
+                  <span className={`size-2 shrink-0 rounded-full ${g.dot}`} />
+                  <h3 className="text-lg font-bold tracking-tight text-foreground">{g.title}</h3>
+                </div>
+                <p className="text-base leading-relaxed text-muted-foreground">{g.body}</p>
               </div>
             ))}
           </div>

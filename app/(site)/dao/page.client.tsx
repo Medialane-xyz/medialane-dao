@@ -102,7 +102,7 @@ export default function DAOPageClient({ documents, proposals, stats }: DAOPageCl
           <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-brand-orange">Revenue</p>
           <h2 className="text-3xl font-black tracking-tight sm:text-4xl">A small fee, returned to creators</h2>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Medialane charges a small 1% fee on earnings — and gives all of it back. For the first year it
+            Medialane charges a small 1% fee on earnings — and all of it goes back. For the first year it
             funds the Creator&apos;s Airdrop, sharing platform revenue with everyone who takes part.
             Each year after, MDLN holders vote together on what the fee should support.
           </p>

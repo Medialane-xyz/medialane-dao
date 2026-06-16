@@ -57,7 +57,7 @@ export default function AirdropPageClient() {
             The Creator&apos;s Airdrop
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Medialane gives all of its revenue back to the people who use it. As the platform
+            All of Medialane&apos;s revenue flows back to the people who use it. As the platform
             earns, the money is shared with the community — and taking part is free.
           </p>
         </FadeIn>
@@ -69,7 +69,7 @@ export default function AirdropPageClient() {
           <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-brand-orange">How it works</p>
           <h2 className="text-3xl font-black tracking-tight sm:text-4xl">A simple, repeating cycle</h2>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Medialane charges a small 1% fee on earnings and gives all of it back. The fee collects
+            Medialane charges a small 1% fee on earnings, and all of it goes back. The fee collects
             in the Creator&apos;s Fund. Each time the Fund reaches $1,000, that amount is shared with
             everyone taking part — weighted by how active they have been.
           </p>
