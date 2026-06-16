@@ -20,7 +20,7 @@ Medialane is a monetization layer for creators, collectors, organizations, and a
 |---|---|
 | **Symbol** | MDLN |
 | **Supply** | 21,000,000 (fixed forever) |
-| **Treasury** | 100% DAO — ,  |
+| **Treasury** | 100% DAO-controlled (no VC, no team allocation) |
 | **Vesting** | 9-year linear unlock (2.1M/year) |
 | **Voting** | 1 MDLN = 1 vote (gasless via Snapshot) |
 | **L1 (Ethereum)** | `0x0DC90d57F3Aa3E836Ffd6E777E543a43A487dB15` |
@@ -89,7 +89,7 @@ description: One-line summary
 ---
 ```
 
-**Protocol documentation** — drop a `.md` file in `content/protocol/`. Both directories auto-appear in `/docs` and are indexed by AI agents via `llms.txt`.
+Founding documents in `content/dao/` are indexed by AI agents via `llms.txt`. (Protocol/developer documentation lives on [docs.medialane.io](https://docs.medialane.io), not here.)
 
 ---
 
@@ -97,13 +97,15 @@ description: One-line summary
 
 | Route | Description |
 |---|---|
-| `/` | Overview — creator capital markets mission, stats, token, contracts, principles |
-| `/dao` | Governance — live Snapshot proposals, voting guide, founding documents |
-| `/explore` | Protocol — create, marketplace, launchpad, developer tools, creator rights, Starknet infra |
-| `/members` | MDLN token — tokenomics, distribution, Creator's Airdrop, bridge, membership tiers |
+| `/` | Home — what Medialane is, the four pillars, "What you can count on" (the foundational guarantees), current launchpad services, Creator's Airdrop callout |
+| `/explore` | What you can do — create, trade, launch, protect your rights, build (open to people and AI agents) |
+| `/dao` | Governance — live Snapshot proposals, how to vote, founding documents |
+| `/token` | The MDLN token — distribution, how to take part, where to get it (was `/members`) |
+| `/airdrop` | The Creator's Airdrop — how revenue flows back to the community |
+| `/creators-fund` | Creator's Fund dashboard — live multi-token balance, tip the fund (was `/airdrop/fund`) |
+| `/build` | Developer signpost into docs.medialane.io |
 | `/connect` | Contact — email, socials, quick links |
-| `/docs` | All documents index (protocol + governance + legal) |
-| `/docs/[slug]` | Individual document viewer |
+| `/guidelines`, `/guidelines/[slug]` | The DAO library — founding + legal documents (was `/docs`) |
 
 ---
 
