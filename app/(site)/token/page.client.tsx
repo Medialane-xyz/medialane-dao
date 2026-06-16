@@ -5,13 +5,6 @@ import { mdln, starknet, siteConfig } from '@/lib/site-config'
 import { FadeIn } from '@medialane/ui'
 import { AddressRow } from '@/components/address-row'
 
-const figures = [
-  { value: '21M', label: 'fixed supply — never more', text: 'text-brand-purple' },
-  { value: '100%', label: 'community-owned', text: 'text-brand-blue' },
-  { value: '9 yr', label: 'released slowly and predictably', text: 'text-brand-orange' },
-  { value: '1 : 1', label: 'one token, one vote', text: 'text-brand-rose' },
-]
-
 const distribution = [
   { label: 'Held by the community, released over 9 years', value: '18,900,000', pct: 90, bar: 'bg-brand-purple' },
   { label: 'Set aside to run and grow the platform', value: '2,100,000', pct: 10, bar: 'bg-brand-blue' },
@@ -55,22 +48,6 @@ export default function TokenPageClient() {
             MDLN is what makes Medialane community-owned. The supply is fixed, it is shared openly
             with no investors or insiders, and every token is one vote in how the platform is run.
           </p>
-        </FadeIn>
-      </section>
-
-      {/* Figures */}
-      <section className="px-4 sm:px-6 lg:px-10 xl:px-14">
-        <FadeIn>
-          <div className="grid gap-10 border-t border-border/50 pt-12 sm:grid-cols-2 lg:grid-cols-4">
-            {figures.map((f) => (
-              <div key={f.label}>
-                <p className={`font-mono text-5xl font-black leading-none tabular-nums sm:text-6xl ${f.text}`}>
-                  {f.value}
-                </p>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{f.label}</p>
-              </div>
-            ))}
-          </div>
         </FadeIn>
       </section>
 

@@ -5,12 +5,20 @@ import { ArrowUpRight, ArrowRight } from 'lucide-react'
 import { FadeIn } from '@medialane/ui'
 
 type Item = { title: string; desc: string; href?: string; external?: boolean }
-type Section = { eyebrow: string; accent: string; heading: string; intro: string; items: Item[] }
+type Section = {
+  eyebrow: string
+  accent: string
+  border: string
+  heading: string
+  intro: string
+  items: Item[]
+}
 
 const sections: Section[] = [
   {
     eyebrow: 'Create',
     accent: 'text-brand-purple',
+    border: 'border-brand-purple/50',
     heading: 'Publish and shape your work',
     intro: 'Turn what you make into something you fully own — in seconds, with no fees and no paperwork.',
     items: [
@@ -37,6 +45,7 @@ const sections: Section[] = [
   {
     eyebrow: 'Trade',
     accent: 'text-brand-blue',
+    border: 'border-brand-blue/50',
     heading: 'Sell, collect, and earn',
     intro: 'A full marketplace for creative work — sell yours, collect others, and earn every time your work changes hands.',
     items: [
@@ -63,6 +72,7 @@ const sections: Section[] = [
   {
     eyebrow: 'Launch',
     accent: 'text-brand-orange',
+    border: 'border-brand-orange/50',
     heading: 'Release work to the world',
     intro: 'Bring an audience to a launch — on your terms, on a schedule you set.',
     items: [
@@ -89,12 +99,13 @@ const sections: Section[] = [
   {
     eyebrow: 'Protect',
     accent: 'text-brand-rose',
+    border: 'border-brand-rose/50',
     heading: 'Your rights, built in',
     intro: 'Ownership and protection are not extra steps — they come the moment you publish.',
     items: [
       {
-        title: 'Copyright in 181 countries',
-        desc: 'Publishing creates a copyright record recognised across 181 countries — instantly, with no registration or lawyers.',
+        title: 'Copyright almost everywhere',
+        desc: 'Publishing timestamps your work as yours under the same international treaty that protects books and music in nearly every country — instantly, with no registration or lawyers.',
       },
       {
         title: 'You set the terms',
@@ -109,6 +120,7 @@ const sections: Section[] = [
   {
     eyebrow: 'Build',
     accent: 'text-brand-purple',
+    border: 'border-brand-purple/50',
     heading: 'Open for developers and AI',
     intro: 'Medialane is an open protocol — anyone, human or AI agent, can build on it.',
     items: [
@@ -128,28 +140,32 @@ const sections: Section[] = [
   },
 ]
 
-function ItemRow({ item }: { item: Item }) {
+function ItemCell({ item, index, section }: { item: Item; index: number; section: Section }) {
   const inner = (
-    <div className="flex items-start justify-between gap-6 py-5">
-      <div>
+    <>
+      <div className="flex items-center gap-2.5">
+        <span className={`font-mono text-xs font-bold ${section.accent}`}>
+          {String(index + 1).padStart(2, '0')}
+        </span>
         <p className="text-base font-bold text-foreground">{item.title}</p>
-        <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
+        {item.href &&
+          (item.external ? (
+            <ArrowUpRight className="size-4 shrink-0 text-muted-foreground/30 transition-colors group-hover:text-foreground" />
+          ) : (
+            <ArrowRight className="size-4 shrink-0 text-muted-foreground/30 transition-colors group-hover:text-foreground" />
+          ))}
       </div>
-      {item.href &&
-        (item.external ? (
-          <ArrowUpRight className="mt-1 size-5 shrink-0 text-muted-foreground/30 transition-colors group-hover:text-foreground" />
-        ) : (
-          <ArrowRight className="mt-1 size-5 shrink-0 text-muted-foreground/30 transition-colors group-hover:text-foreground" />
-        ))}
-    </div>
+      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
+    </>
   )
-  if (!item.href) return inner
+  const cellClass = `block border-t-2 ${section.border} pt-4`
+  if (!item.href) return <div className={cellClass}>{inner}</div>
   return item.external ? (
-    <a href={item.href} target="_blank" rel="noopener noreferrer" className="group block">
+    <a href={item.href} target="_blank" rel="noopener noreferrer" className={`group ${cellClass}`}>
       {inner}
     </a>
   ) : (
-    <Link href={item.href} className="group block">
+    <Link href={item.href} className={`group ${cellClass}`}>
       {inner}
     </Link>
   )
@@ -157,7 +173,7 @@ function ItemRow({ item }: { item: Item }) {
 
 export default function ExplorePageClient() {
   return (
-    <div className="space-y-20 sm:space-y-24">
+    <div className="space-y-20 sm:space-y-28">
 
       {/* Hero */}
       <section className="px-4 pt-16 sm:px-6 sm:pt-20 lg:px-10 lg:pt-24 xl:px-14">
@@ -179,13 +195,17 @@ export default function ExplorePageClient() {
       {sections.map((s) => (
         <section key={s.eyebrow} className="px-4 sm:px-6 lg:px-10 xl:px-14">
           <FadeIn>
-            <p className={`mb-3 text-xs font-bold uppercase tracking-[0.2em] ${s.accent}`}>{s.eyebrow}</p>
-            <h2 className="text-3xl font-black tracking-tight sm:text-4xl">{s.heading}</h2>
-            <p className="mt-3 max-w-2xl text-base text-muted-foreground">{s.intro}</p>
-            <div className="mt-6 divide-y divide-border/50 border-t border-border/50">
-              {s.items.map((item) => (
-                <ItemRow key={item.title} item={item} />
-              ))}
+            <div className="grid gap-x-12 gap-y-8 lg:grid-cols-[minmax(0,22rem)_1fr]">
+              <div>
+                <p className={`mb-3 text-xs font-bold uppercase tracking-[0.2em] ${s.accent}`}>{s.eyebrow}</p>
+                <h2 className="text-3xl font-black tracking-tight sm:text-4xl">{s.heading}</h2>
+                <p className="mt-3 max-w-md text-base leading-relaxed text-muted-foreground">{s.intro}</p>
+              </div>
+              <div className="grid gap-x-8 gap-y-8 sm:grid-cols-2">
+                {s.items.map((item, i) => (
+                  <ItemCell key={item.title} item={item} index={i} section={s} />
+                ))}
+              </div>
             </div>
           </FadeIn>
         </section>
@@ -193,22 +213,24 @@ export default function ExplorePageClient() {
 
       {/* Simple by design */}
       <section className="px-4 pb-8 sm:px-6 lg:px-10 xl:px-14">
-        <FadeIn className="max-w-3xl">
-          <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-brand-blue">Simple by design</p>
-          <h2 className="text-3xl font-black tracking-tight sm:text-4xl">No crypto experience needed</h2>
-          <p className="mt-3 text-lg leading-relaxed text-muted-foreground">
-            Sign in with an email and start in minutes. You never pay a network fee, and there are
-            no wallets to manage or jargon to learn — Medialane handles the hard parts so you can
-            focus on your work.
-          </p>
-          <a
-            href="https://medialane.io"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-brand-purple px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-purple/90"
-          >
-            Open the app <ArrowUpRight className="size-4" />
-          </a>
+        <FadeIn>
+          <div className="rounded-2xl bg-gradient-to-br from-brand-blue/10 via-brand-purple/5 to-transparent p-8 sm:p-12">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-brand-blue">Simple by design</p>
+            <h2 className="max-w-2xl text-3xl font-black tracking-tight sm:text-4xl">No crypto experience needed</h2>
+            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+              Sign in with an email and start in minutes. You never pay a network fee, and there are
+              no wallets to manage or jargon to learn — Medialane handles the hard parts so you can
+              focus on your work.
+            </p>
+            <a
+              href="https://medialane.io"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-7 inline-flex items-center gap-2 rounded-xl bg-brand-purple px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-purple/90"
+            >
+              Open the app <ArrowUpRight className="size-4" />
+            </a>
+          </div>
         </FadeIn>
       </section>
 

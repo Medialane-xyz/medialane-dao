@@ -1,168 +1,114 @@
 'use client'
 
-import { useState } from 'react'
 import Link from 'next/link'
-import { ArrowUpRight, ArrowRight, Check, PenLine, Layers, Copy, Rocket, Award } from 'lucide-react'
+import {
+  ArrowUpRight,
+  ArrowRight,
+  Sparkles,
+  Layers,
+  Coins,
+  Rocket,
+  GitFork,
+  BadgeCheck,
+} from 'lucide-react'
 import { FadeIn } from '@medialane/ui'
 import type { ShowcaseCollection } from '@/lib/showcase'
-import { siteConfig } from '@/lib/site-config'
 import { AssetMosaic } from '@/components/elements/asset-mosaic'
 
-/* ── Interactive feature showcase ──────────────────────────────────────── */
+/* ── What you can do — the four pillars ────────────────────────────────── */
 
-type Feature = {
-  id: string
-  tab: string
-  title: string
-  body: string
-  points: string[]
-  fill: string
-  text: string
-  soft: string
-}
-
-const FEATURES: Feature[] = [
+const pillars = [
   {
-    id: 'earn',
-    tab: 'Earn',
-    title: 'Earn from your work',
-    body: 'Sell your creations, license them, and collect royalties automatically every time they are used. You choose the price and the terms.',
-    points: ['Sell directly or take offers', 'Royalties on every resale', 'Licensing terms you set'],
-    fill: 'bg-brand-purple',
-    text: 'text-brand-purple',
-    soft: 'bg-brand-purple/10 text-brand-purple',
+    eyebrow: 'Own',
+    title: 'Own what you make',
+    body: 'Publish anything and get a copyright record that is timestamped the moment you hit publish — provably yours, no paperwork and no waiting.',
+    color: 'text-brand-blue',
   },
   {
-    id: 'own',
-    tab: 'Own',
-    title: 'Ownership that stays yours',
-    body: 'Publish your work and get a copyright record recognised in 181 countries — instantly, with no registration, no paperwork, and no lawyers.',
-    points: ['Recognised in 181 countries', 'Timestamped the moment you publish', 'Always provably yours'],
-    fill: 'bg-brand-blue',
-    text: 'text-brand-blue',
-    soft: 'bg-brand-blue/10 text-brand-blue',
+    eyebrow: 'Earn',
+    title: 'Earn however you want',
+    body: 'Sell it, license it, release editions, run a drop, or launch your own coin. Royalties follow your work everywhere it travels, on every resale.',
+    color: 'text-brand-purple',
   },
   {
-    id: 'open',
-    tab: 'Open',
-    title: 'Open to every creator',
-    body: 'Anyone can join. Artists, collectors, studios, and AI creators all take part as equals — no applications, no approvals, no gatekeepers.',
-    points: ['Free to join', 'No application or approval', 'For people and AI alike'],
-    fill: 'bg-brand-orange',
-    text: 'text-brand-orange',
-    soft: 'bg-brand-orange/10 text-brand-orange',
+    eyebrow: 'Open',
+    title: 'Open to everyone',
+    body: 'Free to join, with no application and no gatekeepers. People and AI creators take part the same way, as equals.',
+    color: 'text-brand-orange',
   },
   {
-    id: 'community',
-    tab: 'Community',
+    eyebrow: 'Together',
     title: 'Run by its community',
-    body: 'Medialane answers to no company. The people who use it govern it together and decide how it grows.',
-    points: ['Governed by MDLN holders', 'Every decision is public', 'No company in control'],
-    fill: 'bg-brand-rose',
-    text: 'text-brand-rose',
-    soft: 'bg-brand-rose/10 text-brand-rose',
+    body: 'No company sits above it. The people who use Medialane decide together how it grows, and every decision is made in the open.',
+    color: 'text-brand-rose',
   },
 ]
 
-function FeatureShowcase() {
-  const [active, setActive] = useState(0)
-  const f = FEATURES[active]
-  return (
-    <div>
-      <div className="mb-8 flex flex-wrap gap-2">
-        {FEATURES.map((feat, i) => (
-          <button
-            key={feat.id}
-            type="button"
-            onClick={() => setActive(i)}
-            className={`rounded-full px-5 py-2 text-sm font-semibold transition-colors ${
-              i === active ? `${feat.fill} text-white` : 'bg-muted text-muted-foreground hover:text-foreground'
-            }`}
-          >
-            {feat.tab}
-          </button>
-        ))}
-      </div>
-      <div className="grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:gap-12">
-        <div>
-          <h3 className={`text-3xl font-black leading-tight tracking-tight sm:text-4xl ${f.text}`}>{f.title}</h3>
-          <p className="mt-4 max-w-xl text-lg leading-relaxed text-muted-foreground">{f.body}</p>
-        </div>
-        <ul className="space-y-3 lg:pt-2">
-          {f.points.map((p) => (
-            <li key={p} className="flex items-center gap-3">
-              <span className={`flex size-7 shrink-0 items-center justify-center rounded-full ${f.soft}`}>
-                <Check className="size-3.5" strokeWidth={3} />
-              </span>
-              <span className="text-base font-medium text-foreground">{p}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  )
-}
+/* ── Ways to create and earn — current services ────────────────────────── */
 
-/* ── Launchpad cards ───────────────────────────────────────────────────── */
-
-const launchpad = [
+const services = [
   {
-    icon: PenLine,
-    title: 'Mint your work',
-    desc: 'Publish a song, photo, piece of writing, or video as work you fully own.',
+    icon: Sparkles,
+    title: 'Single editions',
+    desc: 'Publish a song, photo, film, or any file as a one-of-a-kind piece under your own name.',
     href: 'https://medialane.io/create/asset',
-    text: 'text-brand-purple',
     soft: 'bg-brand-purple/10 text-brand-purple',
+    text: 'text-brand-purple',
   },
   {
     icon: Layers,
-    title: 'Create a collection',
-    desc: 'Group your work into a branded collection with its own page.',
-    href: 'https://medialane.io/create/collection',
-    text: 'text-brand-blue',
+    title: 'Limited editions',
+    desc: 'Release your work in numbered copies your fans can collect and trade.',
+    href: 'https://medialane.io/launchpad',
     soft: 'bg-brand-blue/10 text-brand-blue',
+    text: 'text-brand-blue',
   },
   {
-    icon: Copy,
-    title: 'Limited editions',
-    desc: 'Release your work in a set number of numbered copies.',
+    icon: Coins,
+    title: 'Creator coins',
+    desc: 'Launch your own coin and let your community back you — you keep control of it.',
     href: 'https://medialane.io/launchpad',
-    text: 'text-brand-rose',
-    soft: 'bg-brand-rose/10 text-brand-rose',
+    soft: 'bg-brand-orange/10 text-brand-orange',
+    text: 'text-brand-orange',
   },
   {
     icon: Rocket,
     title: 'Collection drop',
-    desc: 'Run a timed public release with a set size and price.',
+    desc: 'Schedule a release and let your audience mint while the window is open.',
     href: 'https://medialane.io/launchpad',
-    text: 'text-brand-orange',
-    soft: 'bg-brand-orange/10 text-brand-orange',
+    soft: 'bg-brand-rose/10 text-brand-rose',
+    text: 'text-brand-rose',
   },
   {
-    icon: Award,
-    title: 'Participation badges',
-    desc: 'Hand out collectible badges for events and communities.',
-    href: 'https://medialane.io/launchpad',
-    text: 'text-brand-purple',
+    icon: GitFork,
+    title: 'Licensing & remix',
+    desc: 'Let others build on your work — with credit and royalties flowing back to you.',
+    href: 'https://medialane.io/licensing',
     soft: 'bg-brand-purple/10 text-brand-purple',
+    text: 'text-brand-purple',
   },
+  {
+    icon: BadgeCheck,
+    title: 'Proof of participation',
+    desc: 'Give your community a badge proving they were part of the moment.',
+    href: 'https://medialane.io/launchpad',
+    soft: 'bg-brand-blue/10 text-brand-blue',
+    text: 'text-brand-blue',
+  },
+]
+
+/* ── Go further — destinations ─────────────────────────────────────────── */
+
+const explore = [
+  { href: '/explore', title: 'Explore Medialane', desc: 'What you can do, and how it all works.' },
+  { href: '/creators-fund', title: "Creator's Fund", desc: 'Watch every fee return to the community, live.' },
+  { href: '/dao', title: 'Governance', desc: 'Proposals, voting, and how decisions get made.' },
+  { href: '/airdrop', title: "Creator's Airdrop", desc: 'How the fees reach everyone taking part.' },
+  { href: '/guidelines', title: 'Guidelines', desc: 'The documents the community runs on.' },
+  { href: '/connect', title: 'Connect', desc: 'Get involved and meet the community.' },
 ]
 
 /* ── Homepage ──────────────────────────────────────────────────────────── */
-
-const stats = [
-  { value: '21M', label: 'MDLN — the fixed community supply', text: 'text-brand-purple' },
-  { value: '181', label: 'countries recognise your copyright', text: 'text-brand-blue' },
-  { value: '100%', label: 'community-owned', text: 'text-brand-orange' },
-  { value: '1%', label: 'fee on earnings — returned to creators', text: 'text-brand-rose' },
-]
-
-const explore = [
-  { href: '/explore', title: 'Explore Medialane', desc: 'What you can do and how it works.' },
-  { href: '/dao', title: 'Governance', desc: 'Proposals, voting, and the DAO.' },
-  { href: '/token', title: 'MDLN Token', desc: 'How the community owns Medialane.' },
-  { href: '/guidelines', title: 'Guidelines', desc: 'The documents that govern the DAO.' },
-]
 
 export function HeroSection({ collections }: { collections: ShowcaseCollection[] }) {
   return (
@@ -171,7 +117,6 @@ export function HeroSection({ collections }: { collections: ShowcaseCollection[]
       {/* Hero */}
       <section className="px-4 pt-16 sm:px-6 sm:pt-20 lg:px-10 lg:pt-24 xl:px-14">
         <FadeIn className="max-w-3xl">
-          <p className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">Medialane</p>
           <h1 className="text-5xl font-black leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
             <span className="text-brand-purple">Create it.</span>{' '}
             <span className="text-brand-blue">Own it.</span>
@@ -212,43 +157,53 @@ export function HeroSection({ collections }: { collections: ShowcaseCollection[]
         </section>
       )}
 
-      {/* Feature showcase */}
+      {/* What you can do — pillars */}
       <section className="px-4 sm:px-6 lg:px-10 xl:px-14">
         <FadeIn>
-          <h2 className="mb-2 text-3xl font-black tracking-tight sm:text-4xl">
+          <h2 className="text-3xl font-black tracking-tight sm:text-4xl">
             What you can do on Medialane
           </h2>
-          <p className="mb-10 max-w-2xl text-base text-muted-foreground">
-            One platform for creating, owning, and earning from your work — and a community that
-            owns the platform itself.
+          <p className="mt-3 max-w-2xl text-base text-muted-foreground">
+            Everything a creator needs to publish, own, and earn from their work — on a platform the
+            creators run themselves.
           </p>
-          <FeatureShowcase />
+          <div className="mt-12 grid gap-x-12 gap-y-12 sm:grid-cols-2">
+            {pillars.map((p) => (
+              <div key={p.title} className="border-t border-border/50 pt-6">
+                <p className={`text-xs font-bold uppercase tracking-[0.2em] ${p.color}`}>{p.eyebrow}</p>
+                <h3 className="mt-3 text-2xl font-black tracking-tight sm:text-3xl">{p.title}</h3>
+                <p className="mt-3 max-w-md text-base leading-relaxed text-muted-foreground">{p.body}</p>
+              </div>
+            ))}
+          </div>
         </FadeIn>
       </section>
 
-      {/* Launchpad */}
+      {/* Ways to create and earn */}
       <section className="px-4 sm:px-6 lg:px-10 xl:px-14">
         <FadeIn>
           <div className="mb-8 flex flex-wrap items-end justify-between gap-3">
             <div>
               <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-brand-blue">Launchpad</p>
-              <h2 className="text-3xl font-black tracking-tight sm:text-4xl">Ways to launch your work</h2>
+              <h2 className="text-3xl font-black tracking-tight sm:text-4xl">Ways to create and earn</h2>
             </div>
-            <Link
-              href="/explore"
+            <a
+              href="https://medialane.io/launchpad"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blue transition-opacity hover:opacity-80"
             >
-              Explore all <ArrowRight className="size-4" />
-            </Link>
+              Open the launchpad <ArrowUpRight className="size-4" />
+            </a>
           </div>
-          <div className="flex gap-5 overflow-x-auto pb-2">
-            {launchpad.map(({ icon: Icon, title, desc, href, text, soft }) => (
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {services.map(({ icon: Icon, title, desc, href, text, soft }) => (
               <a
                 key={title}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex w-72 shrink-0 flex-col rounded-2xl border border-border/60 p-6 transition-colors hover:border-foreground/20"
+                className="group flex flex-col rounded-2xl border border-border/60 p-6 transition-colors hover:border-foreground/20"
               >
                 <span className={`flex size-11 items-center justify-center rounded-xl ${soft}`}>
                   <Icon className="size-5" />
@@ -264,21 +219,7 @@ export function HeroSection({ collections }: { collections: ShowcaseCollection[]
         </FadeIn>
       </section>
 
-      {/* Stats */}
-      <section className="px-4 sm:px-6 lg:px-10 xl:px-14">
-        <FadeIn>
-          <div className="grid gap-10 border-t border-border/50 pt-12 sm:grid-cols-2 lg:grid-cols-4">
-            {stats.map((s) => (
-              <div key={s.label}>
-                <p className={`text-5xl font-black leading-none tabular-nums sm:text-6xl ${s.text}`}>{s.value}</p>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.label}</p>
-              </div>
-            ))}
-          </div>
-        </FadeIn>
-      </section>
-
-      {/* Airdrop callout */}
+      {/* Creator's Airdrop callout */}
       <section className="px-4 sm:px-6 lg:px-10 xl:px-14">
         <FadeIn>
           <div className="rounded-2xl bg-gradient-to-br from-brand-orange/12 via-brand-rose/6 to-brand-purple/12 p-8 sm:p-12">
@@ -289,18 +230,26 @@ export function HeroSection({ collections }: { collections: ShowcaseCollection[]
               </span>
             </div>
             <h2 className="mt-4 max-w-2xl text-3xl font-black tracking-tight sm:text-4xl">
-              Every fee comes back to the community
+              The fees come back to the community
             </h2>
             <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-              Medialane gives all of its 1% fee back. Each time the Creator&apos;s Fund reaches
-              $1,000, it is shared with everyone taking part — and joining is free.
+              Every sale carries a 1% fee — minting is always free. It collects in one public wallet,
+              and each time it reaches $1,000 it is shared with everyone taking part. Joining is free.
             </p>
-            <Link
-              href="/airdrop"
-              className="mt-7 inline-flex items-center gap-2 rounded-xl bg-brand-orange px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-orange/90"
-            >
-              See the Creator&apos;s Airdrop <ArrowRight className="size-4" />
-            </Link>
+            <div className="mt-7 flex flex-wrap items-center gap-5">
+              <Link
+                href="/airdrop"
+                className="inline-flex items-center gap-2 rounded-xl bg-brand-orange px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-orange/90"
+              >
+                See the Creator&apos;s Airdrop <ArrowRight className="size-4" />
+              </Link>
+              <Link
+                href="/creators-fund"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground transition-colors hover:text-brand-orange"
+              >
+                Track the fund <ArrowRight className="size-4" />
+              </Link>
+            </div>
           </div>
         </FadeIn>
       </section>
@@ -309,31 +258,23 @@ export function HeroSection({ collections }: { collections: ShowcaseCollection[]
       <section className="px-4 pb-8 sm:px-6 lg:px-10 xl:px-14">
         <FadeIn>
           <h2 className="mb-8 text-3xl font-black tracking-tight sm:text-4xl">Go further</h2>
-          <div className="grid gap-px overflow-hidden rounded-2xl bg-border/60 sm:grid-cols-2">
+          <div className="grid gap-px overflow-hidden rounded-2xl bg-border/60 sm:grid-cols-2 lg:grid-cols-3">
             {explore.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
-                className="group flex items-center justify-between gap-4 bg-background p-6 transition-colors hover:bg-muted/40"
+                className="group flex flex-col justify-between gap-6 bg-background p-6 transition-colors hover:bg-muted/40"
               >
-                <span>
-                  <span className="block text-base font-bold text-foreground transition-colors group-hover:text-brand-purple">
-                    {l.title}
-                  </span>
-                  <span className="mt-1 block text-sm text-muted-foreground">{l.desc}</span>
+                <span className="text-base font-bold text-foreground transition-colors group-hover:text-brand-purple">
+                  {l.title}
                 </span>
-                <ArrowRight className="size-5 shrink-0 text-muted-foreground/30 transition-colors group-hover:text-brand-purple" />
+                <span className="flex items-end justify-between gap-4">
+                  <span className="text-sm leading-relaxed text-muted-foreground">{l.desc}</span>
+                  <ArrowRight className="size-5 shrink-0 text-muted-foreground/30 transition-colors group-hover:text-brand-purple" />
+                </span>
               </Link>
             ))}
           </div>
-          <a
-            href={siteConfig.snapshot}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-purple transition-opacity hover:opacity-80"
-          >
-            Vote on Snapshot <ArrowUpRight className="size-4" />
-          </a>
         </FadeIn>
       </section>
 

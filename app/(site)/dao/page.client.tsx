@@ -61,15 +61,6 @@ interface DAOPageClientProps {
 }
 
 export default function DAOPageClient({ documents, proposals, stats }: DAOPageClientProps) {
-  const vestedPct = Math.round((stats.vestingLocked / mdln.totalSupply) * 100)
-
-  const figures = [
-    { value: '21M', label: 'MDLN — the full community supply', text: 'text-brand-purple' },
-    { value: stats.holders ? stats.holders.toLocaleString() : '—', label: 'people hold MDLN', text: 'text-brand-blue' },
-    { value: `${vestedPct}%`, label: 'released slowly over 9 years', text: 'text-brand-orange' },
-    { value: '100%', label: 'community-owned', text: 'text-brand-rose' },
-  ]
-
   const steps = [
     'Get MDLN on Ethereum, or on Starknet — both work the same for voting.',
     'Connect your wallet to Snapshot at medialane.eth.',
@@ -97,22 +88,11 @@ export default function DAOPageClient({ documents, proposals, stats }: DAOPageCl
             The people who use Medialane decide how it grows. Anyone holding the MDLN token can
             propose changes and vote on them — and every decision is made in the open.
           </p>
-        </FadeIn>
-      </section>
-
-      {/* Figures */}
-      <section className="px-4 sm:px-6 lg:px-10 xl:px-14">
-        <FadeIn>
-          <div className="grid gap-10 border-t border-border/50 pt-12 sm:grid-cols-2 lg:grid-cols-4">
-            {figures.map((f) => (
-              <div key={f.label}>
-                <p className={`font-mono text-5xl font-black leading-none tabular-nums sm:text-6xl ${f.text}`}>
-                  {f.value}
-                </p>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{f.label}</p>
-              </div>
-            ))}
-          </div>
+          {stats.holders != null && stats.holders > 0 && (
+            <p className="mt-5 text-sm text-muted-foreground/60">
+              {stats.holders.toLocaleString()} people already hold MDLN and can vote.
+            </p>
+          )}
         </FadeIn>
       </section>
 
