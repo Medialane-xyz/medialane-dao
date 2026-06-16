@@ -28,12 +28,12 @@ Public pages live under `app/(site)/`, wrapped by `SiteShell`:
 - `/dao` — Governance: live Snapshot proposals, MDLN figures, founding documents
 - `/token` — the MDLN token (was `/members`; `/members` 301-redirects here)
 - `/airdrop` — the Creator's Airdrop
-- `/airdrop/fund` — the Creator's Fund dashboard (live balance, distribution rounds)
+- `/creators-fund` — the Creator's Fund dashboard (live balance, distribution rounds). It is its own top-level page, not a child of `/airdrop` — the Fund outlives the airdrop campaign (was `/airdrop/fund`, which 301-redirects here)
 - `/build` — slim signpost into docs.medialane.io for developers
 - `/connect` — get-involved page
 - `/guidelines`, `/guidelines/[slug]` — the DAO library: founding + legal documents (was `/docs`; `/docs/*` 301-redirects here)
 
-`next.config.mjs` `redirects()` holds all 301s: the six old protocol-doc URLs → docs.medialane.io, `/docs*` → `/guidelines*`, `/members` → `/token`.
+`next.config.mjs` `redirects()` holds all 301s: the six old protocol-doc URLs → docs.medialane.io, `/docs*` → `/guidelines*`, `/members` → `/token`, `/airdrop/fund` → `/creators-fund`.
 
 ### The Shell — `SiteShell`
 
@@ -59,7 +59,7 @@ Shared components in `components/` (`page-hero`, `stat-card`, `section-header`, 
 
 ### Server → Client Split
 
-Data pages use `page.tsx` (server: fetches, exports `metadata`) → `page.client.tsx` (`'use client'`: renders props). The homepage fetches showcase collections; `/dao` fetches governance data; `/airdrop/fund` fetches the fund status.
+Data pages use `page.tsx` (server: fetches, exports `metadata`) → `page.client.tsx` (`'use client'`: renders props). The homepage fetches showcase collections; `/dao` fetches governance data; `/creators-fund` fetches the fund status.
 
 ### Data layers (`lib/`) — best-effort, never throw
 

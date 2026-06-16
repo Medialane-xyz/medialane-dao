@@ -21,7 +21,11 @@ export interface Distribution {
 
 export interface FundToken {
   symbol: string
+  /** Full token name, e.g. "Starknet Token". */
+  name: string
   balance: number
+  /** Unit price in USD. `null` when the price is unknown. */
+  priceUsd: number | null
   /** USD value of the held balance. `null` when the price or balance is unknown. */
   usd: number | null
 }
@@ -104,7 +108,7 @@ const RPC_URL =
   'https://rpc.starknet.lava.build'
 
 const COINGECKO_PRICE =
-  'https://api.coingecko.com/api/v3/simple/price?ids=starknet,ethereum&vs_currencies=usd'
+  'https://api.coingecko.com/api/v3/simple/price?ids=starknet,ethereum,bitcoin&vs_currencies=usd'
 
 /** Fetch one token's balance held by the fund wallet. Returns `null` on failure. */
 async function fetchBalance(tokenAddress: string): Promise<bigint | null> {
@@ -136,7 +140,7 @@ async function fetchBalance(tokenAddress: string): Promise<bigint | null> {
   }
 }
 
-/** Fetch STRK + ETH USD prices keyed by CoinGecko id. Returns `{}` on failure. */
+/** Fetch STRK + ETH + BTC USD prices keyed by CoinGecko id. Returns `{}` on failure. */
 async function fetchPrices(): Promise<Record<string, number>> {
   try {
     const res = await fetch(COINGECKO_PRICE, { next: { revalidate: 300 } })
@@ -145,6 +149,7 @@ async function fetchPrices(): Promise<Record<string, number>> {
     const out: Record<string, number> = {}
     if (typeof json?.starknet?.usd === 'number') out.starknet = json.starknet.usd
     if (typeof json?.ethereum?.usd === 'number') out.ethereum = json.ethereum.usd
+    if (typeof json?.bitcoin?.usd === 'number') out.bitcoin = json.bitcoin.usd
     return out
   } catch {
     return {}
@@ -163,16 +168,16 @@ export async function getCreatorsFundStatus(): Promise<CreatorsFundStatus> {
     creatorsFund.tokens.map(async (token) => {
       const raw = await fetchBalance(token.address)
       const balance = raw === null ? 0 : toHuman(raw, token.decimals)
-      let usd: number | null
-      if (raw === null) {
-        usd = null // balance fetch failed — value unknown
-      } else if (token.coingeckoId === null) {
-        usd = balance // stablecoin — treat as $1
-      } else {
-        const price = prices[token.coingeckoId]
-        usd = typeof price === 'number' ? balance * price : null
-      }
-      return { symbol: token.symbol, balance, usd }
+      // Unit price: stablecoins ($1) vs market-priced tokens (CoinGecko).
+      const priceUsd =
+        token.coingeckoId === null
+          ? 1
+          : typeof prices[token.coingeckoId] === 'number'
+            ? prices[token.coingeckoId]
+            : null
+      // Value is only known when both the balance and the price are known.
+      const usd = raw === null || priceUsd === null ? null : balance * priceUsd
+      return { symbol: token.symbol, name: token.name, balance, priceUsd, usd }
     }),
   )
 

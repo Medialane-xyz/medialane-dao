@@ -26,7 +26,7 @@ export default async function PostPage({ params }: PostPageProps) {
   const { metadata, contentHtml } = post
 
   return (
-    <div className="px-4 sm:px-6 lg:px-10 xl:px-14 py-10 sm:py-12 lg:py-16 max-w-3xl">
+    <div className="px-4 sm:px-6 lg:px-10 xl:px-14 pt-16 pb-10 sm:pt-20 sm:pb-12 lg:pt-24 lg:pb-16 max-w-3xl">
 
       {/* Back */}
       <Link

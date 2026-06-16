@@ -21,6 +21,8 @@ const nextConfig = {
       { source: '/docs', destination: '/guidelines', permanent: true },
       // Members page renamed to Token.
       { source: '/members', destination: '/token', permanent: true },
+      // The Creator's Fund is its own thing — it outlives the airdrop campaign.
+      { source: '/airdrop/fund', destination: '/creators-fund', permanent: true },
     ]
   },
 }

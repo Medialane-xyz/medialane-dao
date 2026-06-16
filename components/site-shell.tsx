@@ -52,6 +52,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
               <Link href="/token" className="hover:text-foreground transition-colors">Token</Link>
               <Link href="/build" className="hover:text-foreground transition-colors">Build</Link>
               <Link href="/airdrop" className="hover:text-foreground transition-colors">Airdrop</Link>
+              <Link href="/creators-fund" className="hover:text-foreground transition-colors">Creator's Fund</Link>
               <Link href="/guidelines" className="hover:text-foreground transition-colors">Guidelines</Link>
               <Link href="/connect" className="hover:text-foreground transition-colors">Connect</Link>
               <a href="https://medialane.io" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">App ↗</a>

@@ -159,7 +159,7 @@ export default function AirdropPageClient() {
               every payment — nothing is hidden.
             </p>
             <Link
-              href="/airdrop/fund"
+              href="/creators-fund"
               className="mt-7 inline-flex items-center gap-2 rounded-xl bg-brand-blue px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-blue/90"
             >
               View the Creator&apos;s Fund <ArrowRight className="size-4" />
