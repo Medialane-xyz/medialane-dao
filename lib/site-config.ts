@@ -72,8 +72,17 @@ export const creatorsFund = {
       coingeckoId: 'ethereum' as string | null,
     },
     {
+      // Circle-native USDC — the asset x402 agent payments settle in.
       symbol: 'USDC',
       name: 'USD Coin',
+      address: '0x033068f6539f8e6e6b131e6b2b814e6c34a5224bc66947c47dab9dfee93b35fb',
+      decimals: 6,
+      coingeckoId: null as string | null,
+    },
+    {
+      // Legacy bridged USDC.e — kept so existing fund holdings still count.
+      symbol: 'USDC.e',
+      name: 'USD Coin (bridged)',
       address: '0x053c91253bc9682c04929ca02ed00b3e423f6710d2ee7e0d5ebb06f3ecf368a8',
       decimals: 6,
       coingeckoId: null as string | null,
