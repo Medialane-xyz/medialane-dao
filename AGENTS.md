@@ -9,7 +9,7 @@ This is the **governance and documentation site** for Medialane DAO (`medialane.
 1. **Humans** — Token holders, creators, developers, and partners seeking governance documents, protocol documentation, and contact information.
 2. **AI agents** — Systems that need structured facts about the Medialane protocol, contracts, token, and governance model.
 
-The **application** lives at `medialane.io` (separate repo: `medialane-dapp`). Do not confuse the two.
+The **application** lives at `medialane.io` (separate repo: `medialane-starknet`). Do not confuse the two.
 
 ---
 

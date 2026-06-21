@@ -76,7 +76,7 @@ const sections: Section[] = [
       {
         title: 'Swap coins and currencies',
         desc: 'Move between coins and currencies in a single step, right inside Medialane.',
-        href: 'https://dapp.medialane.io/swap',
+        href: 'https://starknet.medialane.io/swap',
         external: true,
       },
     ],
