@@ -10,6 +10,9 @@ import {
   Rocket,
   GitFork,
   BadgeCheck,
+  Ticket,
+  Users,
+  Handshake,
 } from 'lucide-react'
 import { FadeIn } from '@medialane/ui'
 import type { ShowcaseCollection } from '@/lib/showcase'
@@ -124,6 +127,30 @@ const services = [
     href: 'https://medialane.io/launchpad/pop',
     soft: 'bg-brand-blue/10 text-brand-blue',
     text: 'text-brand-blue',
+  },
+  {
+    icon: Ticket,
+    title: 'Tickets',
+    desc: 'Sell tickets to an event or an experience — real, resellable, and impossible to fake.',
+    href: 'https://medialane.io/launchpad/tickets',
+    soft: 'bg-brand-orange/10 text-brand-orange',
+    text: 'text-brand-orange',
+  },
+  {
+    icon: Users,
+    title: 'Membership club',
+    desc: 'Run a club for your biggest fans — open, invite-only, or paid, your call.',
+    href: 'https://medialane.io/launchpad/club',
+    soft: 'bg-brand-purple/10 text-brand-purple',
+    text: 'text-brand-purple',
+  },
+  {
+    icon: Handshake,
+    title: 'Sponsorship',
+    desc: 'Let sponsors bid on your work and get paid directly — no middleman holding the money.',
+    href: 'https://medialane.io/launchpad/sponsorship',
+    soft: 'bg-brand-rose/10 text-brand-rose',
+    text: 'text-brand-rose',
   },
 ]
 

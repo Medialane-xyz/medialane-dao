@@ -118,6 +118,24 @@ const sections: Section[] = [
         href: 'https://medialane.io/launchpad/pop',
         external: true,
       },
+      {
+        title: 'Sell tickets',
+        desc: 'Sell tickets to an event or an experience. They can be resold like any collectible, and you can tell a used one from a valid one at a glance.',
+        href: 'https://medialane.io/launchpad/tickets',
+        external: true,
+      },
+      {
+        title: 'Run a membership club',
+        desc: 'Give your biggest fans a membership card that proves they belong — open to everyone, invite-only, or paid.',
+        href: 'https://medialane.io/launchpad/club',
+        external: true,
+      },
+      {
+        title: 'Get sponsored',
+        desc: 'Offer a sponsorship on a piece you own. Sponsors bid, you pick the one you want, and you get paid directly — no middleman holding the money.',
+        href: 'https://medialane.io/launchpad/sponsorship',
+        external: true,
+      },
     ],
   },
   {
