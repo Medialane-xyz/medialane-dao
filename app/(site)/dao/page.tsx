@@ -5,7 +5,7 @@ import DAOPageClient from './page.client'
 
 export const metadata: Metadata = {
   title: 'DAO | Medialane',
-  description: 'Medialane DAO governance — proposals, token stats, and founding documents.',
+  description: 'Medialane DAO governance: proposals, token stats, and founding documents.',
 }
 
 export default async function DAOPage() {

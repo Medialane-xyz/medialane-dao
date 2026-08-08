@@ -11,7 +11,7 @@ These guidelines are designed to ensure integrity, compliance, and a commitment 
 
 ## 1. Introduction
 
-Medialane is not a product — it's infrastructure for humanity:
+Medialane is not a product; it's infrastructure for humanity:
 
 * Free to use, fork, and build on.
 * Open-source and auditable.
@@ -27,7 +27,7 @@ Medialane DAO is a decentralized autonomous organization governed by MDLN token 
 * No KYC or registration is required from community members for protocol use.
 * Participation is open and pseudonymous.
 
-This structure aligns accountability with decentralized governance — preserving community ownership while operating transparently.
+This structure aligns accountability with decentralized governance, preserving community ownership while operating transparently.
 
 ## 3. Purpose & Scope
 
@@ -111,7 +111,7 @@ To protect your intellectual property and contributions:
 * Stay informed about international IP and crypto regulations.
 * Verify contract addresses before interacting with any Medialane smart contract.
 
-**Verifying contract addresses:** the complete, current list of Medialane's live contracts — marketplace venues, collection and launchpad factories, credentials, and the MDLN token — is published at [docs.medialane.io/dev/contracts](https://docs.medialane.io/dev/contracts). Always confirm an address against that registry before signing any transaction.
+**Verifying contract addresses:** the complete, current list of Medialane's live contracts (marketplace venues, collection and launchpad factories, credentials, and the MDLN token) is published at [docs.medialane.io/dev/contracts](https://docs.medialane.io/dev/contracts). Always confirm an address against that registry before signing any transaction.
 
 ## 10. Legal Resources & References
 

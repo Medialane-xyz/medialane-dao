@@ -40,7 +40,7 @@ const ACCEPTED = creatorsFund.tokens.map((t) => t.symbol).join(' · ')
 const STEPS = [
   {
     title: 'You buy or sell',
-    body: 'Every sale and paid mint on Medialane carries a 1% fee — free mints stay free. That fee goes straight to the Creator’s Fund.',
+    body: 'Every sale and paid mint on Medialane carries a 1% fee; free mints stay free. That fee goes straight to the Creator’s Fund.',
   },
   {
     title: 'The fund fills up',
@@ -48,7 +48,7 @@ const STEPS = [
   },
   {
     title: 'Everyone gets a share',
-    body: 'The $1,000 is airdropped to everyone taking part. Your share is set by your Score Board points — earned by creating, collecting, and trading on Medialane.',
+    body: 'The $1,000 is airdropped to everyone taking part. Your share is set by your Score Board points, earned by creating, collecting, and trading on Medialane.',
   },
 ]
 
@@ -85,7 +85,7 @@ export function CreatorsFundClient({ status }: { status: CreatorsFundStatus }) {
       <PageHero
         eyebrow="Creator's Fund"
         title="Every dollar comes back to you"
-        description="Medialane charges a small 1% fee on earnings — minting is always free. All of it goes into one public wallet and is airdropped back to the creators and collectors who use the platform."
+        description="Medialane charges a small 1% fee on earnings; minting is always free. All of it goes into one public wallet and is airdropped back to the creators and collectors who use the platform."
       />
 
       {/* Live status */}
@@ -129,7 +129,7 @@ export function CreatorsFundClient({ status }: { status: CreatorsFundStatus }) {
           <p className="text-sm text-foreground leading-relaxed">
             <span className="font-semibold">A note on year one.</span> Platform revenue normally
             accrues to the Medialane DAO treasury. While the Creator’s Airdrop campaign is running,
-            it flows directly into the Creator’s Fund instead — keeping it in one wallet so every
+            it flows directly into the Creator’s Fund instead, keeping it in one wallet so every
             dollar goes straight back to the community without an extra transfer. From year two,
             MDLN holders vote each year on what the fee supports.
           </p>
@@ -141,7 +141,7 @@ export function CreatorsFundClient({ status }: { status: CreatorsFundStatus }) {
         <SectionHeader label="See it yourself" size="lg" />
         <p className="text-sm text-foreground max-w-2xl mb-5">
           The Creator&apos;s Fund is a public wallet on Starknet. Anyone can watch every dollar move
-          in and out — nothing is hidden, nothing is promised that the chain can&apos;t prove.
+          in and out; nothing is hidden, nothing is promised that the chain can&apos;t prove.
         </p>
 
         <div className="bento-cell overflow-hidden max-w-3xl">
@@ -201,7 +201,7 @@ export function CreatorsFundClient({ status }: { status: CreatorsFundStatus }) {
             </table>
           ) : (
             <p className="p-5 text-sm text-muted-foreground">
-              Live balances are temporarily unavailable — view them directly on{' '}
+              Live balances are temporarily unavailable; view them directly on{' '}
               <a href={status.voyager} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
                 Voyager
               </a>
@@ -216,7 +216,7 @@ export function CreatorsFundClient({ status }: { status: CreatorsFundStatus }) {
         <SectionHeader label="Add to the fund" size="lg" />
         <div className="bento-cell p-6 sm:p-8 max-w-3xl">
           <p className="text-sm text-foreground leading-relaxed max-w-2xl">
-            The fund grows on its own from the 1% platform fee — but anyone can top it up. Send any
+            The fund grows on its own from the 1% platform fee, but anyone can top it up. Send any
             token on Starknet to the address below and it joins the next $1,000 airdrop straight back
             to the community. Every contribution is public and on-chain.
           </p>

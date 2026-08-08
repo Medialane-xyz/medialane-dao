@@ -30,7 +30,7 @@ To build trust-minimized infrastructure where content, code, and culture can be 
 The purpose of Medialane is to create public goods and services that empower creators and intellectual property (IP) owners. By tokenizing intelligence in Programmable IP, Medialane aims to establish new ways to create value that is accessible and inclusive through decentralized technology, including blockchain and zero-knowledge proofs.
 
 ### Section 3: Roots
-Rooted in privacy, freedom, transparency, and public goods — Medialane exists to dismantle bureaucracy silos and cultivate an open, composable information economy.
+Rooted in privacy, freedom, transparency, and public goods, Medialane exists to dismantle bureaucracy silos and cultivate an open, composable information economy.
 
 ---
 
@@ -94,7 +94,7 @@ To efficiently manage the DAO's operations, specialized committees and working g
 The MDLN token is the governance and utility token of Medialane DAO.
 
 * **Contract:** `0x0DC90d57F3Aa3E836Ffd6E777E543a43A487dB15` (Ethereum mainnet)
-* **Total Supply:** 21,000,000 MDLN (fixed — no further minting)
+* **Total Supply:** 21,000,000 MDLN (fixed, no further minting)
 * **Standard:** ERC20Votes + ERC20Permit (Starknet bridge-compatible)
 
 ### Section 2: Distribution Philosophy
@@ -104,13 +104,13 @@ Medialane DAO operates with no investor allocations, no VC pre-sales, and no ins
 90% of MDLN (18,900,000 tokens) is time-locked in a trustless vesting contract (`0x912f61d5e6db656ec1a7be8db8957c5f1e345d58`), releasing 2,100,000 MDLN per year for 9 years. The remaining 10% (2,100,000 MDLN) is held in the Gnosis Safe as operational runway.
 
 ### Section 4: Sustainability
-Medialane applies a single 1% fee on earnings — sales, paid mints, and launches (never free mints). The marketplace and launchpad protocols themselves are zero-fee; the fee is applied at the platform layer. This revenue accrues to the DAO treasury, creating a path to treasury-positive operations as usage grows. For year one, revenue flows directly to the Creator's Fund and is returned to the community through the Creator's Airdrop.
+Medialane applies a single 1% fee on earnings: sales, paid mints, and launches (never free mints). The marketplace and launchpad protocols themselves are zero-fee; the fee is applied at the platform layer. This revenue accrues to the DAO treasury, creating a path to treasury-positive operations as usage grows. For year one, revenue flows directly to the Creator's Fund and is returned to the community through the Creator's Airdrop.
 
 ---
 
 ## Article V: Incentives
 
-To ensure the long-term viability of Medialane as a public goods provider, the primary purpose of fees and revenue services is to fund continuing development and improvement. All DAO revenue — fees, premium services, royalties — is cycled back into support:
+To ensure the long-term viability of Medialane as a public goods provider, the primary purpose of fees and revenue services is to fund continuing development and improvement. All DAO revenue (fees, premium services, royalties) is cycled back into support:
 * Improvement of the Medialane protocol and services.
 * Continued development infrastructure.
 * Grants aligned with DAO goals.
@@ -138,7 +138,7 @@ Medialane enables the tokenization of intellectual property using Starknet's hig
 * Music, literature, or datasets.
 
 ### Section 2: Licensing and Monetization
-Ownership is recorded on-chain. Licensing terms are expressed in programmable IP metadata and soft-enforced by default at the platform layer — interpreted and applied selectively per jurisdiction, not hardcoded into immutable contracts. The protocol records and exposes:
+Ownership is recorded on-chain. Licensing terms are expressed in programmable IP metadata and soft-enforced by default at the platform layer: interpreted and applied selectively per jurisdiction, not hardcoded into immutable contracts. The protocol records and exposes:
 * Proof of ownership.
 * License terms and attribution.
 * Usage rights as programmable metadata.
@@ -165,7 +165,7 @@ The DAO's governance contracts on Ethereum mainnet:
 | MDLN Vesting | Ethereum | `0x912f61d5e6db656ec1a7be8db8957c5f1e345d58` |
 | DAO Treasury | Ethereum | `0xA7603783edD8ee6FF4B085f90Af53341282d244C` |
 
-The live Starknet protocol contracts — marketplace venues, collection and launchpad factories, and credentials — are published, with current addresses, at [docs.medialane.io/dev/contracts](https://docs.medialane.io/dev/contracts). Always verify an address against that registry before interacting.
+The live Starknet protocol contracts (marketplace venues, collection and launchpad factories, and credentials) are published, with current addresses, at [docs.medialane.io/dev/contracts](https://docs.medialane.io/dev/contracts). Always verify an address against that registry before interacting.
 
 ### Section 3: Security
 Medialane's smart contracts are professionally audited, verified, and open-source on their respective block explorers.

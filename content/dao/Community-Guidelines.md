@@ -11,7 +11,7 @@ Welcome to Medialane, a decentralized protocol for creators and communities. The
 
 ## 1. Introduction
 
-Medialane is not a product—it’s infrastructure for humanity:
+Medialane is not a product; it’s infrastructure for humanity:
 
 * Free to use, fork, and build on.
 * Open-source and auditable.
@@ -20,7 +20,7 @@ Medialane is not a product—it’s infrastructure for humanity:
 
 ## 2. Purpose & Ethos
 
-Medialane is more than a protocol—it’s a movement to empower creators through decentralized intellectual property. These guidelines are designed to:
+Medialane is more than a protocol; it’s a movement to empower creators through decentralized intellectual property. These guidelines are designed to:
 
 * Foster a respectful, inclusive, and collaborative environment.
 * Encourage open-source innovation and DAO participation.

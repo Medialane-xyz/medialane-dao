@@ -12,7 +12,7 @@ const rounds = [
   },
   {
     title: 'Year one',
-    desc: 'All platform revenue is returned to the community this way — the campaign runs until July 1, 2027.',
+    desc: 'All platform revenue is returned to the community this way; the campaign runs until July 1, 2027.',
   },
   {
     title: 'After year one',
@@ -21,10 +21,10 @@ const rounds = [
 ]
 
 const fair = [
-  'Everything is public — every round and every payment can be checked by anyone.',
-  'Real activity only — bot and duplicate accounts are excluded automatically.',
-  'No moment to game — your share reflects the whole campaign, not a single snapshot.',
-  'Community rules — MDLN holders can adjust how shares are decided.',
+  'Everything is public: every round and every payment can be checked by anyone.',
+  'Real activity only: bot and duplicate accounts are excluded automatically.',
+  'No moment to game: your share reflects the whole campaign, not a single snapshot.',
+  'Community rules: MDLN holders can adjust how shares are decided.',
 ]
 
 const steps = [
@@ -38,7 +38,7 @@ const steps = [
   },
   {
     title: 'Receive your share',
-    desc: 'When a round is paid out, your points decide your share — there is nothing to claim by hand.',
+    desc: 'When a round is paid out, your points decide your share; there is nothing to claim by hand.',
   },
 ]
 
@@ -58,7 +58,7 @@ export default function AirdropPageClient() {
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
             All of Medialane&apos;s revenue flows back to the people who use it. As the platform
-            earns, the money is shared with the community — and taking part is free.
+            earns, the money is shared with the community, and taking part is free.
           </p>
         </FadeIn>
       </section>
@@ -71,7 +71,7 @@ export default function AirdropPageClient() {
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
             Medialane charges a small 1% fee on earnings, and all of it goes back. The fee collects
             in the Creator&apos;s Fund. Each time the Fund reaches $1,000, that amount is shared with
-            everyone taking part — weighted by how active they have been.
+            everyone taking part, weighted by how active they have been.
           </p>
         </FadeIn>
       </section>
@@ -97,10 +97,10 @@ export default function AirdropPageClient() {
           <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-brand-purple">Your share</p>
           <h2 className="text-3xl font-black tracking-tight sm:text-4xl">The more you take part, the more you receive</h2>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Your share of each round is decided by your Score Board points — earned by creating,
+            Your share of each round is decided by your Score Board points, earned by creating,
             collecting, and trading on Medialane. There is no fixed tier and no cap: every active
-            participant is included — people and AI agents alike, judged by what they do, not who
-            they are — and doing more simply earns a larger share.
+            participant is included, people and AI agents alike, judged by what they do, not who
+            they are, and doing more simply earns a larger share.
           </p>
         </FadeIn>
       </section>
@@ -157,7 +157,7 @@ export default function AirdropPageClient() {
             </h2>
             <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
               The Creator&apos;s Fund is a public wallet. Anyone can see its balance, every round, and
-              every payment — nothing is hidden.
+              every payment, with nothing hidden.
             </p>
             <Link
               href="/creators-fund"
@@ -174,7 +174,7 @@ export default function AirdropPageClient() {
       <section className="px-4 pb-8 sm:px-6 lg:px-10 xl:px-14">
         <p className="max-w-2xl text-xs leading-relaxed text-muted-foreground/50">
           Airdrop rules are governed by MDLN holders and may change between cycles. The Creator&apos;s
-          Airdrop is one of several ways the community can choose to use platform revenue — not a
+          Airdrop is one of several ways the community can choose to use platform revenue, not a
           guaranteed allocation. All qualifying activity is verified publicly.
         </p>
       </section>

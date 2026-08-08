@@ -26,7 +26,7 @@ export default function GuidelinesPage() {
             How the DAO works
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            The documents that govern Medialane — its founding charter, community guidelines, and
+            The documents that govern Medialane: its founding charter, community guidelines, and
             legal policies. Everything here is public and shapes how the community runs the
             platform.
           </p>
@@ -76,7 +76,7 @@ export default function GuidelinesPage() {
             </h2>
             <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
               Step-by-step guides, the developer SDK, and everything about how the platform works
-              live in one place — the Medialane documentation hub.
+              live in one place, the Medialane documentation hub.
             </p>
             <a
               href="https://docs.medialane.io"
