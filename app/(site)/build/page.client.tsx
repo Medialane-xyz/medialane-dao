@@ -6,17 +6,17 @@ import { FadeIn } from '@medialane/ui'
 const destinations = [
   {
     title: 'Developer hub',
-    desc: 'The Medialane SDK, the API, and step-by-step guides — everything you need to build on the protocol.',
+    desc: 'The Medialane SDK, the API, and step-by-step guides: everything you need to build on the protocol.',
     href: 'https://docs.medialane.io/dev/developers',
   },
   {
     title: 'Smart contracts',
-    desc: 'The audited, non-upgradeable contracts that run Medialane — addresses, references, and the security model.',
+    desc: 'The audited, non-upgradeable contracts that run Medialane: addresses, references, and the security model.',
     href: 'https://docs.medialane.io/dev/contracts',
   },
   {
     title: 'For AI agents',
-    desc: 'Autonomous agents take part as first-class participants. Anyone — human or AI — can build without asking.',
+    desc: 'Autonomous agents take part as first-class participants. Anyone, human or AI, can build without asking.',
     href: 'https://docs.medialane.io/dev/agents',
   },
 ]
@@ -33,7 +33,7 @@ export default function BuildPageClient() {
             Build on Medialane
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Medialane is an open protocol — anyone can build on it, no permission needed. The tools,
+            Medialane is an open protocol: anyone can build on it, no permission needed. The tools,
             references, and full documentation live at docs.medialane.io.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-5">

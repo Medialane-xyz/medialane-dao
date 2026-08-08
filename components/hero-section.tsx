@@ -24,7 +24,7 @@ const pillars = [
   {
     eyebrow: 'Own',
     title: 'Own what you make',
-    body: 'Publish anything and get a copyright record that is timestamped the moment you hit publish — provably yours, no paperwork and no waiting.',
+    body: 'Publish anything and get a copyright record that is timestamped the moment you hit publish: provably yours, no paperwork and no waiting.',
     color: 'text-brand-blue',
   },
   {
@@ -62,11 +62,11 @@ const guarantees = [
   },
   {
     title: 'Nothing gets taken down or rewritten',
-    body: 'Your record lives on a public ledger no company controls — not even us.',
+    body: 'Your record lives on a public ledger no company controls, not even us.',
     dot: 'bg-brand-orange',
   },
   {
-    title: 'Don’t trust us — check',
+    title: 'Don’t trust us: check',
     body: 'Every fee, sale, and payment is public and provable on-chain.',
     dot: 'bg-brand-rose',
   },
@@ -99,7 +99,7 @@ const services = [
   {
     icon: Coins,
     title: 'Creator coins',
-    desc: 'Launch your own coin and let your community back you — you keep control of it.',
+    desc: 'Launch your own coin and let your community back you; you keep control of it.',
     href: 'https://medialane.io/launchpad/coin',
     soft: 'bg-brand-orange/10 text-brand-orange',
     text: 'text-brand-orange',
@@ -115,7 +115,7 @@ const services = [
   {
     icon: GitFork,
     title: 'Licensing & remix',
-    desc: 'Let others build on your work — with credit and royalties flowing back to you.',
+    desc: 'Let others build on your work, with credit and royalties flowing back to you.',
     href: 'https://medialane.io/create/licensing',
     soft: 'bg-brand-purple/10 text-brand-purple',
     text: 'text-brand-purple',
@@ -131,7 +131,7 @@ const services = [
   {
     icon: Ticket,
     title: 'Tickets',
-    desc: 'Sell tickets to an event or an experience — real, resellable, and impossible to fake.',
+    desc: 'Sell tickets to an event or an experience: real, resellable, and impossible to fake.',
     href: 'https://medialane.io/launchpad/tickets',
     soft: 'bg-brand-orange/10 text-brand-orange',
     text: 'text-brand-orange',
@@ -139,7 +139,7 @@ const services = [
   {
     icon: Users,
     title: 'Membership club',
-    desc: 'Run a club for your biggest fans — open, invite-only, or paid, your call.',
+    desc: 'Run a club for your biggest fans: open, invite-only, or paid, your call.',
     href: 'https://medialane.io/launchpad/club',
     soft: 'bg-brand-purple/10 text-brand-purple',
     text: 'text-brand-purple',
@@ -147,7 +147,7 @@ const services = [
   {
     icon: Handshake,
     title: 'Sponsorship',
-    desc: 'Let sponsors bid on your work and get paid directly — no middleman holding the money.',
+    desc: 'Let sponsors bid on your work and get paid directly, no middleman holding the money.',
     href: 'https://medialane.io/launchpad/sponsorship',
     soft: 'bg-brand-rose/10 text-brand-rose',
     text: 'text-brand-rose',
@@ -181,7 +181,7 @@ export function HeroSection({ collections }: { collections: ShowcaseCollection[]
             <span className="text-brand-orange">Earn from it.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
-            Medialane is the home for creative work — where anyone who creates, from artists and
+            Medialane is the home for creative work, where anyone who creates, from artists and
             studios to AI agents, earns from what they make and keeps full ownership of it. Built
             and run by the people who use it.
           </p>
@@ -221,7 +221,7 @@ export function HeroSection({ collections }: { collections: ShowcaseCollection[]
             What you can do on Medialane
           </h2>
           <p className="mt-3 max-w-2xl text-base text-muted-foreground">
-            Everything a creator needs to publish, own, and earn from their work — on a platform the
+            Everything a creator needs to publish, own, and earn from their work, on a platform the
             creators run themselves.
           </p>
           <div className="mt-12 grid gap-x-12 gap-y-12 sm:grid-cols-2">
@@ -241,7 +241,7 @@ export function HeroSection({ collections }: { collections: ShowcaseCollection[]
         <FadeIn>
           <h2 className="text-3xl font-black tracking-tight sm:text-4xl">What you can count on</h2>
           <p className="mt-3 max-w-2xl text-base text-muted-foreground">
-            Not promises — properties of how Medialane is built. Each one is something you can
+            Not promises: properties of how Medialane is built. Each one is something you can
             check for yourself.
           </p>
           <div className="mt-10 divide-y divide-border/50 border-t border-border/50">
@@ -315,7 +315,7 @@ export function HeroSection({ collections }: { collections: ShowcaseCollection[]
               The fees come back to the community
             </h2>
             <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-              Every sale carries a 1% fee — minting is always free. It collects in one public wallet,
+              Every sale carries a 1% fee; minting is always free. It collects in one public wallet,
               and each time it reaches $1,000 it is shared with everyone taking part. Joining is free.
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-5">

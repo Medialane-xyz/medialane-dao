@@ -62,7 +62,7 @@ interface DAOPageClientProps {
 
 export default function DAOPageClient({ documents, proposals, stats }: DAOPageClientProps) {
   const steps = [
-    'Get MDLN on Ethereum, or on Starknet — both work the same for voting.',
+    'Get MDLN on Ethereum, or on Starknet: both work the same for voting.',
     'Connect your wallet to Snapshot at medialane.eth.',
     'Vote on any open proposal. One MDLN is one vote, and voting is free.',
   ]
@@ -86,7 +86,7 @@ export default function DAOPageClient({ documents, proposals, stats }: DAOPageCl
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
             The people who use Medialane decide how it grows. Anyone holding the MDLN token can
-            propose changes and vote on them — and every decision is made in the open.
+            propose changes and vote on them, and every decision is made in the open.
           </p>
           {stats.holders != null && stats.holders > 0 && (
             <p className="mt-5 text-sm text-muted-foreground/60">
@@ -102,7 +102,7 @@ export default function DAOPageClient({ documents, proposals, stats }: DAOPageCl
           <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-brand-orange">Revenue</p>
           <h2 className="text-3xl font-black tracking-tight sm:text-4xl">A small fee, returned to creators</h2>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Medialane charges a small 1% fee on earnings — and all of it goes back. For the first year it
+            Medialane charges a small 1% fee on earnings, and all of it goes back. For the first year it
             funds the Creator&apos;s Airdrop, sharing platform revenue with everyone who takes part.
             Each year after, MDLN holders vote together on what the fee should support.
           </p>
@@ -131,7 +131,7 @@ export default function DAOPageClient({ documents, proposals, stats }: DAOPageCl
           </div>
           {proposals.length === 0 ? (
             <p className="mt-6 border-t border-border/50 pt-8 text-base text-muted-foreground">
-              No proposals yet —{' '}
+              No proposals yet;{' '}
               <a
                 href={siteConfig.snapshot}
                 target="_blank"

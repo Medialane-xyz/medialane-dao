@@ -61,7 +61,7 @@ export default function ConnectPageClient() {
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
             Use the apps, vote on Snapshot, build on the protocol, or just say hello. Medialane is
-            open to everyone — there is no gate to take part.
+            open to everyone, with no gate to take part.
           </p>
         </FadeIn>
       </section>

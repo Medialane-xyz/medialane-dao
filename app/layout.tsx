@@ -16,7 +16,7 @@ import { colors } from '@/lib/site-config'
 export const metadata: Metadata = {
   title: 'Medialane | Creator Capital Markets on the Integrity Web',
   description:
-    'Medialane is the monetization hub of the new creative economy—bridging creators, businesses, and AI agents through a unified infrastructure.',
+    'Medialane is the monetization hub of the new creative economy, bridging creators, businesses, and AI agents through a unified infrastructure.',
   icons: {
     icon: [
       { url: '/icon-light-32x32.png', media: '(prefers-color-scheme: light)' },

@@ -21,7 +21,7 @@ Medialane is designed to operate with minimal data collection:
 * **Decentralized Identity:** No centralized accounts, passwords, or KYC processes.
 * **Minimal Data Collection:** No default cookies, trackers, or behavioral analytics.
 
-*We believe privacy is a right—not a feature.*
+*We believe privacy is a right, not a feature.*
 
 ## 3. Voluntary Data Disclosure
 
@@ -35,7 +35,7 @@ Users may choose to share limited data when engaging with optional services:
 
 ## 4. Data Security
 
-Medialane holds no custodial accounts and collects no personal data, so there is little to secure on our side. Security lives where it belongs — in the protocol and in your own wallet:
+Medialane holds no custodial accounts and collects no personal data, so there is little to secure on our side. Security lives where it belongs: in the protocol and in your own wallet:
 
 * **Self-custody:** You control your assets and identity through your own wallet and keys.
 * **Audited contracts:** Core smart contracts are professionally audited and verified on-chain.

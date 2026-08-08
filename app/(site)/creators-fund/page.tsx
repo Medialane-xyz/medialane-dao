@@ -5,7 +5,7 @@ import { CreatorsFundClient } from './page.client'
 export const metadata: Metadata = {
   title: "Creator's Fund | Medialane DAO",
   description:
-    "Track the Medialane Creator's Fund — the public wallet that collects the 1% platform fee and airdrops it back to creators and collectors.",
+    "Track the Medialane Creator's Fund: the public wallet that collects the 1% platform fee and airdrops it back to creators and collectors.",
 }
 
 export default async function CreatorsFundPage() {

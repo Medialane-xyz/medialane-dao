@@ -15,7 +15,7 @@ const distribution = [
 const steps = [
   {
     title: 'Get MDLN',
-    desc: 'MDLN trades on Ethereum and on Starknet. Pick whichever network you already use — the token is the same on both.',
+    desc: 'MDLN trades on Ethereum and on Starknet. Pick whichever network you already use; the token is the same on both.',
   },
   {
     title: 'Connect to Snapshot',

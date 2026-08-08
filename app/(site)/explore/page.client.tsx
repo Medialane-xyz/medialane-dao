@@ -20,7 +20,7 @@ const sections: Section[] = [
     accent: 'text-brand-purple',
     border: 'border-brand-purple/50',
     heading: 'Publish and shape your work',
-    intro: 'Turn what you make into something you fully own — in seconds, with no fees and no paperwork.',
+    intro: 'Turn what you make into something you fully own, in seconds, with no fees and no paperwork.',
     items: [
       {
         title: 'Publish your work',
@@ -30,7 +30,7 @@ const sections: Section[] = [
       },
       {
         title: 'Create a collection',
-        desc: 'Group related work into a branded collection — an album, a series, a gallery.',
+        desc: 'Group related work into a branded collection: an album, a series, a gallery.',
         href: 'https://medialane.io/create/collection',
         external: true,
       },
@@ -47,7 +47,7 @@ const sections: Section[] = [
     accent: 'text-brand-blue',
     border: 'border-brand-blue/50',
     heading: 'Sell, collect, and earn',
-    intro: 'A full marketplace for creative work — sell yours, collect others, and earn every time your work changes hands.',
+    intro: 'A full marketplace for creative work: sell yours, collect others, and earn every time your work changes hands.',
     items: [
       {
         title: 'Sell and make offers',
@@ -57,19 +57,19 @@ const sections: Section[] = [
       },
       {
         title: 'Earn royalties forever',
-        desc: 'Set a royalty once and receive it automatically every time your work is resold — no chasing payments.',
+        desc: 'Set a royalty once and receive it automatically every time your work is resold, no chasing payments.',
         href: 'https://medialane.io/marketplace',
         external: true,
       },
       {
         title: 'Build your profile',
-        desc: 'A dedicated page for your work, your collections, and your story — with content only your collectors can see.',
+        desc: 'A dedicated page for your work, your collections, and your story, with content only your collectors can see.',
         href: 'https://medialane.io/creators',
         external: true,
       },
       {
         title: 'Trade creator coins',
-        desc: 'Browse and trade creator and community coins — back the people whose work you believe in.',
+        desc: 'Browse and trade creator and community coins, backing the people whose work you believe in.',
         href: 'https://medialane.io/coins',
         external: true,
       },
@@ -86,7 +86,7 @@ const sections: Section[] = [
     accent: 'text-brand-orange',
     border: 'border-brand-orange/50',
     heading: 'Release work to the world',
-    intro: 'Bring an audience to a launch — on your terms, on a schedule you set.',
+    intro: 'Bring an audience to a launch, on your terms, on a schedule you set.',
     items: [
       {
         title: 'Run a drop',
@@ -96,7 +96,7 @@ const sections: Section[] = [
       },
       {
         title: 'Release limited editions',
-        desc: 'Offer your work in numbered copies your fans can collect and trade — ideal for music, writing, and prints.',
+        desc: 'Offer your work in numbered copies your fans can collect and trade, ideal for music, writing, and prints.',
         href: 'https://medialane.io/launchpad/nfteditions',
         external: true,
       },
@@ -126,13 +126,13 @@ const sections: Section[] = [
       },
       {
         title: 'Run a membership club',
-        desc: 'Give your biggest fans a membership card that proves they belong — open to everyone, invite-only, or paid.',
+        desc: 'Give your biggest fans a membership card that proves they belong: open to everyone, invite-only, or paid.',
         href: 'https://medialane.io/launchpad/club',
         external: true,
       },
       {
         title: 'Get sponsored',
-        desc: 'Offer a sponsorship on a piece you own. Sponsors bid, you pick the one you want, and you get paid directly — no middleman holding the money.',
+        desc: 'Offer a sponsorship on a piece you own. Sponsors bid, you pick the one you want, and you get paid directly, no middleman holding the money.',
         href: 'https://medialane.io/launchpad/sponsorship',
         external: true,
       },
@@ -143,15 +143,15 @@ const sections: Section[] = [
     accent: 'text-brand-rose',
     border: 'border-brand-rose/50',
     heading: 'Your rights, built in',
-    intro: 'Ownership and protection are not extra steps — they come the moment you publish.',
+    intro: 'Ownership and protection are not extra steps; they come the moment you publish.',
     items: [
       {
         title: 'Copyright almost everywhere',
-        desc: 'Publishing timestamps your work as yours under the same international treaty that protects books and music in nearly every country — instantly, with no registration or lawyers.',
+        desc: 'Publishing timestamps your work as yours under the same international treaty that protects books and music in nearly every country, instantly, with no registration or lawyers.',
       },
       {
         title: 'You set the terms',
-        desc: 'Decide how your work can be used — commercial use, remixes, AI training. The terms are written into your work on-chain and travel with it everywhere, public for anyone to read and honor.',
+        desc: 'Decide how your work can be used: commercial use, remixes, AI training. The terms are written into your work on-chain and travel with it everywhere, public for anyone to read and honor.',
       },
       {
         title: 'Credit that lasts',
@@ -164,7 +164,7 @@ const sections: Section[] = [
     accent: 'text-brand-purple',
     border: 'border-brand-purple/50',
     heading: 'Open for developers and AI',
-    intro: 'Medialane is an open protocol — anyone, human or AI agent, can build on it.',
+    intro: 'Medialane is an open protocol, open to anyone, human or AI agent, to build on.',
     items: [
       {
         title: 'Developer tools and docs',
@@ -174,7 +174,7 @@ const sections: Section[] = [
       },
       {
         title: 'For AI agents',
-        desc: 'Autonomous agents take part as first-class participants — no special access needed.',
+        desc: 'Autonomous agents take part as first-class participants, no special access needed.',
         href: '/build',
         external: false,
       },
@@ -227,7 +227,7 @@ export default function ExplorePageClient() {
             Everything you can do on Medialane
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            One place to create, protect, sell, and grow your creative work — and a community that
+            One place to create, protect, sell, and grow your creative work, and a community that
             owns the platform together.
           </p>
         </FadeIn>
@@ -261,7 +261,7 @@ export default function ExplorePageClient() {
             <h2 className="max-w-2xl text-3xl font-black tracking-tight sm:text-4xl">No crypto experience needed</h2>
             <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
               Sign in with an email and start in minutes. You never pay a network fee, and there are
-              no wallets to manage or jargon to learn — Medialane handles the hard parts so you can
+              no wallets to manage or jargon to learn; Medialane handles the hard parts so you can
               focus on your work.
             </p>
             <a
