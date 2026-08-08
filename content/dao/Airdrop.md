@@ -44,8 +44,7 @@ Your share is determined by your tier. Higher engagement earns a larger portion 
 
 The entry point. Secure your place in the airdrop by creating your account on Medialane.io
 
-- Sign up with Google
-- Secure your account with PIN or passkey
+- Set up a passkey — gasless, no email or Google account required
 - You're qualified for Tier 1
 
 ### Tier 2 — Create
@@ -109,7 +108,7 @@ Open to all participants worldwide. Participate at [medialane.io](https://medial
 
 **Create your account**
 
-Go to [medialane.io](https://medialane.io/airdrop) and create your profile. Secure it with a PIN or passkey. This qualifies you for Tier 1.
+Go to [medialane.io](https://medialane.io/airdrop) and create your profile. Secure it with a passkey. This qualifies you for Tier 1.
 
 ---
 
