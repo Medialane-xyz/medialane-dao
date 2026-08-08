@@ -264,14 +264,24 @@ export default function ExplorePageClient() {
               no wallets to manage or jargon to learn; Medialane handles the hard parts so you can
               focus on your work.
             </p>
-            <a
-              href="https://medialane.io"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-7 inline-flex items-center gap-2 rounded-xl bg-brand-purple px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-purple/90"
-            >
-              Open the app <ArrowUpRight className="size-4" />
-            </a>
+            <div className="mt-7 flex flex-wrap items-center gap-4">
+              <a
+                href="https://medialane.io"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl bg-brand-purple px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-purple/90"
+              >
+                Open the app <ArrowUpRight className="size-4" />
+              </a>
+              <a
+                href="https://docs.medialane.io/learn/media-wallet"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-brand-purple hover:underline"
+              >
+                How the account technology works <ArrowUpRight className="size-4" />
+              </a>
+            </div>
           </div>
         </FadeIn>
       </section>
