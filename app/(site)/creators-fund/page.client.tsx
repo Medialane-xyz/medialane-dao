@@ -48,7 +48,7 @@ const STEPS = [
   },
   {
     title: 'Everyone gets a share',
-    body: 'The $1,000 is airdropped to everyone taking part. Your share is set by your Score Board points, earned by creating, collecting, and trading on Medialane.',
+    body: 'The $1,000 is airdropped to everyone taking part. Your share is set by your XP, earned by creating, collecting, and trading on Medialane.',
   },
 ]
 

@@ -13,7 +13,7 @@ To celebrate the Medialane mainnet launch on Starknet, the Creator's Fund return
 
 **Community Program**
 
-Each time the Creator's Fund reaches $1,000, that round is airdropped to all participants, weighted by Score Board points earned through real activity on the platform.
+Each time the Creator's Fund reaches $1,000, that round is airdropped to all participants, weighted by XP earned through real activity on the platform.
 
 ## Governance First
 
@@ -44,7 +44,7 @@ Your share is determined by your tier. Higher engagement earns a larger portion 
 
 The entry point. Secure your place in the airdrop by creating your account on Medialane.io
 
-- Set up a passkey: gasless, no email or Google account required
+- Sign up with your email — gasless, no ID, no card, no approval required
 - You're qualified for Tier 1
 
 ### Tier 2: Create
@@ -70,11 +70,11 @@ Active participants who contribute to the Creator's Capital Markets economy.
 
 | Round | Trigger | Weight |
 |-------|---------|--------|
-| **Each round** | Creator's Fund reaches $1,000 | Score Board points |
+| **Each round** | Creator's Fund reaches $1,000 | XP |
 | **Year-one campaign** | Until July 1, 2027 | All revenue returned |
 | **Annual cycle** | Each year thereafter | DAO vote decides |
 
-Distribution is not member-gated; every $1,000 the Creator's Fund collects is airdropped. $5,000 of revenue means 5 rounds; $10,000 means 10. Your share of each round is your Score Board points relative to all participants.
+Distribution is not member-gated; every $1,000 the Creator's Fund collects is airdropped. $5,000 of revenue means 5 rounds; $10,000 means 10. Your share of each round is your XP relative to all participants.
 
 ## Fair by Design
 

@@ -34,7 +34,7 @@ const steps = [
   },
   {
     title: 'Create and collect',
-    desc: 'Publish work, build collections, collect and trade. Every action earns Score Board points.',
+    desc: 'Publish work, build collections, collect and trade. Every action earns XP.',
   },
   {
     title: 'Receive your share',
@@ -97,7 +97,7 @@ export default function AirdropPageClient() {
           <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-brand-purple">Your share</p>
           <h2 className="text-3xl font-black tracking-tight sm:text-4xl">The more you take part, the more you receive</h2>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Your share of each round is decided by your Score Board points, earned by creating,
+            Your share of each round is decided by your XP, earned by creating,
             collecting, and trading on Medialane. There is no fixed tier and no cap: every active
             participant is included, people and AI agents alike, judged by what they do, not who
             they are, and doing more simply earns a larger share.
