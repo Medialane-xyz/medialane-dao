@@ -44,11 +44,11 @@ const STEPS = [
   },
   {
     title: 'The fund fills up',
-    body: 'Each time the fund reaches $1,000, that money is ready to go back out to the community.',
+    body: 'Each time the fund reaches its threshold, that money is ready to go back out to the community.',
   },
   {
     title: 'Everyone gets a share',
-    body: 'The $1,000 is airdropped to everyone taking part. Your share is set by your XP, earned by creating, collecting, and trading on Medialane.',
+    body: 'It’s airdropped to everyone taking part. Your share is set by your XP, earned by creating, collecting, and trading on Medialane.',
   },
 ]
 
@@ -109,7 +109,7 @@ export function CreatorsFundClient({ status }: { status: CreatorsFundStatus }) {
           <div className="mt-4 bento-cell p-5">
             <div className="flex items-center justify-between mb-2">
               <p className="text-xs text-muted-foreground font-medium">
-                Progress to the next $1,000 airdrop
+                Progress to the next airdrop
               </p>
               <p className="text-xs font-mono text-muted-foreground">
                 {usd(progressUsd)} / {usd(nextRoundUsd)}
@@ -217,7 +217,7 @@ export function CreatorsFundClient({ status }: { status: CreatorsFundStatus }) {
         <div className="bento-cell p-6 sm:p-8 max-w-3xl">
           <p className="text-sm text-foreground leading-relaxed max-w-2xl">
             The fund grows on its own from the 1% platform fee, but anyone can top it up. Send any
-            token on Starknet to the address below and it joins the next $1,000 airdrop straight back
+            token on Starknet to the address below and it joins the next airdrop straight back
             to the community. Every contribution is public and on-chain.
           </p>
 

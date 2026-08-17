@@ -13,7 +13,7 @@ To celebrate the Medialane mainnet launch on Starknet, the Creator's Fund return
 
 **Community Program**
 
-Each time the Creator's Fund reaches $1,000, that round is airdropped to all participants, weighted by XP earned through real activity on the platform.
+Each time the Creator's Fund reaches its threshold, that amount is airdropped to all participants, weighted by XP earned through real activity on the platform.
 
 ## Governance First
 
@@ -24,7 +24,7 @@ For year one, the DAO's decision is the Creator's Airdrop: every dollar of reven
 
 ## The Model
 
-When MDLN holders vote to fund the Creator's Airdrop, the allocated pool is distributed to creators, collectors, and active participants, with no investors and no middlemen.
+When MDLN holders vote to fund the Creator's Airdrop, the allocated pool is distributed directly to creators, collectors, and active participants.
 
 | Attribute | Detail |
 |-----------|--------|
@@ -32,65 +32,39 @@ When MDLN holders vote to fund the Creator's Airdrop, the allocated pool is dist
 | **Recipient** | 100% to participating creators and collectors |
 | **Governance** | MDLN holders vote on amount, rules, and timing |
 | **Verification** | onchain activity, fully auditable |
-| **Cadence** | $1,000 distribution rounds, until July 1, 2027 |
+| **Cadence** | Threshold-triggered distributions, until July 1, 2027 |
 
-## Participation Tiers
+## How Your Share Is Calculated
 
-Your share is determined by your tier. Higher engagement earns a larger portion of the pool.
+Every real interaction with Medialane earns XP, and your total XP relative to everyone else's decides your share of each distribution. Creating your account with your email puts you in immediately; it's gasless.
 
-### Tier 1: Register
+From there, your share grows with what you do on the platform: publishing original work, launching collections, minting (the participation NFT included), trading, making offers, collaborating, remixing, and commenting all count. Every one of these adds to the same running XP total, one shared calculation for everyone taking part.
 
-**Special share**
+## Distributions
 
-The entry point. Secure your place in the airdrop by creating your account on Medialane.io
-
-- Sign up with your email — gasless, no ID, no card, no approval required
-- You're qualified for Tier 1
-
-### Tier 2: Create
-
-**Creator's share**
-
-Publish original work and establish your creator presence.
-
-- Publish original content (digital assets, collections)
-- Set up your creator profile
-- Share, collect, engage to build your presence
-
-### Tier 3: Trade
-
-**Market share**
-
-Active participants who contribute to the Creator's Capital Markets economy.
-
-- Trade, collect, and make offers
-- Collaborate and remix
-
-## Distribution Rounds
-
-| Round | Trigger | Weight |
+| Cadence | Trigger | Weight |
 |-------|---------|--------|
-| **Each round** | Creator's Fund reaches $1,000 | XP |
+| **Each distribution** | Creator's Fund reaches its threshold | XP |
 | **Year-one campaign** | Until July 1, 2027 | All revenue returned |
 | **Annual cycle** | Each year thereafter | DAO vote decides |
 
-Distribution is not member-gated; every $1,000 the Creator's Fund collects is airdropped. $5,000 of revenue means 5 rounds; $10,000 means 10. Your share of each round is your XP relative to all participants.
+Every participant is included; every time the Creator's Fund collects enough, it's airdropped, and this repeats as revenue comes in. Your share of each distribution is your XP relative to all participants.
 
 ## Fair by Design
 
-The Creator's Airdrop is built to reward genuine participation, not farming.
+The Creator's Airdrop is built to reward genuine participation.
 
 - **Onchain verifiable**: all qualifying activity is recorded onchain and auditable
 - **Automated disqualification**: inorganic behavior is automatically excluded
-- **No snapshots to game**: activity is measured across the full cycle, not at a single point in time
+- **Full-cycle scoring**: activity is measured across the whole campaign
 - **Community-governed rules**: MDLN holders can adjust criteria each cycle
 
 ## Community Governance
 
 MDLN holders control every aspect of the airdrop:
 
-- **Pool size**: what percentage of revenue goes to the airdrop vs. DAO operations
-- **Tier weights**: how the pool is divided between Tier 1, 2, and 3 participants
+- **Pool size**: what percentage of revenue goes to the airdrop
+- **XP weights**: how much each action type is worth
 - **Eligibility rules**: what activities qualify and what thresholds apply
 - **Cycle timing**: when annual cycles begin and end
 
@@ -108,7 +82,7 @@ Open to all participants worldwide. Participate at [medialane.io](https://medial
 
 **Create your account**
 
-Go to [medialane.io](https://medialane.io/airdrop) and create your profile. Secure it with a passkey. This qualifies you for Tier 1.
+Go to [medialane.io](https://medialane.io/airdrop) and create your profile with your email. That alone includes you, and every interaction from there earns XP toward your share.
 
 ---
 
